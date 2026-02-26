@@ -1,2 +1,67 @@
-# Trying
-Me crying 
+محاولة
+<!DOCTYPE html>
+<html>
+<head>
+  <title>INTERNAL ARCHIVE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="sidebar">
+    <h2>ARCHIVE</h2>
+    <ul>
+      <li><a href="#">CASE FILES</a></li>
+      <li><a href="#">PERSONNEL</a></li>
+      <li><a href="#">INCIDENT LOGS</a></li>
+      <li><a href="#">[██████]</a></li>
+    </ul>
+  </div>
+
+  <div class="content">
+    <div class="header">
+      <h1>FILE A-001</h1>
+    </div>
+
+    <p>Status: Deceased</p>
+    <p>Subject: Angela</p>
+
+    <div class="command">
+      <a href="#">> Continue</a>
+    </div>
+  </div>
+</div>
+
+</body {
+  font-family: monospace;
+  background: #f4f4f4;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.sidebar {
+  width: 250px;
+  background: #e6e6e6;
+  border-right: 2px solid black;
+  padding: 20px;
+}
+
+.content {
+  padding: 40px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  background: black;
+  color: white;
+}
+function showMessage() {
+    alert("تم فتح بوابة إلى عالم جديد!");
+}
