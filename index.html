@@ -4,7 +4,28 @@
   <title>INTERNAL ARCHIVE</title>
   <link rel="stylesheet" href="style.css">
 </head>
+  <script>
+document.body.classList.add("power-on");
+
+const toggleBtn = document.getElementById("crtToggle");
+const crtLayer = document.getElementById("crt");
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("crt-off");
+
+  if (document.body.classList.contains("crt-off")) {
+    toggleBtn.textContent = "CRT: OFF";
+  } else {
+    toggleBtn.textContent = "CRT: ON";
+  }
+});
+</script>
 <body>
+  <div id="crt" class="crt-overlay"></div>
+
+<button id="crtToggle" class="crt-toggle">
+  CRT: ON
+</button>
   <div class="crt-overlay"></div>
 <div class="topbar">
   <div class="menu-btn" onclick="toggleMenu()">
