@@ -232,49 +232,121 @@ img {
   margin: 5px 0;
   transition: 0.3s;
 }
-/* ==============================
-   CRT SCREEN EFFECT
-============================== */
+/* =================================
+   REALISTIC CRT SYSTEM
+================================= */
 
+/* طبقة الـ CRT */
 .crt-overlay {
   pointer-events: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
+  z-index: 3000;
   background:
     repeating-linear-gradient(
       to bottom,
-      rgba(0,0,0,0.15) 0px,
-      rgba(0,0,0,0.15) 1px,
+      rgba(0,255,0,0.12) 0px,
+      rgba(0,255,0,0.12) 1px,
       transparent 1px,
       transparent 3px
     );
-  animation: flicker 0.15s infinite;
-  z-index: 2000;
+  animation: flicker 0.12s infinite;
 }
 
-/* Flicker Animation */
+/* Flicker */
 @keyframes flicker {
   0% { opacity: 0.95; }
   50% { opacity: 1; }
   100% { opacity: 0.97; }
 }
 
-/* Optional subtle glow */
-body {
-  text-shadow: 0 0 1px rgba(0,0,0,0.4);
+/* Noise Layer */
+.crt-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  animation: noise 0.3s infinite;
 }
+
+@keyframes noise {
+  0% { transform: translate(0,0); }
+  10% { transform: translate(-1px,1px); }
+  20% { transform: translate(1px,-1px); }
+  30% { transform: translate(-1px,-1px); }
+  40% { transform: translate(1px,1px); }
+  50% { transform: translate(-1px,0); }
+  60% { transform: translate(1px,0); }
+  70% { transform: translate(0,-1px); }
+  80% { transform: translate(0,1px); }
+  90% { transform: translate(-1px,1px); }
+  100% { transform: translate(0,0); }
+}
+
+/* تقوس الشاشة */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
+  pointer-events: none;
   background: radial-gradient(
     circle at center,
-    rgba(255,255,255,0.05) 0%,
-    rgba(0,0,0,0.2) 80%
+    rgba(0,255,0,0.05) 0%,
+    rgba(0,0,0,0.6) 90%
   );
-  pointer-events: none;
-  z-index: 1999;
+  z-index: 2999;
+}
+
+/* توهج النص */
+body {
+  background: #000;
+  color: #00ff66;
+  text-shadow: 0 0 4px rgba(0,255,0,0.6);
+}
+
+/* زر التحكم */
+.crt-toggle {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  z-index: 4000;
+  background: #000;
+  color: #00ff66;
+  border: 1px solid #00ff66;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Power On Animation */
+body.power-on {
+  animation: powerOn 0.6s ease-out forwards;
+}
+
+@keyframes powerOn {
+  0% {
+    transform: scaleY(0.02);
+    opacity: 0;
+  }
+  50% {
+    transform: scaleY(0.4);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+/* إيقاف CRT */
+.crt-off .crt-overlay,
+.crt-off body::before {
+  display: none;
+}
+
+.crt-off body {
+  background: #f4f4f4;
+  color: #111;
+  text-shadow: none;
 }
