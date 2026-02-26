@@ -232,3 +232,49 @@ img {
   margin: 5px 0;
   transition: 0.3s;
 }
+/* ==============================
+   CRT SCREEN EFFECT
+============================== */
+
+.crt-overlay {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.15) 0px,
+      rgba(0,0,0,0.15) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  animation: flicker 0.15s infinite;
+  z-index: 2000;
+}
+
+/* Flicker Animation */
+@keyframes flicker {
+  0% { opacity: 0.95; }
+  50% { opacity: 1; }
+  100% { opacity: 0.97; }
+}
+
+/* Optional subtle glow */
+body {
+  text-shadow: 0 0 1px rgba(0,0,0,0.4);
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255,255,255,0.05) 0%,
+    rgba(0,0,0,0.2) 80%
+  );
+  pointer-events: none;
+  z-index: 1999;
+}
