@@ -196,3 +196,27 @@ img {
   height: auto;
   border: 2px solid #444;
 }
+.topbar {
+  display: flex;
+  align-items: center;
+  background: #111;
+  color: white;
+  padding: 10px 15px;
+}
+
+.logo {
+  margin-left: 15px;
+  font-weight: bold;
+}
+.menu-btn {
+  width: 30px;
+  cursor: pointer;
+}
+
+.menu-btn span {
+  display: block;
+  height: 3px;
+  background: white;
+  margin: 5px 0;
+  transition: 0.3s;
+}
