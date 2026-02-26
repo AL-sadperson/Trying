@@ -9,14 +9,14 @@ body {
 }
 
 .sidebar {
-  width: 2500px;
+  width: 250px;
   background: #e6e6e6;
-  border-right: 20px solid black;
-  padding: 200px;
+  border-right: 2px solid black;
+  padding: 20px;
 }
 
 .content {
-  padding: 400px;
+  padding: 40px;
 }
 
 a {
