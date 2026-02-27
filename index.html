@@ -69,5 +69,14 @@ function toggleMenu() {
   document.getElementById("sidebar").classList.toggle("active");
 }
 </script>
+<script>
+window.addEventListener("load", () => {
+  const boot = document.getElementById("boot-screen");
+
+  setTimeout(() => {
+    boot.style.display = "none";
+  }, 1000);
+});
+</script>
 </body>
 </html>
