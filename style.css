@@ -245,8 +245,8 @@ img {
   background:
     repeating-linear-gradient(
       to bottom,
-      rgba(0,255,0,0.12) 0px,
-      rgba(0,255,0,0.12) 1px,
+      rgba(0,120,255,0.25) 0px,
+      rgba(0,120,255,0.25) 1px,
       transparent 1px,
       transparent 3px
     );
