@@ -353,3 +353,36 @@ body.crt-off {
   color: #111;
   text-shadow: none;
 }
+/* =================================
+   CRT POWER ON INTRO
+================================= */
+
+#boot-screen {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: bootSequence 1s forwards;
+}
+
+@keyframes bootSequence {
+  0% {
+    background: black;
+  }
+  30% {
+    background: white;
+    height: 2px;
+    top: 50%;
+  }
+  60% {
+    background: white;
+  }
+  100% {
+    background: black;
+    opacity: 0;
+    visibility: hidden;
+  }
+}
