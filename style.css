@@ -339,13 +339,16 @@ body.power-on {
   }
 }
 
-/* إيقاف CRT */
-.crt-off .crt-overlay,
-.crt-off body::before {
+/* عند إيقاف CRT */
+body.crt-off .crt-overlay {
   display: none;
 }
 
-.crt-off body {
+body.crt-off::before {
+  display: none;
+}
+
+body.crt-off {
   background: #f4f4f4;
   color: #111;
   text-shadow: none;
