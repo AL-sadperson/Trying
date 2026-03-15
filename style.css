@@ -291,35 +291,8 @@ body {
   text-shadow: 0 0 4px rgba(0,255,0,0.6);
 }
 
-/* زر التحكم */
-.crt-toggle {
-  position: fixed;
-  bottom: 15px;
-  right: 15px;
-  z-index: 4000;
-  background: #000;
-  color: #00ff66;
-  border: 1px solid #00ff66;
-  padding: 6px 10px;
-  cursor: pointer;
-  font-family: inherit;
-}
 
 
-/* =================================
-   CRT POWER ON INTRO
-================================= */
-
-#boot-screen {
-  position: fixed;
-  inset: 0;
-  background: black;
-  z-index: 5000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: bootSequence 1s forwards;
-}
 
 @keyframes bootSequence {
   0% {
