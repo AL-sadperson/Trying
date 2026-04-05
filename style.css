@@ -1,296 +1,84 @@
-/* ==============================
-   BASE RESET
-============================== */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family: "Courier New", Courier, monospace;
-  background-color: #f4f4f4;
-  color: #111;
-  line-height: 1.6;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000; /* خلفية سوداء */
+    color: #ffffff; /* نص أبيض */
 }
 
-/* ==============================
-   LAYOUT
-============================== */
-
-.wrapper {
-  min-height: 100vh;
+h1 {
+    font-size: 2.5rem;
+    color: #ffffff; /* أبيض بدل الذهبي */
+    margin: 0;
 }
 
-/* Sidebar */
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 15px 0;
+}
+
+.container {
+    display: flex;
+    padding: 20px;
+}
 
 .sidebar {
-  width: 260px;
-  background-color: #e6e6e6;
-  border-right: 2px solid #000;
-  padding: 20px;
-
-  position: fixed;
-  top: 0;
-  left: -260px;     /* مخفية */
-  height: 100%;
-  transition: 0.3s;
-  z-index: 1000;
-}
-.sidebar.active {
-  left: 0;
+    width: 250px;
+    background-color: #111111; /* أسود غامق */
+    padding: 20px;
+    border-radius: 10px;
+    margin-right: 20px;
 }
 
-.sidebar h2 {
-  font-size: 14px;
-  letter-spacing: 2px;
-  margin-bottom: 25px;
-  border-bottom: 1px solid #000;
-  padding-bottom: 10px;
+.sidebar .about h2 {
+    font-size: 1.5rem;
+    color: #ffffff;
 }
 
-.sidebar ul {
-  list-style: none;
+.sidebar ul li a {
+    font-size: 1.2rem;
+    padding: 5px;
+    display: block;
 }
 
-.sidebar li {
-  margin-bottom: 15px;
+.main-content {
+    flex-grow: 1;
 }
 
-.sidebar a {
-  text-decoration: none;
-  color: #000;
-  font-size: 13px;
-  letter-spacing: 1px;
-  transition: 0.2s;
+.content-section {
+    background-color: #0d0d0d; /* أسود مختلف قليلًا */
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.sidebar a:hover {
-  background: #000;
-  color: #fff;
-  padding: 2px 4px;
+.content-section img {
+    width: 80%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 20px;
 }
 
-/* ==============================
-   MAIN CONTENT
-============================== */
-
-.content {
-  padding: 80px 40px;
+.page-info {
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
-.header {
-  border-bottom: 2px solid #000;
-  margin-bottom: 30px;
-  padding-bottom: 10px;
+/* إزالة الثلاث خطوط (الهامبرغر) */
+.menu-icon {
+    display: none;
 }
-
-.header h1 {
-  font-size: 20px;
-  letter-spacing: 3px;
-}
-
-.file-meta {
-  font-size: 13px;
-  margin-bottom: 20px;
-}
-
-.file-meta span {
-  display: block;
-  margin-bottom: 5px;
-}
-
-/* ==============================
-   REDACTED TEXT
-============================== */
-
-.redacted {
-  background-color: #000;
-  color: #000;
-  padding: 0 4px;
-  user-select: none;
-}
-
-.redacted:hover {
-  color: #fff;
-}
-
-/* ==============================
-   BUTTONS
-============================== */
-
-.command {
-  margin-top: 30px;
-  font-size: 14px;
-}
-
-.command a {
-  text-decoration: none;
-  color: #000;
-  font-weight: bold;
-  transition: 0.2s;
-}
-
-.command a:hover {
-  color: #900;
-}
-
-/* ==============================
-   TABLE STYLE (REPORT LOOK)
-============================== */
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-table th,
-table td {
-  border: 1px solid #000;
-  padding: 8px;
-  font-size: 13px;
-}
-
-table th {
-  background-color: #ddd;
-  text-align: left;
-}
-
-/* ==============================
-   ALERT BOX
-============================== */
-
-.alert {
-  margin-top: 20px;
-  padding: 10px;
-  border: 2px solid #000;
-  background-color: #fff;
-  font-size: 13px;
-}
-
-/* ==============================
-   FOOTER
-============================== */
-
-.footer {
-  margin-top: 50px;
-  font-size: 11px;
-  color: #555;
-  border-top: 1px solid #000;
-  padding-top: 10px;
-}
-
-/* ==============================
-   SUBTLE GLITCH OPTION
-============================== */
-
-.glitch {
-  position: relative;
-  color: #000;
-}
-
-.glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 2px;
-  top: 0;
-  color: #900;
-  opacity: 0.2;
-}
-img {
-  max-width: 100%;
-  height: auto;
-  border: 2px solid #444;
-}
-.topbar {
-  display: flex;
-  align-items: center;
-  background: #111;
-  color: white;
-  padding: 10px 15px;
-}
-.topbar {
-  position: fixed;
-  width: 100%;
-  z-index: 1100;
-}
-.logo {
-  margin-left: 15px;
-  font-weight: bold;
-}
-.menu-btn {
-  width: 30px;
-  cursor: pointer;
-}
-
-.menu-btn span {
-  display: block;
-  height: 3px;
-  background: white;
-  margin: 5px 0;
-  transition: 0.3s;
-}
-/* =================================
-   REALISTIC CRT SYSTEM
-================================= */
-
-
-
-/* Flicker */
-@keyframes flicker {
-  0% { opacity: 0.95; }
-  50% { opacity: 1; }
-  100% { opacity: 0.97; }
-}
-
-/* Noise Layer */
-.crt-overlay::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-  opacity: 0.05;
-  mix-blend-mode: overlay;
-  animation: noise 0.3s infinite;
-}
-
-@keyframes noise {
-  0% { transform: translate(0,0); }
-  10% { transform: translate(-1px,1px); }
-  20% { transform: translate(1px,-1px); }
-  30% { transform: translate(-1px,-1px); }
-  40% { transform: translate(1px,1px); }
-  50% { transform: translate(-1px,0); }
-  60% { transform: translate(1px,0); }
-  70% { transform: translate(0,-1px); }
-  80% { transform: translate(0,1px); }
-  90% { transform: translate(-1px,1px); }
-  100% { transform: translate(0,0); }
-}
-
-/* تقوس الشاشة */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
-    circle at center,
-    rgba(0,255,0,0.05) 0%,
-    rgba(0,0,0,0.6) 90%
-  );
-  z-index: 2999;
-}
-
-/* توهج النص */
-body {
-  background: #000;
-  color: #00ff66;
-  text-shadow: 0 0 4px rgba(0,255,0,0.6);
-}
-
 
 
 
