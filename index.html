@@ -3,346 +3,343 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE CIPHER CORPORATION // MAIN TERMINAL</title>
+    <title>CIPHER GLOBAL // TRIANGULATION & CONSCIOUSNESS MANAGEMENT</title>
     <style>
-        /* دمج ألوان Lain المظلمة مع ثيم غرافيتي فولز / بيل شيفير (أسود، أصفر ذهبي، أحمر دموي) */
+        /* لوحة الألوان المحدثة بناءً على الصورة */
         :root {
-            --bg-color: #000000;
-            --panel-bg: #060606;
-            --text-main: #8c8c8c;
-            --text-bright: #e6b800; /* أصفر ذهبي خاص بـ Bill Cipher */
-            --text-white: #ffffff;
-            --border-color: #262626;
-            --border-light: #404040;
-            --accent-red: #a80000; /* أحمر دموي للتحذيرات والأختام */
+            --bg-dark: #050505;
+            --panel-yellow: #e5b842;
+            --text-dim: #737373;
+            --text-light: #d1d1d1;
+            --blood-red: #8f1d1d;
+            --border-color: #1a1a1a;
+            --sidebar-width: 320px;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             font-family: 'Courier New', Courier, monospace;
             margin: 0;
-            padding: 20px;
-            font-size: 14px;
+            padding: 0;
             text-transform: uppercase;
-            line-height: 1.6;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        ::selection {
-            background: var(--text-bright);
-            color: #000;
-        }
-
-        /* حاوية النظام الأساسية */
-        .system-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            border: 1px solid var(--border-color);
-            padding: 2px;
-            background: #020202;
-        }
-
-        /* الترويسة العلوية للمنظمة */
+        /* الترويسة العلوية */
         header {
-            border: 1px solid var(--border-color);
-            padding: 20px;
-            margin-bottom: 2px;
+            border-bottom: 1px solid var(--border-color);
+            padding: 25px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: var(--panel-bg);
         }
 
-        .header-logo-area {
+        .brand-zone {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
 
-        /* شعار الشركة (مستوحى من بيل شيفير والرموز الهندسية) */
-        .company-logo {
-            width: 60px;
-            height: 60px;
-            border: 1px solid var(--text-bright);
-            position: relative;
+        /* تصميم الشعار مطابق تماماً للصورة */
+        .triangle-logo {
+            width: 70px;
+            height: 70px;
+            border: 2px solid var(--panel-yellow);
             display: flex;
-            align-items: center;
             justify-content: center;
-            background: #000;
+            align-items: center;
+            position: relative;
         }
 
-        /* رسمة مثلث وهمية داخل الشعار باستخدام CSS */
-        .company-logo::before {
+        .triangle-logo::before {
             content: "";
             width: 0;
             height: 0;
-            border-left: 18px solid transparent;
-            border-right: 18px solid transparent;
-            border-bottom: 32px solid var(--text-bright);
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 35px solid var(--panel-yellow);
             position: absolute;
-            top: 10px;
+            top: 15px;
         }
 
-        .company-logo::after {
+        .triangle-logo::after {
             content: "";
             width: 6px;
             height: 6px;
             background: #000;
             border-radius: 50%;
             position: absolute;
-            top: 26px;
+            top: 36px;
             z-index: 2;
         }
 
-        .company-title h1 {
+        .brand-titles h1 {
             margin: 0;
-            font-size: 1.8em;
-            color: var(--text-white);
+            font-size: 2.3em;
+            color: #ffffff;
+            letter-spacing: 4px;
+            font-weight: bold;
+        }
+
+        .brand-titles p {
+            margin: 5px 0 0 0;
+            font-size: 0.85em;
+            color: var(--panel-yellow);
             letter-spacing: 3px;
         }
 
-        .company-title p {
-            margin: 0;
-            font-size: 0.75em;
-            letter-spacing: 2px;
-            color: var(--text-bright);
-        }
-
-        /* تقسيم الشاشة المتجاوب */
-        .layout-grid {
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 2px;
-        }
-
-        /* القائمة الجانبية التفاعلية */
-        .sidebar {
-            border: 1px solid var(--border-color);
-            background: var(--panel-bg);
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .nav-menu {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        /* الأزرار التفاعلية */
-        .nav-btn {
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            padding: 10px;
-            text-align: left;
-            font-family: inherit;
+        .header-meta {
+            text-align: right;
+            color: var(--text-dim);
             font-size: 0.85em;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            display: block;
-            letter-spacing: 1px;
-        }
-
-        .nav-btn:hover, .nav-btn.active {
-            background: var(--text-bright);
-            color: #000;
-            border-color: var(--text-bright);
-            font-weight: bold;
-            padding-left: 18px;
-        }
-
-        /* منطقة المحتوى والتعريف بالشركة */
-        .main-content {
-            border: 1px solid var(--border-color);
-            background: var(--panel-bg);
-            padding: 30px;
-            position: relative;
-        }
-
-        .section-title {
-            font-size: 1.3em;
-            color: var(--text-white);
-            border-bottom: 1px solid var(--border-light);
-            padding-bottom: 8px;
-            margin-top: 0;
-            margin-bottom: 20px;
+            line-height: 1.6;
             letter-spacing: 2px;
+        }
+
+        /* تخطيط مساحة العمل الأساسية */
+        .workspace {
             display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* القائمة الجانبية */
+        .control-panel {
+            width: var(--sidebar-width);
+            border-right: 1px solid var(--border-color);
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
             justify-content: space-between;
+            box-sizing: border-box;
         }
 
-        /* كتل التعريف والبيانات */
-        .manifesto-box {
-            border: 1px dashed var(--border-light);
-            padding: 20px;
-            margin-bottom: 25px;
-            background: rgba(230, 184, 0, 0.02); /* خلفية صفراء خفيفة جداً */
-        }
-
-        .manifesto-box p {
-            margin: 0 0 15px 0;
-            text-align: justify;
-        }
-
-        .manifesto-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* طرق التواصل المشفرة */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        .nav-buttons {
+            display: flex;
+            flex-direction: column;
             gap: 15px;
         }
 
-        .contact-card {
+        .nav-link {
+            width: 100%;
+            padding: 20px;
+            background: transparent;
+            color: var(--text-dim);
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            font-size: 1.05em;
+            letter-spacing: 2px;
+            cursor: pointer;
+            text-align: left;
+            font-family: inherit;
+            box-sizing: border-box;
+            transition: all 0.15s ease;
+        }
+
+        /* تصميم الزر المفعل والـ Hover مطابق للصورة الأصفر الخردلي والكتابة السوداء */
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--panel-yellow);
+            color: #000000;
+            font-weight: bold;
+            border-color: var(--panel-yellow);
+        }
+
+        .sidebar-warning {
+            font-size: 0.75em;
+            color: var(--blood-red);
+            line-height: 1.6;
+            letter-spacing: 1px;
+            margin-top: 30px;
+        }
+
+        /* مساحة عرض البيانات الرئيسية */
+        .content-area {
+            flex: 1;
+            padding: 50px 60px;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .meta-access {
+            color: var(--panel-yellow);
+            font-size: 1.1em;
+            letter-spacing: 3px;
+            float: right;
+        }
+
+        .section-title {
+            color: #ffffff;
+            font-size: 1.5em;
+            letter-spacing: 4px;
+            margin-top: 0;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        /* الحاوية الكلاسيكية المحددة بخط متقطع */
+        .dossier-container {
+            border: 1px dashed var(--text-dim);
+            padding: 40px;
+            margin-top: 20px;
+            min-height: 70%;
+            box-sizing: border-box;
+        }
+
+        .content-subtitle {
+            color: #ffffff;
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        /* تنسيق نصوص الدوسيه والمحتويات القديمة */
+        .tab-content {
+            display: none;
+            color: var(--text-light);
+            font-size: 1.1em;
+            line-height: 2;
+            letter-spacing: 2px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content p {
+            margin-bottom: 25px;
+        }
+
+        /* تنسيقات إضافية للجداول والقوائم المخصصة لتناسب التصميم */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
             border: 1px solid var(--border-color);
             padding: 15px;
-            background: #000;
+            text-align: left;
         }
+        th { color: var(--panel-yellow); }
 
-        .contact-card h4 {
-            margin: 0 0 8px 0;
-            color: var(--text-bright);
-            font-size: 0.9em;
-        }
-
-        .contact-card a {
-            color: var(--text-white);
-            text-decoration: none;
-        }
-
-        .contact-card a:hover {
-            text-decoration: underline;
-            color: var(--text-bright);
-        }
-
-        /* الختم والتحذير (لمسة Book of Bill) */
-        .redacted-bar {
-            background: #1a1a1a;
-            color: #1a1a1a;
-            padding: 0 3px;
-            user-select: none;
-        }
-        
-        .redacted-bar:hover {
-            background: var(--accent-red);
-            color: var(--text-white);
-        }
-
-        .eye-icon {
-            text-align: center;
-            font-size: 2em;
-            color: var(--accent-red);
-            margin: 20px 0 10px 0;
-            letter-spacing: 5px;
-        }
-
-        @media (max-width: 800px) {
-            .layout-grid {
-                grid-template-columns: 1fr;
-            }
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-            }
+        /* شاشات الهواتف المحمولة للتجاوب المالي */
+        @media (max-width: 900px) {
+            body { overflow-y: auto; height: auto; }
+            .workspace { flex-direction: column; }
+            .control-panel { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); }
+            header { flex-direction: column; gap: 20px; text-align: center; }
+            .header-meta { text-align: center; }
+            .meta-access { float: none; display: block; margin-bottom: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="system-container">
-        
-        <header>
-            <div class="header-logo-area">
-                <div class="company-logo" title="WE ARE WATCHING"></div>
-                <div class="company-title">
-                    <h1>CIPHER_GLOBAL</h1>
-                    <p>TRIANGULATION & CONSCIOUSNESS MANAGEMENT</p>
-                </div>
+    <header>
+        <div class="brand-zone">
+            <div class="triangle-logo"></div>
+            <div class="brand-titles">
+                <h1>CIPHER_GLOBAL</h1>
+                <p>TRIANGULATION & CONSCIOUSNESS MANAGEMENT</p>
             </div>
-            <div style="text-align: right; font-size: 0.75em; color: var(--border-light);">
-                SECURE_LINE // STATUS: OPEN<br>
-                AXIOM: AXOLOTL_V.26
-            </div>
-        </header>
-
-        <div class="layout-grid">
-            
-            <aside class="sidebar">
-                <nav class="nav-menu">
-                    <a href="#" class="nav-btn active">01 // OVERVIEW</a>
-                    <a href="#" class="nav-btn">02 // THE_WIRED_LOGS</a>
-                    <a href="#" class="nav-btn">03 // DECRYPT_DOSSIER</a>
-                    <a href="#" class="nav-btn">04 // DIMENSIONAL_MAP</a>
-                    <a href="#" class="nav-btn">05 // TERMINATE</a>
-                </nav>
-
-                <div style="font-size: 0.7em; border-top: 1px solid var(--border-color); padding-top: 15px; color: var(--accent-red);">
-                    WARNING: reality is an illusion, the universe is a hologram, buy gold, bye!
-                </div>
-            </aside>
-
-            <main class="main-content">
-                
-                <div class="section-title">
-                    <span>CORPORATE OVERVIEW</span>
-                    <span style="color: var(--text-bright); font-size: 0.7em;">LEVEL_01_PUBLIC_ACCESS</span>
-                </div>
-
-                <div class="manifesto-box">
-                    <h3 style="margin-top: 0; color: var(--text-white); font-size: 0.95em;">WHO WE ARE // WHAT WE DO</h3>
-                    <p>
-                        FOUNDED IN THE INTERSECTION OF THE WIRED AND THE THIRD DIMENSION, <strong>CIPHER_GLOBAL</strong> OPERATES BEYOND THE LIMITS OF HUMAN PERCEPTION. WE DO NOT MERELY BUILD TEXT-BASED INFRASTRUCTURE; WE MONITOR THE COGNITIVE FLOW BETWEEN REALITIES. 
-                    </p>
-                    <p>
-                        OUR CURRENT DIRECTIVE INVOLVES THE RECONCILIATION OF ANOMALOUS CODE STRUCTURES AND THE MANAGEMENT OF FREQUENCIES TRANSMITTED FROM THE DEEPEST LAYERS OF THE NET. WE TRANSCEND THE PHYSICAL. WE ARE EVERYWHERE, YET ENTIRELY HIDDEN IN THE CODES YOU EXECUTE DAILY.
-                    </p>
-                </div>
-
-                <div class="section-title" style="font-size: 1em;">
-                    <span>SECURE COMMUNICATIONS // CHANNELS</span>
-                </div>
-
-                <div class="contact-grid">
-                    <div class="contact-card">
-                        <h4>DIGITAL CORRESPONDENCE</h4>
-                        <span style="color: #666;">ADDR:</span> <a href="mailto:void@cipher_global.sys">VOID@CIPHER_GLOBAL.SYS</a>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <h4>SECURE NODES (PHONE)</h4>
-                        <span style="color: #666;">TEL:</span> +1 (618) 618-<span class="redacted-bar">CIPHER</span>
-                    </div>
-
-                    <div class="contact-card">
-                        <h4>ENCRYPTED FREQUENCY</h4>
-                        <span style="color: #666;">FREQ:</span> 318.90 MHz // BAND_DEFIANT
-                    </div>
-
-                    <div class="contact-card">
-                        <h4>PHYSICAL ARCHIVE LOCATION</h4>
-                        <span style="color: #666;">LOC:</span> OREGON, <span class="redacted-bar">GRAVITY FALLS</span>, SECTOR 0
-                    </div>
-                </div>
-
-                <div class="eye-icon">👁</div>
-                <div style="text-align: center; font-size: 0.7em; color: var(--border-light); letter-spacing: 2px;">
-                    E X I S T E N C E _ I S _ A _ C O D E . _ W E _ H A V E _ T H E _ K E Y .
-                </div>
-
-            </main>
-
         </div>
+        <div class="header-meta">
+            SECURE_LINE // STATUS: OPEN<br>
+            AXIOM: AXOLOTL_V.26
+        </div>
+    </header>
+
+    <div class="workspace">
+        
+        <aside class="control-panel">
+            <div class="nav-buttons">
+                <button class="nav-link active" onclick="toggleTab(event, 'overview')">01 // OVERVIEW</button>
+                <button class="nav-link" onclick="toggleTab(event, 'wired_logs')">02 // THE_WIRED_LOGS</button>
+                <button class="nav-link" onclick="toggleTab(event, 'decrypt_dossier')">03 // DECRYPT_DOSSIER</button>
+                <button class="nav-link" onclick="toggleTab(event, 'dimensional_map')">04 // DIMENSIONAL_MAP</button>
+                <button class="nav-link" onclick="toggleTab(event, 'terminate')">05 // TERMINATE</button>
+            </div>
+
+            <div class="sidebar-warning">
+                WARNING: REALITY IS AN ILLUSION, THE UNIVERSE IS A HOLOGRAM, BUY GOLD, BYE!
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <span class="meta-access">LEVEL_01_PUBLIC_ACCESS</span>
+            <h2 class="section-title">CORPORATE OVERVIEW</h2>
+            
+            <div class="dossier-container">
+                
+                <div id="overview" class="tab-content active">
+                    <div class="content-subtitle">WHO WE ARE // WHAT WE DO</div>
+                    <p>FOUNDED IN THE INTERSECTION OF THE WIRED AND THE THIRD DIMENSION, <strong>CIPHER_GLOBAL</strong> OPERATES BEYOND THE LIMITS OF HUMAN PERCEPTION. WE DO NOT MERELY BUILD TEXT-BASED INFRASTRUCTURE; WE MONITOR THE COGNITIVE FLOW BETWEEN REALITIES.</p>
+                    <p>OUR CURRENT DIRECTIVE INVOLVES THE RECONCILIATION OF ANOMALOUS CODE STRUCTURES AND THE MANAGEMENT OF FREQUENCIES TRANSMITTED FROM THE DEEPEST LAYERS OF THE WIRED.</p>
+                </div>
+
+                <div id="wired_logs" class="tab-content">
+                    <div class="content-subtitle">TRANSMISSION LOGS // SYSTEM_CONNECTED</div>
+                    <p><strong>LOG #1998:</strong> THE NAVI TERMINALS ARE READY. WE JUST NEED SOMEONE IGNORANT ENOUGH TO READ THE INCANTATION ALOUD.</p>
+                    <p><strong>LOG #2012:</strong> STANFORD PINES PROVED USEFUL, BUT ULTIMATELY FLAWED. WE REQUIRE A PURE DIGITAL VESSEL.</p>
+                </div>
+
+                <div id="decrypt_dossier" class="tab-content">
+                    <div class="content-subtitle">SECURE COMMS // INTERCEPTED NOISE</div>
+                    <p style="color: var(--blood-red); font-size: 1.2em; border: 1px dashed var(--blood-red); padding: 15px; text-align: center;">
+                        "ZHOFRPH WR WKH HQG RI WLPH."
+                    </p>
+                    <p style="text-align: center; font-size: 0.85em; color: var(--text-dim);">( ALGORITHM: CAESAR -3 // RESULT: WELCOME TO THE END OF TIME. )</p>
+                </div>
+
+                <div id="dimensional_map" class="tab-content">
+                    <div class="content-subtitle">CONQUERED REALMS // DIRECTORY</div>
+                    <table>
+                        <tr>
+                            <th>REALM ID</th>
+                            <th>DESIGNATION STATUS</th>
+                        </tr>
+                        <tr>
+                            <td>DIMENSION 52</td>
+                            <td>THE STATIC WASTELAND</td>
+                        </tr>
+                        <tr>
+                            <td>DIMENSION 46'\\</td>
+                            <td>THE SCREAMING SKY</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="terminate" class="tab-content">
+                    <div class="content-subtitle" style="color: var(--blood-red); text-align: center;">SYSTEM OVERRIDE DETECTED</div>
+                    <p style="text-align: center; font-size: 2em; color: #fff; font-weight: bold; margin-top: 40px;">W A K E _ U P</p>
+                </div>
+
+            </div>
+        </main>
     </div>
 
+    <script>
+        function toggleTab(evt, tabName) {
+            // إخفاء كافة المحتويات وإلغاء تنشيط التبويبات
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+
+            var navlinks = document.getElementsByClassName("nav-link");
+            for (var i = 0; i < navlinks.length; i++) {
+                navlinks[i].classList.remove("active");
+            }
+
+            // إظهار التبويب المستهدف وتنشيط الزر الخاص به
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
 </body>
 </html>
