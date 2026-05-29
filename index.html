@@ -59,41 +59,31 @@
         }
 
         /* تعديل حاوية اللوغو لتصبح شفافة، أكبر حجماً وبدون أي حواف */
-        .bill-eye-logo {
-            width: 75px;  /* زيادة الحجم لتطابق التحديد الأزرق */
-            height: 75px; /* زيادة الحجم لتطابق التحديد الأزرق */
-            background: black; /* خلفية شفافة بالكامل */
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: none; /* إزالة الحواف نهائياً */
-        }
+   /* اللوقو */
+.bill-eye-logo {
+    width: 75px;
+    height: 75px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        .bill-eye-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top left;
-            transform: scale(1.5); /* تكبير ذكي لعرض الشخصيات فقط وإخفاء الفراغ الأبيض */
-            transform-origin: top left;
-            mix-blend-mode: multiply; /* يجعل الخلفية البيضاء للصورة شفافة وتندمج مع سواد الموقع */
-        }
+    overflow: hidden;
+    flex-shrink: 0;
+}
 
-        .brand-titles h1 {
-            margin: 0;
-            font-size: 2em;
-            color: var(--text-bright);
-            letter-spacing: 4px;
-            font-weight: bold;
-        }
+.bill-eye-logo img {
+    width: 100%;
+    height: 100%;
 
-        .brand-titles p {
-            margin: 8px 0 0 0;
-            font-size: 0.75em;
-            color: var(--text-gold);
-            letter-spacing: 2px;
-        }
+    object-fit: contain;
+
+    /* احذف هذه المشاكل */
+    transform: none;
+    mix-blend-mode: normal;
+
+    display: block;
+}
 
         /* تقسيم الشاشة الممتد */
         .workspace {
