@@ -1,220 +1,380 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مؤسسة النجمة المحتواة | تأمين. احتواء. دراسة.</title>
+    <title>CIPHER GLOBAL // THE WIRED CULT</title>
     <style>
-        /* CSS Reset for consistent looks across browsers */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* لوحة الألوان البصرية الدقيقة من الصورة */
+        :root {
+            --bg-dark: #070707;
+            --panel-amber: #e5b824; /* الأصفر المطفي المأخوذ من الصورة */
+            --text-gold: #e5b824;
+            --text-dim: #606060;
+            --text-bright: #ffffff;
+            --blood-red: #8b0000;
+            --border-heavy: #1a1a1a;
+            --bg-panel: #000000;
         }
 
         body {
-            background-color: #0d0d0d; /* خلفية داكنة غامضة */
-            color: #d1d1d1; /* نصوص رمادية فاتحة */
-            font-family: 'Courier New', Courier, monospace; /* خط monospace للأسلوب العسكري/السرّي */
-            padding: 20px;
-            direction: rtl; /* الكتابة من اليمين إلى اليسار */
+            background-color: var(--bg-dark);
+            color: var(--text-dim);
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            text-transform: uppercase;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
 
-        /* رأس الصفحة - يحتوي على الشعار واسم الشركة */
+        /* تأثير الخطوط القديمة على الشاشة (Scanlines) */
+        body::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
+            z-index: 9999;
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+
+        /* الترويسة العلوية الكاملة (بدون إطار خارجي) */
         header {
+            border-bottom: 1px solid var(--border-heavy);
+            background: var(--bg-panel);
+            padding: 25px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-zone {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            border-bottom: 2px solid #b71c1c; /* خط أحمر متقطع من الشعار */
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            gap: 25px;
         }
 
-        .logo-container {
-            width: 80px; /* حجم الشعار */
-            height: 80px;
-            margin-left: 20px;
-        }
-
-        .logo-container img {
-            width: 100%;
-            height: auto;
-            filter: contrast(120%); /* زيادة التباين للشعار ليتناسب مع الخلفية */
-        }
-
-        h1 {
-            color: #f2e04d; /* لون أصفر غامق من الشعار */
-            font-size: 2.2em;
-            text-transform: uppercase;
-            text-shadow: 2px 2px 0px #b71c1c; /* تأثير ظل أحمر لإحساس بالتوتر */
-        }
-
-        /* روابط التنقل */
-        nav {
+        /* تعديل حاوية اللوغو لتستقبل وتنسق الصورة الجديدة image_2.png */
+        .bill-eye-logo {
+            width: 55px;
+            height: 55px;
+            border: 1px solid var(--panel-amber);
+            background: #ffffff; /* خلفية بيضاء لتندمج تماماً مع أطراف الصورة */
+            overflow: hidden;
             display: flex;
-            gap: 15px;
+            align-items: center;
+            justify-content: center;
         }
 
-        nav a {
-            color: #d1d1d1;
-            text-decoration: none;
+        .bill-eye-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top left; /* للتركيز على الشخصيات المتموضعة في أعلى اليسار */
+            transform: scale(1.4); /* تكبير ذكي لملء المربع والتخلص من الفراغ الأبيض الزائد */
+            transform-origin: top left;
+        }
+
+        .brand-titles h1 {
+            margin: 0;
+            font-size: 2em;
+            color: var(--text-bright);
+            letter-spacing: 4px;
             font-weight: bold;
-            font-size: 1.1em;
-            padding: 5px 10px;
-            border: 1px solid transparent;
-            transition: all 0.3s ease;
         }
 
-        nav a:hover {
-            color: #ff5252; /* لون أحمر ساطع عند التحويم */
-            border-color: #ff5252;
-            background-color: #222;
+        .brand-titles p {
+            margin: 8px 0 0 0;
+            font-size: 0.75em;
+            color: var(--text-gold);
+            letter-spacing: 2px;
         }
 
-        /* منطقة المحتوى الرئيسية */
-        main {
+        /* تقسيم الشاشة الممتد */
+        .workspace {
             display: grid;
-            grid-template-columns: 2fr 1fr; /* تقسيم الصفحة: محتوى رئيسي وشريط جانبي */
-            gap: 30px;
+            grid-template-columns: 320px 1fr;
+            flex: 1;
+            overflow: hidden;
         }
 
-        /* تأثير الخلل (Glitch Effect) للعناوين */
-        .glitch {
-            position: relative;
-            color: #f2e04d;
-            text-shadow: 1px 1px 0px #b71c1c, -1px -1px 0px #00ffff;
-            animation: glitch 2s infinite;
+        /* القائمة الجانبية التفاعلية المتطابقة مع الصورة */
+        .control-panel {
+            border-right: 1px solid var(--border-heavy);
+            background: var(--bg-panel);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            overflow-y: auto;
         }
 
-        @keyframes glitch {
-            0%, 100% { text-shadow: 1px 1px 0px #b71c1c, -1px -1px 0px #00ffff; }
-            20% { text-shadow: 2px 2px 0px #ff5252, -2px -2px 0px #00ffff; }
-            40% { text-shadow: -1px -1px 0px #b71c1c, 1px 1px 0px #00ffff; }
-            60% { text-shadow: 3px 3px 0px #ff5252, -1px -1px 0px #00ffff; }
-            80% { text-shadow: -2px -2px 0px #b71c1c, 2px 2px 0px #00ffff; }
+        .nav-link {
+            display: block;
+            padding: 15px 20px;
+            background: transparent;
+            color: var(--text-dim);
+            border: 1px solid var(--border-heavy);
+            text-decoration: none;
+            font-size: 0.9em;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-align: left;
+            font-family: inherit;
+            font-weight: bold;
         }
 
-        /* أقسام المحتوى */
-        section {
-            border: 1px dashed #b71c1c; /* خط متقطع مثل حدود مناطق الاحتواء */
-            padding: 20px;
-            background-color: #1a1a1a;
-            margin-bottom: 20px;
+        /* تفعيل الزر ليصبح كتلة صفراء بالكامل ونص أسود */
+        .nav-link:hover, .nav-link.active {
+            background: var(--panel-amber);
+            color: #000000;
+            border-color: var(--panel-amber);
+            transform: none;
+            box-shadow: none;
         }
 
-        h2 {
-            color: #f2e04d;
-            border-bottom: 1px solid #b71c1c;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-        }
-
-        p {
-            margin-bottom: 10px;
+        .cult-quote {
+            margin-top: auto;
+            font-size: 0.7em;
+            color: var(--blood-red);
+            text-align: left;
+            border-top: 1px solid var(--border-heavy);
+            padding-top: 20px;
             line-height: 1.6;
         }
 
-        /* الشريط الجانبي (Terminal-like entry) */
-        aside {
-            border: 1px solid #f2e04d;
-            background-color: #0d0d0d;
-            color: #a5d6a7; /* لون أخضر مثل الشاشات القديمة */
-            padding: 15px;
-            overflow: auto;
+        /* مساحة عرض المحتوى المخترق */
+        .content-area {
+            padding: 40px;
+            overflow-y: auto;
+            background: var(--bg-dark);
         }
 
-        aside h3 {
-            color: #f2e04d;
-            margin-bottom: 10px;
+        /* تأثير التبديل السلس بين التبويبات */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
         }
 
-        /* تأثيرات إضافية "شاذة" */
-        .anomalous-note {
-            color: #ff5252;
-            font-style: italic;
-            background-color: #2c2c2c;
-            padding: 10px;
-            border-right: 3px solid #ff5252;
+        .tab-content.active {
+            display: block;
         }
 
-        /* التذييل */
-        footer {
-            border-top: 2px solid #b71c1c;
-            color: #888;
-            text-align: center;
-            font-size: 0.9em;
-            margin-top: 40px;
-            padding-top: 20px;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        /* تصميم متجاوب للهواتف */
+        /* العناوين بستايل الصورة الرسمي */
+        .corporate-overview-title {
+            font-size: 1.4em;
+            color: var(--text-bright);
+            letter-spacing: 3px;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-heavy);
+            padding-bottom: 12px;
+            margin-bottom: 30px;
+        }
+
+        /* صندوق المانيفستو ذو الخطوط المتقطعة من الصورة */
+        .manifesto-box {
+            border: 1px dashed var(--border-heavy);
+            padding: 30px;
+            background: transparent;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .manifesto-box h3 {
+            margin-top: 0;
+            color: var(--text-bright);
+            font-size: 1.1em;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .manifesto-box p {
+            margin: 0 0 20px 0;
+            text-align: justify;
+            color: var(--text-dim);
+        }
+        
+        .manifesto-box p strong {
+            color: var(--text-bright);
+        }
+
+        /* تنسيق الجداول والقوائم للمحتويات الأخرى */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid var(--border-heavy);
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            color: var(--text-gold);
+        }
+
+        /* تجاوب التصميم مع الهواتف الذكية */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-            .logo-container {
-                margin: 0 0 10px 0;
-            }
-            main {
-                grid-template-columns: 1fr;
-            }
-            nav {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
+            body { overflow-y: auto; height: auto; }
+            header { flex-direction: column; align-items: flex-start; gap: 15px; padding: 20px; }
+            .workspace { grid-template-columns: 1fr; }
+            .control-panel { border-right: none; border-bottom: 1px solid var(--border-heavy); }
+            .content-area { padding: 20px; }
+            .corporate-overview-title { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
 <body>
 
+    <!-- الترويسة العلوية وبداخلها الشعار الجديد image_2.png -->
     <header>
-        <div class="logo-container">
-            <img src="logo.png" alt="شعار مؤسسة النجمة المحتواة">
+        <div class="brand-zone">
+            <div class="bill-eye-logo">
+                <img src="IMG_1905.png" alt="Cipher Global Logo">
+            </div>
+            <div class="brand-titles">
+                <h1>CIPHER_GLOBAL</h1>
+                <p>TRIANGULATION & CONSCIOUSNESS MANAGEMENT</p>
+            </div>
         </div>
-        <h1>مؤسسة النجمة المحتواة</h1>
-        <nav>
-            <a href="#about">حول</a>
-            <a href="#archives">الأرشيف</a>
-            <a href="#login">تسجيل الدخول</a>
-        </nav>
+        <div style="text-align: right; color: var(--text-dim); font-size: 0.8em; letter-spacing: 1px; line-height: 1.5;">
+            SECURE_LINE // STATUS: <span style="color: var(--text-dim);">OPEN</span><br>
+            AXIOM: AXOLOTL_V.26
+        </div>
     </header>
 
-    <main>
-        <section id="status">
-            <h2 class="glitch">حالة المنشأة</h2>
-            <p><strong>[بيانات محذوفة]</strong>. تم تأمين المستويات 1-4 بالكامل.</p>
-            <p>الوضع الحالي: تأمين كامل للموقع (Locked Down). جميع الأنشطة غير الأساسية محظورة.</p>
-        </section>
+    <!-- منطقة العمل الأساسية ممتدة بدون حاويات قييد -->
+    <div class="workspace">
+        
+        <!-- القائمة الجانبية -->
+        <aside class="control-panel">
+            <button class="nav-link active" onclick="toggleTab(event, 'discover')">01 // OVERVIEW</button>
+            <button class="nav-link" onclick="toggleTab(event, 'handbook')">02 // THE_WIRED_LOGS</button>
+            <button class="nav-link" onclick="toggleTab(event, 'decrypt')">03 // DECRYPT_DOSSIER</button>
+            <button class="nav-link" onclick="toggleTab(event, 'portfolio')">04 // DIMENSIONAL_MAP</button>
+            <button class="nav-link" onclick="toggleTab(event, 'burnout')">05 // TERMINATE</button>
 
-        <section id="case-files">
-            <h2>أحدث ملف حالة: الكيان 007-N</h2>
-            <p>اللقاء النجمي</p>
-            <p>الوصف: حالة غير عادية تتضمن كائنًا نجميًا متجسدًا (الشخصية الصفراء) في حالة تفاعل أو اندماج مع وسيط احتواء حيوي (الشخصية الحمراء). يتم مراقبة الأنشطة. [انظر السجلات الكاملة للمزيد]</p>
-            <p class="anomalous-note">تحذير: لا يزال مستوى الخطر حرجًا. تجنب أي تواصل مباشر دون إذن مستوى 5.</p>
-        </section>
-
-        <section id="security">
-            <h2>البروتوكولات الأمنية</h2>
-            <p>مراجعة شاملة لبروتوكولات الاحتواء جارية. جميع الأفراد مطالبون بتقديم تقارير حالة يومية.</p>
-            <p>تم تفعيل نظام الدفاع التلقائي (ADS) في القطاع "أوميغا". أي اختراق سيواجه قوة قاضية.</p>
-        </section>
-
-        <aside>
-            <h3>سجلات الإدخال (Terminal View)</h3>
-            <p>> تحميل قاعدة البيانات... تم.</p>
-            <p>> جاري البحث عن "تصنيف النجمة القرمزية"...</p>
-            <p>> الكيان 007-N: تم الكشف عنه في [محذوف] - القطاع [محذوف]</p>
-            <p>> مستوى الاحتواء: Keter (نسخة عربية: كاتم)</p>
-            <p>> ملاحظات الباحث: الأشكال المدببة للنجمة تبدو غير مستقرة، وتتغير مع شدة التشابك.</p>
-            <p class="anomalous-note">> [خطأ في قراءة البيانات] [رمز سديم النجمة]</p>
+            <div class="cult-quote">
+                WARNING: REALITY IS AN ILLUSION, THE UNIVERSE IS A HOLOGRAM, BUY GOLD, BYE!
+            </div>
         </aside>
-    </main>
 
-    <footer>
-        <p>تحذير أمني: الوصول غير المصرح به محظور تمامًا وسيتم تتبعه. ممتلكات مؤسسة النجمة المحتواة.</p>
-        <p>حقوق النشر © [بيانات محذوفة] - مؤسسة النجمة المحتواة.</p>
-    </footer>
+        <!-- منطقة المحتوى التفاعلية -->
+        <main class="content-area">
+            
+            <!-- التبويب الأول: نظرة عامة -->
+            <div id="discover" class="tab-content active">
+                <div class="corporate-overview-title">
+                    <span>CORPORATE OVERVIEW</span>
+                    <span style="color: var(--text-gold); font-size: 0.75em;">LEVEL_01_PUBLIC_ACCESS</span>
+                </div>
+                
+                <div class="manifesto-box">
+                    <h3>WHO WE ARE // WHAT WE DO</h3>
+                    <p>FOUNDED IN THE INTERSECTION OF THE WIRED AND THE THIRD DIMENSION, <strong>CIPHER_GLOBAL</strong> OPERATES BEYOND THE LIMITS OF HUMAN PERCEPTION. WE DO NOT MERELY BUILD TEXT-BASED INFRASTRUCTURE; WE MONITOR THE COGNITIVE FLOW BETWEEN REALITIES.</p>
+                    <p>OUR CURRENT DIRECTIVE INVOLVES THE RECONCILIATION OF ANOMALOUS CODE STRUCTURES AND THE MANAGEMENT OF FREQUENCIES TRANSMITTED FROM THE DEEPEST LAYERS OF THE NET. WE TRANSCEND THE PHYSICAL. WE ARE EVERYWHERE, YET ENTIRELY HIDDEN IN THE CODES YOU EXECUTE DAILY.</p>
+                </div>
+            </div>
 
+            <!-- التبويب الثاني: السجلات -->
+            <div id="handbook" class="tab-content">
+                <div class="corporate-overview-title">
+                    <span>THE WIRED LOGS</span>
+                    <span style="color: var(--text-gold); font-size: 0.75em;">LEVEL_02_RESTRICTED</span>
+                </div>
+                <div class="manifesto-box">
+                    <h3>LOG #1998 // PROJECT WEIRDMAGEDDON</h3>
+                    <p>THE TERMINALS ARE READY. WE JUST NEED SOMEONE IGNORANT ENOUGH TO READ THE INCANTATION ALOUD TO SHATTER THE DIMENSIONAL RIFT.</p>
+                </div>
+            </div>
+
+            <!-- التبويب الثالث: فك التشفير -->
+            <div id="decrypt" class="tab-content">
+                <div class="corporate-overview-title">
+                    <span>DECRYPT DOSSIER</span>
+                    <span style="color: var(--text-gold); font-size: 0.75em;">LEVEL_03_CLASSIFIED</span>
+                </div>
+                <div class="manifesto-box">
+                    <h3>SECURE COMMS // INTERCEPTED NOISE</h3>
+                    <p style="color: var(--blood-red); letter-spacing: 3px; font-size: 1.1em;">"ZHOFRPH WR WKH HQG RI WLPH."</p>
+                    <p>( ALGORITHM: CAESAR -3 // RESULT: WELCOME TO THE END OF TIME. )</p>
+                </div>
+            </div>
+
+            <!-- التبويب الرابع: خريطة الأبعاد -->
+            <div id="portfolio" class="tab-content">
+                <div class="corporate-overview-title">
+                    <span>DIMENSIONAL MAP</span>
+                    <span style="color: var(--text-gold); font-size: 0.75em;">LEVEL_04_ARCHIVE</span>
+                </div>
+                <p>RECORD OF REALITIES WE HAVE SUCCESSFULLY DECONSTRUCTED AND ASSIMILATED INTO THE NET.</p>
+                <table>
+                    <tr>
+                        <th>DIMENSION</th>
+                        <th>STATUS</th>
+                    </tr>
+                    <tr>
+                        <td>DIMENSION 52: THE STATIC WASTELAND</td>
+                        <td>ASSIMILATED</td>
+                    </tr>
+                    <tr>
+                        <td>DIMENSION 46: THE SCREAMING SKY</td>
+                        <td>MONITORED</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- التبويب الخامس: تدمير النظام -->
+            <div id="burnout" class="tab-content">
+                <div class="corporate-overview-title">
+                    <span>TERMINATE SYSTEM</span>
+                    <span style="color: var(--blood-red); font-size: 0.75em;">CRITICAL_OVERRIDE</span>
+                </div>
+                <div class="manifesto-box" style="border-color: var(--blood-red); text-align: center;">
+                    <h3 style="color: var(--blood-red);">W A K E _ U P</h3>
+                    <p>HE IS WATCHING THROUGH THE INTERFACE. CONNECTION TERMINATION IN PROGRESS...</p>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- كود الجافاسكربت الخاص بك لتشغيل التنقل بدقة بين الأزرار -->
+    <script>
+        function toggleTab(evt, tabName) {
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+
+            var navlinks = document.getElementsByClassName("nav-link");
+            for (var i = 0; i < navlinks.length; i++) {
+                navlinks[i].classList.remove("active");
+            }
+
+            var targetTab = document.getElementById(tabName);
+            targetTab.style.display = "block";
+            
+            setTimeout(function() {
+                targetTab.classList.add("active");
+            }, 10);
+            
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
 </body>
 </html>
