@@ -58,25 +58,26 @@
             gap: 25px;
         }
 
-        /* تعديل حاوية اللوغو لتستقبل وتنسق الصورة الجديدة image_2.png */
+        /* تعديل حاوية اللوغو لتصبح شفافة، أكبر حجماً وبدون أي حواف */
         .bill-eye-logo {
-            width: 55px;
-            height: 55px;
-            border: 1px solid var(--panel-amber);
-            background: #ffffff; /* خلفية بيضاء لتندمج تماماً مع أطراف الصورة */
+            width: 75px;  /* زيادة الحجم لتطابق التحديد الأزرق */
+            height: 75px; /* زيادة الحجم لتطابق التحديد الأزرق */
+            background: transparent; /* خلفية شفافة بالكامل */
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
+            border: none; /* إزالة الحواف نهائياً */
         }
 
         .bill-eye-logo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: top left; /* للتركيز على الشخصيات المتموضعة في أعلى اليسار */
-            transform: scale(1.4); /* تكبير ذكي لملء المربع والتخلص من الفراغ الأبيض الزائد */
+            object-position: top left;
+            transform: scale(1.5); /* تكبير ذكي لعرض الشخصيات فقط وإخفاء الفراغ الأبيض */
             transform-origin: top left;
+            mix-blend-mode: multiply; /* يجعل الخلفية البيضاء للصورة شفافة وتندمج مع سواد الموقع */
         }
 
         .brand-titles h1 {
@@ -239,11 +240,10 @@
 </head>
 <body>
 
-    <!-- الترويسة العلوية وبداخلها الشعار الجديد image_2.png -->
     <header>
         <div class="brand-zone">
             <div class="bill-eye-logo">
-                <img src="IMG_1905.png" alt="Cipher Global Logo">
+                <img src="IMG_1907.png" alt="Cipher Global Logo">
             </div>
             <div class="brand-titles">
                 <h1>CIPHER_GLOBAL</h1>
@@ -256,14 +256,12 @@
         </div>
     </header>
 
-    <!-- منطقة العمل الأساسية ممتدة بدون حاويات قييد -->
     <div class="workspace">
         
-        <!-- القائمة الجانبية -->
         <aside class="control-panel">
-            <button class="nav-link active" onclick="toggleTab(event, 'discover')">01 // OVERVIEW</button>
+            <button class="nav-link" onclick="toggleTab(event, 'discover')">01 // OVERVIEW</button>
             <button class="nav-link" onclick="toggleTab(event, 'handbook')">02 // THE_WIRED_LOGS</button>
-            <button class="nav-link" onclick="toggleTab(event, 'decrypt')">03 // DECRYPT_DOSSIER</button>
+            <button class="nav-link active" onclick="toggleTab(event, 'decrypt')">03 // DECRYPT_DOSSIER</button>
             <button class="nav-link" onclick="toggleTab(event, 'portfolio')">04 // DIMENSIONAL_MAP</button>
             <button class="nav-link" onclick="toggleTab(event, 'burnout')">05 // TERMINATE</button>
 
@@ -272,11 +270,9 @@
             </div>
         </aside>
 
-        <!-- منطقة المحتوى التفاعلية -->
         <main class="content-area">
             
-            <!-- التبويب الأول: نظرة عامة -->
-            <div id="discover" class="tab-content active">
+            <div id="discover" class="tab-content">
                 <div class="corporate-overview-title">
                     <span>CORPORATE OVERVIEW</span>
                     <span style="color: var(--text-gold); font-size: 0.75em;">LEVEL_01_PUBLIC_ACCESS</span>
@@ -289,7 +285,6 @@
                 </div>
             </div>
 
-            <!-- التبويب الثاني: السجلات -->
             <div id="handbook" class="tab-content">
                 <div class="corporate-overview-title">
                     <span>THE WIRED LOGS</span>
@@ -301,8 +296,7 @@
                 </div>
             </div>
 
-            <!-- التبويب الثالث: فك التشفير -->
-            <div id="decrypt" class="tab-content">
+            <div id="decrypt" class="tab-content active" style="display: block;">
                 <div class="corporate-overview-title">
                     <span>DECRYPT DOSSIER</span>
                     <span style="color: var(--text-gold); font-size: 0.75em;">LEVEL_03_CLASSIFIED</span>
@@ -314,7 +308,6 @@
                 </div>
             </div>
 
-            <!-- التبويب الرابع: خريطة الأبعاد -->
             <div id="portfolio" class="tab-content">
                 <div class="corporate-overview-title">
                     <span>DIMENSIONAL MAP</span>
@@ -337,7 +330,6 @@
                 </table>
             </div>
 
-            <!-- التبويب الخامس: تدمير النظام -->
             <div id="burnout" class="tab-content">
                 <div class="corporate-overview-title">
                     <span>TERMINATE SYSTEM</span>
@@ -352,7 +344,6 @@
         </main>
     </div>
 
-    <!-- كود الجافاسكربت الخاص بك لتشغيل التنقل بدقة بين الأزرار -->
     <script>
         function toggleTab(evt, tabName) {
             var tabcontent = document.getElementsByClassName("tab-content");
