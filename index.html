@@ -60,23 +60,14 @@
 
         /* تصميم اللوغو الهندسي الدقيق من الصورة */
      <img src="IMG_1905.png" alt="Company Logo"
-            width: 55px;
-            height: 55px;
-            border: 1px solid var(--panel-amber);
-            position: relative;
-            background: var(--bg-panel);
+.bill-eye-logo{
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    display: block;
+}
         }
 
-        .bill-eye-logo::before {
-            content: "";
-            width: 0;
-            height: 0;
-            border-left: 16px solid transparent;
-            border-right: 16px solid transparent;
-            border-bottom: 28px solid var(--panel-amber);
-            position: absolute;
-            top: 12px;
-            left: 11px;
         }
 
         .bill-eye-logo::after {
@@ -260,7 +251,7 @@
 
     <header>
         <div class="brand-zone">
-            <div class="bill-eye-logo"></div>
+          <img src="IMG_1905.png" alt="Damnum Logo" class="bill-eye-logo">
             <div class="brand-titles">
                 <h1>CIPHER_GLOBAL</h1>
                 <p>TRIANGULATION & CONSCIOUSNESS MANAGEMENT</p>
