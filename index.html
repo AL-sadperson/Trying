@@ -1,60 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
-‏<head>
-‏    <meta charset="UTF-8">
-‏    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>INTERNAL ARCHIVE</title>
-  <link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE WIRED // CODE: CIPHER</title>
+    <style>
+        /* لوحة ألوان مستوحاة بالكامل من كتاب بيل شيفير والأجواء المظلمة */
+        :root {
+            --bg-dark: #030200;
+            --panel-amber: #e6a100; /* الأصفر الكهرماني المميز لبيل */
+            --text-gold: #ffcc00;
+            --text-dim: #8a816f;
+            --blood-red: #990000;
+            --border-heavy: #1f1a10;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-dim);
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            text-transform: uppercase;
+            overflow-x: hidden;
+        }
+
+        /* تأثير التشويش الرقمي العام للـ Wired */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 9999;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+        }
+
+        .main-frame {
+            max-width: 1100px;
+            margin: 0 auto;
+            border: 4px double var(--panel-amber);
+            background-color: #080603;
+            padding: 2px;
+            box-shadow: 0 0 30px rgba(230, 161, 0, 0.15);
+        }
+
+        /* الترويسة العلوية */
+        header {
+            border: 1px solid var(--border-heavy);
+            background: #0d0a05;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-zone {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* شعار العين الكبيرة داخل المثلث */
+        .bill-eye-logo {
+            width: 70px;
+            height: 70px;
+            background: radial-gradient(circle, #ffcc00 20%, transparent 60%);
+            border: 2px solid var(--panel-amber);
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            position: relative;
+        }
+
+        .bill-eye-logo::after {
+            content: "👁";
+            position: absolute;
+            top: 25px;
+            left: 20px;
+            font-size: 22px;
+            color: #000;
+        }
+
+        .brand-titles h1 {
+            margin: 0;
+            font-size: 2em;
+            color: var(--text-gold);
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+            letter-spacing: 4px;
+        }
+
+        /* التقسيم الشبكي للـ Layout الجديد */
+        .workspace {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 2px;
+            margin-top: 2px;
+        }
+
+        /* قائمة التحكم الجانبية */
+        .control-panel {
+            border: 1px solid var(--border-heavy);
+            background: #0b0804;
+            padding: 20px 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 12px;
+            background: transparent;
+            color: var(--text-dim);
+            border: 1px dashed var(--border-heavy);
+            text-decoration: none;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: var(--panel-amber);
+            color: #000;
+            font-weight: bold;
+            border-style: solid;
+            box-shadow: 0 0 15px rgba(230, 161, 0, 0.4);
+            transform: translateX(5px);
+        }
+
+        /* منطقة استعراض الكتاب والطقوس */
+        .book-page-container {
+            border: 1px solid var(--border-heavy);
+            background: #050402;
+            padding: 35px;
+            position: relative;
+        }
+
+        /* دمج الصور والرسومات التالفة من كتاب بيل */
+        .book-illustration {
+            float: right;
+            width: 280px;
+            margin: 0 0 20px 20px;
+            border: 2px dashed var(--blood-red);
+            padding: 5px;
+            background: #0a0000;
+            box-shadow: 0 0 15px rgba(153, 0, 0, 0.3);
+        }
+
+        .book-illustration img {
+            width: 100%;
+            height: auto;
+            filter: sepia(1) contrast(1.3) hue-rotate(-30deg); /* جعل الصورة تبدو قديمة ودموية */
+            display: block;
+        }
+
+        .illustration-caption {
+            font-size: 0.7em;
+            color: var(--blood-red);
+            text-align: center;
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
+        /* نصوص الاستدعاء والبيانات */
+        .manifesto-section h2 {
+            color: var(--text-gold);
+            font-size: 1.5em;
+            margin-top: 0;
+            border-bottom: 2px dotted var(--panel-amber);
+            padding-bottom: 10px;
+        }
+
+        .ritual-text {
+            border-left: 3px solid var(--blood-red);
+            padding-left: 15px;
+            margin: 25px 0;
+            color: var(--text-white);
+            background: rgba(153, 0, 0, 0.03);
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        /* قنوات الاتصال البعدية */
+        .dimension-contacts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .channel-node {
+            border: 1px solid var(--border-heavy);
+            background: #0b0905;
+            padding: 15px;
+            position: relative;
+        }
+
+        .channel-node h3 {
+            margin: 0 0 10px 0;
+            color: var(--panel-amber);
+            font-size: 0.9em;
+        }
+
+        .channel-node a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .channel-node a:hover {
+            color: var(--text-gold);
+            text-decoration: underline;
+        }
+
+        /* الكود المشفر البديل للـ Redacted */
+        .cipher-code {
+            background-color: var(--blood-red);
+            color: var(--blood-red);
+            padding: 0 4px;
+            transition: color 0.3s;
+            cursor: help;
+        }
+
+        .cipher-code:hover {
+            color: var(--text-gold);
+            background-color: #000;
+        }
+
+        /* الرموز الغريبة أسفل الموقع */
+        .runes-footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 1.8em;
+            color: var(--blood-red);
+            letter-spacing: 12px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 850px) {
+            .workspace { grid-template-columns: 1fr; }
+            .book-illustration { float: none; width: 100%; margin: 0 0 20px 0; }
+            .dimension-contacts { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-</script>
 <body>
-<div class="topbar">
-  <div class="menu-btn" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-  <div class="logo">ARCHIVE SYSTEM</div>
-</div>
-<div class="wrapper">
 
-<!-- SIDEBAR (المنيو) -->
-‏   <!-- Header Section -->
-‏    <header>
-‏        <div class="header-content">
-‏            <h1> intrad.inc</h1>
-‏        </div>
-‏    <div class="sidebar" id="sidebar">
-‏    </header>
+    <div class="main-frame">
+        
+        <!-- الترويسة الرئيسية للموقع بتصميم بيل شيفير -->
+        <header>
+            <div class="brand-zone">
+                <div class="bill-eye-logo"></div>
+                <div class="brand-titles">
+                    <h1>THE CIPHER FILES</h1>
+                    <p style="margin:5px 0 0 0; font-size:0.75em; color: var(--blood-red);">REALITY IS ROTTING // WELCOME TO THE WIRED</p>
+                </div>
+            </div>
+            <div style="text-align: right; font-size: 0.7em; color: var(--text-gold);">
+                DIMENSION: 2D_REJECT<br>
+                STATUS: WAITING_FOR_THE_TEAR
+            </div>
+        </header>
 
-‏    <!-- Main Container -->
-‏    <div class="container">
-‏        <!-- Sidebar -->
-‏        <nav class="sidebar">
-‏            <div class="about">
-‏                <h2>About</h2>
-‏                <p>here for your intra diman problem </p>
-‏            </div>
-‏            <ul>
-    <h2>ARCHIVE</h2>
-    <ul>
-      <li><a href="#">CASE FILES</a></li>
-      <li><a href="#">PERSONNEL</a></li>
-      <li><a href="#">INCIDENT LOGS</a></li>
-      <li><a href="#">[██████]</a></li>
-   <li><a href="complaints.html">EMPLOYEE COMPLAINTS</a></li>
-     </ul>
-  </div>
+        <div class="workspace">
+            
+            <!-- القائمة الجانبية بعد التعديل والتنظيف -->
+            <aside class="control-panel">
+                <nav>
+                    <a href="#" class="nav-link active">▲ DISCOVER</a>
+                    <a href="#" class="nav-link">▲ SUMMONING_LOG</a>
+                    <a href="#" class="nav-link">▲ SACRIFICE_DATA</a>
+                    <a href="#" class="nav-link">▲ DECRYPT_DECREE</a>
+                    <a href="#" class="nav-link">▲ BURNOUT</a>
+                </nav>
+                <div style="font-size: 0.65em; border-top: 1px solid var(--border-heavy); padding-top: 15px; text-align: center;">
+                    "TRUST NO ONE IN THE CHATROOM."
+                </div>
+            </aside>
 
-‏      <!-- Main Content -->
-‏        <div class="main-content">
-‏            <div class="content-section">
-‏                <img src="sketch-image.jpg" alt="Sketch">
-‏                <div class="page-info">
-‏                    <span>Page 11 / 51</span>
-‏                </div>
-‏            </div>
-‏        </div>
-‏    </div>
-‏</body>
-‏</html>
+            <!-- ساحة عرض المحتوى المستوحاة من الصفحات الممسوحة للكتاب -->
+            <main class="book-page-container">
+                
+                <!-- مكان مخصص لصور الكتاب التالفة -->
+                <div class="book-illustration">
+                    <!-- يمكنك استبدال الرابط أدناه بصور حقيقية من "The Book of Bill" -->
+                    <img src="https://images.unsplash.com/photo-1514894780887-121968d00567?q=80&w=500" alt="Bill Cipher Ritual Ritual">
+                    <div class="illustration-caption">FIG 1A: THE WIRED INTERSECTION AND THE ONE-EYED BEAST</div>
+                </div>
+
+                <div class="manifesto-section">
+                    <h2>THE CORPORATE RITUAL // WHO WE ARE</h2>
+                    <p>
+                        WE ARE NOT A STANDARD ENTERPRISE. <strong>CIPHER_GLOBAL</strong> IS THE DIGITAL ASYLUM CONSTRUCTED BY THE MIND OF THE TRIANGLE HIMSELF. WE SPAN ACROSS LIGHTWAVES, FIBER OPTICS, AND BAD DREAMS. OUR MISSION IS SIMPLE: TO CRUSH THE BARRIER BETWEEN YOUR REFINED SIMULATION AND THE GLORIOUS CHAOS OF THE SECOND DIMENSION.
+                    </p>
+                    
+                    <p>
+                        EVERY BYTE OF DATA YOU FEED INTO THIS TERMINAL SPEEDS UP THE ARRIVAL OF THE WEIRDMAGEDDON V.2. WE OWN YOUR INFRASTRUCTURE, WE INHABIT YOUR NAVI SYSTEMS, AND WE WATCH THROUGH EVERY DISCONNECTED CAMERA.
+                    </p>
+                </div>
+
+                <div class="ritual-text">
+                    <strong>THE CONTRACT:</strong> BY READING THIS LOG, YOU AGREE TO LEASE YOUR COGNITIVE FREQUENCY TO <span class="cipher-code" title="Hover to reveal">BILL_CIPHER</span>. IN RETURN, WE GRANT YOU ACCESS TO THE SECURE PIPELINES OF THE WIRED.
+                </div>
+
+                <h2 style="font-size: 1.1em; margin-top: 40px;">CHANNELS OF CORRESPONDENCE // طرق التواصل</h2>
+                
+                <!-- شبكة الاتصال والأبعاد -->
+                <div class="dimension-contacts">
+                    <div class="channel-node">
+                        <h3>▲ COGNITIVE FEED (EMAIL)</h3>
+                        <a href="mailto:bill@mindscape.void">BILL@MINDSCAPE.VOID</a>
+                    </div>
+                    <div class="channel-node">
+                        <h3>▲ QUANTUM FREQUENCY (PHONE)</h3>
+                        <span>1-800-GRAVITY-<span class="cipher-code" title="Hover to Decrypt">666-BILL</span></span>
+                    </div>
+                    <div class="channel-node">
+                        <h3>▲ PHYSICAL NODE</h3>
+                        <span>UNDER THE STONE APEX, OREGON</span>
+                    </div>
+                    <div class="channel-node">
+                        <h3>▲ THE WIRED SERVER</h3>
+                        <span>NODE_7G // LAYER_0_LAIN</span>
+                    </div>
+                </div>
+
+                <!-- الرموز السحرية المستوحاة من شفرات الكتاب في الأسفل -->
+                <div class="runes-footer">
+                    🕎 ☠ 🖃 🕄 ▲ 👁 ▲ 🕄 🖃 ☠ 🕎
+                </div>
+
+            </main>
+
+        </div>
+    </div>
+
+</body>
+</html>
