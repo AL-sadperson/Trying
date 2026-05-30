@@ -3,39 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>قاعدة بيانات الأرشيف السريري</title>
-    <link rel="stylesheet" href="archive.style.css">
+    <title>[ REC.ARCHIVE ] // أرشيف البيانات المشوهة</title>
+    <link rel="stylesheet" href="archive-style.css">
 </head>
-<body class="crt-screen">
+<body class="glitch-screen">
 
-    <div class="scanline"></div>
+    <div class="static-noise"></div>
+    <div class="scanlines"></div>
 
-    <header class="system-header">
-        <h1>[ SYSTEM.OVERRIDE ] // الأرشيف الطبي المصور</h1>
-        <p class="blinking-warning">! تنبيه: تم رصد وصول غير مصرح به. بروتوكول كود نورمبرغ معطل.</p>
+    <header class="glitch-header brutalist-card">
+        <h1 data-text="[ REC.ARCHIVE ] // البيانات المسربة">[ REC.ARCHIVE ] // البيانات المسربة</h1>
+        <p class="blinking-alert">! تحذير: مستوى القليتش حاد. تم تجاوز بروتوكول الأخلاقيات الحيوية.</p>
     </header>
 
-    <main class="grid-layout">
+    <main class="archival-grid">
         
-        <section class="brutalist-card text-log">
-            <h2>> خطة الرعاية التمريضية (NCP)</h2>
-            <div class="log-content">
-                <p><strong>المعرف:</strong> مريض 994-X</p>
-                <p><strong>التشخيص:</strong> اختلال حاد في ديناميكية الدم إثر التعرض لمركبات كيميائية تجريبية.</p>
-                <p><strong>التدخل (هرم ماسلو - المستوى الأول):</strong> تأمين مجرى الهواء، تعويض السوائل الوريدية الفوري، ومراقبة العلامات الحيوية.</p>
-                <p class="red-text">> ملاحظة سريرية: فشل تخصيص الموارد. لا توجد وحدات عناية مركزة متاحة. </p>
+        <aside class="brutalist-card filter-panel">
+            <h2>> تصفية الوصول <span class="status-indicator"></span></h2>
+            <div class="filter-options">
+                <label>تاريخ الوصول:</label>
+                <input type="text" placeholder="YYYY/MM/DD">
+                <label>المُعرّف:</label>
+                <input type="text" placeholder="XXX-999">
+                <label>حالة البروتوكول:</label>
+                <select>
+                    <option>نشط</option>
+                    <option>معطل</option>
+                    <option>مشوه</option>
+                </select>
+            </div>
+        </aside>
+
+        <section class="file-feed brutalist-card">
+            <h2>> خلاصة الملفات المسربة</h2>
+            <div class="file-grid">
+                <div class="file-card glitch-border">ملف 994-X<span class="status red">!خطأ!</span></div>
+                <div class="file-card glitch-border">ملف 102-Y<span class="status green">آمن</span></div>
+                <div class="file-card glitch-border">ملف 003-Z<span class="status blue">تحليل</span></div>
+                <div class="file-card glitch-border">ملف 999-W<span class="status yellow">قليتش</span></div>
             </div>
         </section>
 
-        <section class="film-strip-container">
-            <div class="film-frame thermal-1">
-                <span class="timestamp">15.10.2025 // 04:22 AM</span>
+        <section class="brutalist-card data-viz">
+            <h2>> تحليل ديناميكية الدم</h2>
+            <div class="viz-content">
+                <div class="glitch-chart chart-1"></div>
+                <div class="glitch-chart chart-2"></div>
+                <p><strong>استنتاج:</strong> البروتوكول التجريبي يتعارض مع مبادئ نورمبرغ وتخصيص الموارد. </p>
             </div>
-            <div class="film-frame thermal-2">
-                <span class="timestamp">15.10.2025 // 04:30 AM</span>
+        </section>
+
+        <section class="brutalist-card thermal-grid">
+            <h2>> شبكة الكاميرا الحرارية</h2>
+            <div class="thermal-images">
+                <div class="thermal-frame thermal-scan-1"><span class="label">تدهور حاد</span></div>
+                <div class="thermal-frame thermal-scan-2"><span class="label">استقرار نسبي</span></div>
+                <div class="thermal-frame thermal-scan-3"><span class="label">تداخل كيميائي</span></div>
             </div>
-            <div class="film-frame static-noise">
-                <span class="timestamp">SIGNAL LOST</span>
+        </section>
+
+        <section class="brutalist-card torn-note">
+            <h2>> ملاحظة تمريضية (NCP)</h2>
+            <div class="note-content">
+                <p><strong>المريض:</strong> 994-X</p>
+                <p><strong>التشخيص:</strong> اختلال سلامة الأنسجة إثر مركبات غير مصرح بها.</p>
+                <p><strong>التدخل (هرم ماسلو - المستوى الأول):</strong> تأمين مجرى الهواء، تعويض السوائل الوريدية، ومراقبة النبض كل 15 دقيقة.</p>
+            </div>
+        </section>
+
+        <section class="brutalist-card film-strip-enhanced">
+            <h2>> سجل الفيديو المشوه</h2>
+            <div class="film-content">
+                <div class="film-frame glitch-1"></div>
+                <div class="film-frame glitch-2"></div>
+                <div class="film-control">
+                    <span>PLAY ></span>
+                    <span>REC ●</span>
+                </div>
             </div>
         </section>
 
