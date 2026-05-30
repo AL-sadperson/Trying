@@ -1,0 +1,165 @@
+/* إعدادات عامة للثيم الخام (Brutalist) */
+:root {
+    --bg-color: #0a0a0a;
+    --paper-color: #e8e8e3;
+    --text-dark: #111;
+    --glitch-color-1: #0ff; /* سماوي كهربائي */
+    --glitch-color-2: #f00; /* أحمر قاني */
+    --neon-green: #39ff14;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--paper-color);
+    font-family: 'Courier New', Courier, monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.archive-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    padding: 20px;
+    max-width: 600px;
+}
+
+/* =========================================
+   1. بطاقة الورق الممزق (Torn Paper Card)
+========================================= */
+
+.torn-paper-wrapper {
+    /* نستخدم غلاف خارجي لإضافة الظل لأن clip-path يخفي الظلال */
+    filter: drop-shadow(5px 5px 0px rgba(255, 0, 0, 0.4));
+    transform: rotate(-2deg); /* ميلان بسيط لعشوائية المظهر */
+}
+
+.torn-paper-card {
+    background-color: var(--paper-color);
+    color: var(--text-dark);
+    padding: 40px 30px;
+    position: relative;
+    /* استخدام polygon لإنشاء حواف متعرجة وممزقة في الأعلى والأسفل */
+    clip-path: polygon(
+        0% 4%, 5% 0%, 15% 5%, 25% 1%, 35% 6%, 45% 2%, 55% 5%, 65% 0%, 75% 4%, 85% 1%, 95% 5%, 100% 0%, 
+        100% 96%, 95% 100%, 85% 95%, 75% 99%, 65% 94%, 55% 100%, 45% 96%, 35% 99%, 25% 95%, 15% 100%, 5% 96%, 0% 100%
+    );
+    /* إضافة تأثير Noise خفيف كخلفية */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    border-bottom: 2px dashed #999;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.card-title {
+    font-size: 1.8rem;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.card-text {
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 30px;
+}
+
+.scribble {
+    font-family: 'Brush Script MT', cursive;
+    color: #0000ff; /* لون حبر أزرق للتباكس */
+    font-size: 1.5rem;
+    transform: rotate(-5deg);
+    text-align: left;
+}
+
+/* =========================================
+   2. زر الـ VHS Glitch
+========================================= */
+
+.vhs-glitch-btn {
+    background: transparent;
+    color: var(--neon-green);
+    border: 2px solid var(--neon-green);
+    padding: 15px 30px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.vhs-glitch-btn:hover {
+    background-color: var(--neon-green);
+    color: var(--bg-color);
+}
+
+/* طبقات التشويش باستخدام العناصر الزائفة */
+.vhs-glitch-btn::before,
+.vhs-glitch-btn::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+}
+
+/* الطبقة الحمراء (اليسار) */
+.vhs-glitch-btn::before {
+    left: -3px;
+    text-shadow: 2px 0 var(--glitch-color-2);
+    animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+/* الطبقة السماوية (اليمين) */
+.vhs-glitch-btn::after {
+    left: 3px;
+    text-shadow: -2px 0 var(--glitch-color-1);
+    animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+/* تفعيل التشويش عند التمرير (Hover) */
+.vhs-glitch-btn:hover::before,
+.vhs-glitch-btn:hover::after {
+    opacity: 1;
+    background: transparent;
+}
+
+/* إطارات الحركة لتشوه الصورة باستخدام clip-path */
+@keyframes glitch-anim-1 {
+    0% { clip-path: inset(20% 0 80% 0); }
+    20% { clip-path: inset(60% 0 10% 0); }
+    40% { clip-path: inset(40% 0 50% 0); }
+    60% { clip-path: inset(80% 0 5% 0); }
+    80% { clip-path: inset(10% 0 70% 0); }
+    100% { clip-path: inset(30% 0 50% 0); }
+}
+
+@keyframes glitch-anim-2 {
+    0% { clip-path: inset(10% 0 60% 0); }
+    20% { clip-path: inset(30% 0 20% 0); }
+    40% { clip-path: inset(70% 0 10% 0); }
+    60% { clip-path: inset(20% 0 50% 0); }
+    80% { clip-path: inset(50% 0 30% 0); }
+    100% { clip-path: inset(5% 0 80% 0); }
+}
