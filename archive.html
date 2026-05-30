@@ -2,88 +2,36 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الملف السري | تنظيم صارم</title>
-    <link rel="stylesheet" href="archive.style.css">
+    <title>SCP-NOVA | السجل الطبي</title>
+    <link rel="stylesheet" href="archive,.style.css">
 </head>
 <body>
 
-    <div class="dossier-container">
-        
-        <header class="dossier-header">
-            <div class="header-left">
-                <h1>سجل_البيانات.RAW</h1>
-                <p>الوصول: مقيد // المستوى 4</p>
-            </div>
-            <div class="header-right">
-                <div class="barcode">||||||||||| |||| || ||||||</div>
-                <span class="date">REF: 2026-05-31</span>
-            </div>
-        </header>
+<div class="scp-dossier">
+    <header class="dossier-header">
+        <h1>[سري للغاية] ملف المريض: NOVA</h1>
+        <div class="status-badge">الحالة: محتجز</div>
+    </header>
 
-        <main class="strict-grid">
+    <div class="main-layout">
+        <section class="gallery">
+            <div class="film-frame" style="background-image: url('patient-1.jpg');"></div>
+            <div class="film-frame glitch-overlay"></div>
+            <p>التوثيق البصري: 15.10.2025</p>
+        </section>
+
+        <section class="report">
+            <h3>التقرير السريري</h3>
+            <p>تم رصد خلل في النسيج الحيوي. البروتوكول يحتاج إلى مراجعة فورية.</p>
             
-            <section class="grid-cell profile-cell">
-                <div class="cell-header">01 // البيانات الديموغرافية</div>
-                <ul class="data-list">
-                    <li><span>المُعرّف:</span> 994-X</li>
-                    <li><span>الحالة:</span> تحت المراقبة</li>
-                    <li><span>التشخيص:</span> اختلال أنسجة حراري</li>
-                    <li><span>البروتوكول:</span> كود نورمبرغ (تجاوز)</li>
-                </ul>
-            </section>
-
-            <section class="grid-cell thermal-cell">
-                <div class="cell-header">02 // الفحص الحراري</div>
-                <div class="thermal-display">
-                    <div class="crosshair"></div>
-                    <span class="temp-readout">MAX: 42.5°C</span>
-                </div>
-            </section>
-
-            <section class="grid-cell film-cell">
-                <div class="cell-header">03 // التوثيق البصري</div>
-                <div class="clean-film-strip">
-                    <div class="frame"></div>
-                    <div class="frame"></div>
-                    <div class="frame"></div>
-                    <div class="frame"></div>
-                </div>
-            </section>
-
-            <section class="grid-cell log-cell">
-                <div class="cell-header">04 // السجل السريري</div>
-                <table class="brutalist-table">
-                    <thead>
-                        <tr>
-                            <th>الوقت</th>
-                            <th>التدخل</th>
-                            <th>الحالة</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>01:00</td>
-                            <td>تعويض سوائل</td>
-                            <td class="status-warning">غير مستقر</td>
-                        </tr>
-                        <tr>
-                            <td>02:30</td>
-                            <td>مسح حراري</td>
-                            <td class="status-critical">تدهور</td>
-                        </tr>
-                        <tr>
-                            <td>04:00</td>
-                            <td>إغلاق الملف</td>
-                            <td class="status-ok">مؤمن</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
-        </main>
-
+            <div class="interactive-grid">
+                <button onclick="window.location.href='patient-002.html'">ملف المريض 002</button>
+                <button onclick="window.location.href='protocols.html'">بروتوكولات التجاوز</button>
+                <button class="glitch-btn">تحميل السجل الكامل</button>
+            </div>
+        </section>
     </div>
+</div>
 
 </body>
 </html>
