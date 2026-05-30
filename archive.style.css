@@ -1,333 +1,212 @@
+/* إعدادات المتغيرات والألوان النظيفة */
 :root {
-    --bg-dark: #000;
-    --glitch-pink: #ff00ff;
-    --glitch-cyan: #00ffff;
-    --glitch-yellow: #ffff00;
-    --glitch-red: #ff3c00;
-    --alert-bright: #fff;
-    --film-bg: #111;
+    --bg-color: #f4f4f0; /* أبيض مائل للبيج/الرمادي لورق الأرشيف */
+    --text-main: #111111;
+    --border-color: #111111;
+    --accent-red: #d32f2f;
+    --thermal-gradient: linear-gradient(135deg, #000033 0%, #0000ff 25%, #00ff00 50%, #ffff00 75%, #ff0000 100%);
 }
 
 body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* خط نظيف وعملي */
     margin: 0;
-    padding: 20px;
-    background-color: var(--bg-dark);
-    color: var(--glitch-cyan);
-    font-family: 'Courier New', Courier, monospace;
-    overflow-x: hidden;
-    /* تأثير الضوضاء الثابتة (SVG Noise) */
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.2'/%3E%3C/svg%3E");
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
 }
 
-/* تأثير خطوط المسح والتشويش */
-.scanlines::before {
-    content: " ";
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
+/* الحاوية الرئيسية تشبه ورقة مطبوعة */
+.dossier-container {
     width: 100%;
-    height: 100%;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.08), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.08));
-    z-index: 2;
-    background-size: 100% 2px, 3px 100%;
-    pointer-events: none;
-    animation: scanline-flicker 0.1s infinite;
-}
-
-@keyframes scanline-flicker {
-    0% { opacity: 0.1; }
-    50% { opacity: 0.2; }
-    100% { opacity: 0.1; }
+    max-width: 1000px;
+    background: #ffffff;
+    border: 2px solid var(--border-color);
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.1); /* ظل قاسي وأنيق */
+    padding: 30px;
 }
 
 /* الترويسة */
-.glitch-header {
-    border: 3px solid var(--glitch-pink);
-    padding: 20px;
+.dossier-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 4px solid var(--border-color);
+    padding-bottom: 20px;
     margin-bottom: 30px;
-    background: rgba(255, 0, 255, 0.05);
-    text-align: center;
 }
 
-.glitch-header h1 {
-    font-size: 2rem;
+.dossier-header h1 {
+    font-size: 2.5rem;
+    margin: 0 0 5px 0;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.dossier-header p {
     margin: 0;
-    text-transform: uppercase;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.header-right {
+    text-align: left;
+}
+
+.barcode {
+    font-family: monospace;
+    font-size: 1.5rem;
     letter-spacing: 2px;
-    position: relative;
-    color: var(--alert-bright);
-    text-shadow: 2px 2px var(--glitch-pink), -2px -2px var(--glitch-cyan);
-    animation: text-glitch 1s infinite linear alternate-reverse;
+    margin-bottom: 5px;
 }
 
-.glitch-header h1::before,
-.glitch-header h1::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--bg-dark);
+.date {
+    background: var(--text-main);
+    color: #fff;
+    padding: 2px 8px;
+    font-family: monospace;
+    font-size: 0.9rem;
 }
 
-.glitch-header h1::before {
-    left: -2px;
-    text-shadow: 2px 0 var(--glitch-cyan);
-    animation: glitch-anim-1 2s infinite linear alternate-reverse;
-}
-
-.glitch-header h1::after {
-    left: 2px;
-    text-shadow: -2px 0 var(--glitch-pink);
-    animation: glitch-anim-2 3s infinite linear alternate-reverse;
-}
-
-@keyframes text-glitch {
-    0% { transform: skew(1deg); }
-    100% { transform: skew(-1deg); }
-}
-
-@keyframes glitch-anim-1 {
-    0% { clip-path: inset(20% 0 80% 0); }
-    20% { clip-path: inset(60% 0 10% 0); }
-    40% { clip-path: inset(40% 0 50% 0); }
-    60% { clip-path: inset(80% 0 5% 0); }
-    80% { clip-path: inset(10% 0 70% 0); }
-    100% { clip-path: inset(30% 0 50% 0); }
-}
-
-@keyframes glitch-anim-2 {
-    0% { clip-path: inset(10% 0 60% 0); }
-    20% { clip-path: inset(30% 0 20% 0); }
-    40% { clip-path: inset(70% 0 10% 0); }
-    60% { clip-path: inset(20% 0 50% 0); }
-    80% { clip-path: inset(50% 0 30% 0); }
-    100% { clip-path: inset(5% 0 80% 0); }
-}
-
-.blinking-alert {
-    color: var(--alert-bright);
-    font-weight: bold;
-    animation: blink 0.5s infinite alternate;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-/* التخطيط الشبكي الفوضوي */
-.archival-grid {
+/* التنظيم الشبكي (Bento Box) */
+.strict-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    align-items: start;
+    grid-auto-rows: minmax(200px, auto);
+    gap: 20px;
 }
 
-@media (max-width: 1024px) {
-    .archival-grid { grid-template-columns: 1fr 1fr; }
+/* الإعدادات لجميع المربعات */
+.grid-cell {
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: #fafafa;
 }
 
-@media (max-width: 768px) {
-    .archival-grid { grid-template-columns: 1fr; }
+.cell-header {
+    background: var(--border-color);
+    color: #fff;
+    padding: 8px 12px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    text-transform: uppercase;
 }
 
-/* بطاقات النصوص واللوحات */
-.brutalist-card {
-    border: 2px solid var(--glitch-cyan);
+/* تحديد مساحات المربعات */
+.profile-cell { grid-column: span 1; }
+.thermal-cell { grid-column: span 2; }
+.film-cell { grid-column: span 3; }
+.log-cell { grid-column: span 3; }
+
+/* 01: قائمة البيانات */
+.data-list {
+    list-style: none;
     padding: 20px;
-    background: rgba(0, 255, 255, 0.05);
-    box-shadow: 10px 10px 0px rgba(0, 255, 255, 0.2);
-    position: relative;
-    overflow: hidden;
-}
-
-.brutalist-card h2 {
-    font-size: 1.2rem;
-    margin-top: 0;
-    color: var(--alert-bright);
-    border-bottom: 2px solid var(--glitch-cyan);
-    padding-bottom: 10px;
-    text-transform: uppercase;
-}
-
-/* =========================================
-   الخانات والخيارات الجديدة
-========================================= */
-
-/* لوحة التصفية */
-.filter-panel .filter-options {
+    margin: 0;
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.filter-panel label {
-    font-weight: bold;
-    color: var(--glitch-yellow);
-}
-
-.filter-panel input, .filter-panel select {
-    background: #111;
-    border: 1px solid var(--glitch-cyan);
-    color: var(--alert-bright);
-    padding: 10px;
-    font-family: inherit;
-}
-
-.filter-panel input:focus, .filter-panel select:focus {
-    border-color: var(--glitch-pink);
-    outline: none;
-}
-
-/* خلاصة الملفات السريرية */
-.file-feed .file-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
-
-.file-card {
-    background: #111;
-    padding: 15px;
-    border: 1px solid var(--glitch-cyan);
+.data-list li {
+    font-size: 1rem;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.3s;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 5px;
 }
 
-.file-card:hover {
-    background: var(--glitch-cyan);
-    color: var(--bg-dark);
-}
-
-.status {
-    font-size: 0.8rem;
+.data-list span {
     font-weight: bold;
-    text-transform: uppercase;
+    color: #555;
 }
 
-.status.red { color: var(--glitch-red); }
-.status.green { color: #0f0; }
-.status.blue { color: #00f; }
-.status.yellow { color: var(--glitch-yellow); }
-
-/* لوحة تحليل البيانات */
-.data-viz .viz-content {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.glitch-chart {
-    height: 100px;
-    width: 100%;
+/* 02: العرض الحراري الأنيق */
+.thermal-display {
+    flex-grow: 1;
+    background: var(--thermal-gradient);
     position: relative;
     overflow: hidden;
+    /* فلتر لجعله يبدو كصورة فحص طبي */
+    filter: contrast(1.2) grayscale(0.2); 
 }
 
-.chart-1 {
-    background: linear-gradient(90deg, var(--glitch-pink) 0%, var(--glitch-cyan) 50%, var(--glitch-pink) 100%);
-    clip-path: polygon(0 80%, 10% 70%, 20% 90%, 30% 60%, 40% 85%, 50% 50%, 60% 75%, 70% 40%, 80% 65%, 90% 30%, 100% 55%, 100% 100%, 0 100%);
+.crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
 }
-
-.chart-2 {
-    background: linear-gradient(90deg, var(--glitch-red) 0%, var(--glitch-yellow) 100%);
-    clip-path: polygon(0 50%, 10% 40%, 20% 60%, 30% 30%, 40% 55%, 50% 20%, 60% 45%, 70% 10%, 80% 35%, 90% 0, 100% 25%, 100% 100%, 0 100%);
+.crosshair::before, .crosshair::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
 }
+.crosshair::before { top: 50%; left: -10px; right: -10px; height: 1px; }
+.crosshair::after { left: 50%; top: -10px; bottom: -10px; width: 1px; }
 
-/* لوحة شبكة الكاميرا الحرارية (محسّنة) */
-.thermal-grid .thermal-images {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-}
-
-.thermal-frame {
-    height: 100px;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--film-bg);
-}
-
-/* تدرجات حرارية زاهية */
-.thermal-scan-1 {
-    background: linear-gradient(45deg, #00f, #0f0, #ff0, #f00);
-    mix-blend-mode: color-dodge;
-    filter: contrast(2) saturate(2);
-}
-
-.thermal-scan-2 {
-    background: radial-gradient(circle at center, #fff 0%, #ff0 20%, #f00 50%, #000 100%);
-    filter: contrast(1.5) blur(1px);
-}
-
-.thermal-scan-3 {
-    background: linear-gradient(-45deg, var(--glitch-pink), var(--glitch-cyan));
-    filter: contrast(1.8) saturate(1.5);
-}
-
-/* لوحة ملاحظة تمريضية NCP (محسّنة) */
-.torn-note .note-content p {
-    line-height: 1.6;
-    margin-bottom: 15px;
-}
-
-/* لوحة أشرطة الفيديو المشوهة (محسّنة) */
-.film-strip-enhanced .film-content {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background-color: var(--film-bg);
-    padding: 15px 10px;
-    border-left: 15px dashed #fff;
-    border-right: 15px dashed #fff;
-}
-
-.glitch-1 {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
-    background-color: #333;
-}
-
-.glitch-2 {
-    background: repeating-linear-gradient(90deg, #ff00ff 0%, #ff00ff 1px, transparent 1px, transparent 2px), repeating-linear-gradient(0deg, #00ffff 0%, #00ffff 1px, transparent 1px, transparent 2px);
-    background-color: #333;
-}
-
-.film-control {
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
-    color: var(--alert-bright);
-}
-
-/* زر العودة المشوه */
-.back-btn {
-    display: inline-block;
-    margin-top: 40px;
-    color: var(--bg-dark);
-    background-color: var(--glitch-pink);
-    padding: 10px 20px;
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: background 0.3s;
-    border: 2px solid var(--glitch-pink);
-    text-shadow: 1px 1px var(--bg-dark);
-    position: relative;
-    animation: button-glitch 1s infinite alternate;
-}
-
-.back-btn:hover {
-    background-color: var(--glitch-red);
+.temp-readout {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: var(--accent-red);
     color: white;
+    padding: 5px 10px;
+    font-family: monospace;
+    font-weight: bold;
 }
 
-@keyframes button-glitch {
-    0% { transform: skew(1deg); text-shadow: 1px 0 var(--glitch-cyan); }
-    100% { transform: skew(-1deg); text-shadow: -1px 0 var(--glitch-cyan); }
+/* 03: شريط الفيلم النظيف */
+.clean-film-strip {
+    display: flex;
+    padding: 15px;
+    gap: 15px;
+    background: #111;
+    overflow-x: auto;
+}
+
+.clean-film-strip .frame {
+    flex: 0 0 150px;
+    height: 100px;
+    background: #333;
+    border: 2px solid #555;
+    position: relative;
+    /* إضافة تدرج خفيف يحاكي صور الأبيض والأسود */
+    background-image: linear-gradient(45deg, #222, #444);
+}
+
+/* 04: الجدول السريري */
+.brutalist-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    text-align: right;
+}
+
+.brutalist-table th, .brutalist-table td {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.brutalist-table th {
+    font-family: monospace;
+    background: #eee;
+    color: #555;
+}
+
+.status-warning { color: #d35400; font-weight: bold; }
+.status-critical { color: var(--accent-red); font-weight: bold; }
+.status-ok { color: #27ae60; font-weight: bold; }
+
+/* استجابة الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .strict-grid { grid-template-columns: 1fr; }
+    .profile-cell, .thermal-cell, .film-cell, .log-cell { grid-column: span 1; }
 }
