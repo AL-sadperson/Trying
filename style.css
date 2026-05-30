@@ -1,272 +1,273 @@
-/* إعدادات عامة للثيم الخام (Brutalist) */
-:root {
-    --bg-color: #0a0a0a;
-    --paper-color: #e8e8e3;
-    --text-dark: #111;
-    --glitch-color-1: #0ff; /* سماوي كهربائي */
-    --glitch-color-2: #f00; /* أحمر قاني */
-    --neon-green: #39ff14;
-}
+/* إعدادات عامة للثيم الخام (Brutalist) */<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بطاقة أعمال شركة داينمو الكونية</title>
+    <style>
+        :root {
+            --bg-color: #0f111a;
+            --primary-yellow: #ffeb3b;
+            --primary-red: #e53935;
+            --text-light: #f5f5f5;
+            --card-bg: #1a1c24;
+        }
 
-body {
-    background-color: var(--bg-color);
-    color: var(--paper-color);
-    font-family: 'Courier New', Courier, monospace;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    overflow-x: hidden;
-}
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
 
-.archive-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
-    padding: 20px;
-    max-width: 600px;
-}
+        .instruction {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #888;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
+        }
 
-/* =========================================
-   1. بطاقة الورق الممزق (Torn Paper Card)
-========================================= */
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
 
-.torn-paper-wrapper {
-    /* نستخدم غلاف خارجي لإضافة الظل لأن clip-path يخفي الظلال */
-    filter: drop-shadow(5px 5px 0px rgba(255, 0, 0, 0.4));
-    transform: rotate(-2deg); /* ميلان بسيط لعشوائية المظهر */
-}
+        /* حاوية البطاقة وتأثير الأبعاد الثلاثية */
+        .card-container {
+            width: 450px;
+            height: 260px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
 
-.torn-paper-card {
-    background-color: var(--paper-color);
-    color: var(--text-dark);
-    padding: 40px 30px;
-    position: relative;
-    /* استخدام polygon لإنشاء حواف متعرجة وممزقة في الأعلى والأسفل */
-    clip-path: polygon(
-        0% 4%, 5% 0%, 15% 5%, 25% 1%, 35% 6%, 45% 2%, 55% 5%, 65% 0%, 75% 4%, 85% 1%, 95% 5%, 100% 0%, 
-        100% 96%, 95% 100%, 85% 95%, 75% 99%, 65% 94%, 55% 100%, 45% 96%, 35% 99%, 25% 95%, 15% 100%, 5% 96%, 0% 100%
-    );
-    /* إضافة تأثير Noise خفيف كخلفية */
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-}
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border-radius: 15px;
+        }
 
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.8rem;
-    border-bottom: 2px dashed #999;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
+        /* عند إضافة كلاس flipped بواسطة الجافاسكريبت */
+        .card-container.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
 
-.card-title {
-    font-size: 1.8rem;
-    margin: 0 0 15px 0;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-}
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 235, 59, 0.1);
+            box-sizing: border-box;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-.card-text {
-    line-height: 1.6;
-    font-size: 1rem;
-    margin-bottom: 30px;
-}
+        /* الوجه الأمامي */
+        .card-front {
+            background: linear-gradient(135deg, #161821 0%, #232736 100%);
+            background-image: radial-gradient(rgba(229, 57, 53, 0.1) 1px, transparent 0);
+            background-size: 15px 15px;
+        }
 
-.scribble {
-    font-family: 'Brush Script MT', cursive;
-    color: #0000ff; /* لون حبر أزرق للتباكس */
-    font-size: 1.5rem;
-    transform: rotate(-5deg);
-    text-align: left;
-}
+        .logo-placeholder {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-/* =========================================
-   2. زر الـ VHS Glitch
-========================================= */
+        /* محاكاة للشعار المرسل (الأصفر والأحمر المتداخلين) */
+        .logo-graphic {
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+        .logo-graphic::before, .logo-graphic::after {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        }
+        .logo-graphic::before {
+            background: var(--primary-yellow);
+            top: 0; left: 0;
+            transform: rotate(15deg);
+            opacity: 0.9;
+        }
+        .logo-graphic::after {
+            background: var(--primary-red);
+            bottom: 0; right: 0;
+            transform: rotate(-45deg);
+            mix-blend-mode: screen;
+        }
 
-.vhs-glitch-btn {
-    background: transparent;
-    color: var(--neon-green);
-    border: 2px solid var(--neon-green);
-    padding: 15px 30px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.2s ease;
-}
+        .company-name {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, var(--primary-yellow), var(--primary-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.vhs-glitch-btn:hover {
-    background-color: var(--neon-green);
-    color: var(--bg-color);
-}
+        .front-footer {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 10px;
+        }
 
-/* طبقات التشويش باستخدام العناصر الزائفة */
-.vhs-glitch-btn::before,
-.vhs-glitch-btn::after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--bg-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-}
+        .tagline {
+            font-size: 0.95rem;
+            color: #bbb;
+            margin: 0;
+        }
+        .sub-tagline {
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 5px;
+        }
 
-/* الطبقة الحمراء (اليسار) */
-.vhs-glitch-btn::before {
-    left: -3px;
-    text-shadow: 2px 0 var(--glitch-color-2);
-    animation: glitch-anim-1 2s infinite linear alternate-reverse;
-}
+        /* الوجه الخلفي */
+        .card-back {
+            background: linear-gradient(135deg, #232736 0%, #161821 100%);
+            transform: rotateY(180deg);
+            border-color: rgba(229, 57, 53, 0.2);
+        }
 
-/* الطبقة السماوية (اليمين) */
-.vhs-glitch-btn::after {
-    left: 3px;
-    text-shadow: -2px 0 var(--glitch-color-1);
-    animation: glitch-anim-2 3s infinite linear alternate-reverse;
-}
+        .profile-info h3 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--primary-yellow);
+        }
+        .profile-info p {
+            margin: 5px 0 0 0;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
 
-/* تفعيل التشويش عند التمرير (Hover) */
-.vhs-glitch-btn:hover::before,
-.vhs-glitch-btn:hover::after {
-    opacity: 1;
-    background: transparent;
-}
+        .contact-details {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.85rem;
+        }
 
-/* إطارات الحركة لتشوه الصورة باستخدام clip-path */
-@keyframes glitch-anim-1 {
-    0% { clip-path: inset(20% 0 80% 0); }
-    20% { clip-path: inset(60% 0 10% 0); }
-    40% { clip-path: inset(40% 0 50% 0); }
-    60% { clip-path: inset(80% 0 5% 0); }
-    80% { clip-path: inset(10% 0 70% 0); }
-    100% { clip-path: inset(30% 0 50% 0); }
-}
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ddd;
+        }
+        .contact-item span.icon {
+            color: var(--primary-red);
+            font-weight: bold;
+        }
 
-@keyframes glitch-anim-2 {
-    0% { clip-path: inset(10% 0 60% 0); }
-    20% { clip-path: inset(30% 0 20% 0); }
-    40% { clip-path: inset(70% 0 10% 0); }
-    60% { clip-path: inset(20% 0 50% 0); }
-    80% { clip-path: inset(50% 0 30% 0); }
-    100% { clip-path: inset(5% 0 80% 0); }
-}
-/* إخفاء السجل في البداية */
-.hidden {
-    display: none !important;
-}
+        /* زر الأرشيف السري */
+        .archive-btn {
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid var(--primary-red);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(229, 57, 53, 0.2);
+        }
 
-/* =========================================
-   3. واجهة السجل السريري (Terminal CRT)
-========================================= */
+        .archive-btn:hover {
+            background: var(--primary-red);
+            color: #fff;
+            box-shadow: 0 0 25px rgba(229, 57, 53, 0.6);
+            transform: translateY(-2px);
+        }
+        
+        /* إيقاف انقلاب البطاقة عند الضغط على الزر نفسه */
+        .archive-btn-container {
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
 
-.terminal-box {
-    width: 100%;
-    max-width: 600px;
-    background-color: #050505;
-    border: 2px solid #333;
-    border-radius: 5px;
-    padding: 20px;
-    position: relative;
-    overflow: hidden;
-    color: var(--neon-green);
-    font-family: 'Courier New', Courier, monospace;
-    box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    text-align: right;
-    direction: rtl;
-}
+    <div class="instruction">انقر فوق البطاقة لمعاينة البُعد الآخر 🌀</div>
 
-/* تأثير خطوط المسح للشاشات القديمة (Scanlines) */
-.crt-scanline {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    opacity: 0.4;
-    animation: scanline 6s linear infinite;
-    pointer-events: none;
-}
+    <div class="card-container" id="multiverseCard">
+        <div class="card-inner">
+            
+            <div class="card-front">
+                <div class="logo-placeholder">
+                    <div class="logo-graphic"></div>
+                    <div class="company-name">DYNAMO</div>
+                </div>
+                <div class="front-footer">
+                    <p class="tagline">شركة داينمو لإصلاح واحتواء فوضى الكون المتعدد</p>
+                    <p class="sub-tagline">// متاحون في جميع الأبعاد والخطوط الزمنية بالتوازي</p>
+                </div>
+            </div>
 
-@keyframes scanline {
-    0% { top: -10%; }
-    100% { top: 110%; }
-}
+            <div class="card-back">
+                <div class="profile-info">
+                    <h3>المُحقّق الكوني المسؤول</h3>
+                    <p>قسم معالجة المفارقات الزمنية والأعطال البُعدية</p>
+                </div>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <span class="icon">✉</span> <span>sos@dynamo.multiverse</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">☎</span> <span>+966 9 999 DYNAMO (امتداد بعدي: 04)</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="icon">📍</span> <span>البُعد الثامن - نقطة التقاطع الفراغي رقم 5</span>
+                    </div>
+                </div>
+            </div>
 
-.terminal-header {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #333;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-    font-size: 0.9rem;
-    color: #888;
-}
+        </div>
+    </div>
 
-.status {
-    color: var(--glitch-color-1); /* أزرق سماوي */
-}
+    <div class="archive-btn-container">
+        <button class="archive-btn" id="archiveBtn">دخول الأرشيف السري للشركة 👁️</button>
+    </div>
 
-.terminal-content p {
-    margin: 8px 0;
-    font-size: 1rem;
-    line-height: 1.5;
-    text-shadow: 0 0 5px rgba(57, 255, 20, 0.5); /* توهج النص */
-}
+    <script>
+        const card = document.getElementById('multiverseCard');
+        const archiveBtn = document.getElementById('archiveBtn');
 
-.label {
-    color: #aaa;
-    font-weight: bold;
-}
+        // تأثير قلب البطاقة عند الضغط عليها
+        card.addEventListener('click', () => {
+            card.classList.toggle('flipped');
+        });
 
-.success {
-    color: var(--neon-green);
-}
+        // حدث الضغط على زر الأرشيف (تأثير دخول الأرشيف الكوني)
+        archiveBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // يمنع انقلاب البطاقة عند الضغط على الزر
+            alert("⚠️ جاري اختراق الجدار البُعدي العازل... الدخول إلى أرشيف داينمو مُصرّح به فقط للعملاء من الفئة (A).");
+            // يمكنك هنا استبدال الـ alert برابط حقيقي مثل:
+            // window.location.href = 'رابط_الأرشيف_الخاص_بك';
+        });
+    </script>
 
-.error {
-    color: var(--glitch-color-2); /* أحمر قاني */
-    text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
-    animation: blink 1s infinite;
-}
-
-/* مؤشر الكتابة الوامض */
-.blinking-cursor {
-    display: inline-block;
-    width: 10px;
-    height: 1.2rem;
-    background-color: var(--neon-green);
-    animation: blink 1s step-end infinite;
-    vertical-align: middle;
-}
-
-@keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-}
-
-/* تأثير ظهور النص تدريجياً لتبدو كأنها تُطبع */
-.record-details {
-    animation: revealText 2s steps(40, end) forwards;
-    opacity: 0;
-    animation-delay: 1.5s; /* تظهر بعد الأسطر الأولى */
-}
-
-@keyframes revealText {
-    to { opacity: 1; }
-}
+</body>
+</html>
