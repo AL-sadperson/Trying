@@ -163,3 +163,110 @@ body {
     80% { clip-path: inset(50% 0 30% 0); }
     100% { clip-path: inset(5% 0 80% 0); }
 }
+/* إخفاء السجل في البداية */
+.hidden {
+    display: none !important;
+}
+
+/* =========================================
+   3. واجهة السجل السريري (Terminal CRT)
+========================================= */
+
+.terminal-box {
+    width: 100%;
+    max-width: 600px;
+    background-color: #050505;
+    border: 2px solid #333;
+    border-radius: 5px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    color: var(--neon-green);
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    direction: rtl;
+}
+
+/* تأثير خطوط المسح للشاشات القديمة (Scanlines) */
+.crt-scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0.4;
+    animation: scanline 6s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes scanline {
+    0% { top: -10%; }
+    100% { top: 110%; }
+}
+
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.status {
+    color: var(--glitch-color-1); /* أزرق سماوي */
+}
+
+.terminal-content p {
+    margin: 8px 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-shadow: 0 0 5px rgba(57, 255, 20, 0.5); /* توهج النص */
+}
+
+.label {
+    color: #aaa;
+    font-weight: bold;
+}
+
+.success {
+    color: var(--neon-green);
+}
+
+.error {
+    color: var(--glitch-color-2); /* أحمر قاني */
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+    animation: blink 1s infinite;
+}
+
+/* مؤشر الكتابة الوامض */
+.blinking-cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.2rem;
+    background-color: var(--neon-green);
+    animation: blink 1s step-end infinite;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* تأثير ظهور النص تدريجياً لتبدو كأنها تُطبع */
+.record-details {
+    animation: revealText 2s steps(40, end) forwards;
+    opacity: 0;
+    animation-delay: 1.5s; /* تظهر بعد الأسطر الأولى */
+}
+
+@keyframes revealText {
+    to { opacity: 1; }
+}
