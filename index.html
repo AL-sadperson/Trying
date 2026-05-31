@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إعلانات التسعينيات المذهلة!</title>
+    <title>تخطيط الإعلانات - النسخة المنظمة</title>
     <style>
-        /* إعدادات عامة بخطوط تناسب الحقبة */
         @import url('https://fonts.googleapis.com/css2?family=Changa:wght@700&family=Tajawal:wght@500;800&display=swap');
 
         body {
@@ -13,8 +12,11 @@
             color: #ffffff;
             font-family: 'Changa', sans-serif;
             margin: 0;
-            padding: 20px;
-            overflow-x: hidden;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* لمنع التمرير للصفحة بالكامل، التمرير سيكون داخل المحتوى فقط */
             background-image: repeating-linear-gradient(
                 0deg,
                 rgba(255, 255, 255, 0.05),
@@ -24,59 +26,132 @@
             ); /* تأثير خطوط شاشة التلفاز CRT */
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
+        /* --- التخطيط الجديد (الهيدر) --- */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            border-bottom: 4px solid #ff66cc;
+            background-color: rgba(0, 0, 0, 0.3);
         }
 
-        /* شارة "كما شوهد على التلفاز" */
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        h1 {
+            font-size: 45px; /* تم تصغيره ليناسب الهيدر */
+            color: #ffd700;
+            margin: 0;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 0px #000, 6px 6px 0px #d35400;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+
+        .header-right {
+            text-align: left;
+            width: 40%;
+        }
+
         .as-seen {
             background-color: #ff2a2a;
             color: white;
             display: inline-block;
-            padding: 10px 20px;
-            font-size: 24px;
-            border-radius: 15px;
-            border: 4px solid white;
-            transform: rotate(-5deg);
-            box-shadow: 5px 5px 0px rgba(0,0,0,0.5);
-            margin-bottom: 20px;
+            padding: 5px 15px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 2px solid white;
+            transform: rotate(-3deg);
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
             animation: pulse 1.5s infinite;
         }
 
-        /* العنوان الرئيسي (مقتبس من صورة Happy Time) */
-        h1 {
-            font-size: 80px;
-            color: #ffd700;
-            margin: 10px 0;
-            text-transform: uppercase;
-            text-shadow: 4px 4px 0px #000, 8px 8px 0px #d35400;
-            letter-spacing: 2px;
-        }
-
-        /* شريط الأخبار المتحرك القديم (Marquee) */
         .marquee-container {
             background-color: #ff00ff;
             color: white;
-            padding: 10px;
-            font-size: 20px;
-            border: 3px dashed white;
-            margin-bottom: 30px;
+            padding: 5px;
+            font-size: 14px;
+            border: 2px dashed white;
         }
 
-        /* صندوق العرض (مقتبس من 1-800-GIF-GIFT) */
-        .offer-box {
+        /* --- التخطيط الجديد (الجسم الرئيسي المقسم) --- */
+        .main-container {
+            display: flex;
+            flex: 1;
+            direction: ltr; /* لجعل القائمة على اليسار تماماً كالصورة */
+            overflow: hidden;
+        }
+
+        /* --- القائمة الجانبية (Sidebar) --- */
+        .sidebar {
+            width: 280px;
+            padding: 20px;
+            border-right: 4px solid #ff66cc;
+            background-color: rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            direction: rtl; /* إعادة النص للعربية */
+        }
+
+        .menu-item {
+            padding: 15px;
+            border: 2px solid #fff;
             background-color: transparent;
-            border: 8px solid #ff66cc; /* إطار وردي فاقع */
+            color: #fff;
+            font-family: monospace, 'Tajawal', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: right;
+        }
+
+        .menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-item.active {
+            background-color: #ffd700;
+            color: #000;
+            font-weight: bold;
+            border-color: #ffd700;
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.5);
+        }
+
+        /* --- منطقة المحتوى (Content) --- */
+        .content-area {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+            direction: rtl; /* إعادة النص للعربية */
+        }
+
+        .content-header {
+            font-size: 24px;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
+            padding-bottom: 10px;
+            color: #ffd700;
+        }
+
+        /* --- العناصر السابقة (لم تتغير خصائصها الجمالية) --- */
+        .offer-box {
+            background-color: rgba(0,0,0,0.4);
+            border: 6px solid #ff66cc;
             padding: 30px;
-            margin: 20px 0;
-            box-shadow: 10px 10px 0px rgba(0,0,0,0.3);
-            position: relative;
+            margin-bottom: 40px;
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.4);
+            text-align: center;
         }
 
         .price {
-            font-size: 70px;
+            font-size: 60px;
             color: #ffd700;
             text-shadow: 3px 3px 0px #000, 6px 6px 0px #000;
             display: block;
@@ -84,32 +159,32 @@
         }
 
         .phone-number {
-            font-size: 60px;
+            font-size: 50px;
             color: #ff5555;
-            text-shadow: 2px 2px 0px #fff, -2px -2px 0px #fff, 2px -2px 0px #fff, -2px 2px 0px #fff, 5px 5px 0px #000;
+            text-shadow: 2px 2px 0px #fff, -2px -2px 0px #fff, 2px -2px 0px #fff, -2px 2px 0px #fff, 4px 4px 0px #000;
             letter-spacing: 5px;
             animation: blink 1s step-end infinite;
         }
 
-        /* قسم الملاحظات اللاصقة (مقتبس من لوحة الملاحظات) */
         .notes-board {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
-            margin: 40px 0;
+            margin-bottom: 40px;
             padding: 20px;
-            background-color: #111;
+            background-color: rgba(17, 17, 17, 0.8);
             border-radius: 10px;
+            border: 2px solid #333;
         }
 
         .sticky-note {
             background-color: #ffd700;
             color: #333;
-            width: 200px;
-            padding: 20px;
+            width: 180px;
+            padding: 15px;
             font-family: 'Tajawal', sans-serif;
-            font-size: 18px;
-            box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+            font-size: 16px;
+            box-shadow: 4px 4px 8px rgba(0,0,0,0.6);
             margin: 10px;
         }
 
@@ -117,24 +192,23 @@
         .note-2 { transform: rotate(3deg); background-color: #ffaa00; }
         .note-3 { transform: rotate(-2deg); }
 
-        /* بطاقة الهوية / الفوتر (مقتبس من صورة Portfolio ID) */
         .id-card {
             background-color: #2b4cc7;
             border: 2px solid white;
             border-radius: 15px;
             padding: 20px;
-            margin-top: 40px;
             position: relative;
             text-align: left;
             font-family: monospace;
             box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
-            display: flex;
+            display: inline-flex;
             flex-direction: column;
             align-items: flex-start;
+            width: fit-content;
         }
 
         .id-header {
-            font-size: 30px;
+            font-size: 24px;
             font-weight: bold;
             color: white;
             text-transform: uppercase;
@@ -146,24 +220,25 @@
 
         .stickers {
             position: absolute;
-            right: 20px;
-            bottom: 20px;
+            right: 15px;
+            bottom: 15px;
             display: flex;
             gap: 10px;
         }
 
         .sticker {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 12px;
+            font-size: 10px;
             color: black;
             transform: rotate(15deg);
             box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            text-align: center;
         }
 
         .sticker.yellow { background-color: #ccff00; }
@@ -172,90 +247,99 @@
 
         .barcode {
             margin-top: 20px;
-            height: 40px;
-            width: 200px;
-            background: repeating-linear-gradient(
-                to right,
-                black,
-                black 3px,
-                white 3px,
-                white 5px,
-                black 5px,
-                black 9px,
-                white 9px,
-                white 12px
-            );
+            height: 30px;
+            width: 180px;
+            background: repeating-linear-gradient(to right, black, black 3px, white 3px, white 5px, black 5px, black 9px, white 9px, white 12px);
         }
 
-        /* تأثيرات حركية */
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-        @keyframes pulse {
-            0% { transform: scale(1) rotate(-5deg); }
-            50% { transform: scale(1.1) rotate(-5deg); }
-            100% { transform: scale(1) rotate(-5deg); }
-        }
+        @keyframes blink { 50% { opacity: 0; } }
+        @keyframes pulse { 0%, 100% { transform: scale(1) rotate(-3deg); } 50% { transform: scale(1.05) rotate(-3deg); } }
 
+        /* للتجاوب مع الشاشات الصغيرة */
+        @media (max-width: 800px) {
+            .main-container { flex-direction: column; overflow: auto; }
+            .sidebar { width: auto; border-right: none; border-bottom: 4px solid #ff66cc; direction: rtl; }
+            .header-right { display: none; }
+            body { overflow: auto; }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="as-seen">كما شوهد على شاشة الكمبيوتر!</div>
-    
-    <h1>وقت السعادة!</h1>
-
-    <div class="marquee-container">
-        <marquee behavior="scroll" direction="right" scrollamount="10">
-            تحذير: هذا العرض متاح أثناء قراءتك لهذه الرسالة فقط! اتصل الآن! الكمية محدودة جداً! في الواقع، ليس لدينا أي مخزون!
-        </marquee>
+    <!-- الهيدر العلوي -->
+    <div class="top-header" dir="rtl">
+        <div class="header-left">
+            <h1>وقت السعادة!</h1>
+        </div>
+        <div class="header-right" dir="rtl">
+            <div class="as-seen">كما شوهد على شاشة الكمبيوتر!</div>
+            <div class="marquee-container">
+                <marquee behavior="scroll" direction="right" scrollamount="8">
+                    تحذير: الكمية محدودة جداً! اتصل الآن قبل نفاد المخزون!
+                </marquee>
+            </div>
+        </div>
     </div>
 
-    <div class="offer-box">
-        <h2>قسطين سهلين بقيمة</h2>
-        <span class="price">$20.15</span>
-        <p style="font-size: 20px;">بالإضافة إلى مصاريف الشحن والمناولة</p>
+    <!-- الجسم الرئيسي (تم استخدام LTR لجعل القائمة على اليسار) -->
+    <div class="main-container">
         
-        <h3 style="margin-top: 40px;">اتصل الآن على الرقم:</h3>
-        <div class="phone-number">0898 50 50 50</div>
-        
-        <p style="font-size: 12px; margin-top: 20px; font-family: sans-serif;">
-            *تكلفة المكالمة 33 بنس في الدقيقة. تطبق الشروط والأحكام. الخدمة مسجلة باستمرار.
-        </p>
-    </div>
+        <!-- القائمة الجانبية (اليسار) -->
+        <div class="sidebar">
+            <div class="menu-item active">01 // العرض الرئيسي</div>
+            <div class="menu-item">02 // آراء العملاء والملاحظات</div>
+            <div class="menu-item">03 // بطاقة الهوية (المحفظة)</div>
+            <div class="menu-item">04 // خريطة التوزيع</div>
+            <div class="menu-item">05 // إنهاء الاتصال</div>
+        </div>
 
-    <div class="notes-board" dir="ltr">
-        <div class="sticky-note note-1">
-            <strong>BULLSHIT</strong><br>
-            I'm drowning in time...
-        </div>
-        <div class="sticky-note note-2">
-            "Time is like a river" - Einstein<br>
-            <small>My head hurts</small>
-        </div>
-        <div class="sticky-note note-3">
-            <strong>TAKE A GIANT STEP BACKWARD!</strong><br>
-            HELLO TIME KITTY
+        <!-- منطقة المحتوى (اليمين) -->
+        <div class="content-area">
+            
+            <div class="content-header">
+                تفاصيل العرض التجاري // مستوى الوصول: عام
+            </div>
+
+            <!-- صندوق العرض -->
+            <div class="offer-box">
+                <h2>قسطين سهلين بقيمة</h2>
+                <span class="price">$20.15</span>
+                <p>بالإضافة إلى مصاريف الشحن والمناولة</p>
+                <h3 style="margin-top: 30px;">اتصل الآن على الرقم:</h3>
+                <div class="phone-number">0898 50 50 50</div>
+            </div>
+
+            <!-- لوحة الملاحظات الفوضوية -->
+            <div class="notes-board" dir="ltr">
+                <div class="sticky-note note-1">
+                    <strong>BULLSHIT</strong><br>I'm drowning in time...
+                </div>
+                <div class="sticky-note note-2">
+                    "Time is like a river" - Einstein
+                </div>
+                <div class="sticky-note note-3">
+                    <strong>TAKE A GIANT STEP BACKWARD!</strong><br>HELLO TIME KITTY
+                </div>
+            </div>
+
+            <!-- بطاقة الهوية -->
+            <div class="id-card" dir="ltr">
+                <div class="id-header">PORTFOLIO ID CARD</div>
+                <div>hello my name is...<br><span style="font-family: 'Changa', cursive; font-size: 24px;">User</span></div>
+                <br>
+                <div>position:<br>retro web surfer, visual artist</div>
+                <div class="barcode"></div>
+                <div style="font-size: 10px; margin-top: 5px;">0 35545 62336 78 1</div>
+                
+                <div class="stickers">
+                    <div class="sticker yellow">STAY<br>WILD</div>
+                    <div class="sticker pink">JUST<br>PEACHY</div>
+                    <div class="sticker red">YOUTH</div>
+                </div>
+            </div>
+
         </div>
     </div>
-
-    <div class="id-card" dir="ltr">
-        <div class="id-header">PORTFOLIO ID CARD</div>
-        <div>hello my name is...<br><span style="font-family: 'Changa', cursive; font-size: 30px;">User</span></div>
-        <br>
-        <div>position:<br>retro web surfer, visual artist</div>
-        <div class="barcode"></div>
-        <div style="font-size: 10px; margin-top: 5px;">0 35545 62336 78 1</div>
-        
-        <div class="stickers">
-            <div class="sticker yellow">STAY<br>WILD</div>
-            <div class="sticker pink">JUST<br>PEACHY</div>
-            <div class="sticker red">YOUTH</div>
-        </div>
-    </div>
-
-</div>
 
 </body>
 </html>
