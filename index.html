@@ -3,12 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تخطيط الإعلانات - النسخة المنظمة</title>
+    <title>تخطيط الإعلانات - النسخة الإبداعية</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Changa:wght@700&family=Tajawal:wght@500;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Changa:wght@700&family=Tajawal:wght@500;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+        :root {
+            --blue-bg: #3b60e4;
+            --pink-border: #ff66cc;
+            --yellow-accent: #ffd700;
+            --paper-color: #fdfbf7;
+            --tape-color: rgba(255, 255, 255, 0.6);
+        }
 
         body {
-            background-color: #3b60e4; /* أزرق الإعلانات القديمة */
+            background-color: var(--blue-bg);
             color: #ffffff;
             font-family: 'Changa', sans-serif;
             margin: 0;
@@ -16,59 +24,33 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow: hidden; /* لمنع التمرير للصفحة بالكامل، التمرير سيكون داخل المحتوى فقط */
+            overflow: hidden;
             background-image: repeating-linear-gradient(
                 0deg,
                 rgba(255, 255, 255, 0.05),
                 rgba(255, 255, 255, 0.05) 1px,
                 transparent 1px,
                 transparent 4px
-            ); /* تأثير خطوط شاشة التلفاز CRT */
+            );
         }
 
-        /* --- التخطيط الجديد (الهيدر) --- */
+        /* --- الهيدر --- */
         .top-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 30px;
-            border-bottom: 4px solid #ff66cc;
-            background-color: rgba(0, 0, 0, 0.3);
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
+            border-bottom: 4px solid var(--pink-border);
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 10;
         }
 
         h1 {
-            font-size: 45px; /* تم تصغيره ليناسب الهيدر */
-            color: #ffd700;
+            font-size: 40px;
+            color: var(--yellow-accent);
             margin: 0;
             text-transform: uppercase;
             text-shadow: 3px 3px 0px #000, 6px 6px 0px #d35400;
-            letter-spacing: 2px;
-            line-height: 1;
-        }
-
-        .header-right {
-            text-align: left;
-            width: 40%;
-        }
-
-        .as-seen {
-            background-color: #ff2a2a;
-            color: white;
-            display: inline-block;
-            padding: 5px 15px;
-            font-size: 16px;
-            border-radius: 10px;
-            border: 2px solid white;
-            transform: rotate(-3deg);
-            box-shadow: 3px 3px 0px rgba(0,0,0,0.5);
-            margin-bottom: 10px;
-            animation: pulse 1.5s infinite;
         }
 
         .marquee-container {
@@ -77,264 +59,374 @@
             padding: 5px;
             font-size: 14px;
             border: 2px dashed white;
+            width: 300px;
         }
 
-        /* --- التخطيط الجديد (الجسم الرئيسي المقسم) --- */
+        /* --- الحاوية الرئيسية --- */
         .main-container {
             display: flex;
             flex: 1;
-            direction: ltr; /* لجعل القائمة على اليسار تماماً كالصورة */
+            direction: ltr; 
             overflow: hidden;
         }
 
-        /* --- القائمة الجانبية (Sidebar) --- */
+        /* --- القائمة الجانبية --- */
         .sidebar {
-            width: 280px;
+            width: 250px;
             padding: 20px;
-            border-right: 4px solid #ff66cc;
-            background-color: rgba(0, 0, 0, 0.2);
+            border-right: 4px solid var(--pink-border);
+            background-color: rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             gap: 15px;
-            direction: rtl; /* إعادة النص للعربية */
+            direction: rtl;
+            overflow-y: auto;
         }
 
         .menu-item {
             padding: 15px;
             border: 2px solid #fff;
-            background-color: transparent;
             color: #fff;
-            font-family: monospace, 'Tajawal', sans-serif;
-            font-size: 16px;
+            font-family: 'Space Mono', 'Tajawal', monospace;
+            font-size: 14px;
             cursor: pointer;
             transition: all 0.2s;
             text-align: right;
+            background: rgba(0,0,0,0.5);
         }
 
-        .menu-item:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .menu-item.active {
-            background-color: #ffd700;
+        .menu-item:hover, .menu-item.active {
+            background-color: var(--yellow-accent);
             color: #000;
             font-weight: bold;
-            border-color: #ffd700;
-            box-shadow: 3px 3px 0px rgba(0,0,0,0.5);
+            border-color: var(--yellow-accent);
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.6);
+            transform: translateX(-5px);
         }
 
-        /* --- منطقة المحتوى (Content) --- */
+        /* --- منطقة المحتوى --- */
         .content-area {
             flex: 1;
-            padding: 40px;
-            overflow-y: auto;
-            direction: rtl; /* إعادة النص للعربية */
-        }
-
-        .content-header {
-            font-size: 24px;
-            letter-spacing: 3px;
-            margin-bottom: 30px;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
-            padding-bottom: 10px;
-            color: #ffd700;
-        }
-
-        /* --- العناصر السابقة (لم تتغير خصائصها الجمالية) --- */
-        .offer-box {
-            background-color: rgba(0,0,0,0.4);
-            border: 6px solid #ff66cc;
             padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 8px 8px 0px rgba(0,0,0,0.4);
-            text-align: center;
-        }
-
-        .price {
-            font-size: 60px;
-            color: #ffd700;
-            text-shadow: 3px 3px 0px #000, 6px 6px 0px #000;
-            display: block;
-            margin: 10px 0;
-        }
-
-        .phone-number {
-            font-size: 50px;
-            color: #ff5555;
-            text-shadow: 2px 2px 0px #fff, -2px -2px 0px #fff, 2px -2px 0px #fff, -2px 2px 0px #fff, 4px 4px 0px #000;
-            letter-spacing: 5px;
-            animation: blink 1s step-end infinite;
-        }
-
-        .notes-board {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-            padding: 20px;
-            background-color: rgba(17, 17, 17, 0.8);
-            border-radius: 10px;
-            border: 2px solid #333;
-        }
-
-        .sticky-note {
-            background-color: #ffd700;
-            color: #333;
-            width: 180px;
-            padding: 15px;
-            font-family: 'Tajawal', sans-serif;
-            font-size: 16px;
-            box-shadow: 4px 4px 8px rgba(0,0,0,0.6);
-            margin: 10px;
-        }
-
-        .note-1 { transform: rotate(-5deg); }
-        .note-2 { transform: rotate(3deg); background-color: #ffaa00; }
-        .note-3 { transform: rotate(-2deg); }
-
-        .id-card {
-            background-color: #2b4cc7;
-            border: 2px solid white;
-            border-radius: 15px;
-            padding: 20px;
+            overflow-y: auto;
+            direction: rtl;
             position: relative;
-            text-align: left;
-            font-family: monospace;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
-            display: inline-flex;
-            flex-direction: column;
-            align-items: flex-start;
-            width: fit-content;
         }
 
-        .id-header {
+        /* شريط المربعات الشطرنجية (مستوحى من image_8) */
+        .checker-banner {
+            height: 30px;
+            background-image: 
+                linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff),
+                linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            background-color: #ff3300;
+            margin-bottom: 30px;
+            border: 3px solid #000;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.5);
+        }
+
+        /* حاوية لترتيب العناصر الجديدة بشكل فوضوي جميل */
+        .scrapbook-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        /* --- مكون فاتورة المطعم (مستوحى من image_7 Guest Check) --- */
+        .guest-check {
+            background-color: #eaf5f0;
+            border: 1px solid #ccc;
+            width: 260px;
+            padding: 20px;
+            font-family: 'Space Mono', monospace;
+            color: #111;
+            position: relative;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+            transform: rotate(-2deg);
+            /* الخطوط الأفقية للفاتورة */
+            background-image: repeating-linear-gradient(transparent, transparent 29px, #9fd1c0 30px);
+            background-position: 0 45px;
+        }
+        
+        .guest-check-header {
+            text-align: center;
+            border-bottom: 2px solid #2a5a9c;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .guest-check-title {
+            color: #2a5a9c;
             font-size: 24px;
             font-weight: bold;
-            color: white;
-            text-transform: uppercase;
-            border-bottom: 2px solid white;
-            width: 100%;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+        }
+        
+        .guest-check-number {
+            color: #d32f2f;
+            text-align: left;
+            font-size: 18px;
+            letter-spacing: 2px;
         }
 
-        .stickers {
+        /* --- مكون الرخصة الإبداعية (مستوحى من image_11) --- */
+        .creative-license {
+            background-color: #f7ede2;
+            border: 3px solid #111;
+            border-radius: 8px;
+            width: 320px;
+            padding: 20px;
+            color: #111;
+            font-family: 'Space Mono', monospace;
+            position: relative;
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.5);
+            transform: rotate(3deg);
+            background-image: radial-gradient(#d3ccc5 1px, transparent 1px);
+            background-size: 10px 10px;
+        }
+
+        /* مشبك الورق */
+        .paperclip {
             position: absolute;
-            right: 15px;
-            bottom: 15px;
-            display: flex;
-            gap: 10px;
+            top: -20px;
+            left: 20px;
+            width: 20px;
+            height: 60px;
+            border: 4px solid #a8a8a8;
+            border-radius: 15px;
+            background: transparent;
+            z-index: 10;
+            box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+            border-right-color: transparent; /* ليعطي إيحاء بأنه مشبوك بالورقة */
         }
 
-        .sticker {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+        .license-stamp {
+            position: absolute;
+            bottom: 20px;
+            right: 10px;
+            color: #d32f2f;
+            border: 2px solid #d32f2f;
+            border-radius: 5px;
+            padding: 5px;
+            font-weight: bold;
+            transform: rotate(-15deg);
+            opacity: 0.8;
+            font-size: 12px;
+        }
+
+        .barcode {
+            height: 30px;
+            background: repeating-linear-gradient(to right, #000, #000 2px, transparent 2px, transparent 4px, #000 4px, #000 5px, transparent 5px, transparent 8px);
+            margin-top: 15px;
+        }
+
+        /* --- مكون البولارويد والدبوس (مستوحى من image_12) --- */
+        .polaroid {
+            background: white;
+            padding: 10px 10px 40px 10px;
+            box-shadow: 4px 4px 15px rgba(0,0,0,0.5);
+            width: 180px;
+            height: 180px;
+            transform: rotate(-6deg);
+            position: relative;
+        }
+
+        .polaroid-img {
+            background-color: #333;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ccc;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: 10px;
-            color: black;
-            transform: rotate(15deg);
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
-            text-align: center;
+            color: #888;
         }
 
-        .sticker.yellow { background-color: #ccff00; }
-        .sticker.pink { background-color: #ff99cc; transform: rotate(-10deg); }
-        .sticker.red { background-color: #ff3333; color: white; }
+        .pushpin {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #ff6b6b, #c0392b);
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 2px 5px 5px rgba(0,0,0,0.4);
+        }
+        /* ظل مسمار الدبوس */
+        .pushpin::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 5px;
+            width: 2px;
+            height: 8px;
+            background: #333;
+            z-index: -1;
+            transform: rotate(20deg);
+        }
 
-        .barcode {
-            margin-top: 20px;
+        /* --- مكون جدول المهام / العمولات (مستوحى من image_9) --- */
+        .commission-box {
+            background-color: #e5e5e5;
+            padding: 20px;
+            border: 2px solid #000;
+            width: 100%;
+            max-width: 700px;
+            color: #000;
+            margin-top: 30px;
+            box-shadow: 6px 6px 0px rgba(0,0,0,0.6);
+            position: relative;
+        }
+
+        /* شريط لاصق (Tape) */
+        .tape {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            width: 120px;
             height: 30px;
-            width: 180px;
-            background: repeating-linear-gradient(to right, black, black 3px, white 3px, white 5px, black 5px, black 9px, white 9px, white 12px);
+            background-color: var(--tape-color);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            z-index: 5;
         }
 
-        @keyframes blink { 50% { opacity: 0; } }
-        @keyframes pulse { 0%, 100% { transform: scale(1) rotate(-3deg); } 50% { transform: scale(1.05) rotate(-3deg); } }
-
-        /* للتجاوب مع الشاشات الصغيرة */
-        @media (max-width: 800px) {
-            .main-container { flex-direction: column; overflow: auto; }
-            .sidebar { width: auto; border-right: none; border-bottom: 4px solid #ff66cc; direction: rtl; }
-            .header-right { display: none; }
-            body { overflow: auto; }
+        .comm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
         }
+
+        .comm-item {
+            background-color: #2a5a9c;
+            color: white;
+            padding: 10px;
+            border: 2px solid #000;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 14px;
+        }
+
+        .comm-item h4 {
+            margin: 0 0 10px 0;
+            color: var(--yellow-accent);
+            border-bottom: 1px dashed white;
+            padding-bottom: 5px;
+        }
+
     </style>
 </head>
 <body>
 
-    <!-- الهيدر العلوي -->
     <div class="top-header" dir="rtl">
-        <div class="header-left">
-            <h1>وقت السعادة!</h1>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <h1>ابداع ستوديو</h1>
         </div>
-        <div class="header-right" dir="rtl">
-            <div class="as-seen">كما شوهد على شاشة الكمبيوتر!</div>
-            <div class="marquee-container">
-                <marquee behavior="scroll" direction="right" scrollamount="8">
-                    تحذير: الكمية محدودة جداً! اتصل الآن قبل نفاد المخزون!
-                </marquee>
-            </div>
+        <div class="marquee-container" dir="rtl">
+            <marquee behavior="scroll" direction="right" scrollamount="6">
+                احصل على تصميمك الآن! لا تفوت العرض! نستخدم أحدث تقنيات الويب والألوان الجريئة!
+            </marquee>
         </div>
     </div>
 
-    <!-- الجسم الرئيسي (تم استخدام LTR لجعل القائمة على اليسار) -->
     <div class="main-container">
         
-        <!-- القائمة الجانبية (اليسار) -->
+        <!-- القائمة الجانبية -->
         <div class="sidebar">
-            <div class="menu-item active">01 // العرض الرئيسي</div>
-            <div class="menu-item">02 // آراء العملاء والملاحظات</div>
-            <div class="menu-item">03 // بطاقة الهوية (المحفظة)</div>
-            <div class="menu-item">04 // خريطة التوزيع</div>
-            <div class="menu-item">05 // إنهاء الاتصال</div>
+            <div class="menu-item active">01_الرئيسية.exe</div>
+            <div class="menu-item">02_طلب_تصميم.bat</div>
+            <div class="menu-item">03_رخصة_الابداع.sys</div>
+            <div class="menu-item">04_الأرشيف_السري.log</div>
+            <div class="menu-item">05_إنهاء_النظام.cmd</div>
         </div>
 
-        <!-- منطقة المحتوى (اليمين) -->
+        <!-- منطقة المحتوى -->
         <div class="content-area">
             
-            <div class="content-header">
-                تفاصيل العرض التجاري // مستوى الوصول: عام
-            </div>
+            <!-- شريط المربعات الشطرنجية -->
+            <div class="checker-banner"></div>
 
-            <!-- صندوق العرض -->
-            <div class="offer-box">
-                <h2>قسطين سهلين بقيمة</h2>
-                <span class="price">$20.15</span>
-                <p>بالإضافة إلى مصاريف الشحن والمناولة</p>
-                <h3 style="margin-top: 30px;">اتصل الآن على الرقم:</h3>
-                <div class="phone-number">0898 50 50 50</div>
-            </div>
-
-            <!-- لوحة الملاحظات الفوضوية -->
-            <div class="notes-board" dir="ltr">
-                <div class="sticky-note note-1">
-                    <strong>BULLSHIT</strong><br>I'm drowning in time...
-                </div>
-                <div class="sticky-note note-2">
-                    "Time is like a river" - Einstein
-                </div>
-                <div class="sticky-note note-3">
-                    <strong>TAKE A GIANT STEP BACKWARD!</strong><br>HELLO TIME KITTY
-                </div>
-            </div>
-
-            <!-- بطاقة الهوية -->
-            <div class="id-card" dir="ltr">
-                <div class="id-header">PORTFOLIO ID CARD</div>
-                <div>hello my name is...<br><span style="font-family: 'Changa', cursive; font-size: 24px;">User</span></div>
-                <br>
-                <div>position:<br>retro web surfer, visual artist</div>
-                <div class="barcode"></div>
-                <div style="font-size: 10px; margin-top: 5px;">0 35545 62336 78 1</div>
+            <div class="scrapbook-grid">
                 
-                <div class="stickers">
-                    <div class="sticker yellow">STAY<br>WILD</div>
-                    <div class="sticker pink">JUST<br>PEACHY</div>
-                    <div class="sticker red">YOUTH</div>
+                <!-- فاتورة المطعم (Order Form) -->
+                <div class="guest-check" dir="ltr">
+                    <div class="guest-check-header">
+                        <div class="guest-check-number">123456</div>
+                        <div class="guest-check-title">Guest Check</div>
+                        <div style="font-size: 10px;">DATE: 1999 | SERVER: ADMIN</div>
+                    </div>
+                    <div style="margin-top: 20px; line-height: 30px;">
+                        <div>1x Web Design ...... $50</div>
+                        <div>1x Cool Graphic .... $20</div>
+                        <div>1x Vibe Check ...... FREE</div>
+                        <div style="border-top: 2px dashed #333; margin-top: 10px;"></div>
+                        <div>TOTAL ............ $70</div>
+                    </div>
+                </div>
+
+                <!-- صورة البولارويد -->
+                <div class="polaroid">
+                    <div class="pushpin"></div>
+                    <div class="polaroid-img">
+                        <span style="font-family: 'Tajawal'; font-size: 12px; transform: rotate(-10deg);">No Signal</span>
+                    </div>
+                    <div style="text-align: center; margin-top: 10px; font-family: 'Space Mono'; font-size: 14px; color: #111;">
+                        Me in 1998
+                    </div>
+                </div>
+
+                <!-- الرخصة الإبداعية (ID Card) -->
+                <div class="creative-license" dir="ltr">
+                    <div class="paperclip"></div>
+                    <h2 style="margin: 0; font-size: 28px; letter-spacing: -1px;">CREATIVE LICENSE</h2>
+                    <div style="font-size: 10px; margin-bottom: 10px;"># OF LICENSE: 0026</div>
+                    
+                    <div style="display: flex; gap: 15px; margin-top: 15px;">
+                        <div style="width: 80px; height: 80px; background: #555; border: 2px solid #111;"></div>
+                        <div style="font-size: 12px; line-height: 1.6;">
+                            <strong>NAME:</strong> USER_99<br>
+                            <strong>ROLE:</strong> TEXTURE USER<br>
+                            <strong>EXPIRY:</strong> DOES NOT EXPIRE
+                        </div>
+                    </div>
+                    
+                    <div class="barcode"></div>
+                    <div style="font-size: 10px; text-align: center;">440 234 00042 3549</div>
+                    
+                    <div class="license-stamp">AUTHORIZED<br>MEMBER</div>
+                </div>
+
+            </div> <!-- End Scrapbook Grid -->
+
+            <!-- جدول العمولات / المهام (Commission Sheet) -->
+            <div class="commission-box" dir="ltr">
+                <div class="tape"></div>
+                <h2 style="margin: 0; font-size: 30px; text-transform: uppercase;">Commission Protocol</h2>
+                <div style="font-family: 'Space Mono'; font-size: 12px;">STATUS: OPEN // SLOTS: 3</div>
+                
+                <div class="comm-grid">
+                    <div class="comm-item">
+                        <h4>✔ CAN DO</h4>
+                        - Retro Web<br>
+                        - Graphic Design<br>
+                        - UI/UX Logic
+                    </div>
+                    <div class="comm-item">
+                        <h4>✘ CAN'T DO</h4>
+                        - Boring Stuff<br>
+                        - Corporate Slides<br>
+                        - Modern Minimalism
+                    </div>
+                    <div class="comm-item">
+                        <h4>★ TERMS</h4>
+                        - Payment upfront<br>
+                        - No refunds on vibes<br>
+                        - Delivery in 7 days
+                    </div>
                 </div>
             </div>
 
