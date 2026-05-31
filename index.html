@@ -1,181 +1,261 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>بطاقة أعمال داينمو</title>
-<style>
-    /* إعدادات الصفحة الأساسية */
-    body {
-        background-color: #0d0d0d;
-        color: #fff;
-        font-family: 'Courier New', Courier, monospace; /* خط يعطي طابعاً سرياً/تقنياً */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        overflow: hidden;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إعلانات التسعينيات المذهلة!</title>
+    <style>
+        /* إعدادات عامة بخطوط تناسب الحقبة */
+        @import url('https://fonts.googleapis.com/css2?family=Changa:wght@700&family=Tajawal:wght@500;800&display=swap');
 
-    /* حاوية البطاقة */
-    .card-container {
-        perspective: 1000px; /* لإنشاء البعد الثلاثي */
-        width: 400px;
-        height: 250px;
-        cursor: pointer;
-    }
+        body {
+            background-color: #3b60e4; /* أزرق الإعلانات القديمة */
+            color: #ffffff;
+            font-family: 'Changa', sans-serif;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+            background-image: repeating-linear-gradient(
+                0deg,
+                rgba(255, 255, 255, 0.05),
+                rgba(255, 255, 255, 0.05) 1px,
+                transparent 1px,
+                transparent 4px
+            ); /* تأثير خطوط شاشة التلفاز CRT */
+        }
 
-    /* الجزء الداخلي الذي يتحرك */
-    .card-inner {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        transform-style: preserve-3d;
-    }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
 
-    /* كلاس الانقلاب يتم تفعيله بواسطة الجافاسكريبت */
-    .card-container.flipped .card-inner {
-        transform: rotateY(180deg);
-    }
+        /* شارة "كما شوهد على التلفاز" */
+        .as-seen {
+            background-color: #ff2a2a;
+            color: white;
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 24px;
+            border-radius: 15px;
+            border: 4px solid white;
+            transform: rotate(-5deg);
+            box-shadow: 5px 5px 0px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
 
-    /* خصائص الوجهين المشتركة */
-    .card-front, .card-back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden; /* إخفاء الوجه الآخر عند الدوران */
-        border-radius: 12px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 20px;
-        box-sizing: border-box;
-        box-shadow: 0 10px 30px rgba(255, 0, 0, 0.2);
-    }
+        /* العنوان الرئيسي (مقتبس من صورة Happy Time) */
+        h1 {
+            font-size: 80px;
+            color: #ffd700;
+            margin: 10px 0;
+            text-transform: uppercase;
+            text-shadow: 4px 4px 0px #000, 8px 8px 0px #d35400;
+            letter-spacing: 2px;
+        }
 
-    /* الوجه الأمامي */
-    .card-front {
-        background: #f4f4f4;
-        color: #111;
-        border: 4px solid #ff0033; /* لون أحمر مستوحى من الشعار */
-    }
+        /* شريط الأخبار المتحرك القديم (Marquee) */
+        .marquee-container {
+            background-color: #ff00ff;
+            color: white;
+            padding: 10px;
+            font-size: 20px;
+            border: 3px dashed white;
+            margin-bottom: 30px;
+        }
 
-    /* تنسيق الشعار الأمامي (استبدل src بمسار صورتك) */
-    .logo-img {
-        width: 100px;
-        height: auto;
-        margin-bottom: 10px;
-        filter: drop-shadow(2px 2px 0px #ffcc00); /* ظل أصفر لتعزيز الشعار */
-    }
+        /* صندوق العرض (مقتبس من 1-800-GIF-GIFT) */
+        .offer-box {
+            background-color: transparent;
+            border: 8px solid #ff66cc; /* إطار وردي فاقع */
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.3);
+            position: relative;
+        }
 
-    .card-front h1 {
-        margin: 0;
-        font-size: 28px;
-        font-weight: 900;
-        letter-spacing: 2px;
-    }
+        .price {
+            font-size: 70px;
+            color: #ffd700;
+            text-shadow: 3px 3px 0px #000, 6px 6px 0px #000;
+            display: block;
+            margin: 10px 0;
+        }
 
-    .card-front p {
-        margin-top: 5px;
-        font-size: 14px;
-        font-weight: bold;
-        color: #555;
-    }
+        .phone-number {
+            font-size: 60px;
+            color: #ff5555;
+            text-shadow: 2px 2px 0px #fff, -2px -2px 0px #fff, 2px -2px 0px #fff, -2px 2px 0px #fff, 5px 5px 0px #000;
+            letter-spacing: 5px;
+            animation: blink 1s step-end infinite;
+        }
 
-    /* الوجه الخلفي */
-    .card-back {
-        background: #1a1a1a;
-        color: #ffcc00; /* لون أصفر مستوحى من الشعار */
-        transform: rotateY(180deg);
-        border: 4px solid #ffcc00;
-    }
+        /* قسم الملاحظات اللاصقة (مقتبس من لوحة الملاحظات) */
+        .notes-board {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #111;
+            border-radius: 10px;
+        }
 
-    .card-back h2 {
-        margin: 0 0 15px 0;
-        font-size: 20px;
-        border-bottom: 1px dashed #ff0033;
-        padding-bottom: 5px;
-        color: #ff0033;
-    }
+        .sticky-note {
+            background-color: #ffd700;
+            color: #333;
+            width: 200px;
+            padding: 20px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 18px;
+            box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+            margin: 10px;
+        }
 
-    .info-line {
-        margin: 5px 0;
-        font-size: 14px;
-        width: 100%;
-        text-align: right;
-        display: flex;
-        justify-content: space-between;
-    }
+        .note-1 { transform: rotate(-5deg); }
+        .note-2 { transform: rotate(3deg); background-color: #ffaa00; }
+        .note-3 { transform: rotate(-2deg); }
 
-    .info-line span {
-        color: #fff;
-    }
+        /* بطاقة الهوية / الفوتر (مقتبس من صورة Portfolio ID) */
+        .id-card {
+            background-color: #2b4cc7;
+            border: 2px solid white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 40px;
+            position: relative;
+            text-align: left;
+            font-family: monospace;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
 
-    /* زر الأرشيف */
-    .archive-btn {
-        margin-top: 20px;
-        padding: 10px 20px;
-        background-color: #ff0033;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 4px;
-        font-weight: bold;
-        font-size: 14px;
-        transition: all 0.3s ease;
-        border: 1px solid #ff0033;
-        cursor: pointer;
-    }
+        .id-header {
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            border-bottom: 2px solid white;
+            width: 100%;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
 
-    .archive-btn:hover {
-        background-color: transparent;
-        color: #ff0033;
-        box-shadow: 0 0 15px rgba(255, 0, 51, 0.6) inset;
-    }
-</style>
+        .stickers {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .sticker {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+            color: black;
+            transform: rotate(15deg);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+
+        .sticker.yellow { background-color: #ccff00; }
+        .sticker.pink { background-color: #ff99cc; transform: rotate(-10deg); }
+        .sticker.red { background-color: #ff3333; color: white; }
+
+        .barcode {
+            margin-top: 20px;
+            height: 40px;
+            width: 200px;
+            background: repeating-linear-gradient(
+                to right,
+                black,
+                black 3px,
+                white 3px,
+                white 5px,
+                black 5px,
+                black 9px,
+                white 9px,
+                white 12px
+            );
+        }
+
+        /* تأثيرات حركية */
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1) rotate(-5deg); }
+            50% { transform: scale(1.1) rotate(-5deg); }
+            100% { transform: scale(1) rotate(-5deg); }
+        }
+
+    </style>
 </head>
 <body>
 
-    <div class="card-container" onclick="toggleCard(this)">
-        <div class="card-inner">
-            
-            <div class="card-front">
-                <img src="YOUR_LOGO_URL_HERE.png" alt="شعار داينمو" class="logo-img">
-                <h1>داينمو</h1>
-                <p>نتعامل مع مشاكلكم في الكون المتعدد</p>
-            </div>
+<div class="container">
+    <div class="as-seen">كما شوهد على شاشة الكمبيوتر!</div>
+    
+    <h1>وقت السعادة!</h1>
 
-            <div class="card-back">
-                <h2>إدارة الشذوذ الزمني</h2>
-                <div class="info-line"><strong>التردد الزمني:</strong> <span>+∞ 888-DYN-00</span></div>
-                <div class="info-line"><strong>البريد الفضائي:</strong> <span>void@dynamo.inc</span></div>
-                <div class="info-line"><strong>الموقع:</strong> <span>البعد 137، قطاع ألفا</span></div>
-                
-                <button class="archive-btn" onclick="openArchive(event)">الوصول إلى الأرشيف السري</button>
-            </div>
+    <div class="marquee-container">
+        <marquee behavior="scroll" direction="right" scrollamount="10">
+            تحذير: هذا العرض متاح أثناء قراءتك لهذه الرسالة فقط! اتصل الآن! الكمية محدودة جداً! في الواقع، ليس لدينا أي مخزون!
+        </marquee>
+    </div>
 
+    <div class="offer-box">
+        <h2>قسطين سهلين بقيمة</h2>
+        <span class="price">$20.15</span>
+        <p style="font-size: 20px;">بالإضافة إلى مصاريف الشحن والمناولة</p>
+        
+        <h3 style="margin-top: 40px;">اتصل الآن على الرقم:</h3>
+        <div class="phone-number">0898 50 50 50</div>
+        
+        <p style="font-size: 12px; margin-top: 20px; font-family: sans-serif;">
+            *تكلفة المكالمة 33 بنس في الدقيقة. تطبق الشروط والأحكام. الخدمة مسجلة باستمرار.
+        </p>
+    </div>
+
+    <div class="notes-board" dir="ltr">
+        <div class="sticky-note note-1">
+            <strong>BULLSHIT</strong><br>
+            I'm drowning in time...
+        </div>
+        <div class="sticky-note note-2">
+            "Time is like a river" - Einstein<br>
+            <small>My head hurts</small>
+        </div>
+        <div class="sticky-note note-3">
+            <strong>TAKE A GIANT STEP BACKWARD!</strong><br>
+            HELLO TIME KITTY
         </div>
     </div>
 
-    <script>
-        // دالة لقلب البطاقة
-        function toggleCard(element) {
-            element.classList.toggle('flipped');
-        }
+    <div class="id-card" dir="ltr">
+        <div class="id-header">PORTFOLIO ID CARD</div>
+        <div>hello my name is...<br><span style="font-family: 'Changa', cursive; font-size: 30px;">User</span></div>
+        <br>
+        <div>position:<br>retro web surfer, visual artist</div>
+        <div class="barcode"></div>
+        <div style="font-size: 10px; margin-top: 5px;">0 35545 62336 78 1</div>
+        
+        <div class="stickers">
+            <div class="sticker yellow">STAY<br>WILD</div>
+            <div class="sticker pink">JUST<br>PEACHY</div>
+            <div class="sticker red">YOUTH</div>
+        </div>
+    </div>
 
-        // دالة لزر الأرشيف
-        function openArchive(event) {
-            // منع الحدث من الوصول للبطاقة وقلبها عند الضغط على الزر
-            event.stopPropagation(); 
-            
-            // هنا يمكنك وضع رابط الأرشيف الخاص بك
-            alert("جارٍ فك التشفير... جاري الاتصال بأرشيف داينمو للكون المتعدد.");
-            // window.location.href = 'archive_page.html'; // قم بإزالة التعليق لتفعيل الانتقال لصفحة أخرى
-        }
-    </script>
+</div>
 
 </body>
 </html>
