@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تخطيط الإعلانات - النسخة الإبداعية</title>
+    <title>شركة آرت دوت كوم للخدمات البصرية الكلاسيكية</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Changa:wght@700&family=Tajawal:wght@500;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
@@ -11,8 +11,8 @@
             --blue-bg: #3b60e4;
             --pink-border: #ff66cc;
             --yellow-accent: #ffd700;
-            --paper-color: #fdfbf7;
-            --tape-color: rgba(255, 255, 255, 0.6);
+            --win95-gray: #dfdfdf;
+            --win95-dark-gray: #808080;
         }
 
         body {
@@ -27,42 +27,41 @@
             overflow: hidden;
             background-image: repeating-linear-gradient(
                 0deg,
-                rgba(255, 255, 255, 0.05),
-                rgba(255, 255, 255, 0.05) 1px,
+                rgba(255, 255, 255, 0.04),
+                rgba(255, 255, 255, 0.04) 1px,
                 transparent 1px,
                 transparent 4px
-            );
+            ); /* خطوط CRT للتلفاز القديم */
         }
 
-        /* --- الهيدر --- */
+        /* --- شريط العنوان العلوي --- */
         .top-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
+            padding: 12px 30px;
             border-bottom: 4px solid var(--pink-border);
-            background-color: rgba(0, 0, 0, 0.4);
+            background-color: rgba(0, 0, 0, 0.5);
             z-index: 10;
         }
 
         h1 {
-            font-size: 40px;
+            font-size: 35px;
             color: var(--yellow-accent);
             margin: 0;
-            text-transform: uppercase;
-            text-shadow: 3px 3px 0px #000, 6px 6px 0px #d35400;
+            text-shadow: 3px 3px 0px #000;
         }
 
         .marquee-container {
             background-color: #ff00ff;
             color: white;
-            padding: 5px;
-            font-size: 14px;
+            padding: 4px;
+            font-size: 13px;
             border: 2px dashed white;
-            width: 300px;
+            width: 320px;
         }
 
-        /* --- الحاوية الرئيسية --- */
+        /* --- الهيكل الرئيسي (يسار قائمة - يمين محتوى) --- */
         .main-container {
             display: flex;
             flex: 1;
@@ -70,252 +69,201 @@
             overflow: hidden;
         }
 
-        /* --- القائمة الجانبية --- */
+        /* --- القائمة الجانبية المحدثة بأيقونات بكسل --- */
         .sidebar {
-            width: 250px;
-            padding: 20px;
+            width: 260px;
+            padding: 20px 15px;
             border-right: 4px solid var(--pink-border);
             background-color: rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             direction: rtl;
             overflow-y: auto;
         }
 
         .menu-item {
-            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
             border: 2px solid #fff;
             color: #fff;
             font-family: 'Space Mono', 'Tajawal', monospace;
-            font-size: 14px;
+            font-size: 15px;
             cursor: pointer;
             transition: all 0.2s;
-            text-align: right;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.6);
         }
+
+        /* أيقونات بكسل مصممة بـ CSS (مستوحاة من صور الملفات والمهملات والإنترنت الفولدرات) */
+        .pixel-icon {
+            width: 16px;
+            height: 16px;
+            background-color: var(--yellow-accent);
+            box-shadow: 2px 2px 0px #000;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+        .pixel-icon.archive { background-color: #ff5555; }
+        .pixel-icon.services { background-color: #55ff55; }
+        .pixel-icon.contact { background-color: #55ffff; }
 
         .menu-item:hover, .menu-item.active {
             background-color: var(--yellow-accent);
             color: #000;
             font-weight: bold;
             border-color: var(--yellow-accent);
-            box-shadow: 4px 4px 0px rgba(0,0,0,0.6);
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.7);
             transform: translateX(-5px);
         }
+        .menu-item.active .pixel-icon {
+            background-color: #000 !important;
+        }
 
-        /* --- منطقة المحتوى --- */
+        /* --- منطقة المحتوى المتغيرة --- */
         .content-area {
             flex: 1;
             padding: 30px;
             overflow-y: auto;
             direction: rtl;
-            position: relative;
         }
 
-        /* شريط المربعات الشطرنجية (مستوحى من image_8) */
+        /* شريط المربعات الشطرنجية الكلاسيكي */
         .checker-banner {
-            height: 30px;
+            height: 24px;
             background-image: 
-                linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff),
-                linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff);
-            background-size: 20px 20px;
-            background-position: 0 0, 10px 10px;
-            background-color: #ff3300;
+                linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000),
+                linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000);
+            background-size: 16px 16px;
+            background-position: 0 0, 8px 8px;
+            background-color: var(--yellow-accent);
+            margin-bottom: 25px;
+            border: 2px solid #000;
+        }
+
+        /* النوافذ والصفحات (عرض وإخفاء) */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        /* --- تصميم نافذة نظام ويندوز 95 (مستوحى من واجهات صور الماك والويندوز المرفقة) --- */
+        .window-95 {
+            background-color: var(--win95-gray);
+            border: 3px solid;
+            border-color: #fff #808080 #808080 #fff;
+            color: #000;
+            padding: 4px;
+            box-shadow: 6px 6px 0px rgba(0,0,0,0.5);
             margin-bottom: 30px;
-            border: 3px solid #000;
-            box-shadow: 4px 4px 0px rgba(0,0,0,0.5);
         }
 
-        /* حاوية لترتيب العناصر الجديدة بشكل فوضوي جميل */
-        .scrapbook-grid {
+        .window-title-bar {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            color: white;
+            padding: 4px 8px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            justify-content: center;
-            align-items: flex-start;
-        }
-
-        /* --- مكون فاتورة المطعم (مستوحى من image_7 Guest Check) --- */
-        .guest-check {
-            background-color: #eaf5f0;
-            border: 1px solid #ccc;
-            width: 260px;
-            padding: 20px;
+            justify-content: space-between;
+            align-items: center;
             font-family: 'Space Mono', monospace;
-            color: #111;
-            position: relative;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
-            transform: rotate(-2deg);
-            /* الخطوط الأفقية للفاتورة */
-            background-image: repeating-linear-gradient(transparent, transparent 29px, #9fd1c0 30px);
-            background-position: 0 45px;
-        }
-        
-        .guest-check-header {
-            text-align: center;
-            border-bottom: 2px solid #2a5a9c;
-            padding-bottom: 10px;
-            margin-bottom: 10px;
-        }
-        
-        .guest-check-title {
-            color: #2a5a9c;
-            font-size: 24px;
+            font-size: 14px;
             font-weight: bold;
         }
-        
-        .guest-check-number {
-            color: #d32f2f;
-            text-align: left;
-            font-size: 18px;
-            letter-spacing: 2px;
-        }
 
-        /* --- مكون الرخصة الإبداعية (مستوحى من image_11) --- */
-        .creative-license {
-            background-color: #f7ede2;
-            border: 3px solid #111;
-            border-radius: 8px;
-            width: 320px;
+        .window-body {
             padding: 20px;
-            color: #111;
-            font-family: 'Space Mono', monospace;
-            position: relative;
-            box-shadow: 8px 8px 0px rgba(0,0,0,0.5);
-            transform: rotate(3deg);
-            background-image: radial-gradient(#d3ccc5 1px, transparent 1px);
-            background-size: 10px 10px;
+            background-color: #fff;
+            margin-top: 4px;
+            border: 2px solid;
+            border-color: #808080 #fff #fff #808080;
         }
 
-        /* مشبك الورق */
-        .paperclip {
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            width: 20px;
-            height: 60px;
-            border: 4px solid #a8a8a8;
-            border-radius: 15px;
-            background: transparent;
-            z-index: 10;
-            box-shadow: 2px 2px 2px rgba(0,0,0,0.3);
-            border-right-color: transparent; /* ليعطي إيحاء بأنه مشبوك بالورقة */
-        }
-
-        .license-stamp {
-            position: absolute;
-            bottom: 20px;
-            right: 10px;
-            color: #d32f2f;
-            border: 2px solid #d32f2f;
-            border-radius: 5px;
-            padding: 5px;
-            font-weight: bold;
-            transform: rotate(-15deg);
-            opacity: 0.8;
-            font-size: 12px;
-        }
-
-        .barcode {
-            height: 30px;
-            background: repeating-linear-gradient(to right, #000, #000 2px, transparent 2px, transparent 4px, #000 4px, #000 5px, transparent 5px, transparent 8px);
+        /* --- عجلة اختيار الألوان الماك القديمة (Color Wheel - مستوحاة من المكون الدائري المرفق) --- */
+        .color-wheel-box {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #f1f1f1;
+            padding: 15px;
+            border: 2px dashed #333;
             margin-top: 15px;
         }
 
-        /* --- مكون البولارويد والدبوس (مستوحى من image_12) --- */
-        .polaroid {
-            background: white;
-            padding: 10px 10px 40px 10px;
-            box-shadow: 4px 4px 15px rgba(0,0,0,0.5);
-            width: 180px;
-            height: 180px;
-            transform: rotate(-6deg);
-            position: relative;
-        }
-
-        .polaroid-img {
-            background-color: #333;
-            width: 100%;
-            height: 100%;
-            border: 1px solid #ccc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-        }
-
-        .pushpin {
-            width: 16px;
-            height: 16px;
+        .macro-wheel {
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #ff6b6b, #c0392b);
-            position: absolute;
-            top: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 2px 5px 5px rgba(0,0,0,0.4);
-        }
-        /* ظل مسمار الدبوس */
-        .pushpin::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 5px;
-            width: 2px;
-            height: 8px;
-            background: #333;
-            z-index: -1;
-            transform: rotate(20deg);
+            background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red);
+            border: 3px solid #000;
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.3);
         }
 
-        /* --- مكون جدول المهام / العمولات (مستوحى من image_9) --- */
-        .commission-box {
-            background-color: #e5e5e5;
-            padding: 20px;
-            border: 2px solid #000;
-            width: 100%;
-            max-width: 700px;
-            color: #000;
-            margin-top: 30px;
-            box-shadow: 6px 6px 0px rgba(0,0,0,0.6);
+        /* --- طابع بريدي عتيق (Postage Stamp - مستوحى من صور الطوابع المرفقة) --- */
+        .vintage-stamp {
+            width: 140px;
+            background-color: #f4ebd9;
+            color: #4a3b32;
+            padding: 12px;
+            border: 4px dotted #f4ebd9; /* يعطي شكل حواف الطابع المشرشرة */
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.4);
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            text-align: center;
+            transform: rotate(5deg);
+            display: inline-block;
+        }
+        .stamp-inner {
+            border: 1px solid #c3b59f;
+            padding: 8px;
+        }
+
+        /* الأرشيف والأعمدة الجانبية الفوضوية */
+        .archive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .archive-card {
+            background-color: #111;
+            border: 2px dashed var(--pink-border);
+            padding: 15px;
+            color: #fff;
             position: relative;
         }
 
-        /* شريط لاصق (Tape) */
-        .tape {
+        .archive-tag {
+            background: red;
+            font-size: 11px;
+            padding: 2px 6px;
             position: absolute;
             top: -10px;
-            left: 50%;
-            transform: translateX(-50%) rotate(-2deg);
-            width: 120px;
-            height: 30px;
-            background-color: var(--tape-color);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-            z-index: 5;
+            right: 10px;
+            border: 1px solid #fff;
         }
 
-        .comm-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
-            margin-top: 20px;
+        .barcode {
+            height: 25px;
+            background: repeating-linear-gradient(to right, #000, #000 2px, transparent 2px, transparent 4px, #000 4px, #000 6px, transparent 6px, transparent 8px);
+            margin-top: 10px;
         }
 
-        .comm-item {
-            background-color: #2a5a9c;
-            color: white;
-            padding: 10px;
-            border: 2px solid #000;
+        /* أزرار ويندوز 95 التقليدية */
+        .win95-btn {
+            padding: 6px 20px;
+            background-color: var(--win95-gray);
+            border: 2px solid;
+            border-color: #fff #808080 #808080 #fff;
+            cursor: pointer;
             font-family: 'Tajawal', sans-serif;
-            font-size: 14px;
+            font-weight: bold;
         }
-
-        .comm-item h4 {
-            margin: 0 0 10px 0;
-            color: var(--yellow-accent);
-            border-bottom: 1px dashed white;
-            padding-bottom: 5px;
+        .win95-btn:active {
+            border-color: #808080 #fff #fff #808080;
         }
 
     </style>
@@ -323,115 +271,158 @@
 <body>
 
     <div class="top-header" dir="rtl">
-        <div style="display: flex; align-items: center; gap: 15px;">
-            <h1>ابداع ستوديو</h1>
+        <div>
+            <h1>آرت كومباني // للنظم البصرية</h1>
         </div>
         <div class="marquee-container" dir="rtl">
             <marquee behavior="scroll" direction="right" scrollamount="6">
-                احصل على تصميمك الآن! لا تفوت العرض! نستخدم أحدث تقنيات الويب والألوان الجريئة!
+                تحديثات النظام: تم تفعيل خانة الأرشيف الرقمي المفقود وسجلات العمولات لعام 1999 بنجاح!
             </marquee>
         </div>
     </div>
 
     <div class="main-container">
         
-        <!-- القائمة الجانبية -->
         <div class="sidebar">
-            <div class="menu-item active">01_الرئيسية.exe</div>
-            <div class="menu-item">02_طلب_تصميم.bat</div>
-            <div class="menu-item">03_رخصة_الابداع.sys</div>
-            <div class="menu-item">04_الأرشيف_السري.log</div>
-            <div class="menu-item">05_إنهاء_النظام.cmd</div>
+            <div class="menu-item active" onclick="switchTab('home', this)">
+                <div class="pixel-icon"></div>
+                01_الواجهة_الرئيسية
+            </div>
+            <div class="menu-item" onclick="switchTab('archive', this)">
+                <div class="pixel-icon archive"></div>
+                02_أرشيف_الملفات
+            </div>
+            <div class="menu-item" onclick="switchTab('services', this)">
+                <div class="pixel-icon services"></div>
+                03_خدمات_التصميم
+            </div>
+            <div class="menu-item" onclick="switchTab('contact', this)">
+                <div class="pixel-icon contact"></div>
+                04_إنهاء_الاتصال
+            </div>
         </div>
 
-        <!-- منطقة المحتوى -->
         <div class="content-area">
             
-            <!-- شريط المربعات الشطرنجية -->
             <div class="checker-banner"></div>
 
-            <div class="scrapbook-grid">
-                
-                <!-- فاتورة المطعم (Order Form) -->
-                <div class="guest-check" dir="ltr">
-                    <div class="guest-check-header">
-                        <div class="guest-check-number">123456</div>
-                        <div class="guest-check-title">Guest Check</div>
-                        <div style="font-size: 10px;">DATE: 1999 | SERVER: ADMIN</div>
+            <div id="home" class="tab-content active">
+                <div class="window-95">
+                    <div class="window-title-bar">
+                        <span>COMPANY_PROFILE.TXT</span>
+                        <span>[X]</span>
                     </div>
-                    <div style="margin-top: 20px; line-height: 30px;">
-                        <div>1x Web Design ...... $50</div>
-                        <div>1x Cool Graphic .... $20</div>
-                        <div>1x Vibe Check ...... FREE</div>
-                        <div style="border-top: 2px dashed #333; margin-top: 10px;"></div>
-                        <div>TOTAL ............ $70</div>
-                    </div>
-                </div>
-
-                <!-- صورة البولارويد -->
-                <div class="polaroid">
-                    <div class="pushpin"></div>
-                    <div class="polaroid-img">
-                        <span style="font-family: 'Tajawal'; font-size: 12px; transform: rotate(-10deg);">No Signal</span>
-                    </div>
-                    <div style="text-align: center; margin-top: 10px; font-family: 'Space Mono'; font-size: 14px; color: #111;">
-                        Me in 1998
-                    </div>
-                </div>
-
-                <!-- الرخصة الإبداعية (ID Card) -->
-                <div class="creative-license" dir="ltr">
-                    <div class="paperclip"></div>
-                    <h2 style="margin: 0; font-size: 28px; letter-spacing: -1px;">CREATIVE LICENSE</h2>
-                    <div style="font-size: 10px; margin-bottom: 10px;"># OF LICENSE: 0026</div>
-                    
-                    <div style="display: flex; gap: 15px; margin-top: 15px;">
-                        <div style="width: 80px; height: 80px; background: #555; border: 2px solid #111;"></div>
-                        <div style="font-size: 12px; line-height: 1.6;">
-                            <strong>NAME:</strong> USER_99<br>
-                            <strong>ROLE:</strong> TEXTURE USER<br>
-                            <strong>EXPIRY:</strong> DOES NOT EXPIRE
+                    <div class="window-body">
+                        <h2 style="margin-top:0;">مرحباً بكم في فضاء التصميم والحلول الإعلانية الكلاسيكية</h2>
+                        <p>نحن شركة متخصصة في إعادة صياغة الهويات البصرية واللوحات الرقمية المستوحاة من تداخل الثقافات البصرية في التسعينيات، ونمزج بين فوضى الملصقات والخطوط ثلاثية الأبعاد الصلبة وبكسل الكمبيوتر البدائي.</p>
+                        
+                        <div class="color-wheel-box">
+                            <div class="macro-wheel"></div>
+                            <div>
+                                <strong style="font-size:16px;">محلل تدرج الألوان المدمج (Color Palette v1.0)</strong>
+                                <p style="font-size:13px; margin:5px 0 0 0; color:#555;">نظام توليد الألوان والتباين المعتمد في الهويات التي نقوم ببنائها لعملائنا لضمان صخب الإعلانات التلفزيونية وجرأتها.</p>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="barcode"></div>
-                    <div style="font-size: 10px; text-align: center;">440 234 00042 3549</div>
-                    
-                    <div class="license-stamp">AUTHORIZED<br>MEMBER</div>
                 </div>
 
-            </div> <!-- End Scrapbook Grid -->
+                <div class="vintage-stamp" dir="ltr">
+                    <div class="stamp-inner">
+                        <strong>ART STUDIO</strong><br>
+                        POSTAGE 1999<br>
+                        <span style="font-size:18px; font-weight:bold; color:#a13d2d;">$0.35</span><br>
+                        OFFICIAL SEAL
+                    </div>
+                </div>
+            </div>
 
-            <!-- جدول العمولات / المهام (Commission Sheet) -->
-            <div class="commission-box" dir="ltr">
-                <div class="tape"></div>
-                <h2 style="margin: 0; font-size: 30px; text-transform: uppercase;">Commission Protocol</h2>
-                <div style="font-family: 'Space Mono'; font-size: 12px;">STATUS: OPEN // SLOTS: 3</div>
-                
-                <div class="comm-grid">
-                    <div class="comm-item">
-                        <h4>✔ CAN DO</h4>
-                        - Retro Web<br>
-                        - Graphic Design<br>
-                        - UI/UX Logic
+            <div id="archive" class="tab-content">
+                <div class="window-95">
+                    <div class="window-title-bar">
+                        <span>SYSTEM_ARCHIVE_LOG.SYS</span>
+                        <span>[X]</span>
                     </div>
-                    <div class="comm-item">
-                        <h4>✘ CAN'T DO</h4>
-                        - Boring Stuff<br>
-                        - Corporate Slides<br>
-                        - Modern Minimalism
+                    <div class="window-body">
+                        <h2 style="margin-top:0;">سجلات الأرشيف والتصاميم المفقودة</h2>
+                        <p>هنا تجد بقايا الأفكار، والتصاميم غير المكتملة والمكعبات البصرية التي قمنا بأرشفتها وحفظها من التلف عبر السنين لشركتنا:</p>
+                        
+                        <div class="archive-grid" dir="ltr">
+                            <div class="archive-card">
+                                <div class="archive-tag">FILE_01</div>
+                                <h4>Retro Sticker Kit</h4>
+                                <p style="font-size:12px; color:#aaa;">مجموعة ملصقات الويب والشعارات المنقطة التي استخدمت في العروض القديمة.</p>
+                                <div class="barcode"></div>
+                            </div>
+                            <div class="archive-card">
+                                <div class="archive-tag" style="background:#008080;">FILE_02</div>
+                                <h4>TV Promo Tracks</h4>
+                                <p style="font-size:12px; color:#aaa;">المقاطع الصوتية الترويجية لخطوط 1-800 وموسيقى الانتظار التلفزيوني.</p>
+                                <div class="barcode"></div>
+                            </div>
+                            <div class="archive-card">
+                                <div class="archive-tag" style="background:#ff00ff;">FILE_03</div>
+                                <h4>CRT Overlay v2</h4>
+                                <p style="font-size:12px; color:#aaa;">ملفات المحاكاة التلفزيونية وتأثير التداخل اللوني للشاشات القديمة.</p>
+                                <div class="barcode"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="comm-item">
-                        <h4>★ TERMS</h4>
-                        - Payment upfront<br>
-                        - No refunds on vibes<br>
-                        - Delivery in 7 days
+                </div>
+            </div>
+
+            <div id="services" class="tab-content">
+                <div class="window-95">
+                    <div class="window-title-bar">
+                        <span>SERVICES_CATALOG.EXE</span>
+                        <span>[X]</span>
+                    </div>
+                    <div class="window-body">
+                        <h2 style="margin-top:0;">الخدمات والمنتجات البصرية المتاحة</h2>
+                        <p>نقدم لشركتك وبوابتك الرقمية خدمات متكاملة تعيد ألق وصخب العقود الماضية بجودة معاصرة:</p>
+                        
+                        <ul style="line-height: 1.8; font-family: 'Tajawal', sans-serif;">
+                            <li><strong>بناء الهويات الصاخبة (Loud Branding):</strong> تصميم شعارات بخطوط عريضة مائلة، وظلال سوداء قوية تحاكي حقبة التسعينيات.</li>
+                            <li><strong>واجهات ريترو تفاعلية (Retro UI):</strong> تصميم وبرمجة مواقع مخصصة بهياكل كلاسيكية ونوافذ مقتبسة من أنظمة التشغيل القديمة.</li>
+                            <li><strong>حزم الأيقونات والبكسل (Pixel Graphics):</strong> رسم وتجهيز الأيقونات المسننة والرموز المميزة للشاشات القديمة CRT.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contact" class="tab-content">
+                <div class="window-95">
+                    <div class="window-title-bar">
+                        <span>TERMINATE_CONNECTION.BAT</span>
+                        <span>[X]</span>
+                    </div>
+                    <div class="window-body" style="text-align: center;">
+                        <h2>هل أنت مستعد لطلب هويتك الكلاسيكية؟</h2>
+                        <p>تواصل مع مهندسي النظام لدينا لبدء العمل على مشروعك التجاري وتصميم إعلاناتك الفريدة.</p>
+                        <h3 style="color: red; letter-spacing: 2px;">رقم الاتصال السريع: 0898 50 50 50</h3>
+                        <br>
+                        <button class="win95-btn" onclick="alert('جاري معالجة طلبك وإرسال الإشارة...')">إرسال طلب تصميم جديد</button>
                     </div>
                 </div>
             </div>
 
         </div>
     </div>
+
+    <script>
+        function switchTab(tabId, menuItem) {
+            // إخفاء كل النوافذ والصفحات
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // إزالة الحالة النشطة من كل أزرار القائمة الجانبية
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => item.classList.remove('active'));
+            
+            // إظهار النافذة المختارة وتفعيل زرها الجانبي
+            document.getElementById(tabId).classList.add('active');
+            menuItem.classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
