@@ -1,273 +1,109 @@
-/* إعدادات عامة للثيم الخام (Brutalist) */<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بطاقة أعمال شركة داينمو الكونية</title>
-    <style>
-        :root {
-            --bg-color: #0f111a;
-            --primary-yellow: #ffeb3b;
-            --primary-red: #e53935;
-            --text-light: #f5f5f5;
-            --card-bg: #1a1c24;
-        }
+/* إعدادات عامة للثيم الخام (Brutalist) */<!DOCTYPE html>/* استيراد خطوط قديمة وتناسب الرعب */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Cairo:wght@400;700&display=swap');
 
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            color: var(--text-light);
-            overflow-x: hidden;
-        }
+body {
+    background-color: #0b0b0b;
+    color: #e2d9c2; /* لون ورق قديم باهت */
+    font-family: 'Courier Prime', 'Cairo', monospace;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+}
 
-        .instruction {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            color: #888;
-            letter-spacing: 1px;
-            animation: pulse 2s infinite;
-        }
+/* تأثير خطوط الشاشة CRT */
+.scanlines {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+    background-size: 100% 4px;
+    z-index: 999;
+    pointer-events: none;
+}
 
-        @keyframes pulse {
-            0% { opacity: 0.6; }
-            50% { opacity: 1; }
-            100% { opacity: 0.6; }
-        }
+/* حاوية التلفزيون القديم */
+.crt-monitor {
+    max-width: 800px;
+    margin: 0 auto;
+    border: 4px double #e2d9c2;
+    padding: 30px;
+    background-color: #121212;
+    box-shadow: inset 0 0 60px rgba(0,0,0,1), 0 0 20px rgba(226, 217, 194, 0.1);
+}
 
-        /* حاوية البطاقة وتأثير الأبعاد الثلاثية */
-        .card-container {
-            width: 450px;
-            height: 260px;
-            perspective: 1000px;
-            cursor: pointer;
-        }
+/* نصوص SCP المحجوبة والخطوط */
+.red-text {
+    color: #ff3333;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 51, 51, 0.5);
+}
 
-        .card-inner {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            border-radius: 15px;
-        }
+.old-line {
+    border: 0;
+    height: 2px;
+    background: #e2d9c2;
+    margin: 20px 0;
+}
 
-        /* عند إضافة كلاس flipped بواسطة الجافاسكريبت */
-        .card-container.flipped .card-inner {
-            transform: rotateY(180deg);
-        }
+/* صناديق التحذير والإعلانات */
+.warning-box {
+    border: 2px dashed #ff3333;
+    padding: 15px;
+    background-color: rgba(255, 51, 51, 0.05);
+    margin-bottom: 30px;
+}
 
-        .card-front, .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 15px;
-            border: 2px solid rgba(255, 235, 59, 0.1);
-            box-sizing: border-box;
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+.book-page {
+    background-image: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+    padding: 20px;
+    border-radius: 5px;
+}
 
-        /* الوجه الأمامي */
-        .card-front {
-            background: linear-gradient(135deg, #161821 0%, #232736 100%);
-            background-image: radial-gradient(rgba(229, 57, 53, 0.1) 1px, transparent 0);
-            background-size: 15px 15px;
-        }
+.archival-text {
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
 
-        .logo-placeholder {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+.old-ad {
+    margin-top: 40px;
+    border: 1px solid #555;
+    padding: 15px;
+    text-align: center;
+    background: #181818;
+}
 
-        /* محاكاة للشعار المرسل (الأصفر والأحمر المتداخلين) */
-        .logo-graphic {
-            width: 50px;
-            height: 50px;
-            position: relative;
-        }
-        .logo-graphic::before, .logo-graphic::after {
-            content: '';
-            position: absolute;
-            width: 35px;
-            height: 35px;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-        }
-        .logo-graphic::before {
-            background: var(--primary-yellow);
-            top: 0; left: 0;
-            transform: rotate(15deg);
-            opacity: 0.9;
-        }
-        .logo-graphic::after {
-            background: var(--primary-red);
-            bottom: 0; right: 0;
-            transform: rotate(-45deg);
-            mix-blend-mode: screen;
-        }
+.ad-placeholder {
+    height: 150px;
+    background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #444;
+    border: 1px inset #333;
+    font-style: italic;
+    animation: flicker 0.15s infinite; /* تأثير الرعشة للإعلان */
+}
 
-        .company-name {
-            font-size: 2rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            background: linear-gradient(45deg, var(--primary-yellow), var(--primary-red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+.subliminal {
+    font-size: 0.8rem;
+    color: #555;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
 
-        .front-footer {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 10px;
-        }
+/* تذييل الـ VHS */
+.vhs-footer {
+    display: flex;
+    justify-content: space-between;
+    font-family: monospace;
+    color: #00ff00; /* أخضر فسفوري للـ VHS */
+    text-shadow: 0 0 5px #00ff00;
+}
 
-        .tagline {
-            font-size: 0.95rem;
-            color: #bbb;
-            margin: 0;
-        }
-        .sub-tagline {
-            font-size: 0.75rem;
-            color: #666;
-            margin-top: 5px;
-        }
-
-        /* الوجه الخلفي */
-        .card-back {
-            background: linear-gradient(135deg, #232736 0%, #161821 100%);
-            transform: rotateY(180deg);
-            border-color: rgba(229, 57, 53, 0.2);
-        }
-
-        .profile-info h3 {
-            margin: 0;
-            font-size: 1.4rem;
-            color: var(--primary-yellow);
-        }
-        .profile-info p {
-            margin: 5px 0 0 0;
-            font-size: 0.85rem;
-            color: #aaa;
-        }
-
-        .contact-details {
-            margin-top: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            font-size: 0.85rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #ddd;
-        }
-        .contact-item span.icon {
-            color: var(--primary-red);
-            font-weight: bold;
-        }
-
-        /* زر الأرشيف السري */
-        .archive-btn {
-            margin-top: 30px;
-            padding: 12px 30px;
-            background: transparent;
-            border: 2px solid var(--primary-red);
-            color: #fff;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(229, 57, 53, 0.2);
-        }
-
-        .archive-btn:hover {
-            background: var(--primary-red);
-            color: #fff;
-            box-shadow: 0 0 25px rgba(229, 57, 53, 0.6);
-            transform: translateY(-2px);
-        }
-        
-        /* إيقاف انقلاب البطاقة عند الضغط على الزر نفسه */
-        .archive-btn-container {
-            z-index: 10;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="instruction">انقر فوق البطاقة لمعاينة البُعد الآخر 🌀</div>
-
-    <div class="card-container" id="multiverseCard">
-        <div class="card-inner">
-            
-            <div class="card-front">
-                <div class="logo-placeholder">
-                    <div class="logo-graphic"></div>
-                    <div class="company-name">DYNAMO</div>
-                </div>
-                <div class="front-footer">
-                    <p class="tagline">شركة داينمو لإصلاح واحتواء فوضى الكون المتعدد</p>
-                    <p class="sub-tagline">// متاحون في جميع الأبعاد والخطوط الزمنية بالتوازي</p>
-                </div>
-            </div>
-
-            <div class="card-back">
-                <div class="profile-info">
-                    <h3>المُحقّق الكوني المسؤول</h3>
-                    <p>قسم معالجة المفارقات الزمنية والأعطال البُعدية</p>
-                </div>
-                
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <span class="icon">✉</span> <span>sos@dynamo.multiverse</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="icon">☎</span> <span>+966 9 999 DYNAMO (امتداد بعدي: 04)</span>
-                    </div>
-                    <div class="contact-item">
-                        <span class="icon">📍</span> <span>البُعد الثامن - نقطة التقاطع الفراغي رقم 5</span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="archive-btn-container">
-        <button class="archive-btn" id="archiveBtn">دخول الأرشيف السري للشركة 👁️</button>
-    </div>
-
-    <script>
-        const card = document.getElementById('multiverseCard');
-        const archiveBtn = document.getElementById('archiveBtn');
-
-        // تأثير قلب البطاقة عند الضغط عليها
-        card.addEventListener('click', () => {
-            card.classList.toggle('flipped');
-        });
-
-        // حدث الضغط على زر الأرشيف (تأثير دخول الأرشيف الكوني)
-        archiveBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // يمنع انقلاب البطاقة عند الضغط على الزر
-            alert("⚠️ جاري اختراق الجدار البُعدي العازل... الدخول إلى أرشيف داينمو مُصرّح به فقط للعملاء من الفئة (A).");
-            // يمكنك هنا استبدال الـ alert برابط حقيقي مثل:
-            // window.location.href = 'رابط_الأرشيف_الخاص_بك';
-        });
-    </script>
-
+/* أنيميشن الرعشة والتشويش (Flicker) */
+@keyframes flicker {
+    0% { opacity: 0.95; }
+    50% { opacity: 1; }
+    100% { opacity: 0.92; }
+}
 </body>
 </html>
