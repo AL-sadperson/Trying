@@ -4,17 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>[ملف سري] - مشروع أنلوق هورور</title>
-    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Cairo:wght=400;700&display=swap');
+
+        body {
+            background-color: #0b0b0b;
+            color: #e2d9c2; /* لون ورق قديم باهت */
+            font-family: 'Courier Prime', 'Cairo', monospace;
+            padding: 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* تأثير خطوط الشاشة CRT */
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background-size: 100% 4px;
+            z-index: 999;
+            pointer-events: none;
+        }
+
+        /* حاوية التلفزيون القديم */
+        .crt-monitor {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 4px double #e2d9c2;
+            padding: 30px;
+            background-color: #121212;
+            box-shadow: inset 0 0 60px rgba(0,0,0,1), 0 0 20px rgba(226, 217, 194, 0.1);
+        }
+
+        /* نصوص SCP المحجوبة والخطوط */
+        .red-text {
+            color: #ff3333;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 51, 51, 0.5);
+        }
+
+        .old-line {
+            border: 0;
+            height: 2px;
+            background: #e2d9c2;
+            margin: 20px 0;
+        }
+
+        /* صناديق التحذير والإعلانات */
+        .warning-box {
+            border: 2px dashed #ff3333;
+            padding: 15px;
+            background-color: rgba(255, 51, 51, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .book-page {
+            background-image: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .archival-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .old-ad {
+            margin-top: 40px;
+            border: 1px solid #555;
+            padding: 15px;
+            text-align: center;
+            background: #181818;
+        }
+
+        .ad-placeholder {
+            height: 150px;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+            border: 1px inset #333;
+            font-style: italic;
+            animation: flicker 0.15s infinite;
+        }
+
+        .subliminal {
+            font-size: 0.8rem;
+            color: #555;
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+
+        /* تذييل الـ VHS */
+        .vhs-footer {
+            display: flex;
+            justify-content: space-between;
+            font-family: monospace;
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.95; }
+            50% { opacity: 1; }
+            100% { opacity: 0.92; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- تأثير خطوط التلفزيون القديم (Scanlines) -->
     <div class="scanlines"></div>
 
-    <!-- الحاوية الرئيسية للموقع بتأثير التشويش -->
-    <div class="crt-monitor glitch-effect">
-        
-        <!-- الهيدر بأسلوب منظمات سرية / SCP -->
+    <div class="crt-monitor">
         <header>
             <div class="scp-header">
                 <h2>السرية: <span class="red-text">[محجوب]</span></h2>
@@ -23,7 +126,6 @@
             <hr class="old-line">
         </header>
 
-        <!-- المحتوى الرئيسي (مزيج كتاب قديم وإعلان تالف) -->
         <main class="content-area">
             <section class="warning-box">
                 <h3>⚠️ تحذير رسمي من وزارة [بيانات محجوبة]</h3>
@@ -38,7 +140,6 @@
                 </p>
             </article>
 
-            <!-- منطقة الإعلانات القديمة المخيفة -->
             <section class="old-ad">
                 <p class="ad-title">إعلان تجاري - شركة لومينا للإلكترونيات (1985)</p>
                 <div class="ad-placeholder">
@@ -48,7 +149,6 @@
             </section>
         </main>
 
-        <!-- الفوتر بأسلوب الـ VHS -->
         <footer>
             <hr class="old-line">
             <div class="vhs-footer">
