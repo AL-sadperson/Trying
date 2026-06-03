@@ -1,4 +1,4 @@
-/* إعدادات عامة للثيم الخام (Brutalist) */<!DOCTYPE html>/* استيراد خطوط قديمة وتناسب الرعب */
+/* استيراد خطوط قديمة وتناسب الرعب */
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Cairo:wght@400;700&display=swap');
 
 body {
@@ -105,5 +105,3 @@ body {
     50% { opacity: 1; }
     100% { opacity: 0.92; }
 }
-</body>
-</html>
