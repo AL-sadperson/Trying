@@ -1,163 +1,284 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[ملف سري] - مشروع أنلوق هورور</title>
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Cairo:wght=400;700&display=swap');
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Retro Creative Site</title>
 
-        body {
-            background-color: #0b0b0b;
-            color: #e2d9c2; /* لون ورق قديم باهت */
-            font-family: 'Courier Prime', 'Cairo', monospace;
-            padding: 20px;
-            overflow-x: hidden;
-            position: relative;
-        }
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
-        /* تأثير خطوط الشاشة CRT */
-        .scanlines {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
-            background-size: 100% 4px;
-            z-index: 999;
-            pointer-events: none;
-        }
+* {
+  box-sizing: border-box;
+}
 
-        /* حاوية التلفزيون القديم */
-        .crt-monitor {
-            max-width: 800px;
-            margin: 0 auto;
-            border: 4px double #e2d9c2;
-            padding: 30px;
-            background-color: #121212;
-            box-shadow: inset 0 0 60px rgba(0,0,0,1), 0 0 20px rgba(226, 217, 194, 0.1);
-        }
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top, #fff7b7 0%, transparent 28%),
+    linear-gradient(135deg, #9aa7ff, #3152d4);
+  font-family: "VT323", monospace;
+  color: #1b245c;
+}
 
-        /* نصوص SCP المحجوبة والخطوط */
-        .red-text {
-            color: #ff3333;
-            font-weight: bold;
-            text-shadow: 0 0 5px rgba(255, 51, 51, 0.5);
-        }
+.page {
+  width: 92%;
+  max-width: 1100px;
+  margin: 30px auto;
+  background: #f8f1d2;
+  border: 8px solid #243b9b;
+  box-shadow: 12px 12px 0 #e95b28;
+  padding: 25px;
+  position: relative;
+}
 
-        .old-line {
-            border: 0;
-            height: 2px;
-            background: #e2d9c2;
-            margin: 20px 0;
-        }
+.header {
+  background: #243b9b;
+  color: #fff7d6;
+  padding: 25px;
+  text-align: center;
+  border: 4px dashed #fff;
+}
 
-        /* صناديق التحذير والإعلانات */
-        .warning-box {
-            border: 2px dashed #ff3333;
-            padding: 15px;
-            background-color: rgba(255, 51, 51, 0.05);
-            margin-bottom: 30px;
-        }
+.header h1 {
+  font-family: "Press Start 2P", cursive;
+  font-size: 28px;
+  text-shadow: 4px 4px #e95b28;
+  margin: 0;
+}
 
-        .book-page {
-            background-image: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7));
-            padding: 20px;
-            border-radius: 5px;
-        }
+.header p {
+  font-size: 26px;
+  margin: 15px 0 0;
+}
 
-        .archival-text {
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 25px 0;
+  flex-wrap: wrap;
+}
 
-        .old-ad {
-            margin-top: 40px;
-            border: 1px solid #555;
-            padding: 15px;
-            text-align: center;
-            background: #181818;
-        }
+.nav a {
+  background: #e95b28;
+  color: white;
+  padding: 10px 18px;
+  text-decoration: none;
+  border: 3px solid #1b245c;
+  box-shadow: 4px 4px 0 #1b245c;
+  font-size: 22px;
+}
 
-        .ad-placeholder {
-            height: 150px;
-            background: #222;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #444;
-            border: 1px inset #333;
-            font-style: italic;
-            animation: flicker 0.15s infinite;
-        }
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  align-items: center;
+}
 
-        .subliminal {
-            font-size: 0.8rem;
-            color: #555;
-            margin-top: 10px;
-            letter-spacing: 2px;
-        }
+.card {
+  background: #fffdf0;
+  border: 4px solid #243b9b;
+  padding: 20px;
+  box-shadow: 7px 7px 0 #e95b28;
+}
 
-        /* تذييل الـ VHS */
-        .vhs-footer {
-            display: flex;
-            justify-content: space-between;
-            font-family: monospace;
-            color: #00ff00;
-            text-shadow: 0 0 5px #00ff00;
-        }
+.card h2 {
+  background: #e95b28;
+  color: white;
+  padding: 10px;
+  font-size: 34px;
+  margin-top: 0;
+  text-align: center;
+  transform: rotate(-2deg);
+}
 
-        @keyframes flicker {
-            0% { opacity: 0.95; }
-            50% { opacity: 1; }
-            100% { opacity: 0.92; }
-        }
-    </style>
+.card p, .card li {
+  font-size: 25px;
+  line-height: 1.2;
+}
+
+.pixel-box {
+  background: #15136b;
+  color: #fff7b7;
+  border: 5px solid #fff;
+  padding: 25px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 16px;
+  line-height: 2;
+  box-shadow: inset 0 0 0 5px #5f6cff;
+}
+
+.sticker {
+  display: inline-block;
+  background: #fff7b7;
+  color: #e95b28;
+  border: 3px solid #243b9b;
+  padding: 8px 14px;
+  font-size: 26px;
+  transform: rotate(4deg);
+  box-shadow: 4px 4px 0 #243b9b;
+}
+
+.section-title {
+  font-family: "Press Start 2P", cursive;
+  font-size: 20px;
+  background: #243b9b;
+  color: white;
+  padding: 14px;
+  margin-top: 35px;
+  text-align: center;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.service {
+  background: #fff;
+  border: 3px solid #243b9b;
+  padding: 18px;
+  text-align: center;
+  box-shadow: 5px 5px 0 #e95b28;
+}
+
+.service h3 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.service p {
+  font-size: 22px;
+}
+
+.button {
+  display: inline-block;
+  background: #e95b28;
+  color: white;
+  border: 4px solid #243b9b;
+  padding: 12px 25px;
+  font-size: 28px;
+  text-decoration: none;
+  box-shadow: 5px 5px 0 #243b9b;
+  margin-top: 15px;
+}
+
+.footer {
+  margin-top: 35px;
+  background: #243b9b;
+  color: white;
+  text-align: center;
+  padding: 18px;
+  font-size: 24px;
+}
+
+.marquee {
+  background: #fff7b7;
+  color: #e95b28;
+  border: 3px solid #243b9b;
+  font-size: 26px;
+  padding: 8px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee span {
+  display: inline-block;
+  animation: move 10s linear infinite;
+}
+
+@keyframes move {
+  from { transform: translateX(100%); }
+  to { transform: translateX(-100%); }
+}
+
+@media (max-width: 800px) {
+  .hero,
+  .services {
+    grid-template-columns: 1fr;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+}
+</style>
 </head>
+
 <body>
 
-    <div class="scanlines"></div>
+<div class="page">
 
-    <div class="crt-monitor">
-        <header>
-            <div class="scp-header">
-                <h2>السرية: <span class="red-text">[محجوب]</span></h2>
-                <p>معرف الملف: BILL-LOG-993</p>
-            </div>
-            <hr class="old-line">
-        </header>
+  <div class="marquee">
+    <span>★ WELCOME TO MY RETRO WEBSITE ★ CREATIVE DESIGN ★ STUDY HELP ★ DIGITAL SERVICES ★</span>
+  </div>
 
-        <main class="content-area">
-            <section class="warning-box">
-                <h3>⚠️ تحذير رسمي من وزارة [بيانات محجوبة]</h3>
-                <p>إذا واجهت أي تغير في تردد القناة 3، أو وجدت هذا الكتاب في منزلك، أغلق عينيك فوراً.</p>
-            </section>
+  <header class="header">
+    <h1>STUDY WITH BLUE!</h1>
+    <p>need help with academics? i got you!</p>
+  </header>
 
-            <article class="book-page">
-                <h1 class="page-title">الفصل الرابع: طقوس الفتيل</h1>
-                <p class="archival-text">
-                    في عام 1982، عثرت فرق الاستكشاف على وثيقة "بيل" داخل جهاز تسجيل تالف. النص التالي تم استخراجه بصعوبة:
-                    "الظل الذي يزحف خلف شريط المغناطيس ليس قادماً من الشاشة... إنه قادم من <span class="red-text">██████</span>."
-                </p>
-            </article>
+  <nav class="nav">
+    <a href="#">Home</a>
+    <a href="#">About Me</a>
+    <a href="#">Services</a>
+    <a href="#">Prices</a>
+    <a href="#">Contact</a>
+  </nav>
 
-            <section class="old-ad">
-                <p class="ad-title">إعلان تجاري - شركة لومينا للإلكترونيات (1985)</p>
-                <div class="ad-placeholder">
-                    [صورة مشوشة لجهاز تلفزيون يبتسم]
-                </div>
-                <p class="subliminal">"تلفزيوننا يراك.. حتى عندما يكون مغلقاً"</p>
-            </section>
-        </main>
-
-        <footer>
-            <hr class="old-line">
-            <div class="vhs-footer">
-                <span>● PLAY</span>
-                <span>00:42:19</span>
-                <span>VCR-MODE</span>
-            </div>
-        </footer>
+  <section class="hero">
+    <div class="card">
+      <h2>ABOUT ME</h2>
+      <p>☆ incoming college student</p>
+      <p>☆ consistent honor student</p>
+      <p>☆ creative design + study help</p>
+      <p>☆ goal: reduce student workload</p>
+      <span class="sticker">CREATIVE LICENSE</span>
     </div>
+
+    <div class="pixel-box">
+      DECK 1 PLAY<br>
+      TU VIEW LINE2<br>
+      00:00:02<br><br>
+      I'LL WAIT...
+    </div>
+  </section>
+
+  <h2 class="section-title">SERVICES</h2>
+
+  <section class="services">
+    <div class="service">
+      <h3>Assignments</h3>
+      <p>تنسيق، تلخيص، عروض، أبحاث.</p>
+    </div>
+
+    <div class="service">
+      <h3>Design</h3>
+      <p>بوسترات، هويات، CV، ثيمات.</p>
+    </div>
+
+    <div class="service">
+      <h3>Study Help</h3>
+      <p>أسئلة، اختبارات، شرح مبسط.</p>
+    </div>
+  </section>
+
+  <div class="card" style="margin-top:30px; text-align:center;">
+    <h2>CONTACT ME</h2>
+    <p>جاهزة أساعدك؟ اضغط الزر</p>
+    <a class="button" href="#">SEND MESSAGE</a>
+  </div>
+
+  <footer class="footer">
+    © 2026 Retro Creative Website — made with pixels
+  </footer>
+
+</div>
 
 </body>
 </html>
