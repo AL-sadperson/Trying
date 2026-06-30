@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<!-- START SCREEN -->
+<div id="startScreen">
+  <div class="door-wrap" onclick="enterSite()">
+    <div class="exit">EXIT</div>
+    <div class="door"></div>
+  </div>
+
+  <h1 class="wait-text">I'll wait</h1>
+</div>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,6 +15,113 @@
 <title>ARG Analog Archive</title>
 
 <style>
+#startScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background:
+    linear-gradient(#a7a8ff 0 55%, #124b46 55% 100%);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+#startScreen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 10%, #ffffb8 0 18%, transparent 19%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,.08) 0 2px,
+      transparent 2px 5px
+    );
+  opacity: .45;
+}
+
+#startScreen::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 35%;
+  background:
+    repeating-linear-gradient(
+      110deg,
+      #e7ea39 0 6px,
+      #124b46 6px 13px
+    );
+  opacity: .9;
+}
+
+.door-wrap {
+  position: absolute;
+  left: 17%;
+  bottom: 22%;
+  width: 130px;
+  height: 260px;
+  z-index: 3;
+}
+
+.exit {
+  position: absolute;
+  top: -42px;
+  left: 35px;
+  background: #d9df72;
+  color: white;
+  font-family: "VT323", monospace;
+  font-size: 32px;
+  padding: 2px 8px;
+}
+
+.door {
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(90deg, #ff0000 0 12px, transparent 12px),
+    linear-gradient(135deg, #12020b, #ff0000);
+  border: 5px solid #4f41d9;
+  box-shadow: 10px 0 0 #ff1010;
+  animation: doorGlitch .8s infinite;
+}
+
+.door::before {
+  content: "";
+  position: absolute;
+  inset: 25px;
+  border: 3px solid #1b0208;
+  background: rgba(0,0,0,.35);
+}
+
+.wait-text {
+  position: absolute;
+  left: 35%;
+  bottom: 42%;
+  z-index: 3;
+  color: #ffffb8;
+  font-family: "VT323", monospace;
+  font-size: 70px;
+  font-weight: normal;
+  text-shadow: 3px 3px #7b76ff;
+}
+
+@keyframes doorGlitch {
+  0% { filter: none; transform: translate(0); }
+  25% { filter: hue-rotate(20deg); transform: translate(2px, -1px); }
+  50% { filter: contrast(1.5); transform: translate(-2px, 1px); }
+  100% { filter: none; transform: translate(0); }
+}
+
+#startScreen.hide {
+  animation: fadeOut 1.2s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 @import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
 
 * {
@@ -358,6 +474,10 @@ nav a:hover {
   </div>
 
 </div>
-
+<script>
+function enterSite() {
+  document.getElementById("startScreen").classList.add("hide");
+}
+</script>
 </body>
 </html>
