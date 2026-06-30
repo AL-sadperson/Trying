@@ -1,219 +1,266 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ARG Company</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARG Analog Archive</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
+
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
-  background: linear-gradient(135deg, #8fa2ff, #233a9f);
+  background: #050505;
+  color: #d8d0aa;
   font-family: "VT323", monospace;
-  color: #17205c;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255,255,255,.04) 50%, rgba(0,0,0,.25) 50%),
+    url("images/static.gif");
+  background-size: 100% 4px, cover;
+  opacity: .22;
+  pointer-events: none;
+  z-index: 999;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, transparent 45%, black 95%);
+  pointer-events: none;
+  z-index: 998;
 }
 
 .page {
   width: 92%;
-  max-width: 1150px;
-  margin: 30px auto;
-  background: #f8f0cf;
-  border: 8px solid #243b9b;
-  box-shadow: 12px 12px 0 #e95b28;
+  max-width: 1200px;
+  margin: 20px auto;
   padding: 25px;
+  border: 2px solid #625f4c;
+  background:
+    linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.9)),
+    url("images/vhs-bg.jpg");
+  box-shadow: 0 0 25px #000;
 }
 
-.marquee {
-  background: #fff7b7;
-  color: #e95b28;
-  border: 3px solid #243b9b;
-  font-size: 26px;
-  padding: 8px;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.marquee span {
-  display: inline-block;
-  animation: move 12s linear infinite;
-}
-
-@keyframes move {
-  from { transform: translateX(100%); }
-  to { transform: translateX(-100%); }
-}
-
-.header {
-  background: #243b9b;
-  color: #fff7d6;
-  padding: 28px;
-  text-align: center;
-  border: 4px dashed #fff;
-  margin-top: 20px;
-}
-
-.header h1 {
-  font-family: "Press Start 2P", cursive;
-  font-size: 36px;
-  margin: 0;
-  text-shadow: 4px 4px #e95b28;
-}
-
-.header p {
+.vhs-top {
+  display: flex;
+  justify-content: space-between;
   font-size: 28px;
-  margin: 15px 0 0;
+  color: #eee9b8;
+  text-shadow: 2px 2px #000;
 }
 
-.nav {
+.logo {
+  text-align: center;
+  margin: 15px 0 10px;
+}
+
+.logo h1 {
+  font-family: "Press Start 2P", cursive;
+  color: #d8d0aa;
+  font-size: 45px;
+  letter-spacing: 5px;
+  margin: 0;
+  text-shadow: 4px 0 red, -4px 0 blue;
+}
+
+.logo h2 {
+  color: #700000;
+  font-size: 46px;
+  letter-spacing: 20px;
+  margin: 12px 0;
+}
+
+.logo p {
+  font-size: 26px;
+  letter-spacing: 3px;
+}
+
+nav {
   display: flex;
   justify-content: center;
-  gap: 14px;
+  gap: 55px;
   margin: 25px 0;
-  flex-wrap: wrap;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+  padding: 15px;
 }
 
-.nav a {
-  background: #e95b28;
-  color: white;
-  padding: 10px 18px;
+nav a {
+  color: #eee9b8;
   text-decoration: none;
-  border: 3px solid #17205c;
-  box-shadow: 4px 4px 0 #17205c;
-  font-size: 23px;
+  font-size: 28px;
 }
 
-.hero {
+nav a:hover {
+  color: #8b0000;
+  text-shadow: 2px 0 red;
+}
+
+.grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 2fr 1fr;
   gap: 25px;
-  align-items: stretch;
 }
 
-.card {
-  background: #fffdf0;
-  border: 4px solid #243b9b;
-  padding: 22px;
-  box-shadow: 7px 7px 0 #e95b28;
-}
-
-.card h2 {
-  background: #e95b28;
-  color: white;
-  padding: 10px;
-  font-size: 34px;
-  margin-top: 0;
-  text-align: center;
-  transform: rotate(-1.5deg);
-}
-
-.card p,
-.card li {
-  font-size: 25px;
-  line-height: 1.25;
-}
-
-.pixel-screen {
-  background: #17106d;
-  color: #fff7b7;
-  border: 5px solid #fff;
+.ad-box {
+  background: #c7b994;
+  color: #111;
+  border: 3px solid #222;
   padding: 25px;
-  font-family: "Press Start 2P", cursive;
-  font-size: 15px;
-  line-height: 2;
-  box-shadow: inset 0 0 0 5px #5f6cff;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 20px;
+  box-shadow: inset 0 0 30px rgba(0,0,0,.55);
+}
+
+.book {
+  width: 100%;
+  transform: rotate(-5deg);
+  filter: grayscale(.7) contrast(1.4);
+  border: 3px solid #111;
+}
+
+.ad-text h2 {
+  font-size: 45px;
+  margin: 0;
+}
+
+.ad-text .red {
+  color: #720000;
+  font-size: 72px;
+  font-weight: bold;
+}
+
+.ad-text p {
+  font-size: 30px;
+  line-height: 1;
+}
+
+.price {
+  color: #650000;
+  font-size: 50px;
+  font-weight: bold;
 }
 
 .badge {
   display: inline-block;
-  background: #fff7b7;
-  color: #e95b28;
-  border: 3px solid #243b9b;
-  padding: 8px 14px;
-  font-size: 26px;
-  transform: rotate(3deg);
-  box-shadow: 4px 4px 0 #243b9b;
+  background: #7b0000;
+  color: #fff7c7;
+  padding: 18px;
+  border-radius: 50%;
+  font-size: 28px;
+  transform: rotate(-12deg);
+  border: 3px dashed #111;
 }
 
-.section-title {
-  font-family: "Press Start 2P", cursive;
-  font-size: 20px;
-  background: #243b9b;
-  color: white;
-  padding: 14px;
-  margin-top: 35px;
+.phone {
+  grid-column: 1 / 3;
   text-align: center;
+  font-size: 48px;
+  border-top: 3px dashed #222;
+  padding-top: 15px;
 }
 
-.services {
+.side-card {
+  border: 2px solid #555;
+  padding: 18px;
+  margin-bottom: 25px;
+  background: rgba(0,0,0,.55);
+}
+
+.side-card h3 {
+  color: #eee9b8;
+  font-size: 31px;
+  margin-top: 0;
+  letter-spacing: 4px;
+}
+
+.face {
+  width: 100%;
+  filter: grayscale(1) contrast(1.7);
+  opacity: .8;
+}
+
+.logs p {
+  font-size: 25px;
+  color: #c6c08d;
+}
+
+.warning {
+  color: #7c0000;
+  font-size: 28px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: .25; }
+}
+
+.features {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
-.service {
-  background: #fff;
-  border: 3px solid #243b9b;
-  padding: 18px;
-  text-align: center;
-  box-shadow: 5px 5px 0 #e95b28;
-}
-
-.service h3 {
-  font-size: 30px;
-  margin: 0;
-}
-
-.service p {
-  font-size: 23px;
-}
-
-.projects {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-  margin-top: 20px;
-}
-
-.project {
-  background: #fffdf0;
-  border: 3px dashed #243b9b;
-  padding: 18px;
-  font-size: 24px;
-}
-
-.button {
-  display: inline-block;
-  background: #e95b28;
-  color: white;
-  border: 4px solid #243b9b;
-  padding: 12px 25px;
-  font-size: 28px;
-  text-decoration: none;
-  box-shadow: 5px 5px 0 #243b9b;
-  margin-top: 15px;
+.feature {
+  border: 2px solid #555;
+  padding: 15px;
+  background: rgba(0,0,0,.65);
+  font-size: 25px;
 }
 
 .footer {
-  margin-top: 35px;
-  background: #243b9b;
-  color: white;
   text-align: center;
-  padding: 18px;
+  margin-top: 30px;
+  color: #77704f;
   font-size: 24px;
 }
 
-@media (max-width: 800px) {
-  .hero,
-  .services,
-  .projects {
+.glitch {
+  animation: glitch 1.5s infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(2px, -1px); }
+  60% { transform: translate(-1px, -2px); }
+  80% { transform: translate(1px, 2px); }
+  100% { transform: translate(0); }
+}
+
+@media(max-width: 850px) {
+  .grid,
+  .ad-box,
+  .features {
     grid-template-columns: 1fr;
   }
 
-  .header h1 {
-    font-size: 24px;
+  .phone {
+    grid-column: auto;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .logo h1 {
+    font-size: 28px;
   }
 }
 </style>
@@ -223,98 +270,92 @@ body {
 
 <div class="page">
 
-  <div class="marquee">
-    <span>★ ARG COMPANY ★ CREATIVE SOLUTIONS ★ DIGITAL SERVICES ★ BRANDING ★ WEB DESIGN ★</span>
+  <div class="vhs-top">
+    <div>OCT.29 1996<br>23:17:08</div>
+    <div>CH 03<br>PLAY ►</div>
   </div>
 
-  <header class="header">
-    <h1>ARG COMPANY</h1>
-    <p>Creative Digital Solutions for Modern Brands</p>
-  </header>
+  <div class="logo glitch">
+    <h1>ARG</h1>
+    <h2>HORROR</h2>
+    <p>REAL FEAR. REAL STATIC.</p>
+  </div>
 
-  <nav class="nav">
-    <a href="#">الرئيسية</a>
-    <a href="#">من نحن</a>
-    <a href="#">الخدمات</a>
-    <a href="#">أعمالنا</a>
-    <a href="#">تواصل معنا</a>
+  <nav>
+    <a href="#">HOME</a>
+    <a href="#">ABOUT</a>
+    <a href="#">ARCHIVES</a>
+    <a href="#">TAPES</a>
+    <a href="#">CONTACT</a>
   </nav>
 
-  <section class="hero">
-    <div class="card">
-      <h2>من نحن</h2>
-      <p>
-        شركة ARG تقدم حلول رقمية وإبداعية للشركات والمتاجر والأفراد،
-        بأسلوب يجمع بين الهوية البصرية القوية والتصميم العصري.
-      </p>
-      <p>☆ تصميم مواقع</p>
-      <p>☆ هوية بصرية</p>
-      <p>☆ إدارة محتوى</p>
-      <p>☆ حلول تسويقية</p>
-      <span class="badge">ARG LICENSED</span>
-    </div>
+  <div class="grid">
 
-    <div class="pixel-screen">
-      ARG SYSTEM<br>
-      STATUS: ONLINE<br>
-      BRAND MODE: ON<br>
-      CLIENT LINE: READY<br><br>
-      WE BUILD IDEAS...
-    </div>
-  </section>
+    <section class="ad-box">
+      <img src="images/bill-book.png" class="book">
 
-  <h2 class="section-title">خدمات ARG</h2>
+      <div class="ad-text">
+        <h2>DON'T WATCH IT</h2>
+        <div class="red">ALONE.</div>
+        <p>
+          THE BILL BOOK<br>
+          A COLLECTION OF<br>
+          DISTURBING FOOTAGE<br>
+          AND LOST LOGS.
+        </p>
 
-  <section class="services">
-    <div class="service">
-      <h3>Web Design</h3>
-      <p>تصميم مواقع احترافية بثيمات مميزة وتجربة استخدام سهلة.</p>
-    </div>
+        <div class="price">$19.95</div>
+        <p>PLUS S&H</p>
 
-    <div class="service">
-      <h3>Branding</h3>
-      <p>شعارات، ألوان، خطوط، وهوية كاملة تناسب مشروعك.</p>
-    </div>
+        <div class="badge">AS SEEN ON TV!</div>
+      </div>
 
-    <div class="service">
-      <h3>Marketing</h3>
-      <p>تصاميم إعلانية ومحتوى سوشال ميديا بأسلوب جذاب.</p>
-    </div>
-  </section>
+      <div class="phone">
+        CALL NOW!<br>
+        1-900-444-1996<br>
+        <small>$2.99 PER MINUTE</small>
+      </div>
+    </section>
 
-  <h2 class="section-title">أعمالنا</h2>
+    <aside>
+      <div class="side-card">
+        <h3>LATEST FOOTAGE <span class="warning">●</span></h3>
+        <img src="images/face.png" class="face">
+        <p>TAPE_7B - 10/29/96</p>
+      </div>
 
-  <section class="projects">
-    <div class="project">
-      <strong>Project 01:</strong>
-      تصميم موقع شركة خدمات رقمية.
-    </div>
+      <div class="side-card logs">
+        <h3>RECENT LOGS</h3>
+        <p>› ENTRY #142 - 10/28/96</p>
+        <p>› ENTRY #141 - 10/27/96</p>
+        <p>› ENTRY #140 - 10/26/96</p>
+        <p>[ VIEW ALL ]</p>
+      </div>
+    </aside>
 
-    <div class="project">
-      <strong>Project 02:</strong>
-      تطوير هوية بصرية لمتجر إلكتروني.
-    </div>
-
-    <div class="project">
-      <strong>Project 03:</strong>
-      تصميم حملة إعلانية للسوشال ميديا.
-    </div>
-
-    <div class="project">
-      <strong>Project 04:</strong>
-      صفحة تعريفية احترافية لشركة ناشئة.
-    </div>
-  </section>
-
-  <div class="card" style="margin-top:30px; text-align:center;">
-    <h2>تواصل معنا</h2>
-    <p>جاهز تبدأ مشروعك مع ARG؟</p>
-    <a class="button" href="mailto:info@arg.com">CONTACT ARG</a>
   </div>
 
-  <footer class="footer">
-    © 2026 ARG Company — Retro Digital Experience
-  </footer>
+  <section class="features">
+    <div class="feature">
+      📼 FOUND TAPES<br>
+      uncover the lost broadcasts.
+    </div>
+
+    <div class="feature">
+      👁 WATCH CAREFULLY<br>
+      not everything is as it seems.
+    </div>
+
+    <div class="feature">
+      📡 STAY TUNED<br>
+      new signals coming soon.
+    </div>
+  </section>
+
+  <div class="footer">
+    © 1996 ARG ANALOG ARCHIVE INC.<br>
+    THIS IS A FICTIONAL EXPERIENCE.
+  </div>
 
 </div>
 
