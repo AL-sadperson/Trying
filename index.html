@@ -2,120 +2,125 @@
 <html lang="ar" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>Interdimensional Services - Microsoft Internet Explorer</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interdimensional Services - Terminal</title>
+    <!-- استدعاء مكتبة 98.css لواجهة المستخدم الكلاسيكية -->
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <style>
+        /* إعدادات الخلفية العامة */
+        body {
+            background-color: #008080; /* لون خلفية ويندوز 95/98 الكلاسيكي */
+            font-family: 'Pixelated MS Sans Serif', Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+        }
+
+        /* تأثير شاشة CRT وخطوط المسح (Scanlines) */
+        .crt::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        /* الحاوية الرئيسية للنافذة */
+        .main-window {
+            width: 700px;
+            position: relative;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+        }
+
+        /* واجهة الطرفية (Terminal) التالفة */
+        .terminal-box {
+            background-color: #000;
+            color: #33ff00;
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            height: 150px;
+            overflow-y: auto;
+            border: 2px inset #fff;
+            margin-top: 15px;
+            text-shadow: 0 0 5px #33ff00;
+        }
+
+        /* تأثير الوميض الخفيف للنص */
+        .glitch-text {
+            animation: flicker 2s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            5% { opacity: 0.8; }
+            10% { opacity: 1; }
+            15% { opacity: 0.3; }
+            20% { opacity: 1; }
+            100% { opacity: 1; }
+        }
+
+        /* تنسيق قسم الكولاج (مساحة لإضافة الصور لاحقاً) */
+        .collage-area {
+            position: relative;
+            height: 200px;
+            background-color: #e3e3e3;
+            border: 2px inset #fff;
+            margin-top: 15px;
+            padding: 10px;
+        }
+    </style>
 </head>
-<body>
+<body class="crt">
 
-    <!-- إطار متصفح الإنترنت القديم -->
-    <div class="browser-window">
-        <!-- شريط عنوان المتصفح -->
-        <div class="browser-header">
-            <div class="browser-title">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="icon" class="mini-icon">
-                Interdimensional Services - Microsoft Internet Explorer
-            </div>
-            <div class="browser-controls">
-                <button>-</button>
-                <button>🗖</button>
-                <button>×</button>
+    <div class="window main-window">
+        <!-- شريط عنوان النافذة -->
+        <div class="title-bar">
+            <div class="title-bar-text">Interdimensional Services - Database Access</div>
+            <div class="title-bar-controls">
+                <button aria-label="Minimize"></button>
+                <button aria-label="Maximize"></button>
+                <button aria-label="Close"></button>
             </div>
         </div>
-
-        <!-- شريط القوائم -->
-        <div class="menu-bar">
-            <span>File</span><span>Edit</span><span>View</span><span>Go</span><span>Favorites</span><span>Help</span>
-        </div>
-
-        <!-- شريط الأدوات (أزرار التنقل) -->
-        <div class="toolbar">
-            <button>Back</button>
-            <button>Forward</button>
-            <button>Stop</button>
-            <button>Refresh</button>
-            <button>Home</button>
-            <button>Search</button>
-            <button>Favorites</button>
-            <button>History</button>
-            <button>Mail</button>
-            <button>Print</button>
-        </div>
-
-        <!-- شريط العنوان (Address Bar) -->
-        <div class="address-bar">
-            <label>Address</label>
-            <input type="text" value="http://www.isc.gov/" readonly>
-            <button>Go</button>
-        </div>
-
-        <!-- محتوى الموقع الرئيسي -->
-        <div class="main-container">
+        
+        <!-- محتوى النافذة -->
+        <div class="window-body">
+            <h2 style="margin-top: 0;">Federal Agency for Dimensional Stability</h2>
+            <p>Through advanced research, technology, and a highly trained workforce, we ensure a safer, more stable multiverse.</p>
             
-            <!-- القائمة الجانبية اليسرى -->
-            <div class="sidebar">
-                <div class="logo-area">
-                    <div class="globe-placeholder">🌐</div>
-                    <h2>INTERDIMENSIONAL SERVICES</h2>
-                    <p>Federal Agency for Dimensional Stability</p>
-                </div>
-                
-                <div class="menu-section">
-                    <h3>Main Menu</h3>
-                    <ul>
-                        <li><a href="#">🏠 Home</a></li>
-                        <li><a href="#">📁 About Us</a></li>
-                        <li><a href="#">💼 Our Services</a></li>
-                        <li><a href="#">🚀 Careers</a></li>
-                        <li><a href="#">📊 Public Information</a></li>
-                        <li><a href="#">✉️ Contact</a></li>
-                    </ul>
-                </div>
+            <!-- شريط الأخبار المتحرك -->
+            <marquee scrollamount="5" style="background: darkblue; color: white; padding: 3px; font-weight: bold;">
+                >> PUBLIC SERVICE ANNOUNCEMENT: Report any dimensional anomalies immediately. >> STATUS: NORMAL >> CODE: Wkhuh duh rwkhuv lq wkh dark (There are others in the dark - Shift 3)
+            </marquee>
 
-                <div class="sidebar-footer">
-                    <p>STABILITY THROUGH COOPERATION.</p>
-                    <div class="visitor-counter">
-                        <span>Visitors</span>
-                        <div class="counter-box">00471283</div>
-                    </div>
-                </div>
+            <!-- مساحة مخصصة لترتيب الصور كقصاصات (Absolute Positioning) -->
+            <div class="collage-area">
+                <p style="color: gray; text-align: center; margin-top: 40px;">
+                    <!-- يمكنك هنا إضافة وسم <img> واستخدام CSS position: absolute لترتيب الصور مثل القصاصات -->
+                    [مساحة مخصصة لإضافة صور الأرشيف الممزقة والرسومات]
+                </p>
             </div>
 
-            <!-- المحتوى الوسطي -->
-            <div class="content-area">
-                <div class="top-banner">
-                    <h1>Multiple Realities. One Agency.</h1>
-                </div>
-
-                <div class="retro-box welcome-box">
-                    <h2>Welcome *</h2>
-                    <p>The Interdimensional Services (IS) is a federal agency dedicated to maintaining the stability, regulation, and protection of all known dimensions...</p>
-                </div>
-
-                <!-- شريط الأخبار المتحرك العاجل -->
-                <div class="ticker-bar">
-                    <span>📢 PUBLIC SERVICE ANNOUNCEMENT: Report any dimensional anomalies immediately.</span>
-                </div>
+            <!-- واجهة الطرفية لقواعد البيانات السرية -->
+            <div class="terminal-box">
+                <p>Establishing connection...</p>
+                <p>Loading Cultural Anomaly Log...</p>
+                <p class="glitch-text">WARNING: Reality Stabilization Protocol compromised.</p>
+                <p>> Enter Access Code: <span class="blink">_</span></p>
             </div>
 
-            <!-- القائمة الجانبية اليمنى -->
-            <div class="right-sidebar">
-                <div class="widget">
-                    <h3>Latest Updates</h3>
-                    <ul>
-                        <li><strong>Oct 26, 1986</strong><br>New Frontiers Initiative Launches</li>
-                        <li><strong>Oct 19, 1986</strong><br>Employee Wellness Program Updates</li>
-                    </ul>
-                </div>
-                <div class="widget">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">Case Files (Internal)</a></li>
-                        <li><a href="#">Employee Access</a></li>
-                        <li><a href="#">Media Library</a></li>
-                    </ul>
-                </div>
+            <div style="margin-top: 15px; text-align: right;">
+                <button>Login</button>
+                <button>Cancel</button>
             </div>
-
         </div>
     </div>
 
