@@ -1,308 +1,217 @@
 <!DOCTYPE html>
-<html lang="ar" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interdimensional Services - WIR3D Access</title>
-    <!-- مكتبة 98.css لشكل النوافذ الكلاسيكي -->
-    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <title>Interdimensional Services</title>
     <style>
-        /* الخطوط والخلفية */
-        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-        
+        /* إعدادات الخطوط والخلفية الأساسية */
         body {
-            background-color: #008080; /* لون ويندوز 95 */
-            font-family: 'Pixelated MS Sans Serif', Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            font-family: 'MS Sans Serif', Tahoma, sans-serif;
             margin: 0;
-            height: 100vh;
+            padding: 10px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            overflow: hidden;
         }
 
-        /* --- تأثيرات شاشة CRT وخطوط المسح --- */
-        .crt::before {
-            content: " ";
-            display: block;
-            position: absolute;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 999;
-            background-size: 100% 2px, 3px 100%;
-            pointer-events: none; /* للسماح بالنقر عبر التأثير */
-        }
-
-        /* --- شاشة الإقلاع (Boot Sequence) --- */
-        #boot-screen {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-color: #000;
-            color: #ccc;
-            font-family: 'VT323', monospace;
-            font-size: 20px;
-            padding: 20px;
-            box-sizing: border-box;
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* --- تخطيط الواجهة الرئيسية --- */
-        #main-ui {
-            display: none; /* مخفي حتى ينتهي الإقلاع */
-            width: 900px;
-            height: 600px;
-            display: flex;
-            gap: 10px;
-            padding: 10px;
-            z-index: 10;
-        }
-
-        .sidebar {
-            width: 200px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .content-area {
-            flex-grow: 1;
-            position: relative;
-        }
-
-        /* --- الكولاج (القصاصات والترقيع) --- */
-        .collage-container {
+        /* واجهة المتصفح الوهمية (Internet Explorer القديم) */
+        .browser-window {
             background-color: #c0c0c0;
-            height: 350px;
-            border: 2px inset #fff;
-            position: relative;
-            overflow: hidden;
-            background-image: repeating-linear-gradient(45deg, #d3d3d3 25%, transparent 25%, transparent 75%, #d3d3d3 75%, #d3d3d3), repeating-linear-gradient(45deg, #d3d3d3 25%, #c0c0c0 25%, #c0c0c0 75%, #d3d3d3 75%, #d3d3d3);
-            background-position: 0 0, 10px 10px;
-            background-size: 20px 20px;
-        }
-
-        .scrap {
-            position: absolute;
-            background-color: #fff;
-            border: 1px solid #999;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-            padding: 10px;
-        }
-
-        .scrap.photo {
-            top: 20px; left: 20px; width: 150px; height: 120px;
-            transform: rotate(-5deg);
-            background: #222; color: #fff; text-align: center; line-height: 120px;
-        }
-
-        .scrap.note {
-            top: 50px; right: 30px; width: 120px;
-            background-color: #ff9; color: #000;
-            transform: rotate(7deg);
-            font-family: 'Comic Sans MS', cursive;
-        }
-
-        .scrap.document {
-            bottom: -10px; left: 100px; width: 250px;
-            transform: rotate(2deg);
-            font-family: 'Times New Roman', serif;
-            border: 1px dashed #666;
-            background: #f4f4eb;
-        }
-
-        /* --- واجهة الطرفية التفاعلية (Terminal) --- */
-        .interactive-terminal {
-            background-color: #050505;
-            color: #0f0;
-            font-family: 'VT323', monospace;
-            font-size: 18px;
-            height: 180px;
-            margin-top: 10px;
-            padding: 10px;
-            border: 2px inset #fff;
-            overflow-y: auto;
-            text-shadow: 0 0 4px #0f0;
-        }
-
-        .input-line {
-            display: flex;
-            margin-top: 5px;
-        }
-        
-        .input-line span { margin-right: 5px; }
-        
-        .input-line input {
-            background: transparent;
-            border: none;
-            color: #0f0;
-            font-family: 'VT323', monospace;
-            font-size: 18px;
-            outline: none;
             width: 100%;
-            text-shadow: 0 0 4px #0f0;
+            max-width: 1200px;
+            border: 2px solid;
+            border-color: #dfdfdf #000 #000 #dfdfdf;
+            padding: 2px;
+            color: #000;
         }
 
-        /* مؤثر التشويش */
-        .glitch {
-            animation: glitch 1s linear infinite;
+        .title-bar {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            color: white;
+            padding: 3px 5px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
         }
 
-        @keyframes glitch {
-            2%, 64% { transform: translate(2px,0) skew(0deg); }
-            4%, 60% { transform: translate(-2px,0) skew(0deg); }
-            62% { transform: translate(0,0) skew(5deg); }
+        .toolbar {
+            padding: 5px;
+            border-bottom: 1px solid #808080;
+        }
+
+        /* حاوية محتوى الموقع */
+        .site-container {
+            background-image: url('stars-background.jpg'); /* يجب استبدالها بصورة النجوم */
+            background-color: #050b14; /* لون بديل في حال عدم وجود صورة */
+            padding: 10px;
+            display: grid;
+            grid-template-columns: 200px 1fr 250px; /* تقسيم الشاشة إلى 3 أعمدة */
+            gap: 15px;
+            color: white;
+            min-height: 800px;
+        }
+
+        /* تصميم النوافذ القديمة داخل الموقع */
+        .win-panel {
+            background-color: #c0c0c0;
+            color: #000;
+            border: 2px solid;
+            border-color: #fff #000 #000 #fff;
+            padding: 2px;
+            margin-bottom: 15px;
+        }
+
+        .win-panel-header {
+            background-color: #000080;
+            color: white;
+            padding: 2px 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .win-panel-content {
+            padding: 10px;
+            background: #fff;
+            border: 2px solid;
+            border-color: #808080 #fff #fff #808080;
+            font-size: 12px;
+        }
+
+        /* القائمة الجانبية اليسرى */
+        .left-menu button {
+            width: 100%;
+            text-align: left;
+            padding: 5px;
+            margin-bottom: 5px;
+            background-color: #c0c0c0;
+            border: 2px solid;
+            border-color: #fff #000 #000 #fff;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .left-menu button:active {
+            border-color: #000 #fff #fff #000;
+        }
+
+        /* المحتوى المركزي (منطقة الكولاج) */
+        .main-content {
+            position: relative;
+            background-color: #f0e6d2; /* لون الورق القديم */
+            border: 2px dashed #666; /* حدود تشبه القصاصات */
+            padding: 20px;
+            color: #000;
+            overflow: hidden;
+        }
+
+        /* شريط الأخبار المتحرك */
+        .marquee-bar {
+            background-color: #000080;
+            color: white;
+            padding: 5px;
+            font-family: monospace;
+            border: 2px solid #fff;
+            margin-top: 15px;
+        }
+
+        /* القائمة الجانبية اليمنى */
+        .right-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .right-sidebar li {
+            margin-bottom: 10px;
+            font-size: 11px;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 5px;
         }
     </style>
 </head>
-<body class="crt">
+<body>
 
-    <!-- شاشة الإقلاع الوهمية -->
-    <div id="boot-screen">
-        <div id="boot-text"></div>
+<div class="browser-window">
+    <!-- شريط عنوان المتصفح -->
+    <div class="title-bar">
+        <span>Interdimensional Services - Microsoft Internet Explorer</span>
+        <span>_ □ X</span>
+    </div>
+    
+    <div class="toolbar">
+        Address: http://www.isc.gov/
     </div>
 
-    <!-- الواجهة الرئيسية (تظهر بعد الإقلاع) -->
-    <div id="main-ui" style="display: none;">
+    <!-- حاوية الموقع الفعلية -->
+    <div class="site-container">
         
-        <!-- الشريط الجانبي القوائم -->
-        <div class="sidebar">
-            <div class="window">
-                <div class="title-bar"><div class="title-bar-text">Main Menu</div></div>
-                <div class="window-body">
-                    <ul class="tree-view">
-                        <li><strong>Home</strong></li>
-                        <li>About Us</li>
-                        <li>Our Services</li>
-                        <li>Careers (CLOSED)</li>
+        <!-- العمود الأيسر -->
+        <div class="left-sidebar">
+            <div class="win-panel">
+                <div class="win-panel-header">Main Menu</div>
+                <div class="win-panel-content left-menu">
+                    <button>Home</button>
+                    <button>About Us</button>
+                    <button>Our Services</button>
+                    <button>Careers</button>
+                    <button>Public Information</button>
+                    <button>Contact</button>
+                </div>
+            </div>
+
+            <!-- عداد الزوار -->
+            <div style="text-align: center; margin-top: 20px;">
+                <p>Visitors</p>
+                <h2 style="color: #0f0; background: #000; padding: 5px; border: 2px solid #888;">00471283</h2>
+                <p style="font-size: 10px;">Last updated: 10/31/1986<br>Status: NORMAL</p>
+            </div>
+        </div>
+
+        <!-- العمود الأوسط (منطقة الكولاج) -->
+        <div class="main-content">
+            <h1 style="text-align: center; font-family: monospace; letter-spacing: 5px;">welcome *</h1>
+            <!-- ضع صور الكولاج هنا باستخدام التموضع المطلق absolute positioning -->
+            <p style="margin-top: 50px; font-weight: bold; border-top: 2px solid #000; padding-top: 10px;">
+                Interdimensional Services
+            </p>
+            <p style="font-size: 14px;">
+                The Interdimensional Services (IS) is a federal agency dedicated to maintaining the stability, regulation, and protection of all known dimensions...
+            </p>
+
+            <div class="marquee-bar">
+                <marquee scrollamount="5">>> PUBLIC SERVICE ANNOUNCEMENT: Report any dimensional anomalies immediately. | Together we keep the balance.</marquee>
+            </div>
+        </div>
+
+        <!-- العمود الأيمن -->
+        <div class="right-sidebar">
+            <div class="win-panel">
+                <div class="win-panel-header">Latest Updates</div>
+                <div class="win-panel-content">
+                    <ul>
+                        <li><strong>Oct 26, 1986</strong><br>New Frontiers Initiative Launches</li>
+                        <li><strong>Oct 19, 1986</strong><br>Employee Wellness Program Updates</li>
+                        <li><strong>Oct 12, 1986</strong><br>Reality Stabilization Report</li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="window">
-                <div class="title-bar"><div class="title-bar-text">Visitors</div></div>
-                <div class="window-body" style="text-align: center; background: #000; color: #0f0; font-family: 'VT323'; font-size: 24px;">
-                    <div class="glitch">00471283</div>
-                    <div style="font-size: 12px; color: red;">STATUS: ANOMALY</div>
+
+            <div class="win-panel">
+                <div class="win-panel-header">Quick Links</div>
+                <div class="win-panel-content">
+                    <ul>
+                        <li>Case Files (Internal)</li>
+                        <li>Employee Access</li>
+                        <li>Media Library</li>
+                    </ul>
                 </div>
             </div>
         </div>
 
-        <!-- مساحة المحتوى الرئيسية -->
-        <div class="content-area">
-            <div class="window" style="height: 100%;">
-                <div class="title-bar">
-                    <div class="title-bar-text">INTERDIMENSIONAL SERVICES - Protocol 86</div>
-                    <div class="title-bar-controls">
-                        <button aria-label="Minimize"></button><button aria-label="Maximize"></button><button aria-label="Close"></button>
-                    </div>
-                </div>
-                <div class="window-body" style="height: calc(100% - 35px); display: flex; flex-direction: column;">
-                    
-                    <!-- منطقة الكولاج العشوائي -->
-                    <div class="collage-container">
-                        <div class="scrap photo">[ صورة مبنى المقر ]</div>
-                        <div class="scrap note">
-                            <strong>ملاحظة:</strong><br>
-                            لا تثق بالترددات الصوتية بعد منتصف الليل.
-                        </div>
-                        <div class="scrap document">
-                            <strong>ملف حالة رقم: 404</strong><br>
-                            الوكالة غير مسؤولة عن أي تداخل في الذكريات ناتج عن الانتقال بين الأبعاد. <i>(تم طمس باقي النص)</i>
-                        </div>
-                        <h1 style="position: absolute; top: 120px; left: 160px; font-family: 'Courier New'; letter-spacing: 5px; color: #fff; text-shadow: 2px 2px #000; transform: rotate(-3deg);">W E L C O M E *</h1>
-                    </div>
-
-                    <!-- شريط التنبيهات -->
-                    <marquee scrollamount="6" style="background: darkred; color: white; padding: 4px; font-family: 'Pixelated MS Sans Serif'; margin-top: 5px; border: 1px solid #000;">
-                        >> WARNING: CULTURAL ANOMALY DETECTED IN SECTOR 4 >> REPORT UNUSUAL SHADOWS >> CIPHER KEY: THE EYE IS OPEN >>
-                    </marquee>
-
-                    <!-- واجهة الأوامر التفاعلية (لغز مخفي) -->
-                    <div class="interactive-terminal" id="terminal-output">
-                        <div>> Initializing Secure Connection...</div>
-                        <div>> Database Corrupted.</div>
-                        <div>> Please enter authorization code to access classified files:</div>
-                        <div class="input-line">
-                            <span>></span>
-                            <input type="text" id="terminal-input" autocomplete="off" autofocus>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
     </div>
+</div>
 
-    <!-- أكواد جافا سكريبت للتشغيل والتفاعل -->
-    <script>
-        // 1. نظام شاشة الإقلاع (Boot Sequence)
-        const bootText = [
-            "BIOS Date 10/26/86 14:22:31 Ver 2.1",
-            "CPU: Unknown Entity (666 MHz)",
-            "Memory Test: 640K OK",
-            "Initializing Reality Anchors... SUCCESS",
-            "Loading Corrupted Archive... FAILED",
-            "Bypassing Security Protocols...",
-            "Connection Established.",
-            "Loading User Interface..."
-        ];
-        
-        let bootLine = 0;
-        const bootScreen = document.getElementById('boot-text');
-        
-        function typeBootSequence() {
-            if (bootLine < bootText.length) {
-                bootScreen.innerHTML += bootText[bootLine] + "<br>";
-                bootLine++;
-                setTimeout(typeBootSequence, Math.random() * 400 + 100);
-            } else {
-                setTimeout(() => {
-                    document.getElementById('boot-screen').style.display = 'none';
-                    document.getElementById('main-ui').style.display = 'flex';
-                    document.getElementById('terminal-input').focus();
-                }, 1000);
-            }
-        }
-        
-        // تشغيل الإقلاع عند تحميل الصفحة
-        window.onload = typeBootSequence;
-
-        // 2. تفاعل واجهة الأوامر (Terminal)
-        const terminalInput = document.getElementById('terminal-input');
-        const terminalOutput = document.getElementById('terminal-output');
-
-        terminalInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const command = this.value.toUpperCase().trim();
-                const newLine = document.createElement('div');
-                
-                // إضافة الأمر الذي تم كتابته
-                newLine.innerHTML = `> ${this.value}`;
-                terminalOutput.insertBefore(newLine, this.parentElement);
-                
-                // الرد بناءً على الكلمة السرية
-                const responseLine = document.createElement('div');
-                if (command === 'HELP') {
-                    responseLine.innerHTML = "Available commands: HELP, LOGIN, STATUS";
-                } else if (command === 'STATUS') {
-                    responseLine.innerHTML = "SYSTEM: UNSTABLE. DIMENSIONAL BLEED DETECTED.";
-                    responseLine.classList.add('glitch');
-                } else if (command === 'CIPHER' || command === 'SECRET') {
-                    responseLine.innerHTML = "ACCESS GRANTED: They are watching through the static.";
-                    responseLine.style.color = "red";
-                } else {
-                    responseLine.innerHTML = `Command not recognized. Access Denied.`;
-                }
-                
-                terminalOutput.insertBefore(responseLine, this.parentElement);
-                
-                // مسح الحقل والتمرير للأسفل
-                this.value = '';
-                terminalOutput.scrollTop = terminalOutput.scrollHeight;
-            }
-        });
-    </script>
 </body>
 </html>
