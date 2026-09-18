@@ -1,1381 +1,392 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PARADIGM // INTERNAL BROADCAST</title>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=VT323&family=Special+Elite&display=swap');
-
-:root {
-    --cream: #d8d0b7;
-    --dark: #090b0b;
-    --red: #a93636;
-    --yellow: #c9b35c;
-    --green: #79958b;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: #050606;
-    color: var(--cream);
-    font-family: "VT323", monospace;
-}
-
-/* =========================================================
-   CRT
-========================================================= */
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 999;
-
-    background:
-        repeating-linear-gradient(
-            to bottom,
-            rgba(255,255,255,.035) 0px,
-            rgba(255,255,255,.035) 1px,
-            transparent 2px,
-            transparent 5px
-        );
-
-    opacity: .75;
-}
-
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1000;
-
-    box-shadow:
-        inset 0 0 150px #000,
-        inset 0 0 40px rgba(255,255,255,.06);
-
-    animation: flicker .08s infinite;
-}
-
-@keyframes flicker {
-
-    0% { opacity: .96; }
-    50% { opacity: 1; }
-    100% { opacity: .94; }
-
-}
-
-/* =========================================================
-   VHS STATIC
-========================================================= */
-
-.static {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 998;
-
-    opacity: .08;
-
-    background-image:
-        repeating-linear-gradient(
-            0deg,
-            #fff 0px,
-            transparent 1px,
-            #fff 2px,
-            transparent 4px
-        );
-
-    mix-blend-mode: screen;
-
-    animation: staticMove .08s infinite;
-}
-
-@keyframes staticMove {
-
-    0% {
-        transform: translateY(0);
-    }
-
-    25% {
-        transform: translateY(-5px);
-    }
-
-    50% {
-        transform: translateY(4px);
-    }
-
-    75% {
-        transform: translateY(-2px);
-    }
-
-    100% {
-        transform: translateY(3px);
-    }
-
-}
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-#screen {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-}
-
-/* =========================================================
-   BROADCAST UI
-========================================================= */
-
-.broadcast {
-
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(
-            ellipse at 50% 40%,
-            rgba(71,86,84,.32),
-            transparent 60%
-        ),
-
-        linear-gradient(
-            90deg,
-            rgba(0,0,0,.9),
-            transparent 20%,
-            transparent 80%,
-            rgba(0,0,0,.9)
-        );
-
-}
-
-/* =========================================================
-   TOP VHS DATA
-========================================================= */
-
-.vhs-top {
-
-    position: absolute;
-
-    top: 22px;
-    left: 30px;
-    right: 30px;
-
-    display: flex;
-    justify-content: space-between;
-
-    font-size: 22px;
-
-    letter-spacing: 2px;
-
-    opacity: .75;
-
-}
-
-.rec {
-
-    color: #cf4646;
-
-    animation: recBlink 1s infinite;
-
-}
-
-@keyframes recBlink {
-
-    50% {
-        opacity: .15;
-    }
-
-}
-
-/* =========================================================
-   TIME CODE
-========================================================= */
-
-.timecode {
-
-    position: absolute;
-
-    top: 60px;
-    left: 30px;
-
-    font-size: 19px;
-
-    opacity: .55;
-
-}
-
-/* =========================================================
-   SKY
-========================================================= */
-
-.sky {
-
-    position: absolute;
-
-    top: 0;
-    left: 0;
-    right: 0;
-
-    height: 48%;
-
-    overflow: hidden;
-
-    background:
-        linear-gradient(
-            to bottom,
-            #182020,
-            #303b38 55%,
-            #141818
-        );
-
-}
-
-/*
-Fake horizon
-*/
-
-.horizon {
-
-    position: absolute;
-
-    bottom: 0;
-    left: -10%;
-
-    width: 120%;
-    height: 25%;
-
-    background:
-        linear-gradient(
-            to bottom,
-            transparent,
-            #080a0a
-        );
-
-    transform: skewY(-2deg);
-
-}
-
-/*
-THE WRONG SUN
-*/
-
-.sun {
-
-    position: absolute;
-
-    width: 145px;
-    height: 145px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            #d8c675 0%,
-            #988a50 45%,
-            transparent 70%
-        );
-
-    left: 17%;
-    top: 22%;
-
-    opacity: .8;
-
-    filter: blur(1px);
-
-}
-
-/* =========================================================
-   DISTANT BUILDING
-========================================================= */
-
-.building {
-
-    position: absolute;
-
-    bottom: -3px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 440px;
-    height: 230px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #101313,
-            #222928,
-            #111313
-        );
-
-    border-top: 7px solid #060707;
-
-}
-
-/* roof */
-
-.building::before {
-
-    content: "";
-
-    position: absolute;
-
-    left: -35px;
-    top: -28px;
-
-    width: 510px;
-    height: 35px;
-
-    background: #080909;
-
-}
-
-/* windows */
-
-.windows {
-
-    position: absolute;
-
-    inset: 30px;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(8, 1fr);
-
-    grid-auto-rows: 38px;
-
-    gap: 10px;
-
-}
-
-.window {
-
-    border: 2px solid #090a0a;
-
-    background: #384442;
-
-    opacity: .55;
-
-}
-
-.window:nth-child(3n) {
-
-    background: #aa954b;
-
-    opacity: .65;
-
-}
-
-/* =========================================================
-   WRONG FIGURE
-========================================================= */
-
-.figure {
-
-    position: absolute;
-
-    bottom: 20px;
-    right: 18%;
-
-    width: 40px;
-    height: 150px;
-
-    background: #050606;
-
-    opacity: .9;
-
-}
-
-.figure::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 50px;
-    height: 50px;
-
-    border-radius: 50%;
-
-    background: #050606;
-
-    top: -42px;
-    left: -5px;
-
-}
-
-.figure::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 5px;
-    height: 5px;
-
-    background: #c9b35c;
-
-    top: -22px;
-    left: 10px;
-
-    box-shadow:
-        20px 0 #c9b35c;
-
-}
-
-/* =========================================================
-   CORPORATE LOGO
-========================================================= */
-
-.logo {
-
-    position: absolute;
-
-    top: 15%;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    text-align: center;
-
-    z-index: 5;
-
-}
-
-.logo-main {
-
-    font-family: "Special Elite", serif;
-
-    font-size: clamp(65px, 10vw, 150px);
-
-    letter-spacing: 8px;
-
-    text-shadow:
-        5px 0 rgba(169,54,54,.75),
-        -4px 0 rgba(121,149,139,.5);
-
-}
-
-.logo-sub {
-
-    font-size: 24px;
-
-    letter-spacing: 6px;
-
-    margin-top: -15px;
-
-}
-
-.logo-slogan {
-
-    margin-top: 18px;
-
-    font-size: 19px;
-
-    letter-spacing: 3px;
-
-    color: var(--yellow);
-
-}
-
-/* =========================================================
-   MAIN MENU
-========================================================= */
-
-.menu {
-
-    position: absolute;
-
-    left: 50%;
-    bottom: 8%;
-
-    transform: translateX(-50%);
-
-    width: min(430px, 80vw);
-
-    z-index: 10;
-
-}
-
-.menu button {
-
-    width: 100%;
-
-    margin: 7px 0;
-
-    padding: 10px 18px;
-
-    background: rgba(5,7,7,.78);
-
-    border: 2px solid var(--cream);
-
-    color: var(--cream);
-
-    font-family: "VT323", monospace;
-
-    font-size: 25px;
-
-    letter-spacing: 2px;
-
-    text-align: left;
-
-    cursor: pointer;
-
-    transition: .15s;
-
-}
-
-.menu button:hover {
-
-    background: var(--cream);
-
-    color: #080909;
-
-    transform: translateX(8px);
-
-}
-
-.menu button::before {
-
-    content: "▶ ";
-
-    color: var(--red);
-
-}
-
-/* =========================================================
-   SIDE WARNING
-========================================================= */
-
-.warning {
-
-    position: absolute;
-
-    left: 35px;
-    bottom: 35px;
-
-    width: 230px;
-
-    font-size: 17px;
-
-    line-height: 1.1;
-
-    opacity: .55;
-
-}
-
-.warning strong {
-
-    color: var(--red);
-
-}
-
-/* =========================================================
-   RIGHT SYSTEM STATUS
-========================================================= */
-
-.status {
-
-    position: absolute;
-
-    right: 35px;
-    bottom: 35px;
-
-    width: 230px;
-
-    text-align: right;
-
-    font-size: 17px;
-
-    opacity: .55;
-
-}
-
-.status .ok {
-
-    color: var(--green);
-
-}
-
-/* =========================================================
-   GLITCH
-========================================================= */
-
-.glitch {
-
-    animation: glitch .12s infinite;
-
-}
-
-@keyframes glitch {
-
-    0% {
-        transform: translate(0);
-    }
-
-    20% {
-        transform: translate(-5px,2px);
-    }
-
-    40% {
-        transform: translate(4px,-2px);
-    }
-
-    60% {
-        transform: translate(-2px,0);
-    }
-
-    80% {
-        transform: translate(3px,2px);
-    }
-
-    100% {
-        transform: translate(0);
-    }
-
-}
-
-/* =========================================================
-   SECRET FRAME
-========================================================= */
-
-.secret-frame {
-
-    position: fixed;
-
-    inset: 0;
-
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    background: #050505;
-
-    z-index: 500;
-
-}
-
-.secret-frame.active {
-
-    display: flex;
-
-}
-
-.secret-text {
-
-    text-align: center;
-
-    font-size: 30px;
-
-    letter-spacing: 3px;
-
-}
-
-.secret-text .red {
-
-    color: var(--red);
-
-}
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media(max-width: 700px) {
-
-    .building {
-
-        width: 260px;
-
-    }
-
-    .windows {
-
-        gap: 5px;
-
-    }
-
-    .warning,
-    .status {
-
-        display: none;
-
-    }
-
-    .logo {
-
-        top: 14%;
-
-    }
-
-    .logo-main {
-
-        font-size: 55px;
-
-    }
-
-    .logo-sub {
-
-        font-size: 17px;
-
-    }
-
-}
-</style>
-</head>
-
-<body>
-
-<div class="static"></div>
-
-<div id="screen">
-
-    <div class="broadcast">
-
-        <!-- VHS HEADER -->
-
-        <div class="vhs-top">
-
-            <span>
-                PARADIGM // INTERNAL BROADCAST
-            </span>
-
-            <span class="rec">
-                ● REC
-            </span>
-
-        </div>
-
-        <div class="timecode">
-            00:00:00:13
-        </div>
-
-
-        <!-- SKY -->
-
-        <div class="sky">
-
-            <div class="sun"></div>
-
-            <div class="building">
-
-                <div class="windows">
-
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-                    <div class="window"></div>
-
-                </div>
-
-            </div>
-
-            <div class="figure"></div>
-
-            <div class="horizon"></div>
-
-        </div>
-
-
-        <!-- LOGO -->
-
-        <div class="logo">
-
-            <div class="logo-main">
-                PARADIGM
-            </div>
-
-            <div class="logo-sub">
-                INTERDIMENSIONAL SERVICES
-            </div>
-
-            <div class="logo-slogan">
-                YOUR FUTURE IS OUR BUSINESS.
-            </div>
-
-        </div>
-
-
-        <!-- MENU -->
-
-        <div class="menu">
-
-            <button onclick="begin()">
-                BEGIN TRANSMISSION
-            </button>
-
-            <button onclick="handbook()">
-                EMPLOYEE HANDBOOK
-            </button>
-
-            <button onclick="archive()">
-                INTERNAL ARCHIVE
-            </button>
-
-            <button onclick="credits()">
-                ABOUT THIS RECORDING
-            </button>
-
-        </div>
-
-
-        <!-- LEFT WARNING -->
-
-        <div class="warning">
-
-            <strong>WARNING</strong><br>
-
-            This recording is property of
-            PARADIGM INTERDIMENSIONAL SERVICES.
-
-            <br><br>
-
-            Unauthorized dimensional travel
-            is strictly prohibited.
-
-        </div>
-
-
-        <!-- RIGHT STATUS -->
-
-        <div class="status">
-
-            SIGNAL:
-            <span class="ok">
-                STABLE
-            </span>
-
-            <br>
-
-            TIMELINE:
-            <span class="ok">
-                STABLE
-            </span>
-
-            <br>
-
-            SKY:
-            <span class="ok">
-                NORMAL
-            </span>
-
-            <br><br>
-
-            EMPLOYEES:
-            12,481
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- SECRET FRAME -->
-
-<div id="secret" class="secret-frame">
-
-    <div class="secret-text">
-
-        <div>
-            SIGNAL LOST
-        </div>
-
-        <br>
-
-        <div class="red">
-            THE SKY IS NOT THE SKY.
-        </div>
-
-        <br>
-
-        <div style="font-size:18px">
-            PLEASE REMAIN CALM.
-        </div>
-
-    </div>
-
-</div>
-
-
-<script>
-
-/* =========================================================
-   MENU
-========================================================= */
-
-function begin() {
-
-    document.body.classList.add("glitch");
-
-    setTimeout(() => {
-
-        document.body.classList.remove("glitch");
-
-        document.querySelector(".broadcast").innerHTML = `
-
-            <div style="
-                position:absolute;
-                inset:0;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                text-align:center;
-            ">
-
-                <div>
-
-                    <div style="
-                        font-size:25px;
-                        letter-spacing:4px;
-                    ">
-                        PARADIGM PRESENTS
-                    </div>
-
-                    <div style="
-                        font-family:'Special Elite';
-                        font-size:70px;
-                        margin:20px 0;
-                    ">
-                        EMPLOYEE
-                    </div>
-
-                    <div style="
-                        font-size:25px;
-                        color:#c9b35c;
-                    ">
-                        ORIENTATION TAPE // 1986
-                    </div>
-
-                    <button
-                        onclick="startComic()"
-                        style="
-                            margin-top:50px;
-                            background:#090b0b;
-                            border:2px solid #d8d0b7;
-                            color:#d8d0b7;
-                            padding:12px 30px;
-                            font-family:'VT323';
-                            font-size:27px;
-                            cursor:pointer;
-                        "
-                    >
-                        ▶ PLAY
-                    </button>
-
-                </div>
-
-            </div>
-
-        `;
-
-    }, 500);
-
-}
-
-
-/* =========================================================
-   HANDBOOK
-========================================================= */
-
-function handbook() {
-
-    document.querySelector(".broadcast").innerHTML = `
-
-        <div style="
-            position:absolute;
-            inset:5%;
-            background:#d8d0b7;
-            color:#111;
-            padding:40px;
-            overflow:auto;
-            border:8px double #111;
-        ">
-
-            <h1 style="
-                font-family:'Special Elite';
-                font-size:50px;
-                border-bottom:4px solid #111;
-            ">
-                EMPLOYEE HANDBOOK
-            </h1>
-
-            <h2>
-                WELCOME TO PARADIGM.
-            </h2>
-
-            <p style="font-size:23px">
-                We are pleased to have you as part of
-                the Interdimensional Services family.
-            </p>
-
-            <hr>
-
-            <p style="font-size:22px">
-                RULE #04<br>
-                Never question the sky.
-            </p>
-
-            <p style="font-size:22px">
-                RULE #07<br>
-                If an employee returns incorrectly,
-                do not acknowledge the difference.
-            </p>
-
-            <p style="font-size:22px">
-                RULE #12<br>
-                Report all reality discrepancies
-                immediately.
-            </p>
-
-            <p style="
-                font-size:22px;
-                background:#111;
-                color:#d8d0b7;
-                padding:15px;
-            ">
-                RULE #13<br><br>
-                If an employee tells you
-                that the sky is fake...
-                <br><br>
-                DO NOT LISTEN.
-            </p>
-
-            <button
-                onclick="location.reload()"
-                style="
-                    font-family:'VT323';
-                    font-size:25px;
-                    padding:10px;
-                "
-            >
-                ◀ RETURN
-            </button>
-
-        </div>
-
-    `;
-
-}
-
-
-/* =========================================================
-   ARCHIVE
-========================================================= */
-
-function archive() {
-
-    document.querySelector(".broadcast").innerHTML = `
-
-        <div style="
-            position:absolute;
-            inset:0;
-            padding:60px;
-            overflow:auto;
-        ">
-
-            <h1 style="
-                font-family:'Special Elite';
-                font-size:60px;
-            ">
-                INTERNAL ARCHIVE
-            </h1>
-
-            <div style="
-                border:2px solid #d8d0b7;
-                padding:20px;
-                margin:20px 0;
-            ">
-
-                EMPLOYEE RECORD: ADAM
-
-                <br><br>
-
-                ORIGIN:
-                <span style="color:#a93636">
-                    NULL
-                </span>
-
-                <br>
-
-                DIMENSION:
-                <span style="color:#a93636">
-                    NULL
-                </span>
-
-                <br>
-
-                REALITY INDEX:
-                <span style="color:#a93636">
-                    ERROR
-                </span>
-
-            </div>
-
-            <div style="
-                border:2px solid #d8d0b7;
-                padding:20px;
-            ">
-
-                INCIDENT FILE: 4471
-
-                <br><br>
-
-                BRAIN:
-                NON-BIOLOGICAL
-
-                <br>
-
-                CAUSE:
-                CLASSIFIED
-
-            </div>
-
-            <button
-                onclick="location.reload()"
-                style="
-                    margin-top:30px;
-                    font-family:'VT323';
-                    font-size:25px;
-                    padding:10px;
-                "
-            >
-                ◀ RETURN
-            </button>
-
-        </div>
-
-    `;
-
-}
-
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-function credits() {
-
-    document.querySelector(".broadcast").innerHTML = `
-
-        <div style="
-            position:absolute;
-            inset:0;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            text-align:center;
-        ">
-
-            <div>
-
-                <div style="
-                    font-family:'Special Elite';
-                    font-size:55px;
-                ">
-                    PROPERTY OF PARADIGM
-                </div>
-
-                <p style="font-size:25px">
-                    RECORDING DATE: 1986
-                </p>
-
-                <p style="font-size:22px">
-                    ALL DIMENSIONS RESERVED.
-                </p>
-
-                <button
-                    onclick="location.reload()"
-                    style="
-                        font-family:'VT323';
-                        font-size:25px;
-                        padding:10px 30px;
-                        background:#090b0b;
-                        color:#d8d0b7;
-                        border:2px solid #d8d0b7;
-                    "
-                >
-                    ◀ RETURN
-                </button>
-
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* =========================================================
-   COMIC START
-========================================================= */
-
-function startComic() {
-
-    document.body.innerHTML = `
-
-        <div style="
-            background:#101313;
-            color:#d8d0b7;
-            min-height:100vh;
-            padding:40px;
-            font-family:'VT323';
-        ">
-
-            <div style="
-                border-bottom:3px solid #d8d0b7;
-                padding-bottom:15px;
-                font-size:30px;
-            ">
-                CHAPTER 01 // FIRST DAY
-            </div>
-
-            <div style="
-                max-width:1100px;
-                margin:30px auto;
-                display:grid;
-                grid-template-columns:1fr 1fr;
-                gap:15px;
-            ">
-
-                <div style="
-                    border:5px solid #080808;
-                    background:#252b2b;
-                    padding:30px;
-                    min-height:300px;
-                    font-family:'Special Elite';
-                    font-size:25px;
-                ">
-
-                    The building looked exactly like
-                    every government office Adam had
-                    ever seen.
-
-                </div>
-
-                <div style="
-                    border:5px solid #080808;
-                    background:#252b2b;
-                    padding:30px;
-                    min-height:300px;
-                    font-family:'Special Elite';
-                    font-size:25px;
-                ">
-
-                    Except the sky was wrong.
-
-                    <br><br>
-
-                    <span style="color:#a93636">
-                        He just didn't know why.
-                    </span>
-
-                </div>
-
-            </div>
-
-            <div style="text-align:center">
-
-                <button
-                    onclick="location.reload()"
-                    style="
-                        font-family:'VT323';
-                        font-size:25px;
-                        padding:10px 30px;
-                    "
-                >
-                    ◀ RETURN TO TAPE
-                </button>
-
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* =========================================================
-   SECRET EASTER EGG
-========================================================= */
-
-/*
-If the user clicks the logo 7 times,
-the recording breaks.
-*/
-
-let logoClicks = 0;
-
-document.querySelector(".logo").addEventListener(
-    "click",
-    () => {
-
-        logoClicks++;
-
-        if (logoClicks >= 7) {
-
-            const secret =
-                document.getElementById("secret");
-
-            secret.classList.add("active");
-
-            setTimeout(() => {
-
-                secret.classList.remove("active");
-
-            }, 4000);
-
-            logoClicks = 0;
-
+    <meta charset="UTF-8">
+    <title>INTERDIMENSIONAL SERVICES - CLASSIFIED</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-    }
-);
+        body {
+            background-color: #0b0b0b;
+            font-family: "Courier New", Courier, monospace;
+            color: #111;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-</script>
+        /* شاشة التلفزيون وتأثير الـ VHS */
+        .vhs-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 3px, 6px 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .tracking-line {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 5px;
+            background: rgba(255, 255, 255, 0.15);
+            opacity: 0.7;
+            pointer-events: none;
+            animation: scanline 6s linear infinite;
+            z-index: 1000;
+        }
+
+        @keyframes scanline {
+            0% { transform: translateY(-100vh); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* نافذة متصفح ويندوز 95 القديمة */
+        .win95-window {
+            width: 95vw;
+            height: 92vh;
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #fff #000 #000 #fff;
+            box-shadow: 5px 5px 0px rgba(0,0,0,0.8);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .title-bar {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            color: white;
+            padding: 4px 8px;
+            font-weight: bold;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title-bar-controls button {
+            background: #c0c0c0;
+            border: 1px solid;
+            border-color: #fff #000 #000 #fff;
+            width: 16px;
+            height: 14px;
+            font-size: 9px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .menu-bar {
+            background: #c0c0c0;
+            padding: 2px 5px;
+            font-size: 11px;
+            border-bottom: 1px solid #808080;
+        }
+
+        .menu-bar span {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .menu-bar span:hover {
+            background: #000080;
+            color: white;
+        }
+
+        .address-bar {
+            background: #c0c0c0;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border-bottom: 1px solid #808080;
+            font-size: 11px;
+        }
+
+        .address-bar input {
+            flex-grow: 1;
+            background: #fff;
+            border: 1px solid;
+            border-color: #808080 #fff #fff #808080;
+            padding: 2px 5px;
+            font-family: monospace;
+            font-size: 11px;
+        }
+
+        /* محتوى الموقع الكولاجي الفوضوي */
+        .content-area {
+            flex-grow: 1;
+            background: #d8d0c0;
+            padding: 15px;
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 200px 1fr 240px;
+            gap: 10px;
+        }
+
+        /* السايدبار الجانبي */
+        .sidebar {
+            background: #c0c0c0;
+            border: 2px groove #fff;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .retro-btn {
+            background: #c0c0c0;
+            border: 2px solid;
+            border-color: #fff #000 #000 #fff;
+            padding: 8px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .retro-btn:active {
+            border-color: #000 #fff #fff #000;
+        }
+
+        .visitor-counter {
+            margin-top: auto;
+            background: #000;
+            color: #ff0000;
+            padding: 5px;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            letter-spacing: 3px;
+            border: 2px inset #fff;
+        }
+
+        /* منطقة المنتصف - كولاج وقصاصات */
+        .main-board {
+            background: #f4ebd0;
+            border: 1px dashed #555;
+            padding: 10px;
+            position: relative;
+            background-image: radial-gradient(#d0c4a0 15%, transparent 16%);
+            background-size: 10px 10px;
+        }
+
+        .classified-stamp {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            border: 3px solid red;
+            color: red;
+            padding: 5px 15px;
+            font-size: 18px;
+            font-weight: bold;
+            transform: rotate(-10deg);
+            background: rgba(255,0,0,0.1);
+            pointer-events: none;
+        }
+
+        .agency-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+            border-bottom: 2px solid #000;
+        }
+
+        .agency-desc {
+            font-size: 11px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        /* جدول الأرشيف القديم */
+        .archive-table {
+            width: 100%;
+            background: #fff;
+            border-collapse: collapse;
+            font-size: 10px;
+            margin-top: 10px;
+            border: 1px solid #000;
+        }
+
+        .archive-table th, .archive-table td {
+            border: 1px solid #999;
+            padding: 4px;
+            text-align: left;
+        }
+
+        .archive-table th {
+            background: #404040;
+            color: #fff;
+        }
+
+        /* الشريط الجانبي الأيمن - التحديثات */
+        .right-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .widget-box {
+            background: #c0c0c0;
+            border: 2px groove #fff;
+            padding: 8px;
+            font-size: 10px;
+        }
+
+        .widget-title {
+            background: #000080;
+            color: #fff;
+            padding: 2px 4px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        /* شريط حالة VHS بالأسفل */
+        .vhs-status-bar {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            display: flex;
+            justify-content: space-between;
+            color: #00ff00;
+            font-family: monospace;
+            font-size: 14px;
+            text-shadow: 0px 0px 5px #00ff00;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- مؤثرات التشويش -->
+    <div class="vhs-overlay"></div>
+    <div class="tracking-line"></div>
+
+    <div class="win95-window">
+        <!-- شريط العنوان -->
+        <div class="title-bar">
+            <span>IDA - INTERDIMENSIONAL AGENCY :: CLASSIFIED [SYS_ERR]</span>
+            <div class="title-bar-controls">
+                <button>_</button>
+                <button>□</button>
+                <button>×</button>
+            </div>
+        </div>
+
+        <!-- شريط القوائم -->
+        <div class="menu-bar">
+            <span><u>F</u>ile</span>
+            <span><u>E</u>dit</span>
+            <span><u>V</u>iew</span>
+            <span><u>G</u>o</span>
+            <span><u>F</u>avorites</span>
+            <span><u>H</u>elp</span>
+        </div>
+
+        <!-- شريط العنوان URL -->
+        <div class="address-bar">
+            <span>Address:</span>
+            <input type="text" value="HTTP://IDA.NET/ACCESS/ANOMALY/MAP... [CORRUPTED]" readonly>
+            <button class="retro-btn" style="padding: 2px 6px;">Go</button>
+        </div>
+
+        <!-- محتوى الصفحة الرئيسي -->
+        <div class="content-area">
+            
+            <!-- القائمة الجانبية اليسرى -->
+            <div class="sidebar">
+                <button class="retro-btn">HOME</button>
+                <button class="retro-btn">AGENTS</button>
+                <button class="retro-btn">RECORDS</button>
+                <button class="retro-btn">DIMENSIONAL MAP</button>
+                <button class="retro-btn" style="color: red;">LOGOUT [FAIL]</button>
+                
+                <div style="margin-top: 20px; font-size: 9px; text-align: center;">
+                    VISITOR COUNTER:
+                </div>
+                <div class="visitor-counter">
+                    004972
+                </div>
+            </div>
+
+            <!-- لوحة المنتصف (الكولاج والخريطة) -->
+            <div class="main-board">
+                <div class="classified-stamp">TOP SECRET</div>
+                <div class="agency-title">INTERDIMENSIONAL SERVICES</div>
+                <div class="agency-desc">
+                    Federal Agency for Dimensional Stability & Anomaly Containment. Warning: unauthorized access is monitored and punishable by timeline erasure.
+                </div>
+
+                <!-- جدول ملفات الموظفين الحوادث -->
+                <table class="archive-table">
+                    <tr>
+                        <th>ID</th>
+                        <th>AGENT NAME</th>
+                        <th>STATUS</th>
+                        <th>SECTOR</th>
+                    </tr>
+                    <tr>
+                        <td>#881</td>
+                        <td>R. MILLER</td>
+                        <td style="color: red; font-weight: bold;">M.I.A / COMPROMISED</td>
+                        <td>SECTOR 04</td>
+                    </tr>
+                    <tr>
+                        <td>#904</td>
+                        <td>[REDACTED]</td>
+                        <td style="color: red; font-weight: bold;">MISSING IN VOID</td>
+                        <td>SECTOR 12</td>
+                    </tr>
+                    <tr>
+                        <td>#332</td>
+                        <td>V. VANCE</td>
+                        <td>STABLE</td>
+                        <td>SECTOR 01</td>
+                    </tr>
+                </table>
+
+                <div style="margin-top: 15px; font-size: 10px; background: #000; color: #00ff00; padding: 5px;">
+                    > SYSTEM ALERT: Frequency corruption detected in Sector 04. Do not look at the static.
+                </div>
+            </div>
+
+            <!-- اللوحة الجانبية اليمنى (التحديثات) -->
+            <div class="right-panel">
+                <div class="widget-box">
+                    <div class="widget-title">Latest Updates</div>
+                    <p><b>Oct 26, 1986:</b><br>New Frontiers Initiative Launches. Learn more --></p>
+                    <hr style="margin: 5px 0;">
+                    <p><b>Oct 19, 1986:</b><br>Reality Stabilization Report updated.</p>
+                </div>
+
+                <div class="widget-box">
+                    <div class="widget-title">Quick Links</div>
+                    <ul style="padding-left: 15px; font-size: 9px;">
+                        <li><a href="#">Case Files (Internal)</a></li>
+                        <li><a href="#">Employee Portal</a></li>
+                        <li><a href="#">Media Library (VHS)</a></li>
+                        <li><a href="#">The Void Archive</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- شريط حالة الـ VHS السفلي المتداخل -->
+            <div class="vhs-status-bar">
+                <span>PLAY ► SP</span>
+                <span>00:04:15</span>
+                <span>REC ● SP</span>
+            </div>
+
+        </div>
+    </div>
 
 </body>
 </html>
