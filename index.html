@@ -3,126 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interdimensional Services - Terminal</title>
-    <!-- استدعاء مكتبة 98.css لواجهة المستخدم الكلاسيكية -->
+    <title>Interdimensional Services - WIR3D Access</title>
+    <!-- مكتبة 98.css لشكل النوافذ الكلاسيكي -->
     <link rel="stylesheet" href="https://unpkg.com/98.css">
     <style>
-        /* إعدادات الخلفية العامة */
+        /* الخطوط والخلفية */
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+        
         body {
-            background-color: #008080; /* لون خلفية ويندوز 95/98 الكلاسيكي */
+            background-color: #008080; /* لون ويندوز 95 */
             font-family: 'Pixelated MS Sans Serif', Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 90vh;
+            overflow: hidden;
         }
 
-        /* تأثير شاشة CRT وخطوط المسح (Scanlines) */
+        /* --- تأثيرات شاشة CRT وخطوط المسح --- */
         .crt::before {
             content: " ";
             display: block;
             position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
+            top: 0; left: 0; bottom: 0; right: 0;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 2;
+            z-index: 999;
             background-size: 100% 2px, 3px 100%;
-            pointer-events: none;
+            pointer-events: none; /* للسماح بالنقر عبر التأثير */
         }
 
-        /* الحاوية الرئيسية للنافذة */
-        .main-window {
-            width: 700px;
-            position: relative;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
-        }
-
-        /* واجهة الطرفية (Terminal) التالفة */
-        .terminal-box {
+        /* --- شاشة الإقلاع (Boot Sequence) --- */
+        #boot-screen {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
             background-color: #000;
-            color: #33ff00;
+            color: #ccc;
+            font-family: 'VT323', monospace;
+            font-size: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- تخطيط الواجهة الرئيسية --- */
+        #main-ui {
+            display: none; /* مخفي حتى ينتهي الإقلاع */
+            width: 900px;
+            height: 600px;
+            display: flex;
+            gap: 10px;
             padding: 10px;
-            font-family: 'Courier New', Courier, monospace;
-            height: 150px;
-            overflow-y: auto;
-            border: 2px inset #fff;
-            margin-top: 15px;
-            text-shadow: 0 0 5px #33ff00;
+            z-index: 10;
         }
 
-        /* تأثير الوميض الخفيف للنص */
-        .glitch-text {
-            animation: flicker 2s infinite;
+        .sidebar {
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        @keyframes flicker {
-            0% { opacity: 1; }
-            5% { opacity: 0.8; }
-            10% { opacity: 1; }
-            15% { opacity: 0.3; }
-            20% { opacity: 1; }
-            100% { opacity: 1; }
-        }
-
-        /* تنسيق قسم الكولاج (مساحة لإضافة الصور لاحقاً) */
-        .collage-area {
+        .content-area {
+            flex-grow: 1;
             position: relative;
-            height: 200px;
-            background-color: #e3e3e3;
+        }
+
+        /* --- الكولاج (القصاصات والترقيع) --- */
+        .collage-container {
+            background-color: #c0c0c0;
+            height: 350px;
             border: 2px inset #fff;
-            margin-top: 15px;
+            position: relative;
+            overflow: hidden;
+            background-image: repeating-linear-gradient(45deg, #d3d3d3 25%, transparent 25%, transparent 75%, #d3d3d3 75%, #d3d3d3), repeating-linear-gradient(45deg, #d3d3d3 25%, #c0c0c0 25%, #c0c0c0 75%, #d3d3d3 75%, #d3d3d3);
+            background-position: 0 0, 10px 10px;
+            background-size: 20px 20px;
+        }
+
+        .scrap {
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #999;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
             padding: 10px;
+        }
+
+        .scrap.photo {
+            top: 20px; left: 20px; width: 150px; height: 120px;
+            transform: rotate(-5deg);
+            background: #222; color: #fff; text-align: center; line-height: 120px;
+        }
+
+        .scrap.note {
+            top: 50px; right: 30px; width: 120px;
+            background-color: #ff9; color: #000;
+            transform: rotate(7deg);
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        .scrap.document {
+            bottom: -10px; left: 100px; width: 250px;
+            transform: rotate(2deg);
+            font-family: 'Times New Roman', serif;
+            border: 1px dashed #666;
+            background: #f4f4eb;
+        }
+
+        /* --- واجهة الطرفية التفاعلية (Terminal) --- */
+        .interactive-terminal {
+            background-color: #050505;
+            color: #0f0;
+            font-family: 'VT323', monospace;
+            font-size: 18px;
+            height: 180px;
+            margin-top: 10px;
+            padding: 10px;
+            border: 2px inset #fff;
+            overflow-y: auto;
+            text-shadow: 0 0 4px #0f0;
+        }
+
+        .input-line {
+            display: flex;
+            margin-top: 5px;
+        }
+        
+        .input-line span { margin-right: 5px; }
+        
+        .input-line input {
+            background: transparent;
+            border: none;
+            color: #0f0;
+            font-family: 'VT323', monospace;
+            font-size: 18px;
+            outline: none;
+            width: 100%;
+            text-shadow: 0 0 4px #0f0;
+        }
+
+        /* مؤثر التشويش */
+        .glitch {
+            animation: glitch 1s linear infinite;
+        }
+
+        @keyframes glitch {
+            2%, 64% { transform: translate(2px,0) skew(0deg); }
+            4%, 60% { transform: translate(-2px,0) skew(0deg); }
+            62% { transform: translate(0,0) skew(5deg); }
         }
     </style>
 </head>
 <body class="crt">
 
-    <div class="window main-window">
-        <!-- شريط عنوان النافذة -->
-        <div class="title-bar">
-            <div class="title-bar-text">Interdimensional Services - Database Access</div>
-            <div class="title-bar-controls">
-                <button aria-label="Minimize"></button>
-                <button aria-label="Maximize"></button>
-                <button aria-label="Close"></button>
+    <!-- شاشة الإقلاع الوهمية -->
+    <div id="boot-screen">
+        <div id="boot-text"></div>
+    </div>
+
+    <!-- الواجهة الرئيسية (تظهر بعد الإقلاع) -->
+    <div id="main-ui" style="display: none;">
+        
+        <!-- الشريط الجانبي القوائم -->
+        <div class="sidebar">
+            <div class="window">
+                <div class="title-bar"><div class="title-bar-text">Main Menu</div></div>
+                <div class="window-body">
+                    <ul class="tree-view">
+                        <li><strong>Home</strong></li>
+                        <li>About Us</li>
+                        <li>Our Services</li>
+                        <li>Careers (CLOSED)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="window">
+                <div class="title-bar"><div class="title-bar-text">Visitors</div></div>
+                <div class="window-body" style="text-align: center; background: #000; color: #0f0; font-family: 'VT323'; font-size: 24px;">
+                    <div class="glitch">00471283</div>
+                    <div style="font-size: 12px; color: red;">STATUS: ANOMALY</div>
+                </div>
             </div>
         </div>
-        
-        <!-- محتوى النافذة -->
-        <div class="window-body">
-            <h2 style="margin-top: 0;">Federal Agency for Dimensional Stability</h2>
-            <p>Through advanced research, technology, and a highly trained workforce, we ensure a safer, more stable multiverse.</p>
-            
-            <!-- شريط الأخبار المتحرك -->
-            <marquee scrollamount="5" style="background: darkblue; color: white; padding: 3px; font-weight: bold;">
-                >> PUBLIC SERVICE ANNOUNCEMENT: Report any dimensional anomalies immediately. >> STATUS: NORMAL >> CODE: Wkhuh duh rwkhuv lq wkh dark (There are others in the dark - Shift 3)
-            </marquee>
 
-            <!-- مساحة مخصصة لترتيب الصور كقصاصات (Absolute Positioning) -->
-            <div class="collage-area">
-                <p style="color: gray; text-align: center; margin-top: 40px;">
-                    <!-- يمكنك هنا إضافة وسم <img> واستخدام CSS position: absolute لترتيب الصور مثل القصاصات -->
-                    [مساحة مخصصة لإضافة صور الأرشيف الممزقة والرسومات]
-                </p>
-            </div>
+        <!-- مساحة المحتوى الرئيسية -->
+        <div class="content-area">
+            <div class="window" style="height: 100%;">
+                <div class="title-bar">
+                    <div class="title-bar-text">INTERDIMENSIONAL SERVICES - Protocol 86</div>
+                    <div class="title-bar-controls">
+                        <button aria-label="Minimize"></button><button aria-label="Maximize"></button><button aria-label="Close"></button>
+                    </div>
+                </div>
+                <div class="window-body" style="height: calc(100% - 35px); display: flex; flex-direction: column;">
+                    
+                    <!-- منطقة الكولاج العشوائي -->
+                    <div class="collage-container">
+                        <div class="scrap photo">[ صورة مبنى المقر ]</div>
+                        <div class="scrap note">
+                            <strong>ملاحظة:</strong><br>
+                            لا تثق بالترددات الصوتية بعد منتصف الليل.
+                        </div>
+                        <div class="scrap document">
+                            <strong>ملف حالة رقم: 404</strong><br>
+                            الوكالة غير مسؤولة عن أي تداخل في الذكريات ناتج عن الانتقال بين الأبعاد. <i>(تم طمس باقي النص)</i>
+                        </div>
+                        <h1 style="position: absolute; top: 120px; left: 160px; font-family: 'Courier New'; letter-spacing: 5px; color: #fff; text-shadow: 2px 2px #000; transform: rotate(-3deg);">W E L C O M E *</h1>
+                    </div>
 
-            <!-- واجهة الطرفية لقواعد البيانات السرية -->
-            <div class="terminal-box">
-                <p>Establishing connection...</p>
-                <p>Loading Cultural Anomaly Log...</p>
-                <p class="glitch-text">WARNING: Reality Stabilization Protocol compromised.</p>
-                <p>> Enter Access Code: <span class="blink">_</span></p>
-            </div>
+                    <!-- شريط التنبيهات -->
+                    <marquee scrollamount="6" style="background: darkred; color: white; padding: 4px; font-family: 'Pixelated MS Sans Serif'; margin-top: 5px; border: 1px solid #000;">
+                        >> WARNING: CULTURAL ANOMALY DETECTED IN SECTOR 4 >> REPORT UNUSUAL SHADOWS >> CIPHER KEY: THE EYE IS OPEN >>
+                    </marquee>
 
-            <div style="margin-top: 15px; text-align: right;">
-                <button>Login</button>
-                <button>Cancel</button>
+                    <!-- واجهة الأوامر التفاعلية (لغز مخفي) -->
+                    <div class="interactive-terminal" id="terminal-output">
+                        <div>> Initializing Secure Connection...</div>
+                        <div>> Database Corrupted.</div>
+                        <div>> Please enter authorization code to access classified files:</div>
+                        <div class="input-line">
+                            <span>></span>
+                            <input type="text" id="terminal-input" autocomplete="off" autofocus>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- أكواد جافا سكريبت للتشغيل والتفاعل -->
+    <script>
+        // 1. نظام شاشة الإقلاع (Boot Sequence)
+        const bootText = [
+            "BIOS Date 10/26/86 14:22:31 Ver 2.1",
+            "CPU: Unknown Entity (666 MHz)",
+            "Memory Test: 640K OK",
+            "Initializing Reality Anchors... SUCCESS",
+            "Loading Corrupted Archive... FAILED",
+            "Bypassing Security Protocols...",
+            "Connection Established.",
+            "Loading User Interface..."
+        ];
+        
+        let bootLine = 0;
+        const bootScreen = document.getElementById('boot-text');
+        
+        function typeBootSequence() {
+            if (bootLine < bootText.length) {
+                bootScreen.innerHTML += bootText[bootLine] + "<br>";
+                bootLine++;
+                setTimeout(typeBootSequence, Math.random() * 400 + 100);
+            } else {
+                setTimeout(() => {
+                    document.getElementById('boot-screen').style.display = 'none';
+                    document.getElementById('main-ui').style.display = 'flex';
+                    document.getElementById('terminal-input').focus();
+                }, 1000);
+            }
+        }
+        
+        // تشغيل الإقلاع عند تحميل الصفحة
+        window.onload = typeBootSequence;
+
+        // 2. تفاعل واجهة الأوامر (Terminal)
+        const terminalInput = document.getElementById('terminal-input');
+        const terminalOutput = document.getElementById('terminal-output');
+
+        terminalInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const command = this.value.toUpperCase().trim();
+                const newLine = document.createElement('div');
+                
+                // إضافة الأمر الذي تم كتابته
+                newLine.innerHTML = `> ${this.value}`;
+                terminalOutput.insertBefore(newLine, this.parentElement);
+                
+                // الرد بناءً على الكلمة السرية
+                const responseLine = document.createElement('div');
+                if (command === 'HELP') {
+                    responseLine.innerHTML = "Available commands: HELP, LOGIN, STATUS";
+                } else if (command === 'STATUS') {
+                    responseLine.innerHTML = "SYSTEM: UNSTABLE. DIMENSIONAL BLEED DETECTED.";
+                    responseLine.classList.add('glitch');
+                } else if (command === 'CIPHER' || command === 'SECRET') {
+                    responseLine.innerHTML = "ACCESS GRANTED: They are watching through the static.";
+                    responseLine.style.color = "red";
+                } else {
+                    responseLine.innerHTML = `Command not recognized. Access Denied.`;
+                }
+                
+                terminalOutput.insertBefore(responseLine, this.parentElement);
+                
+                // مسح الحقل والتمرير للأسفل
+                this.value = '';
+                terminalOutput.scrollTop = terminalOutput.scrollHeight;
+            }
+        });
+    </script>
 </body>
 </html>
