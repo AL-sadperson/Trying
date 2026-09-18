@@ -1,107 +1,194 @@
-/* استيراد خطوط قديمة وتناسب الرعب */
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=Cairo:wght@400;700&display=swap');
-
+/* إعدادات عامة بنمط ويندوز 95/98 القديم */
 body {
-    background-color: #0b0b0b;
-    color: #e2d9c2; /* لون ورق قديم باهت */
-    font-family: 'Courier Prime', 'Cairo', monospace;
-    padding: 20px;
-    overflow-x: hidden;
-    position: relative;
+    background-color: #008080; /* خلفية سطح المكتب الشهيرة (Teal) */
+    font-family: "MS Sans Serif", Arial, sans-serif;
+    margin: 0;
+    padding: 10px;
 }
 
-/* تأثير خطوط الشاشة CRT */
-.scanlines {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
-    background-size: 100% 4px;
-    z-index: 999;
-    pointer-events: none;
-}
-
-/* حاوية التلفزيون القديم */
-.crt-monitor {
-    max-width: 800px;
+/* نافذة المتصفح الكلاسيكية */
+.browser-window {
+    background-color: #c0c0c0;
+    border: 2px solid;
+    border-color: #dfdfdf #808080 #808080 #dfdfdf;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.5);
+    max-width: 1200px;
     margin: 0 auto;
-    border: 4px double #e2d9c2;
-    padding: 30px;
-    background-color: #121212;
-    box-shadow: inset 0 0 60px rgba(0,0,0,1), 0 0 20px rgba(226, 217, 194, 0.1);
 }
 
-/* نصوص SCP المحجوبة والخطوط */
-.red-text {
-    color: #ff3333;
-    font-weight: bold;
-    text-shadow: 0 0 5px rgba(255, 51, 51, 0.5);
-}
-
-.old-line {
-    border: 0;
-    height: 2px;
-    background: #e2d9c2;
-    margin: 20px 0;
-}
-
-/* صناديق التحذير والإعلانات */
-.warning-box {
-    border: 2px dashed #ff3333;
-    padding: 15px;
-    background-color: rgba(255, 51, 51, 0.05);
-    margin-bottom: 30px;
-}
-
-.book-page {
-    background-image: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7));
-    padding: 20px;
-    border-radius: 5px;
-}
-
-.archival-text {
-    line-height: 1.8;
-    font-size: 1.1rem;
-}
-
-.old-ad {
-    margin-top: 40px;
-    border: 1px solid #555;
-    padding: 15px;
-    text-align: center;
-    background: #181818;
-}
-
-.ad-placeholder {
-    height: 150px;
-    background: #222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #444;
-    border: 1px inset #333;
-    font-style: italic;
-    animation: flicker 0.15s infinite; /* تأثير الرعشة للإعلان */
-}
-
-.subliminal {
-    font-size: 0.8rem;
-    color: #555;
-    margin-top: 10px;
-    letter-spacing: 2px;
-}
-
-/* تذييل الـ VHS */
-.vhs-footer {
+/* شريط عنوان النافذة العلوي (زرقاء اللون) */
+.browser-header {
+    background: linear-gradient(90deg, #000080, #1084d0);
+    color: white;
+    padding: 4px 6px;
     display: flex;
     justify-content: space-between;
-    font-family: monospace;
-    color: #00ff00; /* أخضر فسفوري للـ VHS */
-    text-shadow: 0 0 5px #00ff00;
+    align-items: center;
+    font-weight: bold;
+    font-size: 12px;
 }
 
-/* أنيميشن الرعشة والتشويش (Flicker) */
-@keyframes flicker {
-    0% { opacity: 0.95; }
-    50% { opacity: 1; }
-    100% { opacity: 0.92; }
+.browser-controls button {
+    background-color: #c0c0c0;
+    border: 1px solid;
+    border-color: #fff #555 #555 #fff;
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* شريط القوائم */
+.menu-bar {
+    background-color: #c0c0c0;
+    padding: 2px 5px;
+    font-size: 11px;
+    border-bottom: 1px solid #808080;
+}
+.menu-bar span {
+    margin-right: 10px;
+    cursor: pointer;
+}
+.menu-bar span:hover {
+    background: #000080;
+    color: white;
+}
+
+/* شريط الأدوات والأزرار */
+.toolbar {
+    background-color: #c0c0c0;
+    padding: 4px;
+    display: flex;
+    gap: 3px;
+    border-bottom: 1px solid #fff;
+}
+.toolbar button {
+    background-color: #c0c0c0;
+    border: 1px solid;
+    border-color: #fff #808080 #808080 #fff;
+    font-size: 10px;
+    padding: 2px 6px;
+    cursor: pointer;
+}
+.toolbar button:active {
+    border-color: #808080 #fff #fff #808080;
+}
+
+/* شريط العنوان Address Bar */
+.address-bar {
+    background-color: #c0c0c0;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-bottom: 2px solid #808080;
+    font-size: 11px;
+}
+.address-bar input {
+    flex-grow: 1;
+    background: white;
+    border: 1px solid;
+    border-color: #808080 #fff #fff #808080;
+    padding: 2px;
+    font-family: monospace;
+}
+
+/* تخطيط المحتوى الرئيسي (شبكة من 3 أعمدة) */
+.main-container {
+    display: grid;
+    grid-template-columns: 220px 1fr 240px;
+    background-color: #1a1a2e; /* خلفية داكنة تناسب الجو السريالي في الصورة */
+    color: #e0e0e0;
+    min-height: 600px;
+}
+
+/* القائمة الجانبية */
+.sidebar {
+    background-color: #0f0f1a;
+    border-right: 2px solid #444;
+    padding: 10px;
+    font-size: 12px;
+}
+.logo-area {
+    text-align: center;
+    margin-bottom: 15px;
+}
+.globe-placeholder {
+    font-size: 40px;
+}
+.sidebar h2 {
+    font-size: 13px;
+    color: #00ffcc;
+    margin: 5px 0;
+}
+.menu-section ul {
+    list-style: none;
+    padding: 0;
+}
+.menu-section li {
+    margin: 5px 0;
+}
+.menu-section a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 3px;
+    border: 1px solid transparent;
+}
+.menu-section a:hover {
+    background-color: #222244;
+    border-color: #00ffcc;
+}
+
+/* منطقة المحتوى الوسطي */
+.content-area {
+    padding: 15px;
+    background: #111122;
+}
+.top-banner {
+    border-bottom: 1px dashed #666;
+    margin-bottom: 10px;
+}
+.top-banner h1 {
+    font-size: 16px;
+    color: #ffcc00;
+}
+
+.retro-box {
+    background: #1f1f3a;
+    border: 1px solid #555;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+/* شريط الإعلانات المتحرك */
+.ticker-bar {
+    background: #000;
+    color: #00ff00;
+    font-family: monospace;
+    padding: 5px;
+    border: 1px inset #555;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* الشريط الجانبي الأيمن */
+.right-sidebar {
+    background-color: #0f0f1a;
+    border-left: 2px solid #444;
+    padding: 10px;
+    font-size: 11px;
+}
+.widget {
+    background: #161628;
+    border: 1px solid #444;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+.widget h3 {
+    font-size: 12px;
+    color: #ff9900;
+    margin-top: 0;
+    border-bottom: 1px solid #333;
 }
