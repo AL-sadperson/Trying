@@ -1,217 +1,2659 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interdimensional Services</title>
-    <style>
-        /* إعدادات الخطوط والخلفية الأساسية */
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'MS Sans Serif', Tahoma, sans-serif;
-            margin: 0;
-            padding: 10px;
-            display: flex;
-            justify-content: center;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        /* واجهة المتصفح الوهمية (Internet Explorer القديم) */
-        .browser-window {
-            background-color: #c0c0c0;
-            width: 100%;
-            max-width: 1200px;
-            border: 2px solid;
-            border-color: #dfdfdf #000 #000 #dfdfdf;
-            padding: 2px;
-            color: #000;
-        }
+<title>Interdimensional Services — Microsoft Internet Explorer</title>
 
-        .title-bar {
-            background: linear-gradient(90deg, #000080, #1084d0);
-            color: white;
-            padding: 3px 5px;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-        }
+<style>
 
-        .toolbar {
-            padding: 5px;
-            border-bottom: 1px solid #808080;
-        }
+/* =========================================================
+   GENERAL
+========================================================= */
 
-        /* حاوية محتوى الموقع */
-        .site-container {
-            background-image: url('stars-background.jpg'); /* يجب استبدالها بصورة النجوم */
-            background-color: #050b14; /* لون بديل في حال عدم وجود صورة */
-            padding: 10px;
-            display: grid;
-            grid-template-columns: 200px 1fr 250px; /* تقسيم الشاشة إلى 3 أعمدة */
-            gap: 15px;
-            color: white;
-            min-height: 800px;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        /* تصميم النوافذ القديمة داخل الموقع */
-        .win-panel {
-            background-color: #c0c0c0;
-            color: #000;
-            border: 2px solid;
-            border-color: #fff #000 #000 #fff;
-            padding: 2px;
-            margin-bottom: 15px;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .win-panel-header {
-            background-color: #000080;
-            color: white;
-            padding: 2px 5px;
-            font-weight: bold;
-            font-size: 14px;
-        }
+body {
+    margin: 0;
+    background: #777;
+    color: #171717;
+    font-family: "Times New Roman", serif;
+}
 
-        .win-panel-content {
-            padding: 10px;
-            background: #fff;
-            border: 2px solid;
-            border-color: #808080 #fff #fff #808080;
-            font-size: 12px;
-        }
+a {
+    color: #173c5b;
+}
 
-        /* القائمة الجانبية اليسرى */
-        .left-menu button {
-            width: 100%;
-            text-align: left;
-            padding: 5px;
-            margin-bottom: 5px;
-            background-color: #c0c0c0;
-            border: 2px solid;
-            border-color: #fff #000 #000 #fff;
-            cursor: pointer;
-            font-weight: bold;
-        }
 
-        .left-menu button:active {
-            border-color: #000 #fff #fff #000;
-        }
+/* =========================================================
+   FAKE INTERNET EXPLORER
+========================================================= */
 
-        /* المحتوى المركزي (منطقة الكولاج) */
-        .main-content {
-            position: relative;
-            background-color: #f0e6d2; /* لون الورق القديم */
-            border: 2px dashed #666; /* حدود تشبه القصاصات */
-            padding: 20px;
-            color: #000;
-            overflow: hidden;
-        }
+.browser {
+    width: 100%;
+    max-width: 1450px;
+    margin: 7px auto;
+    background: #c7c8c7;
 
-        /* شريط الأخبار المتحرك */
-        .marquee-bar {
-            background-color: #000080;
-            color: white;
-            padding: 5px;
-            font-family: monospace;
-            border: 2px solid #fff;
-            margin-top: 15px;
-        }
+    border: 2px solid #303030;
 
-        /* القائمة الجانبية اليمنى */
-        .right-sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+    box-shadow:
+        2px 2px 0 #eee,
+        -2px -2px 0 #555;
+}
 
-        .right-sidebar li {
-            margin-bottom: 10px;
-            font-size: 11px;
-            border-bottom: 1px dashed #ccc;
-            padding-bottom: 5px;
-        }
-    </style>
+
+/* Title bar */
+
+.title-bar {
+    height: 25px;
+
+    background: #17283b;
+    color: white;
+
+    padding: 5px 8px;
+
+    font-family: "Courier New", monospace;
+    font-size: 12px;
+}
+
+.window-buttons {
+    float: right;
+}
+
+
+/* Menu */
+
+.menu-bar {
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 22px;
+
+    padding: 5px 10px;
+
+    background: #cfd0cf;
+
+    border-bottom: 1px solid #777;
+
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+
+/* Toolbar */
+
+.toolbar {
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 23px;
+
+    padding: 3px 10px;
+
+    background: #d2d3d2;
+
+    border-bottom: 1px solid #777;
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+}
+
+.tool {
+    text-align: center;
+}
+
+.tool-icon {
+    display: block;
+    font-size: 18px;
+    line-height: 18px;
+}
+
+
+/* Address */
+
+.address-bar {
+    height: 27px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 3px 6px;
+
+    background: #d0d1d0;
+
+    border-bottom: 2px solid #555;
+
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+}
+
+.address-input {
+    flex: 1;
+
+    height: 20px;
+
+    background: white;
+
+    border: 1px solid #777;
+
+    padding-left: 6px;
+
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   MAIN WEBSITE
+========================================================= */
+
+.main-layout {
+
+    display: grid;
+
+    grid-template-columns:
+        185px
+        minmax(0, 1fr)
+        245px;
+
+    gap: 5px;
+
+    min-height: 850px;
+
+    padding: 7px;
+
+    background: #071321;
+}
+
+
+/* =========================================================
+   LEFT NAVIGATION
+========================================================= */
+
+.left-panel {
+
+    background: #081421;
+
+    color: #ddd;
+
+    padding: 5px;
+}
+
+
+/* Logo */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 5px 12px;
+
+    border-bottom: 1px solid #506171;
+}
+
+.logo-title {
+
+    font-family: Georgia, serif;
+
+    font-size: 15px;
+
+    letter-spacing: .5px;
+}
+
+.logo-subtitle {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: #9eabb6;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 9px;
+}
+
+
+/* Planet */
+
+.planet {
+
+    position: relative;
+
+    width: 55px;
+    height: 55px;
+
+    border: 3px solid #ddd;
+
+    border-radius: 50%;
+}
+
+.planet::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 70px;
+    height: 16px;
+
+    left: -10px;
+    top: 17px;
+
+    border: 3px solid #ddd;
+
+    border-radius: 50%;
+
+    transform: rotate(-12deg);
+}
+
+
+/* Main Menu */
+
+.menu-title {
+
+    margin: 7px 0 4px;
+
+    padding: 5px;
+
+    background: #16283a;
+
+    border: 1px solid #4d6172;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+}
+
+.navigation a {
+
+    display: block;
+
+    padding: 8px;
+
+    margin: 2px 0;
+
+    color: #e5e9ec;
+
+    text-decoration: none;
+
+    background: #122334;
+
+    border: 1px solid #405466;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+}
+
+.navigation a:hover,
+.navigation a.active {
+
+    background: #d7dad9;
+
+    color: #122334;
+}
+
+
+/* Left cards */
+
+.left-card {
+
+    margin-top: 12px;
+
+    padding: 9px;
+
+    background: #0e1c2a;
+
+    border: 1px solid #4e6476;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 10px;
+
+    line-height: 1.35;
+}
+
+.visitor-counter {
+
+    margin-top: 5px;
+
+    color: #9cc6a9;
+
+    font-size: 17px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   CENTER
+========================================================= */
+
+.center-panel {
+
+    overflow: hidden;
+
+    background: #e9dfcb;
+
+    border: 1px solid #233647;
+}
+
+
+/* Header */
+
+.site-header {
+
+    height: 118px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr;
+
+    align-items: center;
+
+    padding: 14px 17px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background: #091725;
+
+    color: white;
+}
+
+.site-header::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: -20px;
+    top: -80px;
+
+    width: 210px;
+    height: 220px;
+
+    border: 2px solid #cfc4aa;
+
+    border-radius: 50%;
+
+    transform: rotate(25deg);
+
+    box-shadow:
+        0 0 0 12px #17283a,
+        0 0 0 14px #cfc4aa;
+}
+
+.site-title {
+
+    font-family: Georgia, serif;
+
+    font-size: 20px;
+
+    letter-spacing: 1px;
+}
+
+.site-title small {
+
+    display: block;
+
+    margin-top: 7px;
+
+    color: #adb8c0;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 10px;
+}
+
+.site-motto {
+
+    z-index: 2;
+
+    text-align: center;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 11px;
+}
+
+
+/* Content */
+
+.content {
+
+    padding: 8px 11px;
+}
+
+
+/* Tab */
+
+.tab {
+
+    height: 28px;
+
+    padding: 6px 9px;
+
+    background: #132536;
+
+    border: 1px solid #31475a;
+
+    color: white;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    height: 300px;
+
+    margin-top: 6px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border: 1px solid #756b58;
+
+    background:
+        linear-gradient(
+            120deg,
+            #d8ceba 0 26%,
+            #526a7b 26% 48%,
+            #d0c6af 48% 70%,
+            #727b7d 70%
+        );
+}
+
+
+/* Fake photograph */
+
+.hero::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 18px;
+    top: 17px;
+
+    width: 45%;
+    height: 235px;
+
+    background:
+        linear-gradient(
+            #1c2a39,
+            #405263 60%,
+            #161b1f 60%
+        );
+
+    border: 5px solid #eee2c7;
+
+    box-shadow:
+        0 0 0 1px #716958;
+}
+
+
+/* Photograph text */
+
+.hero::after {
+
+    content:
+        "INTERDIMENSIONAL SERVICES\A"
+        "HEADQUARTERS — 1986";
+
+    white-space: pre;
+
+    position: absolute;
+
+    left: 35px;
+    top: 30px;
+
+    color: #eee6d5;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 12px;
+
+    line-height: 2;
+}
+
+
+/* Welcome */
+
+.welcome {
+
+    position: absolute;
+
+    right: 40px;
+    bottom: 50px;
+
+    color: #2c4257;
+
+    font-family: Georgia, serif;
+
+    font-size: 42px;
+
+    letter-spacing: 7px;
+
+    text-shadow: 2px 2px white;
+}
+
+.welcome sup {
+
+    color: #9c3027;
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   PAPER SECTION
+========================================================= */
+
+.paper {
+
+    position: relative;
+
+    margin-top: -1px;
+
+    padding: 12px;
+
+    background: #eee3cd;
+
+    border: 1px solid #827762;
+}
+
+.paper h1 {
+
+    margin: 0 0 6px 7px;
+
+    font-size: 19px;
+}
+
+.paper p {
+
+    margin: 6px 7px;
+
+    font-size: 13px;
+
+    line-height: 1.35;
+}
+
+
+/* Cultural anomaly log */
+
+.anomaly-log {
+
+    float: right;
+
+    width: 35%;
+
+    height: 150px;
+
+    overflow: auto;
+
+    margin: 0 0 8px 12px;
+
+    padding: 7px;
+
+    background: #e1d6bc;
+
+    border: 1px solid #756d5e;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 10px;
+}
+
+.anomaly-log-title {
+
+    font-family: Georgia, serif;
+
+    font-size: 12px;
+
+    margin-bottom: 5px;
+}
+
+.anomaly-log div {
+
+    padding: 3px 0;
+
+    border-bottom: 1px dotted #777;
+}
+
+
+/* Ticker */
+
+.ticker {
+
+    clear: both;
+
+    padding: 6px;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    background: #172737;
+
+    border: 1px solid #405364;
+
+    color: white;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   SERVICE CARDS
+========================================================= */
+
+.service-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 7px;
+
+    margin-top: 8px;
+}
+
+.service {
+
+    min-height: 120px;
+
+    padding: 8px;
+
+    background: #e6dbc4;
+
+    border: 1px solid #786e5e;
+}
+
+.service h3 {
+
+    margin: 0 0 5px;
+
+    font-family: Georgia, serif;
+
+    font-size: 13px;
+}
+
+.service p {
+
+    font-size: 11px;
+
+    line-height: 1.3;
+}
+
+.button {
+
+    padding: 4px 7px;
+
+    background: #d0c7b5;
+
+    border: 1px solid #555;
+
+    cursor: pointer;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 10px;
+}
+
+.button:hover {
+
+    background: white;
+}
+
+
+/* =========================================================
+   RIGHT PANEL
+========================================================= */
+
+.right-panel {
+
+    color: #111;
+}
+
+
+/* Window */
+
+.window {
+
+    margin-bottom: 8px;
+
+    background: #ddd6c5;
+
+    border: 1px solid #6c7680;
+
+    box-shadow: 1px 1px #111;
+}
+
+.window-title {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 5px 6px;
+
+    background: #162738;
+
+    color: white;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 11px;
+}
+
+.window-body {
+
+    padding: 7px;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   LATEST UPDATES
+========================================================= */
+
+.update {
+
+    padding: 6px 2px;
+
+    border-bottom: 1px dotted #777;
+
+    line-height: 1.4;
+}
+
+.update:last-child {
+
+    border-bottom: none;
+}
+
+.update-date {
+
+    display: block;
+
+    font-family: "Courier New", monospace;
+
+    font-weight: bold;
+}
+
+.update a {
+
+    color: #173c5b;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   QUICK LINKS
+   نفس القائمة الموجودة بالصورة
+========================================================= */
+
+.quick-link {
+
+    display: block;
+
+    padding: 9px 4px;
+
+    color: #173c5b;
+
+    text-decoration: none;
+
+    border-bottom: 1px solid #aaa;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+.quick-link:last-child {
+
+    border-bottom: none;
+}
+
+.quick-link:hover {
+
+    background: #c9c1b0;
+}
+
+.quick-link-icon {
+
+    display: inline-block;
+
+    width: 24px;
+
+    color: #152f47;
+
+    font-size: 17px;
+
+    vertical-align: middle;
+}
+
+.quick-link small {
+
+    display: block;
+
+    margin-left: 29px;
+
+    color: #555;
+
+    font-size: 9px;
+
+    font-weight: normal;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-input {
+
+    width: 100%;
+
+    height: 24px;
+
+    padding: 3px;
+
+    border: 1px solid #777;
+
+    background: white;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   PUBLIC NOTICE
+========================================================= */
+
+.public-notice {
+
+    padding: 8px;
+
+    background: #ead5b3;
+
+    border: 2px dashed #963229;
+
+    color: #222;
+
+    font-size: 10px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   MODAL / DOCUMENT VIEWER
+========================================================= */
+
+.modal {
+
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 999;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0,0,0,.72);
+}
+
+.modal.open {
+
+    display: flex;
+}
+
+.modal-window {
+
+    width: min(760px, 100%);
+
+    max-height: 80vh;
+
+    overflow: auto;
+
+    background: #e9dfcb;
+
+    border: 3px double #222;
+
+    box-shadow: 8px 8px #111;
+}
+
+.modal-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 8px;
+
+    background: #152637;
+
+    color: white;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 12px;
+}
+
+.close {
+
+    cursor: pointer;
+
+    padding: 0 5px;
+
+    border: 1px solid #aaa;
+}
+
+.modal-content {
+
+    padding: 15px;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ANALOG HORROR TERMINAL
+========================================================= */
+
+.terminal {
+
+    min-height: 230px;
+
+    padding: 10px;
+
+    overflow: auto;
+
+    background: #07100a;
+
+    border: 1px solid #344c37;
+
+    color: #a8d5aa;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 11px;
+
+    white-space: pre-wrap;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    padding: 12px;
+
+    border-top: 3px solid #172637;
+
+    background: #d0c6b4;
+
+    text-align: center;
+
+    color: #252525;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   GLITCH
+========================================================= */
+
+.glitch {
+
+    animation: glitch .12s infinite alternate;
+}
+
+@keyframes glitch {
+
+    from {
+        opacity: .92;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:900px) {
+
+    .main-layout {
+
+        grid-template-columns:
+            150px
+            1fr;
+    }
+
+    .right-panel {
+
+        display: none;
+    }
+}
+
+
+@media(max-width:650px) {
+
+    .main-layout {
+
+        grid-template-columns: 1fr;
+    }
+
+    .left-panel {
+
+        display: none;
+    }
+
+    .site-header {
+
+        grid-template-columns: 1fr;
+
+        height: 95px;
+    }
+
+    .site-motto {
+
+        display: none;
+    }
+
+    .service-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .anomaly-log {
+
+        float: none;
+
+        width: 100%;
+
+        margin: 0 0 8px;
+    }
+
+    .welcome {
+
+        right: 20px;
+
+        font-size: 28px;
+    }
+}
+
+</style>
 </head>
+
+
 <body>
 
-<div class="browser-window">
-    <!-- شريط عنوان المتصفح -->
-    <div class="title-bar">
-        <span>Interdimensional Services - Microsoft Internet Explorer</span>
-        <span>_ □ X</span>
-    </div>
-    
-    <div class="toolbar">
-        Address: http://www.isc.gov/
-    </div>
+<div class="browser">
 
-    <!-- حاوية الموقع الفعلية -->
-    <div class="site-container">
-        
-        <!-- العمود الأيسر -->
-        <div class="left-sidebar">
-            <div class="win-panel">
-                <div class="win-panel-header">Main Menu</div>
-                <div class="win-panel-content left-menu">
-                    <button>Home</button>
-                    <button>About Us</button>
-                    <button>Our Services</button>
-                    <button>Careers</button>
-                    <button>Public Information</button>
-                    <button>Contact</button>
-                </div>
-            </div>
 
-            <!-- عداد الزوار -->
-            <div style="text-align: center; margin-top: 20px;">
-                <p>Visitors</p>
-                <h2 style="color: #0f0; background: #000; padding: 5px; border: 2px solid #888;">00471283</h2>
-                <p style="font-size: 10px;">Last updated: 10/31/1986<br>Status: NORMAL</p>
-            </div>
-        </div>
+<!-- =====================================================
+     INTERNET EXPLORER
+===================================================== -->
 
-        <!-- العمود الأوسط (منطقة الكولاج) -->
-        <div class="main-content">
-            <h1 style="text-align: center; font-family: monospace; letter-spacing: 5px;">welcome *</h1>
-            <!-- ضع صور الكولاج هنا باستخدام التموضع المطلق absolute positioning -->
-            <p style="margin-top: 50px; font-weight: bold; border-top: 2px solid #000; padding-top: 10px;">
-                Interdimensional Services
-            </p>
-            <p style="font-size: 14px;">
-                The Interdimensional Services (IS) is a federal agency dedicated to maintaining the stability, regulation, and protection of all known dimensions...
-            </p>
+<div class="title-bar">
 
-            <div class="marquee-bar">
-                <marquee scrollamount="5">>> PUBLIC SERVICE ANNOUNCEMENT: Report any dimensional anomalies immediately. | Together we keep the balance.</marquee>
-            </div>
-        </div>
+    Interdimensional Services — Microsoft Internet Explorer
 
-        <!-- العمود الأيمن -->
-        <div class="right-sidebar">
-            <div class="win-panel">
-                <div class="win-panel-header">Latest Updates</div>
-                <div class="win-panel-content">
-                    <ul>
-                        <li><strong>Oct 26, 1986</strong><br>New Frontiers Initiative Launches</li>
-                        <li><strong>Oct 19, 1986</strong><br>Employee Wellness Program Updates</li>
-                        <li><strong>Oct 12, 1986</strong><br>Reality Stabilization Report</li>
-                    </ul>
-                </div>
-            </div>
+    <span class="window-buttons">
+        □ ×
+    </span>
 
-            <div class="win-panel">
-                <div class="win-panel-header">Quick Links</div>
-                <div class="win-panel-content">
-                    <ul>
-                        <li>Case Files (Internal)</li>
-                        <li>Employee Access</li>
-                        <li>Media Library</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-    </div>
 </div>
+
+
+<div class="menu-bar">
+
+    <span>File</span>
+    <span>Edit</span>
+    <span>View</span>
+    <span>Go</span>
+    <span>Favorites</span>
+    <span>Help</span>
+
+</div>
+
+
+<div class="toolbar">
+
+    <div class="tool">
+        <span class="tool-icon">◀</span>
+        Back
+    </div>
+
+    <div class="tool">
+        <span class="tool-icon">↻</span>
+        Refresh
+    </div>
+
+    <div class="tool">
+        <span class="tool-icon">×</span>
+        Stop
+    </div>
+
+    <div class="tool">
+        <span class="tool-icon">⌂</span>
+        Home
+    </div>
+
+    <div class="tool">
+        <span class="tool-icon">⌕</span>
+        Search
+    </div>
+
+    <div class="tool">
+        <span class="tool-icon">★</span>
+        Favorites
+    </div>
+
+    <div class="tool">
+        <span class="tool-icon">◧</span>
+        History
+    </div>
+
+    <div class="tool">
+        <span class="tool-icon">✉</span>
+        Mail
+    </div>
+
+    <div class="tool">
+        <span class="tool-icon">▣</span>
+        Print
+    </div>
+
+</div>
+
+
+<div class="address-bar">
+
+    Address
+
+    <input
+        class="address-input"
+        value="http://www.isc.gov/"
+        readonly
+    >
+
+</div>
+
+
+
+<!-- =====================================================
+     WEBSITE
+===================================================== -->
+
+<div class="main-layout">
+
+
+<!-- =====================================================
+     LEFT SIDE
+===================================================== -->
+
+<aside class="left-panel">
+
+
+<div class="logo">
+
+    <div class="planet"></div>
+
+    <div>
+
+        <div class="logo-title">
+            INTERDIMENSIONAL<br>
+            SERVICES
+        </div>
+
+        <span class="logo-subtitle">
+            Federal Agency for Dimensional Stability
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<div class="menu-title">
+    ▶ Main Menu
+</div>
+
+
+<nav class="navigation">
+
+    <a href="#home" class="active">
+        ▣ &nbsp; Home
+    </a>
+
+    <a href="#about">
+        ♜ &nbsp; About Us
+    </a>
+
+    <a href="#services">
+        ▣ &nbsp; Our Services
+    </a>
+
+    <a href="#careers">
+        ⚒ &nbsp; Careers
+    </a>
+
+    <a href="#public">
+        ▣ &nbsp; Public Information
+    </a>
+
+    <a href="#contact">
+        ✉ &nbsp; Contact
+    </a>
+
+</nav>
+
+
+
+<div class="left-card">
+
+    STARILITY<br>
+    THROUGH<br>
+    COOPERATION.
+
+    <div style="font-size:20px;margin:5px 0;">
+        ★★★
+    </div>
+
+    Federal Standard 7-A
+
+</div>
+
+
+
+<div class="left-card">
+
+    ▶ VISITORS
+
+    <div class="visitor-counter">
+        00471283
+    </div>
+
+    Last update: 10/31/1986<br>
+
+    Status:
+    <span style="color:#9bc6a6">
+        NORMAL
+    </span>
+
+</div>
+
+
+
+<div class="left-card">
+
+    SYSTEM STATUS
+
+    <br>
+
+    <span style="color:#9bc6a6">
+        ● ALL SYSTEMS NOMINAL
+    </span>
+
+</div>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     CENTER
+===================================================== -->
+
+<main class="center-panel" id="home">
+
+
+<header class="site-header">
+
+    <div class="site-title">
+
+        INTERDIMENSIONAL SERVICES
+
+        <small>
+            Federal Agency for Dimensional Stability
+        </small>
+
+    </div>
+
+
+    <div class="site-motto">
+
+        Multiple Realities.<br>
+        One Agency.
+
+    </div>
+
+</header>
+
+
+
+<div class="content">
+
+
+<div class="tab">
+    Welcome
+</div>
+
+
+
+<section class="hero">
+
+    <div class="welcome">
+        Welcome<sup>*</sup>
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section class="paper" id="about">
+
+
+<div class="anomaly-log">
+
+    <div class="anomaly-log-title">
+        Historical Log of Cultural Frequency Anomalies
+    </div>
+
+    <div>01. Hidden Place</div>
+    <div>02. Cocon</div>
+    <div>03. I'd Get Up To You</div>
+    <div>04. Theater Reta</div>
+    <div>05. Useless</div>
+    <div>06. Pagan Poetry</div>
+    <div>07. Freak</div>
+    <div>08. An Eerie as a Stin</div>
+    <div>09. An Storm State</div>
+    <div>10. Sun In My Youth</div>
+    <div>11. Harm Of Will</div>
+
+</div>
+
+
+
+<h1>
+    Interdimensional Services
+</h1>
+
+
+<p>
+
+    (IS) is a federal agency dedicated to maintaining
+    the stability, regulation, and protection of all
+    known dimensions.
+
+    Through advanced research, technology, and a highly
+    trained workforce, we ensure a safer, more stable
+    multiverse for future generations.
+
+</p>
+
+
+
+<button
+    class="button"
+    onclick="openDocument('mission')"
+>
+
+    Learn more about our mission →
+
+</button>
+
+
+
+<div class="ticker">
+
+    🔊 &gt;&gt; PUBLIC SERVICE ANNOUNCEMENT:
+
+    Report any dimensional anomalies immediately.
+
+    &nbsp; | &nbsp;
+
+    Together we keep the balance.
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
+
+<section
+    class="service-grid"
+    id="services"
+>
+
+
+<article class="service">
+
+    <h3>
+        Dimensional Regulation
+    </h3>
+
+    <p>
+        Monitor unstable realities,
+        temporal distortions and
+        cross-dimensional interference.
+    </p>
+
+    <button
+        class="button"
+        onclick="openDocument('regulation')"
+    >
+
+        READ FILE →
+
+    </button>
+
+</article>
+
+
+
+<article class="service">
+
+    <h3>
+        Travel Licensing
+    </h3>
+
+    <p>
+        Official permits for authorized
+        transit between registered realities.
+    </p>
+
+    <button
+        class="button"
+        onclick="openDocument('travel')"
+    >
+
+        APPLY →
+
+    </button>
+
+</article>
+
+
+
+<article class="service">
+
+    <h3>
+        Anomaly Response
+    </h3>
+
+    <p>
+        Rapid containment and restoration
+        procedures for dimensional incidents.
+    </p>
+
+    <button
+        class="button"
+        onclick="openDocument('anomaly')"
+    >
+
+        EMERGENCY GUIDE →
+
+    </button>
+
+</article>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     PUBLIC / CAREERS / CONTACT
+===================================================== -->
+
+<section
+    class="service-grid"
+    style="margin-top:7px"
+>
+
+
+<article
+    class="service"
+    id="public"
+>
+
+    <h3>
+        Public Archive
+    </h3>
+
+    <p>
+        Historical records available
+        to civilian visitors.
+    </p>
+
+    <button
+        class="button"
+        onclick="openDocument('archive')"
+    >
+
+        OPEN ARCHIVE
+
+    </button>
+
+</article>
+
+
+
+<article
+    class="service"
+    id="careers"
+>
+
+    <h3>
+        Careers
+    </h3>
+
+    <p>
+        Serve your reality.
+        Serve every reality.
+    </p>
+
+    <button
+        class="button"
+        onclick="openDocument('careers')"
+    >
+
+        VACANCIES
+
+    </button>
+
+</article>
+
+
+
+<article
+    class="service"
+    id="contact"
+>
+
+    <h3>
+        Contact
+    </h3>
+
+    <p>
+        For ordinary dimensional concerns,
+        use Form IS-17.
+    </p>
+
+    <button
+        class="button"
+        onclick="openDocument('contact')"
+    >
+
+        FORM IS-17
+
+    </button>
+
+</article>
+
+
+</section>
+
+
+</div>
+
+
+
+<footer class="footer">
+
+    IS — Different worlds. Same purpose.
+
+    <br>
+
+    © 1986 Federal Agency for Dimensional Stability
+
+</footer>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     RIGHT SIDE
+     نفس القائمة الموجودة في الصورة
+===================================================== -->
+
+<aside class="right-panel">
+
+
+
+<!-- =====================================================
+     LATEST UPDATES
+===================================================== -->
+
+<section class="window">
+
+<div class="window-title">
+
+    Latest Updates
+
+    <span>
+        ×
+    </span>
+
+</div>
+
+
+<div class="window-body">
+
+
+<div class="update">
+
+    <span class="update-date">
+        Oct 26, 1986
+    </span>
+
+    New Frontiers Initiative Launches
+
+    <br>
+
+    <a
+        href="#"
+        onclick="openDocument('frontier'); return false;"
+    >
+        View details →
+    </a>
+
+</div>
+
+
+
+<div class="update">
+
+    <span class="update-date">
+        Oct 19, 1986
+    </span>
+
+    Employee Wellness Program Updates
+
+    <br>
+
+    <a
+        href="#"
+        onclick="openDocument('wellness'); return false;"
+    >
+        View details →
+    </a>
+
+</div>
+
+
+
+<div class="update">
+
+    <span class="update-date">
+        Oct 12, 1986
+    </span>
+
+    Reality Stability Report
+
+    <br>
+
+    <a
+        href="#"
+        onclick="openDocument('stability'); return false;"
+    >
+        Access report →
+    </a>
+
+</div>
+
+
+
+<div class="update">
+
+    <span class="update-date">
+        Oct 05, 1986
+    </span>
+
+    Public Service Announcement
+
+    <br>
+
+    <a
+        href="#"
+        onclick="openDocument('psa'); return false;"
+    >
+        Watch now →
+    </a>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     QUICK LINKS
+     هذا هو الجزء الذي طلبته
+===================================================== -->
+
+<section class="window">
+
+<div class="window-title">
+
+    Quick Links
+
+    <span>
+        ×
+    </span>
+
+</div>
+
+
+<div class="window-body"
+     style="padding:0;">
+
+
+
+<!-- CASE FILES -->
+
+<a
+    class="quick-link"
+    href="#"
+    onclick="openDocument('casefiles'); return false;"
+>
+
+    <span class="quick-link-icon">
+        ▣
+    </span>
+
+    Case Files (Internal)
+
+    <small>
+        Authorized personnel only.
+    </small>
+
+</a>
+
+
+
+<!-- EMPLOYEE ACCESS -->
+
+<a
+    class="quick-link"
+    href="#"
+    onclick="openEmployeeLogin(); return false;"
+>
+
+    <span class="quick-link-icon">
+        ▣
+    </span>
+
+    Employee Access
+
+    <small>
+        Login to the Internal portal.
+    </small>
+
+</a>
+
+
+
+<!-- MEDIA LIBRARY -->
+
+<a
+    class="quick-link"
+    href="#"
+    onclick="openDocument('media'); return false;"
+>
+
+    <span class="quick-link-icon">
+        ▶
+    </span>
+
+    Media Library
+
+    <small>
+        Training videos & more.
+    </small>
+
+</a>
+
+
+
+<!-- ARCHIVE -->
+
+<a
+    class="quick-link"
+    href="#"
+    onclick="openDocument('archive'); return false;"
+>
+
+    <span class="quick-link-icon">
+        ▣
+    </span>
+
+    Archive
+
+    <small>
+        Historical documents.
+    </small>
+
+</a>
+
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
+<section class="window">
+
+<div class="window-title">
+
+    Search
+
+    <span>
+        ×
+    </span>
+
+</div>
+
+
+<div class="window-body">
+
+    <input
+        id="searchInput"
+        class="search-input"
+        placeholder="Search IS archives..."
+        onkeydown="if(event.key === 'Enter') searchArchive();"
+    >
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PUBLIC NOTICE
+===================================================== -->
+
+<div class="public-notice">
+
+    <b>
+        PUBLIC NOTICE
+    </b>
+
+    <br><br>
+
+    Unauthorized dimensional travel may result in
+    temporal displacement, identity instability,
+    or other administrative complications.
+
+</div>
+
+
+</aside>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     DOCUMENT WINDOW
+===================================================== -->
+
+<div
+    class="modal"
+    id="documentModal"
+>
+
+<div class="modal-window">
+
+
+<div class="modal-header">
+
+    <span id="modalTitle">
+        ARCHIVE DOCUMENT
+    </span>
+
+    <span
+        class="close"
+        onclick="closeModal()"
+    >
+        ×
+    </span>
+
+</div>
+
+
+<div
+    class="modal-content"
+    id="modalContent"
+>
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   DOCUMENT DATABASE
+========================================================= */
+
+const documents = {
+
+    mission: {
+
+        title: "MISSION STATEMENT",
+
+        content: `
+            <p>
+            Our mission is simple:
+            maintain continuity, preserve civilization,
+            and prevent unauthorized contact between realities.
+            </p>
+
+            <p>
+            Remember:
+            there is no "outside" the authorized
+            dimensional network.
+            </p>
+        `
+    },
+
+
+    regulation: {
+
+        title: "IS-04 — DIMENSIONAL REGULATION",
+
+        content: `
+            <p>
+            All realities must remain within approved
+            temporal parameters.
+            </p>
+
+            <p>
+            Report duplicated buildings, repeated strangers,
+            impossible weather, or memories belonging
+            to another life.
+            </p>
+
+            <p>
+            <b>
+            NOTICE:
+            </b>
+
+            If an anomaly addresses you by a name
+            you do not recognize, do not answer.
+            </p>
+        `
+    },
+
+
+    travel: {
+
+        title: "FORM TR-7 — INTERDIMENSIONAL TRAVEL",
+
+        content: `
+            <p>
+            Travel requires a valid license,
+            destination clearance, and a confirmed
+            return point.
+            </p>
+
+            <p>
+            <b>
+            Your return point must still exist
+            when you arrive.
+            </b>
+            </p>
+        `
+    },
+
+
+    anomaly: {
+
+        title: "EMERGENCY ANOMALY GUIDE",
+
+        content: `
+            <p>
+            1. Do not approach the anomaly.
+            </p>
+
+            <p>
+            2. Do not photograph the anomaly.
+            </p>
+
+            <p>
+            3. Notify IS immediately.
+            </p>
+
+            <p>
+            4. Remain in your assigned reality.
+            </p>
+
+            <p>
+            If the sky changes color,
+            proceed indoors and wait for further instructions.
+            </p>
+        `
+    },
+
+
+    archive: {
+
+        title: "PUBLIC ARCHIVE",
+
+        content: `
+            <p>
+            Archive access is limited to documents
+            cleared for civilian viewing.
+            </p>
+
+            <hr>
+
+            <p>
+            <b>
+            RECOVERED RECORD
+            </b>
+            </p>
+
+            <p>
+            WORLD 2389JK
+            </p>
+
+            <p>
+            STATUS:
+            ███████████████████
+            </p>
+
+            <p>
+            The remaining text has been removed
+            by administrative order.
+            </p>
+        `
+    },
+
+
+    careers: {
+
+        title: "CAREERS — SERVE THE MULTIVERSE",
+
+        content: `
+            <p>
+            Positions available:
+            </p>
+
+            <ul>
+                <li>Field Agent</li>
+                <li>Archive Clerk</li>
+                <li>Stability Analyst</li>
+                <li>Cultural Liaison</li>
+            </ul>
+
+            <p>
+            Employee notice:
+            resignation procedures are currently under review.
+            </p>
+        `
+    },
+
+
+    contact: {
+
+        title: "FORM IS-17",
+
+        content: `
+            <p>
+            Please describe the anomaly using ordinary language.
+            </p>
+
+            <p>
+            Do not include coordinates unless requested.
+            </p>
+
+            <p>
+            Thank you for helping us keep your reality stable.
+            </p>
+        `
+    },
+
+
+    frontier: {
+
+        title: "NEW FRONTIERS INITIATIVE",
+
+        content: `
+            <p>
+            A new research program will expand authorized
+            contact between selected realities.
+            </p>
+
+            <p>
+            Participation is voluntary.
+            </p>
+
+            <p>
+            Participation status may be automatically assigned.
+            </p>
+        `
+    },
+
+
+    wellness: {
+
+        title: "EMPLOYEE WELLNESS PROGRAM",
+
+        content: `
+            <p>
+            Your psychological stability is important to us.
+            </p>
+
+            <p>
+            Remember to sleep, hydrate,
+            and avoid staring directly at artificial skies.
+            </p>
+
+            <p>
+            If you remember a workplace that does not appear
+            on your personnel file, report it.
+            </p>
+        `
+    },
+
+
+    stability: {
+
+        title: "REALITY STABILITY REPORT — OCT 12 1986",
+
+        content: `
+            <p>
+            Stability remains within acceptable parameters.
+            </p>
+
+            <p>
+            Appendix C has been sealed.
+            </p>
+
+            <p>
+            Reason:
+            █████████████████
+            </p>
+        `
+    },
+
+
+    psa: {
+
+        title: "PUBLIC SERVICE ANNOUNCEMENT",
+
+        content: `
+            <p>
+            If you see yourself somewhere you are not supposed
+            to be, remain calm and contact your supervisor.
+            </p>
+
+            <p>
+            <b>
+            Do not attempt to follow the duplicate.
+            </b>
+            </p>
+        `
+    },
+
+
+    casefiles: {
+
+        title: "CASE FILES — INTERNAL",
+
+        content: `
+            <p>
+            <b>
+            ACCESS DENIED.
+            </b>
+            </p>
+
+            <p>
+            Your clearance level is insufficient.
+            </p>
+
+            <p>
+            This incident has been logged.
+            </p>
+
+            <p>
+            Incident ID:
+            IS-████-2389
+            </p>
+        `
+    },
+
+
+    media: {
+
+        title: "MEDIA LIBRARY — TRAINING TAPE 06-B",
+
+        content: `
+
+            <div class="terminal">
+
+IS TRAINING SYSTEM
+--------------------------
+
+PLAYBACK ERROR 06
+
+
+WELCOME, EMPLOYEE.
+
+WELCOME, EMPLOYEE.
+
+WELCOME, EMPLOYEE.
+
+
+PLEASE REMAIN CALM.
+
+
+THE SKY IS NORMAL.
+
+THE SKY IS NORMAL.
+
+THE SKY IS NORMAL.
+
+
+END OF TAPE.
+
+            </div>
+        `
+    }
+
+};
+
+
+/* =========================================================
+   OPEN DOCUMENT
+========================================================= */
+
+function openDocument(id) {
+
+    const doc = documents[id];
+
+    if (!doc) {
+        return;
+    }
+
+    document.getElementById("modalTitle").innerText =
+        doc.title;
+
+    document.getElementById("modalContent").innerHTML =
+        doc.content;
+
+    document.getElementById("documentModal")
+        .classList
+        .add("open");
+}
+
+
+/* =========================================================
+   CLOSE
+========================================================= */
+
+function closeModal() {
+
+    document.getElementById("documentModal")
+        .classList
+        .remove("open");
+}
+
+
+/* Close by clicking outside */
+
+document
+    .getElementById("documentModal")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+
+            closeModal();
+
+        }
+
+    });
+
+
+/* =========================================================
+   EMPLOYEE LOGIN
+========================================================= */
+
+function openEmployeeLogin() {
+
+    document.getElementById("modalTitle").innerText =
+        "INTERDIMENSIONAL SERVICES — EMPLOYEE ACCESS";
+
+    document.getElementById("modalContent").innerHTML = `
+
+        <p>
+            <b>
+            INTERNAL PERSONNEL PORTAL
+            </b>
+        </p>
+
+        <label>
+            Employee ID
+        </label>
+
+        <br>
+
+        <input
+            id="employeeID"
+            style="
+                width:100%;
+                height:27px;
+                margin:5px 0 10px;
+            "
+        >
+
+        <label>
+            Password
+        </label>
+
+        <br>
+
+        <input
+            id="employeePassword"
+            type="password"
+            style="
+                width:100%;
+                height:27px;
+                margin:5px 0 10px;
+            "
+        >
+
+        <button
+            class="button"
+            onclick="employeeLogin()"
+        >
+            LOGIN
+        </button>
+
+        <div
+            id="loginResult"
+            style="
+                margin-top:15px;
+                font-family:'Courier New';
+                font-size:11px;
+            "
+        ></div>
+
+    `;
+
+    document
+        .getElementById("documentModal")
+        .classList
+        .add("open");
+}
+
+
+/* =========================================================
+   LOGIN RESPONSE
+========================================================= */
+
+function employeeLogin() {
+
+    const result =
+        document.getElementById("loginResult");
+
+    result.innerHTML = `
+
+        <span style="color:#8b2727">
+
+        ACCESS DENIED.<br><br>
+
+        EMPLOYEE NOT FOUND.<br>
+
+        <br>
+
+        HOWEVER...<br><br>
+
+        YOUR EMPLOYEE FILE ALREADY EXISTS.
+
+        </span>
+
+    `;
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function searchArchive() {
+
+    const query =
+        document
+            .getElementById("searchInput")
+            .value
+            .trim()
+            .toLowerCase();
+
+    if (!query) {
+        return;
+    }
+
+
+    let found = null;
+
+
+    for (const key in documents) {
+
+        const documentData =
+            documents[key];
+
+        if (
+            documentData.title
+                .toLowerCase()
+                .includes(query)
+            ||
+            documentData.content
+                .toLowerCase()
+                .includes(query)
+        ) {
+
+            found = documentData;
+
+            break;
+
+        }
+
+    }
+
+
+    if (found) {
+
+        document.getElementById("modalTitle")
+            .innerText =
+            "SEARCH RESULT";
+
+        document.getElementById("modalContent")
+            .innerHTML = `
+
+                <p>
+                    <b>
+                    ${found.title}
+                    </b>
+                </p>
+
+                ${found.content}
+
+            `;
+
+        document
+            .getElementById("documentModal")
+            .classList
+            .add("open");
+
+    }
+
+    else {
+
+        document.getElementById("modalTitle")
+            .innerText =
+            "SEARCH RESULT";
+
+        document.getElementById("modalContent")
+            .innerHTML = `
+
+                <p>
+                    No public records found.
+                </p>
+
+                <p>
+                    <b>
+                    Search terminated.
+                    </b>
+                </p>
+
+            `;
+
+        document
+            .getElementById("documentModal")
+            .classList
+            .add("open");
+
+    }
+
+}
+
+
+/* =========================================================
+   SECRET ANALOG HORROR EVENT
+========================================================= */
+
+let clicks = 0;
+
+
+document
+    .querySelector(".hero")
+    .addEventListener("click", function() {
+
+        clicks++;
+
+        if (clicks === 7) {
+
+            document
+                .body
+                .classList
+                .add("glitch");
+
+
+            document
+                .querySelector(".ticker")
+                .innerText =
+                "██ SYSTEM MESSAGE: PLEASE DO NOT LOOK FOR REALITY-0 █████████████";
+
+
+            setTimeout(function() {
+
+                openDocument("casefiles");
+
+            }, 600);
+
+        }
+
+    });
+
+
+</script>
+
 
 </body>
 </html>
