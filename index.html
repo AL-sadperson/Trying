@@ -3,2657 +3,2931 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Interdimensional Services — Microsoft Internet Explorer</title>
+<title>Interdimensional Services</title>
 
 <style>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  background:#08181b;
+  font-family:Tahoma, Arial, sans-serif;
+  overflow-x:hidden;
+}
+
+/* =========================
+   WINDOWS / IE
+========================= */
+
+.browser{
+  width:100%;
+  min-height:100vh;
+  background:#c0c0c0;
+  border:2px outset #fff;
+}
+
+.titlebar{
+  height:24px;
+  background:linear-gradient(90deg,#071d68,#1085b5);
+  color:white;
+  font-weight:bold;
+  padding:3px 6px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:13px;
+}
+
+.window-controls{
+  display:flex;
+  gap:2px;
+}
+
+.win-btn{
+  width:18px;
+  height:18px;
+  background:#c0c0c0;
+  border:2px outset white;
+  color:black;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:10px;
+  cursor:pointer;
+}
+
+.win-btn:active{
+  border:2px inset white;
+}
+
+.menu{
+  height:25px;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding-left:10px;
+  border-bottom:1px solid #777;
+  font-size:12px;
+}
+
+.toolbar{
+  height:52px;
+  display:flex;
+  align-items:center;
+  padding:3px 10px;
+  gap:12px;
+  border-top:1px solid white;
+  border-bottom:1px solid #777;
+}
+
+.tool{
+  width:48px;
+  text-align:center;
+  font-size:10px;
+  cursor:pointer;
+}
+
+.tool span{
+  display:block;
+  font-size:22px;
+  height:27px;
+}
+
+.address{
+  height:28px;
+  display:flex;
+  align-items:center;
+  padding:3px 7px;
+  gap:5px;
+  border-bottom:2px ridge white;
+  font-size:11px;
+}
+
+.address input{
+  height:21px;
+  flex:1;
+  border:2px inset white;
+  background:white;
+  padding:2px 5px;
+}
+
+/* =========================
+   SITE
+========================= */
+
+.site{
+  position:relative;
+  min-height:790px;
+  overflow:hidden;
+
+  background:
+    radial-gradient(circle at 70% 50%,
+      rgba(40,210,220,.20),
+      transparent 23%),
+    radial-gradient(circle at 50% 20%,
+      rgba(60,120,170,.25),
+      transparent 20%),
+    linear-gradient(135deg,#021316,#0a3035,#06181c);
+}
+
+/* background light lines */
+
+.site:before{
+  content:"";
+  position:absolute;
+  width:800px;
+  height:800px;
+  border:2px solid rgba(114,231,231,.25);
+  border-radius:50%;
+  left:250px;
+  top:-500px;
+  box-shadow:
+    0 0 20px rgba(85,230,230,.2),
+    100px 300px 0 -2px rgba(80,200,210,.1);
+  pointer-events:none;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.site-header{
+  height:78px;
+  margin:8px;
+  border:1px solid #618084;
+  background:
+    radial-gradient(circle at 70% 50%,
+      rgba(61,153,178,.35),
+      transparent 20%),
+    linear-gradient(90deg,#071c20,#0d3439);
+  display:flex;
+  align-items:center;
+  color:#d8e6e6;
+  position:relative;
+}
+
+.logo{
+  width:135px;
+  height:100%;
+  border-right:1px solid #49656a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.planet{
+  width:74px;
+  height:40px;
+  border:2px solid #d6e2df;
+  border-radius:50%;
+  position:relative;
+}
+
+.planet:before{
+  content:"";
+  position:absolute;
+  width:95px;
+  border-top:3px solid #d6e2df;
+  left:-12px;
+  top:17px;
+  transform:rotate(-12deg);
+}
+
+.planet:after{
+  content:"7";
+  position:absolute;
+  right:-25px;
+  top:-15px;
+  font-size:19px;
+}
+
+.brand{
+  padding-left:12px;
+}
+
+.brand-title{
+  font-size:19px;
+  letter-spacing:1px;
+}
+
+.brand-sub{
+  font-family:"Courier New",monospace;
+  font-size:12px;
+  margin-top:5px;
+}
+
+.access{
+  margin-left:auto;
+  margin-right:15px;
+  font-family:"Courier New",monospace;
+  font-size:12px;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.layout{
+  display:grid;
+  grid-template-columns:160px 1fr 205px;
+  gap:8px;
+  padding:0 8px;
+  position:relative;
+}
+
+/* =========================
+   LEFT MENU
+========================= */
+
+.menu-title{
+  background:#0a2428;
+  color:white;
+  border:1px solid #597174;
+  padding:6px;
+  font-size:12px;
+}
+
+.left-nav{
+  border:1px solid #617b7d;
+  background:#071a1d;
+}
+
+.left-nav a{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  height:34px;
+  padding:5px 8px;
+  color:#c8d6d6;
+  text-decoration:none;
+  border-bottom:1px solid #274145;
+  font-size:12px;
+}
+
+.left-nav a:hover,
+.left-nav a.active{
+  background:#a9d6d2;
+  color:#142223;
+}
+
+.nav-icon{
+  width:18px;
+  height:18px;
+  background:#24494d;
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.left-art{
+  height:190px;
+  margin-top:8px;
+  border:1px solid #5c7679;
+  position:relative;
+  background:
+    radial-gradient(circle at 50% 40%,
+      rgba(74,177,190,.25),
+      transparent 35%),
+    #07191d;
+}
+
+.globe{
+  position:absolute;
+  width:110px;
+  height:110px;
+  border:1px solid #75a5a8;
+  border-radius:50%;
+  top:15px;
+  left:24px;
+}
+
+.globe:before,
+.globe:after{
+  content:"";
+  position:absolute;
+  inset:18px -15px;
+  border:1px solid #47787c;
+  border-radius:50%;
+  transform:rotate(55deg);
+}
+
+.globe:after{
+  transform:rotate(-55deg);
+}
+
+.stability{
+  position:absolute;
+  bottom:10px;
+  left:10px;
+  color:#a9bfc0;
+  font-size:11px;
+  line-height:1.1;
+}
+
+/* =========================
+   MAIN REPORT
+========================= */
+
+.report-window{
+  position:relative;
+  background:#d8d0b8;
+  border:3px outset #ddd;
+  min-height:500px;
+  box-shadow:4px 4px 8px rgba(0,0,0,.6);
+}
+
+.inner-title{
+  height:23px;
+  background:linear-gradient(90deg,#737f80,#a4a5a0);
+  color:white;
+  font-size:11px;
+  font-weight:bold;
+  padding:4px 6px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.report-paper{
+  margin:0;
+  min-height:475px;
+  padding:15px 18px;
+  background:
+    radial-gradient(circle at 15% 20%,
+      rgba(80,55,20,.08) 0 2px,
+      transparent 3px),
+    linear-gradient(#eee2bd,#e5d4a9);
+  font-family:Georgia,serif;
+  position:relative;
+  overflow:hidden;
+}
+
+.report-paper h1{
+  text-align:center;
+  font-family:Georgia,serif;
+  font-style:italic;
+  font-size:25px;
+  margin:0 0 7px;
+}
+
+.report-paper h2{
+  text-align:center;
+  font-style:italic;
+  margin:10px 0;
+}
+
+.tabs{
+  display:flex;
+  justify-content:center;
+  border-top:1px solid #777;
+  border-bottom:1px solid #777;
+  margin-bottom:10px;
+}
+
+.tabs span{
+  font-size:8px;
+  padding:4px 12px;
+  border-right:1px solid #aaa;
+}
+
+.report-text{
+  width:58%;
+  font-size:10px;
+  line-height:1.25;
+}
+
+.report-text p{
+  margin:7px 0;
+}
+
+.small-photo{
+  position:absolute;
+  width:92px;
+  height:115px;
+  right:145px;
+  top:120px;
+  background:
+    radial-gradient(circle at 50% 40%,#819294,#263b3e 60%);
+  border:6px solid #c6c4b8;
+  transform:rotate(3deg);
+  box-shadow:2px 2px 4px #555;
+}
+
+.calendar{
+  position:absolute;
+  right:18px;
+  top:115px;
+  width:95px;
+  background:#eee7d4;
+  border:1px solid #777;
+  padding:5px;
+  font-size:8px;
+}
+
+.calendar table{
+  width:100%;
+  text-align:center;
+}
+
+.note{
+  position:absolute;
+  background:#e8dba9;
+  padding:10px;
+  box-shadow:2px 3px 5px rgba(0,0,0,.5);
+  font-family:"Comic Sans MS",cursive;
+  font-size:11px;
+}
+
+.note1{
+  right:120px;
+  bottom:55px;
+  transform:rotate(-4deg);
+}
+
+.note2{
+  left:245px;
+  bottom:25px;
+  width:135px;
+  height:150px;
+  transform:rotate(6deg);
+  text-align:center;
+}
+
+.note3{
+  right:8px;
+  bottom:10px;
+  width:135px;
+  background:#f1efe5;
+  transform:rotate(-3deg);
+}
 
-/* =========================================================
-   GENERAL
-========================================================= */
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    background: #777;
-    color: #171717;
-    font-family: "Times New Roman", serif;
-}
-
-a {
-    color: #173c5b;
-}
-
-
-/* =========================================================
-   FAKE INTERNET EXPLORER
-========================================================= */
-
-.browser {
-    width: 100%;
-    max-width: 1450px;
-    margin: 7px auto;
-    background: #c7c8c7;
-
-    border: 2px solid #303030;
-
-    box-shadow:
-        2px 2px 0 #eee,
-        -2px -2px 0 #555;
-}
-
-
-/* Title bar */
-
-.title-bar {
-    height: 25px;
-
-    background: #17283b;
-    color: white;
-
-    padding: 5px 8px;
-
-    font-family: "Courier New", monospace;
-    font-size: 12px;
-}
-
-.window-buttons {
-    float: right;
-}
-
-
-/* Menu */
-
-.menu-bar {
-    height: 30px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 22px;
-
-    padding: 5px 10px;
-
-    background: #cfd0cf;
-
-    border-bottom: 1px solid #777;
-
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-}
-
-
-/* Toolbar */
-
-.toolbar {
-    height: 43px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 23px;
-
-    padding: 3px 10px;
-
-    background: #d2d3d2;
-
-    border-bottom: 1px solid #777;
-
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-}
-
-.tool {
-    text-align: center;
-}
-
-.tool-icon {
-    display: block;
-    font-size: 18px;
-    line-height: 18px;
-}
-
-
-/* Address */
-
-.address-bar {
-    height: 27px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 7px;
-
-    padding: 3px 6px;
-
-    background: #d0d1d0;
-
-    border-bottom: 2px solid #555;
-
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-}
-
-.address-input {
-    flex: 1;
-
-    height: 20px;
-
-    background: white;
-
-    border: 1px solid #777;
-
-    padding-left: 6px;
-
-    font-family: "Courier New", monospace;
-    font-size: 11px;
-}
-
-
-/* =========================================================
-   MAIN WEBSITE
-========================================================= */
-
-.main-layout {
-
-    display: grid;
-
-    grid-template-columns:
-        185px
-        minmax(0, 1fr)
-        245px;
-
-    gap: 5px;
-
-    min-height: 850px;
-
-    padding: 7px;
-
-    background: #071321;
-}
-
-
-/* =========================================================
-   LEFT NAVIGATION
-========================================================= */
-
-.left-panel {
-
-    background: #081421;
-
-    color: #ddd;
-
-    padding: 5px;
-}
-
-
-/* Logo */
-
-.logo {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    padding: 10px 5px 12px;
-
-    border-bottom: 1px solid #506171;
-}
-
-.logo-title {
-
-    font-family: Georgia, serif;
-
-    font-size: 15px;
-
-    letter-spacing: .5px;
-}
-
-.logo-subtitle {
-
-    display: block;
-
-    margin-top: 5px;
-
-    color: #9eabb6;
-
-    font-family: "Courier New", monospace;
-
-    font-size: 9px;
-}
-
-
-/* Planet */
-
-.planet {
-
-    position: relative;
-
-    width: 55px;
-    height: 55px;
-
-    border: 3px solid #ddd;
-
-    border-radius: 50%;
-}
-
-.planet::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 70px;
-    height: 16px;
-
-    left: -10px;
-    top: 17px;
-
-    border: 3px solid #ddd;
-
-    border-radius: 50%;
-
-    transform: rotate(-12deg);
-}
-
-
-/* Main Menu */
-
-.menu-title {
-
-    margin: 7px 0 4px;
-
-    padding: 5px;
-
-    background: #16283a;
-
-    border: 1px solid #4d6172;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 11px;
-}
-
-.navigation a {
-
-    display: block;
-
-    padding: 8px;
-
-    margin: 2px 0;
-
-    color: #e5e9ec;
-
-    text-decoration: none;
-
-    background: #122334;
-
-    border: 1px solid #405466;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 12px;
-}
-
-.navigation a:hover,
-.navigation a.active {
-
-    background: #d7dad9;
-
-    color: #122334;
-}
-
-
-/* Left cards */
-
-.left-card {
-
-    margin-top: 12px;
-
-    padding: 9px;
-
-    background: #0e1c2a;
-
-    border: 1px solid #4e6476;
-
-    font-family: "Courier New", monospace;
-
-    font-size: 10px;
-
-    line-height: 1.35;
-}
-
-.visitor-counter {
-
-    margin-top: 5px;
-
-    color: #9cc6a9;
-
-    font-size: 17px;
-
-    letter-spacing: 2px;
-}
-
-
-/* =========================================================
-   CENTER
-========================================================= */
-
-.center-panel {
-
-    overflow: hidden;
-
-    background: #e9dfcb;
-
-    border: 1px solid #233647;
-}
-
-
-/* Header */
-
-.site-header {
-
-    height: 118px;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr 1fr;
-
-    align-items: center;
-
-    padding: 14px 17px;
-
-    position: relative;
-
-    overflow: hidden;
-
-    background: #091725;
-
-    color: white;
-}
-
-.site-header::after {
-
-    content: "";
-
-    position: absolute;
-
-    right: -20px;
-    top: -80px;
-
-    width: 210px;
-    height: 220px;
-
-    border: 2px solid #cfc4aa;
-
-    border-radius: 50%;
-
-    transform: rotate(25deg);
-
-    box-shadow:
-        0 0 0 12px #17283a,
-        0 0 0 14px #cfc4aa;
-}
-
-.site-title {
-
-    font-family: Georgia, serif;
-
-    font-size: 20px;
-
-    letter-spacing: 1px;
-}
-
-.site-title small {
-
-    display: block;
-
-    margin-top: 7px;
-
-    color: #adb8c0;
-
-    font-family: "Courier New", monospace;
-
-    font-size: 10px;
-}
-
-.site-motto {
-
-    z-index: 2;
-
-    text-align: center;
-
-    font-family: "Courier New", monospace;
-
-    font-size: 11px;
-}
-
-
-/* Content */
-
-.content {
-
-    padding: 8px 11px;
-}
-
-
-/* Tab */
-
-.tab {
-
-    height: 28px;
-
-    padding: 6px 9px;
-
-    background: #132536;
-
-    border: 1px solid #31475a;
-
-    color: white;
-
-    font-family: "Courier New", monospace;
-
-    font-size: 12px;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
-
-    height: 300px;
-
-    margin-top: 6px;
-
-    position: relative;
-
-    overflow: hidden;
-
-    border: 1px solid #756b58;
-
-    background:
-        linear-gradient(
-            120deg,
-            #d8ceba 0 26%,
-            #526a7b 26% 48%,
-            #d0c6af 48% 70%,
-            #727b7d 70%
-        );
-}
-
-
-/* Fake photograph */
-
-.hero::before {
-
-    content: "";
-
-    position: absolute;
-
-    left: 18px;
-    top: 17px;
-
-    width: 45%;
-    height: 235px;
-
-    background:
-        linear-gradient(
-            #1c2a39,
-            #405263 60%,
-            #161b1f 60%
-        );
-
-    border: 5px solid #eee2c7;
-
-    box-shadow:
-        0 0 0 1px #716958;
-}
-
-
-/* Photograph text */
-
-.hero::after {
-
-    content:
-        "INTERDIMENSIONAL SERVICES\A"
-        "HEADQUARTERS — 1986";
-
-    white-space: pre;
-
-    position: absolute;
-
-    left: 35px;
-    top: 30px;
-
-    color: #eee6d5;
-
-    font-family: "Courier New", monospace;
-
-    font-size: 12px;
-
-    line-height: 2;
-}
-
-
-/* Welcome */
-
-.welcome {
-
-    position: absolute;
-
-    right: 40px;
-    bottom: 50px;
-
-    color: #2c4257;
-
-    font-family: Georgia, serif;
-
-    font-size: 42px;
-
-    letter-spacing: 7px;
-
-    text-shadow: 2px 2px white;
-}
-
-.welcome sup {
-
-    color: #9c3027;
-
-    font-size: 17px;
-}
-
-
-/* =========================================================
-   PAPER SECTION
-========================================================= */
-
-.paper {
-
-    position: relative;
-
-    margin-top: -1px;
-
-    padding: 12px;
-
-    background: #eee3cd;
-
-    border: 1px solid #827762;
-}
-
-.paper h1 {
-
-    margin: 0 0 6px 7px;
-
-    font-size: 19px;
-}
-
-.paper p {
-
-    margin: 6px 7px;
-
-    font-size: 13px;
-
-    line-height: 1.35;
-}
-
-
-/* Cultural anomaly log */
-
-.anomaly-log {
-
-    float: right;
-
-    width: 35%;
-
-    height: 150px;
-
-    overflow: auto;
-
-    margin: 0 0 8px 12px;
-
-    padding: 7px;
-
-    background: #e1d6bc;
-
-    border: 1px solid #756d5e;
-
-    font-family: "Courier New", monospace;
-
-    font-size: 10px;
-}
-
-.anomaly-log-title {
-
-    font-family: Georgia, serif;
-
-    font-size: 12px;
-
-    margin-bottom: 5px;
-}
-
-.anomaly-log div {
-
-    padding: 3px 0;
-
-    border-bottom: 1px dotted #777;
-}
-
-
-/* Ticker */
-
-.ticker {
-
-    clear: both;
-
-    padding: 6px;
-
-    overflow: hidden;
-
-    white-space: nowrap;
-
-    background: #172737;
-
-    border: 1px solid #405364;
-
-    color: white;
-
-    font-family: "Courier New", monospace;
-
-    font-size: 10px;
-}
-
-
-/* =========================================================
-   SERVICE CARDS
-========================================================= */
-
-.service-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 7px;
-
-    margin-top: 8px;
-}
-
-.service {
-
-    min-height: 120px;
-
-    padding: 8px;
-
-    background: #e6dbc4;
-
-    border: 1px solid #786e5e;
-}
-
-.service h3 {
-
-    margin: 0 0 5px;
-
-    font-family: Georgia, serif;
-
-    font-size: 13px;
-}
-
-.service p {
-
-    font-size: 11px;
-
-    line-height: 1.3;
-}
-
-.button {
-
-    padding: 4px 7px;
-
-    background: #d0c7b5;
-
-    border: 1px solid #555;
-
-    cursor: pointer;
-
-    font-family: "Courier New", monospace;
-
-    font-size: 10px;
-}
-
-.button:hover {
-
-    background: white;
-}
-
-
-/* =========================================================
-   RIGHT PANEL
-========================================================= */
-
-.right-panel {
-
-    color: #111;
-}
-
-
-/* Window */
-
-.window {
-
-    margin-bottom: 8px;
-
-    background: #ddd6c5;
-
-    border: 1px solid #6c7680;
-
-    box-shadow: 1px 1px #111;
-}
-
-.window-title {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    padding: 5px 6px;
-
-    background: #162738;
-
-    color: white;
-
-    font-family: "Courier New", monospace;
-
-    font-size: 11px;
-}
-
-.window-body {
-
-    padding: 7px;
-
-    font-size: 10px;
-}
-
-
-/* =========================================================
-   LATEST UPDATES
-========================================================= */
-
-.update {
-
-    padding: 6px 2px;
-
-    border-bottom: 1px dotted #777;
-
-    line-height: 1.4;
-}
-
-.update:last-child {
-
-    border-bottom: none;
-}
-
-.update-date {
-
-    display: block;
-
-    font-family: "Courier New", monospace;
-
-    font-weight: bold;
-}
-
-.update a {
-
-    color: #173c5b;
-
-    text-decoration: none;
-
-    font-weight: bold;
-}
-
-
-/* =========================================================
-   QUICK LINKS
-   نفس القائمة الموجودة بالصورة
-========================================================= */
-
-.quick-link {
-
-    display: block;
-
-    padding: 9px 4px;
-
-    color: #173c5b;
-
-    text-decoration: none;
-
-    border-bottom: 1px solid #aaa;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 11px;
-
-    font-weight: bold;
-}
-
-.quick-link:last-child {
-
-    border-bottom: none;
-}
-
-.quick-link:hover {
-
-    background: #c9c1b0;
-}
-
-.quick-link-icon {
-
-    display: inline-block;
-
-    width: 24px;
-
-    color: #152f47;
-
-    font-size: 17px;
-
-    vertical-align: middle;
+/* =========================
+   RIGHT SIDE
+========================= */
+
+.right-box{
+  background:#dce7e4;
+  border:3px outset #bbb;
+  margin-bottom:8px;
+}
+
+.right-title{
+  background:#12515a;
+  color:white;
+  font-weight:bold;
+  padding:5px;
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
 }
 
-.quick-link small {
-
-    display: block;
-
-    margin-left: 29px;
-
-    color: #555;
-
-    font-size: 9px;
-
-    font-weight: normal;
+.right-content{
+  padding:10px;
+  min-height:130px;
+  font-size:12px;
+}
+
+.right-content a{
+  color:#072e65;
+  display:block;
+  margin:8px 0;
+}
+
+.search-row{
+  display:flex;
+  gap:4px;
 }
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-.search-input {
-
-    width: 100%;
-
-    height: 24px;
-
-    padding: 3px;
-
-    border: 1px solid #777;
-
-    background: white;
-
-    font-family: "Courier New", monospace;
-
-    font-size: 10px;
+
+.search-row input{
+  width:100%;
+}
+
+/* =========================
+   POPUP WINDOWS
+========================= */
+
+.popup{
+  position:absolute;
+  z-index:50;
+  background:#c0c0c0;
+  border:3px outset #eee;
+  box-shadow:5px 7px 12px rgba(0,0,0,.7);
+}
+
+.popup.hidden{
+  display:none;
+}
+
+.popup-title{
+  height:23px;
+  background:#061d74;
+  color:white;
+  font-size:11px;
+  font-weight:bold;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-left:6px;
+  cursor:move;
+  user-select:none;
+}
+
+.popup-buttons{
+  display:flex;
+  margin-right:2px;
+}
+
+.popup-buttons button{
+  width:17px;
+  height:17px;
+  padding:0;
+  background:#c0c0c0;
+  border:2px outset white;
+  font-size:9px;
+  cursor:pointer;
+}
+
+.popup-buttons button:active{
+  border:2px inset white;
+}
+
+/* mission popup */
+
+.mission{
+  width:290px;
+  height:210px;
+  left:22px;
+  bottom:70px;
+}
+
+.mission-body{
+  background:white;
+  margin:2px;
+  height:178px;
+  border:2px inset white;
+  padding:8px;
+  font-size:11px;
+  overflow:auto;
+}
+
+/* LAB POPUP */
+
+.lab{
+  width:390px;
+  height:295px;
+  right:15px;
+  top:55px;
+}
+
+.lab-content{
+  height:264px;
+  display:grid;
+  grid-template-columns:1fr 95px;
+  gap:4px;
+  padding:4px;
+}
+
+.lab-image{
+  position:relative;
+  background:
+    radial-gradient(circle at 55% 42%,#d9d4bf 0 10%,transparent 11%),
+    radial-gradient(circle at 50% 42%,#758c83 0 28%,#17333a 55%,#0b242a 75%);
+  border:2px inset white;
+  overflow:hidden;
+}
+
+.face{
+  position:absolute;
+  width:115px;
+  height:160px;
+  left:50%;
+  top:15px;
+  transform:translateX(-50%);
+}
+
+.face-head{
+  width:85px;
+  height:110px;
+  background:linear-gradient(#e4cdb5,#d7baa5);
+  border-radius:45% 45% 40% 40%;
+  margin:auto;
+  position:relative;
 }
-
+
+.face-head:before{
+  content:"";
+  position:absolute;
+  width:95px;
+  height:65px;
+  background:#e7d5bb;
+  border-radius:50% 50% 20% 20%;
+  top:-15px;
+  left:-5px;
+}
+
+.eye{
+  position:absolute;
+  width:12px;
+  height:6px;
+  background:#526f73;
+  top:49px;
+  z-index:3;
+}
+
+.eye.left{left:19px;}
+.eye.right{right:19px;}
 
-/* =========================================================
-   PUBLIC NOTICE
-========================================================= */
-
-.public-notice {
-
-    padding: 8px;
-
-    background: #ead5b3;
-
-    border: 2px dashed #963229;
-
-    color: #222;
-
-    font-size: 10px;
-
-    line-height: 1.4;
+.mouth{
+  position:absolute;
+  width:25px;
+  height:2px;
+  background:#855;
+  bottom:25px;
+  left:30px;
 }
-
-
-/* =========================================================
-   MODAL / DOCUMENT VIEWER
-========================================================= */
-
-.modal {
-
-    display: none;
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 999;
-
-    align-items: center;
-
-    justify-content: center;
 
-    padding: 20px;
-
-    background: rgba(0,0,0,.72);
+.flower{
+  position:absolute;
+  left:18px;
+  bottom:20px;
+  font-size:35px;
 }
-
-.modal.open {
 
-    display: flex;
+.web{
+  position:absolute;
+  right:8px;
+  bottom:20px;
+  font-size:50px;
+  opacity:.6;
 }
-
-.modal-window {
-
-    width: min(760px, 100%);
-
-    max-height: 80vh;
-
-    overflow: auto;
-
-    background: #e9dfcb;
-
-    border: 3px double #222;
 
-    box-shadow: 8px 8px #111;
+.lab-info{
+  background:#e4e4df;
+  border:2px inset white;
+  padding:5px;
+  font-family:"Courier New",monospace;
+  font-size:8px;
+  overflow:auto;
 }
 
-.modal-header {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    padding: 8px;
-
-    background: #152637;
-
-    color: white;
-
-    font-family: "Courier New", monospace;
-
-    font-size: 12px;
+.lab-controls{
+  position:absolute;
+  bottom:6px;
+  left:8px;
+  display:flex;
+  gap:7px;
 }
-
-.close {
 
-    cursor: pointer;
-
-    padding: 0 5px;
-
-    border: 1px solid #aaa;
+.lab-controls button{
+  height:25px;
+  background:#c0c0c0;
+  border:2px outset white;
+  font-size:10px;
+  cursor:pointer;
 }
-
-.modal-content {
-
-    padding: 15px;
 
-    font-size: 13px;
+/* =========================
+   BOTTOM BUTTONS
+========================= */
 
-    line-height: 1.5;
+.bottom-buttons{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  padding:10px;
 }
-
-
-/* =========================================================
-   ANALOG HORROR TERMINAL
-========================================================= */
-
-.terminal {
-
-    min-height: 230px;
 
-    padding: 10px;
-
-    overflow: auto;
-
-    background: #07100a;
-
-    border: 1px solid #344c37;
-
-    color: #a8d5aa;
-
-    font-family: "Courier New", monospace;
-
-    font-size: 11px;
-
-    white-space: pre-wrap;
+.bottom-buttons button{
+  width:160px;
+  height:45px;
+  background:#c0c0c0;
+  border:3px outset white;
+  font-weight:bold;
+  cursor:pointer;
 }
-
 
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.footer {
-
-    padding: 12px;
-
-    border-top: 3px solid #172637;
-
-    background: #d0c6b4;
-
-    text-align: center;
-
-    color: #252525;
-
-    font-family: "Courier New", monospace;
-
-    font-size: 11px;
+.bottom-buttons button:active{
+  border:3px inset white;
 }
 
+/* status */
 
-/* =========================================================
-   GLITCH
-========================================================= */
-
-.glitch {
-
-    animation: glitch .12s infinite alternate;
+.status{
+  height:24px;
+  border-top:2px ridge white;
+  display:flex;
+  align-items:center;
+  padding:3px;
+  font-size:11px;
 }
-
-@keyframes glitch {
-
-    from {
-        opacity: .92;
-    }
 
-    to {
-        opacity: 1;
-    }
+.status-text{
+  flex:1;
+  border:1px inset white;
+  height:18px;
+  padding-left:5px;
 }
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media(max-width:900px) {
-
-    .main-layout {
 
-        grid-template-columns:
-            150px
-            1fr;
-    }
-
-    .right-panel {
-
-        display: none;
-    }
+.internet{
+  width:150px;
+  border:1px inset white;
+  height:18px;
+  padding-left:5px;
 }
-
-
-@media(max-width:650px) {
-
-    .main-layout {
-
-        grid-template-columns: 1fr;
-    }
-
-    .left-panel {
-
-        display: none;
-    }
-
-    .site-header {
-
-        grid-template-columns: 1fr;
-
-        height: 95px;
-    }
-
-    .site-motto {
-
-        display: none;
-    }
-
-    .service-grid {
-
-        grid-template-columns: 1fr;
-    }
-
-    .anomaly-log {
-
-        float: none;
 
-        width: 100%;
+/* =========================
+   RESPONSIVE
+========================= */
 
-        margin: 0 0 8px;
-    }
+@media(max-width:800px){
 
-    .welcome {
+  .layout{
+    grid-template-columns:145px 1fr;
+  }
 
-        right: 20px;
+  .right{
+    display:none;
+  }
 
-        font-size: 28px;
-    }
+  .lab{
+    width:360px;
+  }
 }
 
 </style>
 </head>
 
-
 <body>
 
 <div class="browser">
 
+  <div class="titlebar">
 
-<!-- =====================================================
-     INTERNET EXPLORER
-===================================================== -->
+    <div>
+      🌐 INTERDIMENSIONAL SERVICES - Total Systems Integration
+    </div>
 
-<div class="title-bar">
+    <div class="window-controls">
+      <div class="win-btn">_</div>
+      <div class="win-btn">□</div>
+      <div class="win-btn">×</div>
+    </div>
 
-    Interdimensional Services — Microsoft Internet Explorer
-
-    <span class="window-buttons">
-        □ ×
-    </span>
-
-</div>
+  </div>
 
 
-<div class="menu-bar">
-
+  <div class="menu">
     <span>File</span>
     <span>Edit</span>
     <span>View</span>
     <span>Go</span>
     <span>Favorites</span>
     <span>Help</span>
+  </div>
 
-</div>
 
-
-<div class="toolbar">
+  <div class="toolbar">
 
     <div class="tool">
-        <span class="tool-icon">◀</span>
-        Back
+      <span>←</span>
+      Back
     </div>
 
     <div class="tool">
-        <span class="tool-icon">↻</span>
-        Refresh
+      <span>→</span>
+      Forward
     </div>
 
     <div class="tool">
-        <span class="tool-icon">×</span>
-        Stop
+      <span>✖</span>
+      Stop
     </div>
 
     <div class="tool">
-        <span class="tool-icon">⌂</span>
-        Home
+      <span>↻</span>
+      Refresh
     </div>
 
     <div class="tool">
-        <span class="tool-icon">⌕</span>
-        Search
+      <span>⌕</span>
+      Search
     </div>
 
     <div class="tool">
-        <span class="tool-icon">★</span>
-        Favorites
+      <span>★</span>
+      Favorites
     </div>
 
     <div class="tool">
-        <span class="tool-icon">◧</span>
-        History
+      <span>◉</span>
+      History
     </div>
 
     <div class="tool">
-        <span class="tool-icon">✉</span>
-        Mail
+      <span>✉</span>
+      Mail
     </div>
 
     <div class="tool">
-        <span class="tool-icon">▣</span>
-        Print
+      <span>▤</span>
+      Print
     </div>
 
-</div>
+  </div>
 
 
-<div class="address-bar">
+  <div class="address">
 
-    Address
+    <strong>Address</strong>
+
+    🌐
 
     <input
-        class="address-input"
-        value="http://www.isc.gov/"
-        readonly
+      value="http://www.isc.gov/ Services - Total Systems Integration"
     >
 
-</div>
+  </div>
 
 
-
-<!-- =====================================================
-     WEBSITE
-===================================================== -->
-
-<div class="main-layout">
+  <div class="site">
 
 
-<!-- =====================================================
-     LEFT SIDE
-===================================================== -->
+    <!-- HEADER -->
 
-<aside class="left-panel">
+    <div class="site-header">
 
+      <div class="logo">
+        <div class="planet"></div>
+      </div>
 
-<div class="logo">
+      <div class="brand">
 
-    <div class="planet"></div>
-
-    <div>
-
-        <div class="logo-title">
-            INTERDIMENSIONAL<br>
-            SERVICES
+        <div class="brand-title">
+          INTERDIMENSIONAL SERVICES
         </div>
 
-        <span class="logo-subtitle">
-            Federal Agency for Dimensional Stability
+        <div class="brand-sub">
+          Federal Agency for Dimensional Stability
+        </div>
+
+      </div>
+
+      <div class="access">
+        Agency Access: 00471283
+      </div>
+
+    </div>
+
+
+    <!-- SITE LAYOUT -->
+
+    <div class="layout">
+
+
+      <!-- LEFT -->
+
+      <aside>
+
+        <div class="menu-title">
+          ▶ Main Menu
+        </div>
+
+        <nav class="left-nav">
+
+          <a class="active" href="#">
+            <span class="nav-icon">X</span>
+            Home
+          </a>
+
+          <a href="#">
+            <span class="nav-icon">♟</span>
+            About Us
+          </a>
+
+          <a href="#">
+            <span class="nav-icon">✓</span>
+            Our Services
+          </a>
+
+          <a href="#">
+            <span class="nav-icon">♙</span>
+            Careers
+          </a>
+
+          <a href="#">
+            <span class="nav-icon">▶</span>
+            Public Information
+          </a>
+
+          <a href="#">
+            <span class="nav-icon">✉</span>
+            Contact
+          </a>
+
+        </nav>
+
+
+        <div class="left-art">
+
+          <div class="globe"></div>
+
+          <div class="stability">
+            STABILITY<br>
+            THROUGH<br>
+            COOPERATION.
+          </div>
+
+        </div>
+
+      </aside>
+
+
+      <!-- CENTER -->
+
+      <main>
+
+        <div class="report-window">
+
+          <div class="inner-title">
+
+            <span>
+              Interdimensional Services:
+              Royal Report on Anomalies
+            </span>
+
+            <span>_ □ ×</span>
+
+          </div>
+
+
+          <div class="report-paper">
+
+            <h1>
+              The Princess's Anomalies in Human Life:
+              <br>
+              A Royal Report
+            </h1>
+
+
+            <div class="tabs">
+
+              <span>the castle</span>
+              <span>diary</span>
+              <span>personal</span>
+              <span>media</span>
+              <span>ball talk</span>
+              <span>liquid log</span>
+
+            </div>
+
+
+            <h2>
+              Welcome to The Castle
+            </h2>
+
+
+            <div class="report-text">
+
+              <p>
+                Hello, and welcome to my castle!
+                This is a place where all of my thoughts
+                and interests and projects live.
+              </p>
+
+              <p>
+                This site may sometimes change often —
+                just because I am an indecisive person by
+                nature — but for the most part these
+                pages stay the same.
+              </p>
+
+              <p>
+                I don't often talk about mature content,
+                but just as a precaution, you have been warned!
+              </p>
+
+              <p>
+                I have been learning HTML and CSS for a couple
+                years now and so far this is the culmination
+                of all those years of learning.
+              </p>
+
+              <strong>
+                Sensory Anomalies
+              </strong>
+
+              <p>
+                Hearing footsteps when no one is there.
+                Strange voices. Flickering lights.
+                Glimpses of places that should not exist.
+              </p>
+
+              <strong>
+                Existential Anomalies
+              </strong>
+
+              <p>
+                The feeling that reality is slightly
+                misaligned with itself.
+              </p>
+
+            </div>
+
+
+            <div class="small-photo"></div>
+
+
+            <div class="calendar">
+
+              <strong>8/3026</strong>
+
+              <table>
+                <tr>
+                  <td>S</td><td>M</td><td>T</td>
+                  <td>W</td><td>T</td><td>F</td><td>S</td>
+                </tr>
+
+                <tr>
+                  <td>2</td><td>3</td><td>4</td>
+                  <td>5</td><td>6</td><td>7</td><td>8</td>
+                </tr>
+
+                <tr>
+                  <td>9</td><td>10</td><td>11</td>
+                  <td>12</td><td>13</td><td>14</td><td>15</td>
+                </tr>
+
+                <tr>
+                  <td>16</td><td>17</td><td>18</td>
+                  <td>19</td><td>20</td><td>21</td><td>22</td>
+                </tr>
+
+              </table>
+
+            </div>
+
+
+            <div class="note note1">
+              don't go up
+            </div>
+
+
+            <div class="note note2">
+
+              <strong>
+                The Wanderlust Report
+              </strong>
+
+              <br><br>
+
+              Anomalous Sites
+
+              <br><br>
+
+              ✦ ✦ ✦
+
+              <br><br>
+
+              UNKNOWN
+            </div>
+
+
+            <div class="note note3">
+
+              <strong>
+                Agent Note:
+              </strong>
+
+              <br><br>
+
+              The so-called "goddess" anomaly
+              is suspected of existential destabilisation.
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </main>
+
+
+      <!-- RIGHT -->
+
+      <aside class="right">
+
+        <div class="right-box">
+
+          <div class="right-title">
+
+            <span>
+              Anomalous Neighbors
+            </span>
+
+            <span>×</span>
+
+          </div>
+
+          <div class="right-content">
+
+            ▣ Anomalous Bad S4
+            <br><br>
+
+            ▣ Dolmenwood
+            <br><br>
+
+            ♟ D&D
+            <br><br>
+
+            ☎ Contact
+
+          </div>
+
+        </div>
+
+
+        <div class="right-box">
+
+          <div class="right-title">
+
+            <span>Web Nexus</span>
+
+            <span>×</span>
+
+          </div>
+
+          <div class="right-content">
+
+            <a href="#">
+              click here to launch the
+              eneriwomaninterface
+            </a>
+
+            <a href="#">
+              atomicattack.com
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <div class="right-box">
+
+          <div class="right-title">
+
+            <span>Search</span>
+
+            <span>×</span>
+
+          </div>
+
+          <div class="right-content">
+
+            <div class="search-row">
+
+              <input
+                type="text"
+                placeholder="Search IS site..."
+              >
+
+              <button>Go</button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </aside>
+
+    </div>
+
+
+    <!-- =====================
+         POPUP 1
+    ====================== -->
+
+    <div
+      class="popup mission"
+      id="missionWindow"
+    >
+
+      <div class="popup-title">
+
+        <span>
+          ▣ Agency Mission Statement
         </span>
 
-    </div>
+        <div class="popup-buttons">
 
-</div>
+          <button
+            onclick="minimizeWindow('missionWindow')"
+          >
+            _
+          </button>
 
+          <button>□</button>
 
+          <button
+            onclick="closeWindow('missionWindow')"
+          >
+            X
+          </button>
 
-<div class="menu-title">
-    ▶ Main Menu
-</div>
+        </div>
 
-
-<nav class="navigation">
-
-    <a href="#home" class="active">
-        ▣ &nbsp; Home
-    </a>
-
-    <a href="#about">
-        ♜ &nbsp; About Us
-    </a>
-
-    <a href="#services">
-        ▣ &nbsp; Our Services
-    </a>
-
-    <a href="#careers">
-        ⚒ &nbsp; Careers
-    </a>
-
-    <a href="#public">
-        ▣ &nbsp; Public Information
-    </a>
-
-    <a href="#contact">
-        ✉ &nbsp; Contact
-    </a>
-
-</nav>
+      </div>
 
 
+      <div class="mission-body">
 
-<div class="left-card">
+        <strong>
+          About Interdimensional Services (IS)
+        </strong>
 
-    STARILITY<br>
-    THROUGH<br>
-    COOPERATION.
+        is the agency concerned with dimensional
+        stability and protection of anomalous realities.
 
-    <div style="font-size:20px;margin:5px 0;">
-        ★★★
-    </div>
+        <br><br>
 
-    Federal Standard 7-A
+        Our role is to create and maintain systems
+        designed to detect irregular events,
+        dimensional disturbances and unexplained
+        anomalies.
 
-</div>
+        <br><br>
 
+        Agency personnel assess events and determine
+        whether intervention is required.
 
+        <br><br>
 
-<div class="left-card">
+        CLASSIFICATION:
+        INTERNAL ACCESS ONLY.
 
-    ▶ VISITORS
-
-    <div class="visitor-counter">
-        00471283
-    </div>
-
-    Last update: 10/31/1986<br>
-
-    Status:
-    <span style="color:#9bc6a6">
-        NORMAL
-    </span>
-
-</div>
-
-
-
-<div class="left-card">
-
-    SYSTEM STATUS
-
-    <br>
-
-    <span style="color:#9bc6a6">
-        ● ALL SYSTEMS NOMINAL
-    </span>
-
-</div>
-
-
-</aside>
-
-
-
-<!-- =====================================================
-     CENTER
-===================================================== -->
-
-<main class="center-panel" id="home">
-
-
-<header class="site-header">
-
-    <div class="site-title">
-
-        INTERDIMENSIONAL SERVICES
-
-        <small>
-            Federal Agency for Dimensional Stability
-        </small>
+      </div>
 
     </div>
 
 
-    <div class="site-motto">
+    <!-- =====================
+         POPUP 2 - LAB
+    ====================== -->
 
-        Multiple Realities.<br>
-        One Agency.
+    <div
+      class="popup lab"
+      id="labWindow"
+    >
+
+      <div class="popup-title">
+
+        <span>
+          ▣ Anomalous Media Conversion Lab
+        </span>
+
+
+        <div class="popup-buttons">
+
+          <button
+            onclick="minimizeWindow('labWindow')"
+          >
+            _
+          </button>
+
+          <button>□</button>
+
+          <button
+            onclick="closeWindow('labWindow')"
+          >
+            X
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="lab-content">
+
+
+        <div class="lab-image">
+
+          <div class="face">
+
+            <div class="face-head">
+
+              <div class="eye left"></div>
+              <div class="eye right"></div>
+
+              <div class="mouth"></div>
+
+            </div>
+
+          </div>
+
+
+          <div class="flower">
+            ❀
+          </div>
+
+          <div class="web">
+            ◉
+          </div>
+
+
+          <div class="lab-controls">
+
+            <button onclick="labMessage()">
+              Load Anomalous Feed
+            </button>
+
+            <button onclick="convertReality()">
+              Convert to Stable Reality
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <div class="lab-info">
+
+          <strong>
+            Video info
+          </strong>
+
+          <br><br>
+
+          Sources van Goir
+          petage 295.
+
+          <br><br>
+
+          Sterry Night.
+          Postage catk add
+          patches.
+
+          <br><br>
+
+          Frequency:
+          UNKNOWN
+
+          <br><br>
+
+          Signal:
+          UNSTABLE
+
+          <br><br>
+
+          Dimensional
+          distortion detected.
+
+        </div>
+
+      </div>
 
     </div>
 
-</header>
 
+    <!-- BOTTOM -->
 
+    <div class="bottom-buttons">
 
-<div class="content">
+      <button onclick="openWindow('missionWindow')">
+        Agency Mission<br>
+        (Interface)
+      </button>
 
+      <button onclick="openWindow('labWindow')">
+        Video to Stable GIF<br>
+        Converter (Lab)
+      </button>
 
-<div class="tab">
-    Welcome
-</div>
+      <button onclick="fakeAlert()">
+        My Computer<br>
+        (Dimensions)
+      </button>
 
+      <button onclick="contact()">
+        Contact<br>
+        Interdimensional Hub
+      </button>
 
-
-<section class="hero">
-
-    <div class="welcome">
-        Welcome<sup>*</sup>
     </div>
 
-</section>
+  </div>
 
 
+  <div class="status">
 
-<!-- =====================================================
-     ABOUT
-===================================================== -->
-
-<section class="paper" id="about">
-
-
-<div class="anomaly-log">
-
-    <div class="anomaly-log-title">
-        Historical Log of Cultural Frequency Anomalies
+    <div class="status-text">
+      🌐 click here to launch the eneriwomaninterface
     </div>
 
-    <div>01. Hidden Place</div>
-    <div>02. Cocon</div>
-    <div>03. I'd Get Up To You</div>
-    <div>04. Theater Reta</div>
-    <div>05. Useless</div>
-    <div>06. Pagan Poetry</div>
-    <div>07. Freak</div>
-    <div>08. An Eerie as a Stin</div>
-    <div>09. An Storm State</div>
-    <div>10. Sun In My Youth</div>
-    <div>11. Harm Of Will</div>
+    <div class="internet">
+      🌎 Internet
+    </div>
+
+  </div>
 
 </div>
-
-
-
-<h1>
-    Interdimensional Services
-</h1>
-
-
-<p>
-
-    (IS) is a federal agency dedicated to maintaining
-    the stability, regulation, and protection of all
-    known dimensions.
-
-    Through advanced research, technology, and a highly
-    trained workforce, we ensure a safer, more stable
-    multiverse for future generations.
-
-</p>
-
-
-
-<button
-    class="button"
-    onclick="openDocument('mission')"
->
-
-    Learn more about our mission →
-
-</button>
-
-
-
-<div class="ticker">
-
-    🔊 &gt;&gt; PUBLIC SERVICE ANNOUNCEMENT:
-
-    Report any dimensional anomalies immediately.
-
-    &nbsp; | &nbsp;
-
-    Together we keep the balance.
-
-</div>
-
-
-</section>
-
-
-
-<!-- =====================================================
-     SERVICES
-===================================================== -->
-
-<section
-    class="service-grid"
-    id="services"
->
-
-
-<article class="service">
-
-    <h3>
-        Dimensional Regulation
-    </h3>
-
-    <p>
-        Monitor unstable realities,
-        temporal distortions and
-        cross-dimensional interference.
-    </p>
-
-    <button
-        class="button"
-        onclick="openDocument('regulation')"
-    >
-
-        READ FILE →
-
-    </button>
-
-</article>
-
-
-
-<article class="service">
-
-    <h3>
-        Travel Licensing
-    </h3>
-
-    <p>
-        Official permits for authorized
-        transit between registered realities.
-    </p>
-
-    <button
-        class="button"
-        onclick="openDocument('travel')"
-    >
-
-        APPLY →
-
-    </button>
-
-</article>
-
-
-
-<article class="service">
-
-    <h3>
-        Anomaly Response
-    </h3>
-
-    <p>
-        Rapid containment and restoration
-        procedures for dimensional incidents.
-    </p>
-
-    <button
-        class="button"
-        onclick="openDocument('anomaly')"
-    >
-
-        EMERGENCY GUIDE →
-
-    </button>
-
-</article>
-
-
-</section>
-
-
-
-<!-- =====================================================
-     PUBLIC / CAREERS / CONTACT
-===================================================== -->
-
-<section
-    class="service-grid"
-    style="margin-top:7px"
->
-
-
-<article
-    class="service"
-    id="public"
->
-
-    <h3>
-        Public Archive
-    </h3>
-
-    <p>
-        Historical records available
-        to civilian visitors.
-    </p>
-
-    <button
-        class="button"
-        onclick="openDocument('archive')"
-    >
-
-        OPEN ARCHIVE
-
-    </button>
-
-</article>
-
-
-
-<article
-    class="service"
-    id="careers"
->
-
-    <h3>
-        Careers
-    </h3>
-
-    <p>
-        Serve your reality.
-        Serve every reality.
-    </p>
-
-    <button
-        class="button"
-        onclick="openDocument('careers')"
-    >
-
-        VACANCIES
-
-    </button>
-
-</article>
-
-
-
-<article
-    class="service"
-    id="contact"
->
-
-    <h3>
-        Contact
-    </h3>
-
-    <p>
-        For ordinary dimensional concerns,
-        use Form IS-17.
-    </p>
-
-    <button
-        class="button"
-        onclick="openDocument('contact')"
-    >
-
-        FORM IS-17
-
-    </button>
-
-</article>
-
-
-</section>
-
-
-</div>
-
-
-
-<footer class="footer">
-
-    IS — Different worlds. Same purpose.
-
-    <br>
-
-    © 1986 Federal Agency for Dimensional Stability
-
-</footer>
-
-
-</main>
-
-
-
-<!-- =====================================================
-     RIGHT SIDE
-     نفس القائمة الموجودة في الصورة
-===================================================== -->
-
-<aside class="right-panel">
-
-
-
-<!-- =====================================================
-     LATEST UPDATES
-===================================================== -->
-
-<section class="window">
-
-<div class="window-title">
-
-    Latest Updates
-
-    <span>
-        ×
-    </span>
-
-</div>
-
-
-<div class="window-body">
-
-
-<div class="update">
-
-    <span class="update-date">
-        Oct 26, 1986
-    </span>
-
-    New Frontiers Initiative Launches
-
-    <br>
-
-    <a
-        href="#"
-        onclick="openDocument('frontier'); return false;"
-    >
-        View details →
-    </a>
-
-</div>
-
-
-
-<div class="update">
-
-    <span class="update-date">
-        Oct 19, 1986
-    </span>
-
-    Employee Wellness Program Updates
-
-    <br>
-
-    <a
-        href="#"
-        onclick="openDocument('wellness'); return false;"
-    >
-        View details →
-    </a>
-
-</div>
-
-
-
-<div class="update">
-
-    <span class="update-date">
-        Oct 12, 1986
-    </span>
-
-    Reality Stability Report
-
-    <br>
-
-    <a
-        href="#"
-        onclick="openDocument('stability'); return false;"
-    >
-        Access report →
-    </a>
-
-</div>
-
-
-
-<div class="update">
-
-    <span class="update-date">
-        Oct 05, 1986
-    </span>
-
-    Public Service Announcement
-
-    <br>
-
-    <a
-        href="#"
-        onclick="openDocument('psa'); return false;"
-    >
-        Watch now →
-    </a>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     QUICK LINKS
-     هذا هو الجزء الذي طلبته
-===================================================== -->
-
-<section class="window">
-
-<div class="window-title">
-
-    Quick Links
-
-    <span>
-        ×
-    </span>
-
-</div>
-
-
-<div class="window-body"
-     style="padding:0;">
-
-
-
-<!-- CASE FILES -->
-
-<a
-    class="quick-link"
-    href="#"
-    onclick="openDocument('casefiles'); return false;"
->
-
-    <span class="quick-link-icon">
-        ▣
-    </span>
-
-    Case Files (Internal)
-
-    <small>
-        Authorized personnel only.
-    </small>
-
-</a>
-
-
-
-<!-- EMPLOYEE ACCESS -->
-
-<a
-    class="quick-link"
-    href="#"
-    onclick="openEmployeeLogin(); return false;"
->
-
-    <span class="quick-link-icon">
-        ▣
-    </span>
-
-    Employee Access
-
-    <small>
-        Login to the Internal portal.
-    </small>
-
-</a>
-
-
-
-<!-- MEDIA LIBRARY -->
-
-<a
-    class="quick-link"
-    href="#"
-    onclick="openDocument('media'); return false;"
->
-
-    <span class="quick-link-icon">
-        ▶
-    </span>
-
-    Media Library
-
-    <small>
-        Training videos & more.
-    </small>
-
-</a>
-
-
-
-<!-- ARCHIVE -->
-
-<a
-    class="quick-link"
-    href="#"
-    onclick="openDocument('archive'); return false;"
->
-
-    <span class="quick-link-icon">
-        ▣
-    </span>
-
-    Archive
-
-    <small>
-        Historical documents.
-    </small>
-
-</a>
-
-
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     SEARCH
-===================================================== -->
-
-<section class="window">
-
-<div class="window-title">
-
-    Search
-
-    <span>
-        ×
-    </span>
-
-</div>
-
-
-<div class="window-body">
-
-    <input
-        id="searchInput"
-        class="search-input"
-        placeholder="Search IS archives..."
-        onkeydown="if(event.key === 'Enter') searchArchive();"
-    >
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     PUBLIC NOTICE
-===================================================== -->
-
-<div class="public-notice">
-
-    <b>
-        PUBLIC NOTICE
-    </b>
-
-    <br><br>
-
-    Unauthorized dimensional travel may result in
-    temporal displacement, identity instability,
-    or other administrative complications.
-
-</div>
-
-
-</aside>
-
-
-</div>
-
-
-</div>
-
-
-
-<!-- =====================================================
-     DOCUMENT WINDOW
-===================================================== -->
-
-<div
-    class="modal"
-    id="documentModal"
->
-
-<div class="modal-window">
-
-
-<div class="modal-header">
-
-    <span id="modalTitle">
-        ARCHIVE DOCUMENT
-    </span>
-
-    <span
-        class="close"
-        onclick="closeModal()"
-    >
-        ×
-    </span>
-
-</div>
-
-
-<div
-    class="modal-content"
-    id="modalContent"
->
-</div>
-
-
-</div>
-
-</div>
-
 
 
 <script>
 
+/* =========================
+   CLOSE
+========================= */
+
+function closeWindow(id){
+
+  const win =
+    document.getElementById(id);
+
+  win.classList.add("hidden");
+
+}
+
+
+/* =========================
+   OPEN
+========================= */
+
+function openWindow(id){
+
+  const win =
+    document.getElementById(id);
+
+  win.classList.remove("hidden");
+
+  bringToFront(win);
+
+}
+
+
+/* =========================
+   MINIMIZE
+========================= */
+
+function minimizeWindow(id){
+
+  const win =
+    document.getElementById(id);
+
+  win.classList.add("hidden");
+
+}
+
+
+/* =========================
+   Z INDEX
+========================= */
+
+let highestZ = 100;
+
+function bringToFront(win){
+
+  highestZ++;
+
+  win.style.zIndex =
+    highestZ;
+
+}
+
+document
+.querySelectorAll(".popup")
+.forEach(win => {
+
+  win.addEventListener(
+    "mousedown",
+    () => bringToFront(win)
+  );
+
+});
+
+
+/* =========================
+   DRAG WINDOWS
+========================= */
+
+document
+.querySelectorAll(".popup")
+.forEach(makeDraggable);
+
+
+function makeDraggable(win){
+
+  const title =
+    win.querySelector(".popup-title");
+
+  let dragging = false;
+
+  let offsetX = 0;
+  let offsetY = 0;
+
+
+  title.addEventListener(
+    "mousedown",
+    function(e){
+
+      /* don't drag if clicking button */
+
+      if(
+        e.target.tagName === "BUTTON"
+      ){
+        return;
+      }
+
+      dragging = true;
+
+      bringToFront(win);
+
+      const rect =
+        win.getBoundingClientRect();
+
+      offsetX =
+        e.clientX - rect.left;
+
+      offsetY =
+        e.clientY - rect.top;
+
+      win.style.right = "auto";
+      win.style.bottom = "auto";
+
+    }
+  );
+
+
+  document.addEventListener(
+    "mousemove",
+    function(e){
+
+      if(!dragging){
+        return;
+      }
+
+      const parentRect =
+        win.parentElement
+           .getBoundingClientRect();
+
+      let x =
+        e.clientX -
+        parentRect.left -
+        offsetX;
+
+      let y =
+        e.clientY -
+        parentRect.top -
+        offsetY;
+
+
+      /* keep window visible */
+
+      x = Math.max(
+        0,
+        Math.min(
+          x,
+          parentRect.width -
+          win.offsetWidth
+        )
+      );
+
+      y = Math.max(
+        0,
+        Math.min(
+          y,
+          parentRect.height -
+          win.offsetHeight
+        )
+      );
+
+
+      win.style.left =
+        x + "px";
+
+      win.style.top =
+        y + "px";
+
+    }
+  );
+
+
+  document.addEventListener(
+    "mouseup",
+    function(){
+
+      dragging = false;
+
+    }
+  );
+
+}
+
+
+/* =========================
+   LAB BUTTONS
+========================= */
+
+function labMessage(){
+
+  alert(
+    "ANOMALOUS MEDIA LAB\n\n" +
+    "Searching dimensional frequencies...\n\n" +
+    "SIGNAL DETECTED.\n" +
+    "Reality stability: 37%"
+  );
+
+}
+
+
+function convertReality(){
+
+  alert(
+    "CONVERSION STARTED\n\n" +
+    "Stabilizing anomalous media...\n\n" +
+    "ERROR 0x0047:\n" +
+    "Reality refuses conversion."
+  );
+
+}
+
+
+/* =========================
+   OTHER BUTTONS
+========================= */
+
+function fakeAlert(){
+
+  alert(
+    "MY COMPUTER\n\n" +
+    "C:\\DIMENSIONS\\\n\n" +
+    "[D-001] Primary Reality\n" +
+    "[D-014] Restricted\n" +
+    "[D-027] UNKNOWN\n" +
+    "[D-404] Reality Not Found"
+  );
+
+}
+
+
+function contact(){
+
+  alert(
+    "INTERDIMENSIONAL HUB\n\n" +
+    "Secure connection established.\n\n" +
+    "Agent ID: 00471283"
+  );
+
+}
+
 /* =========================================================
-   DOCUMENT DATABASE
+   INTERDIMENSIONAL SERVICES
+   ANALOG HORROR INTERACTION SYSTEM
 ========================================================= */
 
-const documents = {
+let highestZ = 100;
+let closeCount = 0;
+let activity = 0;
+let anomalyStarted = false;
 
-    mission: {
 
-        title: "MISSION STATEMENT",
+/* =========================================================
+   WINDOW SYSTEM
+========================================================= */
 
-        content: `
-            <p>
-            Our mission is simple:
-            maintain continuity, preserve civilization,
-            and prevent unauthorized contact between realities.
-            </p>
+function closeWindow(id){
 
-            <p>
-            Remember:
-            there is no "outside" the authorized
-            dimensional network.
-            </p>
+    const win = document.getElementById(id);
+
+    if(!win) return;
+
+    win.classList.add("hidden");
+
+    closeCount++;
+    activity++;
+
+    /* First strange event */
+
+    if(id === "labWindow" && closeCount === 1){
+
+        setTimeout(function(){
+
+            openWindow("labWindow");
+
+            changeLabTitle(
+                "▣ Anomalous Media Conversion Lab"
+            );
+
+        },6000);
+
+    }
+
+
+    /* Second time */
+
+    if(id === "labWindow" && closeCount === 2){
+
+        setTimeout(function(){
+
+            openWindow("labWindow");
+
+            changeLabTitle(
+                "▣ WHY DID YOU CLOSE ME?"
+            );
+
+            glitchScreen();
+
+        },4000);
+
+    }
+
+
+    /* Third time */
+
+    if(id === "labWindow" && closeCount >= 3){
+
+        setTimeout(function(){
+
+            createWarning(
+                "WINDOW TERMINATION DENIED",
+                "THIS PROCESS CANNOT BE CLOSED."
+            );
+
+        },2000);
+
+    }
+
+}
+
+
+function minimizeWindow(id){
+
+    const win = document.getElementById(id);
+
+    if(win){
+        win.classList.add("hidden");
+    }
+
+}
+
+
+function openWindow(id){
+
+    const win = document.getElementById(id);
+
+    if(!win) return;
+
+    win.classList.remove("hidden");
+
+    bringToFront(win);
+
+}
+
+
+function bringToFront(win){
+
+    highestZ++;
+
+    win.style.zIndex = highestZ;
+
+}
+
+
+function changeLabTitle(text){
+
+    const lab =
+        document.querySelector(
+            "#labWindow .popup-title span"
+        );
+
+    if(lab){
+        lab.textContent = text;
+    }
+
+}
+
+
+/* =========================================================
+   DRAG WINDOWS
+========================================================= */
+
+document
+.querySelectorAll(".popup")
+.forEach(function(win){
+
+    makeDraggable(win);
+
+    win.addEventListener(
+        "mousedown",
+        function(){
+            bringToFront(win);
+        }
+    );
+
+});
+
+
+function makeDraggable(win){
+
+    const title =
+        win.querySelector(".popup-title");
+
+    if(!title) return;
+
+    let dragging = false;
+    let offsetX = 0;
+    let offsetY = 0;
+
+
+    title.addEventListener(
+        "mousedown",
+        function(e){
+
+            if(e.target.tagName === "BUTTON"){
+                return;
+            }
+
+            dragging = true;
+
+            bringToFront(win);
+
+            const rect =
+                win.getBoundingClientRect();
+
+            offsetX =
+                e.clientX - rect.left;
+
+            offsetY =
+                e.clientY - rect.top;
+
+            win.style.right = "auto";
+            win.style.bottom = "auto";
+
+        }
+    );
+
+
+    document.addEventListener(
+        "mousemove",
+        function(e){
+
+            if(!dragging) return;
+
+            const parent =
+                win.parentElement
+                   .getBoundingClientRect();
+
+            let x =
+                e.clientX -
+                parent.left -
+                offsetX;
+
+            let y =
+                e.clientY -
+                parent.top -
+                offsetY;
+
+
+            x = Math.max(
+                0,
+                Math.min(
+                    x,
+                    parent.width -
+                    win.offsetWidth
+                )
+            );
+
+
+            y = Math.max(
+                0,
+                Math.min(
+                    y,
+                    parent.height -
+                    win.offsetHeight
+                )
+            );
+
+
+            win.style.left = x + "px";
+            win.style.top = y + "px";
+
+        }
+    );
+
+
+    document.addEventListener(
+        "mouseup",
+        function(){
+            dragging = false;
+        }
+    );
+
+}
+
+
+/* =========================================================
+   WARNING WINDOW
+========================================================= */
+
+function createWarning(title,message){
+
+    const old =
+        document.getElementById(
+            "systemWarning"
+        );
+
+    if(old){
+        old.remove();
+    }
+
+
+    const warning =
+        document.createElement("div");
+
+
+    warning.id =
+        "systemWarning";
+
+
+    warning.style.cssText = `
+        position:absolute;
+        width:360px;
+        left:50%;
+        top:45%;
+        transform:translate(-50%,-50%);
+        background:#c0c0c0;
+        border:3px outset white;
+        box-shadow:8px 8px 20px #000;
+        z-index:9999;
+        font-family:Tahoma,Arial,sans-serif;
+    `;
+
+
+    warning.innerHTML = `
+
+        <div
+        style="
+            background:#061d74;
+            color:white;
+            padding:5px;
+            font-weight:bold;
+            font-size:12px;
+        ">
+
+            ⚠ ${title}
+
+        </div>
+
+
+        <div
+        style="
+            background:#ddd;
+            padding:25px;
+            font-size:12px;
+            display:flex;
+            gap:18px;
+            align-items:center;
+        ">
+
+            <div
+            style="
+                font-size:40px;
+            ">
+                ⚠
+            </div>
+
+
+            <div>
+
+                ${message}
+
+                <br><br>
+
+                <span
+                style="
+                    font-family:'Courier New';
+                ">
+                    ERROR CODE:
+                    0x00471283
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div
+        style="
+            text-align:center;
+            padding:8px;
+        ">
+
+            <button
+            onclick="warningContinue()"
+            style="
+                width:90px;
+                border:2px outset white;
+                background:#c0c0c0;
+            ">
+                OK
+            </button>
+
+        </div>
+
+    `;
+
+
+    document
+        .querySelector(".site")
+        .appendChild(warning);
+
+}
+
+
+function warningContinue(){
+
+    const warning =
+        document.getElementById(
+            "systemWarning"
+        );
+
+    if(warning){
+        warning.remove();
+    }
+
+
+    setTimeout(function(){
+
+        changeAgencyAccess();
+
+    },1000);
+
+}
+
+
+/* =========================================================
+   AGENCY ACCESS CORRUPTION
+========================================================= */
+
+function changeAgencyAccess(){
+
+    const access =
+        document.querySelector(".access");
+
+    if(!access) return;
+
+
+    access.textContent =
+        "Agency Access: YOU";
+
+
+    access.style.color =
+        "#ffb8b8";
+
+
+    setTimeout(function(){
+
+        access.textContent =
+            "Agency Access: UNKNOWN";
+
+    },3000);
+
+
+    setTimeout(function(){
+
+        access.textContent =
+            "Agency Access: 00471283";
+
+        access.style.color = "";
+
+    },7000);
+
+}
+
+
+/* =========================================================
+   SCREEN GLITCH
+========================================================= */
+
+function glitchScreen(){
+
+    const site =
+        document.querySelector(".site");
+
+    if(!site) return;
+
+
+    let count = 0;
+
+
+    const glitch =
+        setInterval(function(){
+
+            const x =
+                Math.floor(
+                    Math.random()*8
+                ) - 4;
+
+
+            const y =
+                Math.floor(
+                    Math.random()*6
+                ) - 3;
+
+
+            site.style.transform =
+                `translate(${x}px,${y}px)`;
+
+
+            site.style.filter =
+                Math.random() > .5
+                ? "contrast(1.8) brightness(.8)"
+                : "contrast(1.1)";
+
+
+            count++;
+
+
+            if(count > 12){
+
+                clearInterval(glitch);
+
+                site.style.transform = "";
+                site.style.filter = "";
+
+            }
+
+        },60);
+
+}
+
+
+/* =========================================================
+   ANOMALOUS MEDIA LAB
+========================================================= */
+
+function labMessage(){
+
+    activity++;
+
+
+    createWarning(
+        "ANOMALOUS SIGNAL DETECTED",
         `
-    },
+        MEDIA SOURCE:
+        CAMERA_04
 
+        <br><br>
 
-    regulation: {
+        SOURCE LOCATION:
+        NOT REGISTERED
 
-        title: "IS-04 — DIMENSIONAL REGULATION",
+        <br><br>
 
-        content: `
-            <p>
-            All realities must remain within approved
-            temporal parameters.
-            </p>
-
-            <p>
-            Report duplicated buildings, repeated strangers,
-            impossible weather, or memories belonging
-            to another life.
-            </p>
-
-            <p>
-            <b>
-            NOTICE:
-            </b>
-
-            If an anomaly addresses you by a name
-            you do not recognize, do not answer.
-            </p>
+        SUBJECT COUNT:
+        1
         `
-    },
+    );
 
 
-    travel: {
+    setTimeout(function(){
 
-        title: "FORM TR-7 — INTERDIMENSIONAL TRAVEL",
-
-        content: `
-            <p>
-            Travel requires a valid license,
-            destination clearance, and a confirmed
-            return point.
-            </p>
-
-            <p>
-            <b>
-            Your return point must still exist
-            when you arrive.
-            </b>
-            </p>
-        `
-    },
+        const info =
+            document.querySelector(
+                ".lab-info"
+            );
 
 
-    anomaly: {
+        if(info){
 
-        title: "EMERGENCY ANOMALY GUIDE",
+            info.innerHTML = `
 
-        content: `
-            <p>
-            1. Do not approach the anomaly.
-            </p>
+                <strong>
+                Video info
+                </strong>
 
-            <p>
-            2. Do not photograph the anomaly.
-            </p>
+                <br><br>
 
-            <p>
-            3. Notify IS immediately.
-            </p>
+                SOURCE:
+                CAMERA_04
 
-            <p>
-            4. Remain in your assigned reality.
-            </p>
+                <br><br>
 
-            <p>
-            If the sky changes color,
-            proceed indoors and wait for further instructions.
-            </p>
-        `
-    },
+                DATE:
+                10/17/1998
+
+                <br><br>
+
+                TIME:
+                03:14:07
+
+                <br><br>
+
+                SUBJECT:
+                UNKNOWN
+
+                <br><br>
+
+                <strong
+                style="color:#700">
+                    DO NOT IDENTIFY
+                    THE SUBJECT.
+                </strong>
+
+            `;
+
+        }
+
+    },2500);
+
+}
 
 
-    archive: {
+/* =========================================================
+   REALITY CONVERSION
+========================================================= */
 
-        title: "PUBLIC ARCHIVE",
+function convertReality(){
 
-        content: `
-            <p>
-            Archive access is limited to documents
-            cleared for civilian viewing.
-            </p>
+    const info =
+        document.querySelector(
+            ".lab-info"
+        );
+
+
+    if(info){
+
+        info.innerHTML = `
+
+            <strong>
+            STABILIZATION
+            </strong>
+
+            <br><br>
+
+            12%
+
+            <br>
+            ███░░░░░░░
+
+        `;
+
+    }
+
+
+    setTimeout(function(){
+
+        if(info){
+
+            info.innerHTML = `
+
+                <strong>
+                STABILIZATION
+                </strong>
+
+                <br><br>
+
+                47%
+
+                <br>
+
+                █████░░░░░
+
+            `;
+
+        }
+
+    },1000);
+
+
+    setTimeout(function(){
+
+        if(info){
+
+            info.innerHTML = `
+
+                <strong>
+                ERROR
+                </strong>
+
+                <br><br>
+
+                SUBJECT REFUSED
+                CONVERSION.
+
+                <br><br>
+
+                <span style="color:#800">
+
+                SUBJECT IS
+                OBSERVING OPERATOR.
+
+                </span>
+
+            `;
+
+        }
+
+
+        glitchScreen();
+
+
+    },2500);
+
+
+    setTimeout(function(){
+
+        createWarning(
+
+            "CONVERSION FAILURE",
+
+            `
+            REALITY STABILIZATION
+            FAILED.
+
+            <br><br>
+
+            Do not look away
+            from the monitor.
+            `
+
+        );
+
+    },4000);
+
+}
+
+
+/* =========================================================
+   CASE FILE WINDOW
+========================================================= */
+
+function openCaseFile(){
+
+    let existing =
+        document.getElementById(
+            "caseFile"
+        );
+
+
+    if(existing){
+
+        existing.classList.remove(
+            "hidden"
+        );
+
+        bringToFront(existing);
+
+        return;
+
+    }
+
+
+    const win =
+        document.createElement("div");
+
+
+    win.id =
+        "caseFile";
+
+
+    win.className =
+        "popup";
+
+
+    win.style.cssText += `
+
+        width:430px;
+        left:32%;
+        top:170px;
+
+    `;
+
+
+    win.innerHTML = `
+
+        <div class="popup-title">
+
+            <span>
+            ▣ CASE FILE — 0047
+            </span>
+
+
+            <div
+            class="popup-buttons">
+
+                <button>
+                    _
+                </button>
+
+                <button>
+                    □
+                </button>
+
+                <button
+                onclick="
+                closeWindow('caseFile')
+                ">
+                    X
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+        style="
+            background:#eee;
+            margin:3px;
+            padding:18px;
+            min-height:300px;
+            font-family:'Courier New';
+            font-size:12px;
+        ">
+
+            FEDERAL DIMENSIONAL
+            STABILITY AGENCY
 
             <hr>
 
-            <p>
-            <b>
-            RECOVERED RECORD
-            </b>
-            </p>
+            CASE:
+            0047
 
-            <p>
-            WORLD 2389JK
-            </p>
+            <br><br>
 
-            <p>
             STATUS:
-            ███████████████████
-            </p>
+            <strong>
+            CLOSED
+            </strong>
 
-            <p>
-            The remaining text has been removed
-            by administrative order.
-            </p>
-        `
-    },
+            <br><br>
 
+            SUBJECT:
 
-    careers: {
+            █████████████
 
-        title: "CAREERS — SERVE THE MULTIVERSE",
+            <br><br>
 
-        content: `
-            <p>
-            Positions available:
-            </p>
+            LAST CONTACT:
 
-            <ul>
-                <li>Field Agent</li>
-                <li>Archive Clerk</li>
-                <li>Stability Analyst</li>
-                <li>Cultural Liaison</li>
-            </ul>
+            <strong>
+            OCTOBER 17, 1998
+            — 03:14 AM
+            </strong>
 
-            <p>
-            Employee notice:
-            resignation procedures are currently under review.
-            </p>
-        `
-    },
+            <br><br>
 
+            LOCATION:
 
-    contact: {
+            ████████████████
 
-        title: "FORM IS-17",
+            <br><br>
 
-        content: `
-            <p>
-            Please describe the anomaly using ordinary language.
-            </p>
+            <hr>
 
-            <p>
-            Do not include coordinates unless requested.
-            </p>
 
-            <p>
-            Thank you for helping us keep your reality stable.
-            </p>
-        `
-    },
+            <strong
+            style="color:#770000">
 
+            NOTICE
 
-    frontier: {
+            </strong>
 
-        title: "NEW FRONTIERS INITIATIVE",
+            <br><br>
 
-        content: `
-            <p>
-            A new research program will expand authorized
-            contact between selected realities.
-            </p>
+            This individual
+            does not exist.
 
-            <p>
-            Participation is voluntary.
-            </p>
+            <br><br>
 
-            <p>
-            Participation status may be automatically assigned.
-            </p>
-        `
-    },
+            If you recognize
+            the individual shown
+            in Photograph 04,
 
+            <br><br>
 
-    wellness: {
+            <strong>
 
-        title: "EMPLOYEE WELLNESS PROGRAM",
+            DISCONNECT
+            IMMEDIATELY.
 
-        content: `
-            <p>
-            Your psychological stability is important to us.
-            </p>
+            </strong>
 
-            <p>
-            Remember to sleep, hydrate,
-            and avoid staring directly at artificial skies.
-            </p>
 
-            <p>
-            If you remember a workplace that does not appear
-            on your personnel file, report it.
-            </p>
-        `
-    },
+            <br><br><br>
 
 
-    stability: {
+            <button
+            onclick="
+            viewPhotograph()
+            ">
 
-        title: "REALITY STABILITY REPORT — OCT 12 1986",
+                VIEW PHOTOGRAPH 04
 
-        content: `
-            <p>
-            Stability remains within acceptable parameters.
-            </p>
+            </button>
 
-            <p>
-            Appendix C has been sealed.
-            </p>
-
-            <p>
-            Reason:
-            █████████████████
-            </p>
-        `
-    },
-
-
-    psa: {
-
-        title: "PUBLIC SERVICE ANNOUNCEMENT",
-
-        content: `
-            <p>
-            If you see yourself somewhere you are not supposed
-            to be, remain calm and contact your supervisor.
-            </p>
-
-            <p>
-            <b>
-            Do not attempt to follow the duplicate.
-            </b>
-            </p>
-        `
-    },
-
-
-    casefiles: {
-
-        title: "CASE FILES — INTERNAL",
-
-        content: `
-            <p>
-            <b>
-            ACCESS DENIED.
-            </b>
-            </p>
-
-            <p>
-            Your clearance level is insufficient.
-            </p>
-
-            <p>
-            This incident has been logged.
-            </p>
-
-            <p>
-            Incident ID:
-            IS-████-2389
-            </p>
-        `
-    },
-
-
-    media: {
-
-        title: "MEDIA LIBRARY — TRAINING TAPE 06-B",
-
-        content: `
-
-            <div class="terminal">
-
-IS TRAINING SYSTEM
---------------------------
-
-PLAYBACK ERROR 06
-
-
-WELCOME, EMPLOYEE.
-
-WELCOME, EMPLOYEE.
-
-WELCOME, EMPLOYEE.
-
-
-PLEASE REMAIN CALM.
-
-
-THE SKY IS NORMAL.
-
-THE SKY IS NORMAL.
-
-THE SKY IS NORMAL.
-
-
-END OF TAPE.
-
-            </div>
-        `
-    }
-
-};
-
-
-/* =========================================================
-   OPEN DOCUMENT
-========================================================= */
-
-function openDocument(id) {
-
-    const doc = documents[id];
-
-    if (!doc) {
-        return;
-    }
-
-    document.getElementById("modalTitle").innerText =
-        doc.title;
-
-    document.getElementById("modalContent").innerHTML =
-        doc.content;
-
-    document.getElementById("documentModal")
-        .classList
-        .add("open");
-}
-
-
-/* =========================================================
-   CLOSE
-========================================================= */
-
-function closeModal() {
-
-    document.getElementById("documentModal")
-        .classList
-        .remove("open");
-}
-
-
-/* Close by clicking outside */
-
-document
-    .getElementById("documentModal")
-    .addEventListener("click", function(event) {
-
-        if (event.target === this) {
-
-            closeModal();
-
-        }
-
-    });
-
-
-/* =========================================================
-   EMPLOYEE LOGIN
-========================================================= */
-
-function openEmployeeLogin() {
-
-    document.getElementById("modalTitle").innerText =
-        "INTERDIMENSIONAL SERVICES — EMPLOYEE ACCESS";
-
-    document.getElementById("modalContent").innerHTML = `
-
-        <p>
-            <b>
-            INTERNAL PERSONNEL PORTAL
-            </b>
-        </p>
-
-        <label>
-            Employee ID
-        </label>
-
-        <br>
-
-        <input
-            id="employeeID"
-            style="
-                width:100%;
-                height:27px;
-                margin:5px 0 10px;
-            "
-        >
-
-        <label>
-            Password
-        </label>
-
-        <br>
-
-        <input
-            id="employeePassword"
-            type="password"
-            style="
-                width:100%;
-                height:27px;
-                margin:5px 0 10px;
-            "
-        >
-
-        <button
-            class="button"
-            onclick="employeeLogin()"
-        >
-            LOGIN
-        </button>
-
-        <div
-            id="loginResult"
-            style="
-                margin-top:15px;
-                font-family:'Courier New';
-                font-size:11px;
-            "
-        ></div>
+        </div>
 
     `;
+
 
     document
-        .getElementById("documentModal")
-        .classList
-        .add("open");
+        .querySelector(".site")
+        .appendChild(win);
+
+
+    makeDraggable(win);
+
+    bringToFront(win);
+
 }
 
 
 /* =========================================================
-   LOGIN RESPONSE
+   PHOTOGRAPH EVENT
 ========================================================= */
 
-function employeeLogin() {
+function viewPhotograph(){
 
-    const result =
-        document.getElementById("loginResult");
+    activity++;
 
-    result.innerHTML = `
 
-        <span style="color:#8b2727">
+    createWarning(
 
-        ACCESS DENIED.<br><br>
+        "FILE CORRUPTED",
 
-        EMPLOYEE NOT FOUND.<br>
+        `
+        Photograph 04
+        cannot be displayed.
+
+        <br><br>
+
+        Reason:
 
         <br>
 
-        HOWEVER...<br><br>
+        <strong>
+        SUBJECT IS TOO CLOSE.
+        </strong>
+        `
 
-        YOUR EMPLOYEE FILE ALREADY EXISTS.
+    );
 
-        </span>
 
-    `;
+    setTimeout(function(){
+
+        changeAgencyAccess();
+
+    },1500);
+
+
+    setTimeout(function(){
+
+        glitchScreen();
+
+    },3000);
 
 }
 
 
 /* =========================================================
-   SEARCH
+   MY COMPUTER
 ========================================================= */
 
-function searchArchive() {
+function fakeAlert(){
 
-    const query =
-        document
-            .getElementById("searchInput")
-            .value
-            .trim()
-            .toLowerCase();
+    const answer =
+        prompt(
 
-    if (!query) {
+`C:\\DIMENSIONS\\
+
+[D-001] PRIMARY REALITY
+[D-014] RESTRICTED
+[D-027] UNKNOWN
+[D-047] ███████
+[D-404] REALITY NOT FOUND
+
+Enter dimension number:`
+
+        );
+
+
+    if(answer === "47" ||
+       answer === "047"){
+
+        openCaseFile();
+
+    }
+
+    else if(answer){
+
+        alert(
+            "ACCESS DENIED\n\n" +
+            "DIMENSION DOES NOT EXIST."
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CONTACT HUB
+========================================================= */
+
+function contact(){
+
+    activity++;
+
+
+    createWarning(
+
+        "SECURE CONNECTION",
+
+        `
+        Connecting to
+        Interdimensional Hub...
+
+        <br><br>
+
+        Operator:
+        00471283
+
+        <br><br>
+
+        Please remain
+        at your terminal.
+        `
+
+    );
+
+
+    setTimeout(function(){
+
+        const warning =
+            document.querySelector(
+                "#systemWarning div:nth-child(2) div:nth-child(2)"
+            );
+
+
+        if(warning){
+
+            warning.innerHTML = `
+
+                CONNECTION ESTABLISHED.
+
+                <br><br>
+
+                Operator identified.
+
+                <br><br>
+
+                <strong>
+
+                WE CAN SEE YOU.
+
+                </strong>
+
+            `;
+
+        }
+
+    },3500);
+
+}
+
+
+/* =========================================================
+   RANDOM BACKGROUND ANOMALIES
+========================================================= */
+
+setInterval(function(){
+
+    /*
+       Do not trigger horror immediately.
+       User must interact first.
+    */
+
+    if(activity < 2){
         return;
     }
 
 
-    let found = null;
+    if(Math.random() > .72){
 
-
-    for (const key in documents) {
-
-        const documentData =
-            documents[key];
-
-        if (
-            documentData.title
-                .toLowerCase()
-                .includes(query)
-            ||
-            documentData.content
-                .toLowerCase()
-                .includes(query)
-        ) {
-
-            found = documentData;
-
-            break;
-
-        }
+        subtleAnomaly();
 
     }
 
+},15000);
 
-    if (found) {
 
-        document.getElementById("modalTitle")
-            .innerText =
-            "SEARCH RESULT";
+function subtleAnomaly(){
 
-        document.getElementById("modalContent")
-            .innerHTML = `
+    const access =
+        document.querySelector(
+            ".access"
+        );
 
-                <p>
-                    <b>
-                    ${found.title}
-                    </b>
-                </p>
 
-                ${found.content}
+    if(!access) return;
 
-            `;
 
-        document
-            .getElementById("documentModal")
-            .classList
-            .add("open");
+    const original =
+        access.textContent;
 
-    }
 
-    else {
+    const messages = [
 
-        document.getElementById("modalTitle")
-            .innerText =
-            "SEARCH RESULT";
+        "Agency Access: UNKNOWN",
 
-        document.getElementById("modalContent")
-            .innerHTML = `
+        "Agency Access: ACTIVE",
 
-                <p>
-                    No public records found.
-                </p>
+        "Agency Access: WATCHING",
 
-                <p>
-                    <b>
-                    Search terminated.
-                    </b>
-                </p>
+        "Agency Access: 0047????",
 
-            `;
+        "Agency Access: YOU"
 
-        document
-            .getElementById("documentModal")
-            .classList
-            .add("open");
+    ];
 
-    }
+
+    access.textContent =
+        messages[
+            Math.floor(
+                Math.random() *
+                messages.length
+            )
+        ];
+
+
+    setTimeout(function(){
+
+        access.textContent =
+            original;
+
+    },800);
 
 }
 
 
 /* =========================================================
-   SECRET ANALOG HORROR EVENT
+   SECRET TITLE CHANGE
 ========================================================= */
 
-let clicks = 0;
+let titleClicks = 0;
 
 
-document
-    .querySelector(".hero")
-    .addEventListener("click", function() {
-
-        clicks++;
-
-        if (clicks === 7) {
-
-            document
-                .body
-                .classList
-                .add("glitch");
+const brand =
+    document.querySelector(
+        ".brand-title"
+    );
 
 
-            document
-                .querySelector(".ticker")
-                .innerText =
-                "██ SYSTEM MESSAGE: PLEASE DO NOT LOOK FOR REALITY-0 █████████████";
+if(brand){
+
+    brand.addEventListener(
+        "click",
+        function(){
+
+            titleClicks++;
 
 
-            setTimeout(function() {
+            if(titleClicks === 5){
 
-                openDocument("casefiles");
+                brand.textContent =
+                    "INTERDIMENSIONAL SERVICES";
 
-            }, 600);
+
+                setTimeout(function(){
+
+                    brand.textContent =
+                        "IT KNOWS YOU ARE HERE";
+
+                },700);
+
+
+                setTimeout(function(){
+
+                    brand.textContent =
+                        "INTERDIMENSIONAL SERVICES";
+
+                },1600);
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   PAGE TITLE ANOMALY
+========================================================= */
+
+let originalTitle =
+    document.title;
+
+
+document.addEventListener(
+    "visibilitychange",
+    function(){
+
+        if(document.hidden){
+
+            document.title =
+                "COME BACK";
 
         }
 
-    });
+        else{
 
+            document.title =
+                originalTitle;
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   KONAMI-LIKE SECRET
+========================================================= */
+
+let secretCode = "";
+
+document.addEventListener(
+    "keydown",
+    function(e){
+
+        secretCode +=
+            e.key.toLowerCase();
+
+
+        if(secretCode.length > 20){
+
+            secretCode =
+                secretCode.slice(-20);
+
+        }
+
+
+        if(
+            secretCode.includes(
+                "anomaly"
+            )
+        ){
+
+            secretCode = "";
+
+            openCaseFile();
+
+            glitchScreen();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INITIAL DELAYED EVENT
+
+   Very subtle.
+   No obvious horror at beginning.
+========================================================= */
+
+setTimeout(function(){
+
+    const access =
+        document.querySelector(
+            ".access"
+        );
+
+
+    if(!access) return;
+
+
+    access.textContent =
+        "Agency Access: 00471284";
+
+
+    setTimeout(function(){
+
+        access.textContent =
+            "Agency Access: 00471283";
+
+    },900);
+
+},12000);
 
 </script>
-
 
 </body>
 </html>
