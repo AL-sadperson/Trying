@@ -3,757 +3,1020 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Interdimensional Services</title>
+
+<title>INTERDIMENSIONAL SERVICES</title>
 
 <style>
-*{
-  box-sizing:border-box;
+*{box-sizing:border-box}
+
+html,body{
+    margin:0;
+    min-height:100%;
+    background:#061113;
+    font-family:Tahoma,Arial,sans-serif;
 }
 
 body{
-  margin:0;
-  background:#08181b;
-  font-family:Tahoma, Arial, sans-serif;
-  overflow-x:hidden;
+    overflow-x:hidden;
 }
 
-/* =========================
-   WINDOWS / IE
-========================= */
+/* ==============================
+   INTERNET EXPLORER
+================================ */
 
 .browser{
-  width:100%;
-  min-height:100vh;
-  background:#c0c0c0;
-  border:2px outset #fff;
+    width:100%;
+    min-height:100vh;
+    background:#c0c0c0;
+    border:2px outset #fff;
 }
 
 .titlebar{
-  height:24px;
-  background:linear-gradient(90deg,#071d68,#1085b5);
-  color:white;
-  font-weight:bold;
-  padding:3px 6px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:13px;
+    height:24px;
+    background:linear-gradient(90deg,#071c6b,#0e7ca5);
+    color:white;
+    font-weight:bold;
+    font-size:13px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:2px 5px;
 }
 
 .window-controls{
-  display:flex;
-  gap:2px;
+    display:flex;
+    gap:2px;
 }
 
 .win-btn{
-  width:18px;
-  height:18px;
-  background:#c0c0c0;
-  border:2px outset white;
-  color:black;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:10px;
-  cursor:pointer;
+    width:18px;
+    height:18px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#c0c0c0;
+    color:#000;
+    border:2px outset white;
+    cursor:pointer;
+    font-size:10px;
 }
 
-.win-btn:active{
-  border:2px inset white;
+.win-btn:active,
+button:active{
+    border-style:inset!important;
 }
 
 .menu{
-  height:25px;
-  display:flex;
-  align-items:center;
-  gap:20px;
-  padding-left:10px;
-  border-bottom:1px solid #777;
-  font-size:12px;
+    height:25px;
+    display:flex;
+    align-items:center;
+    gap:22px;
+    padding-left:10px;
+    border-bottom:1px solid #777;
+    font-size:12px;
 }
 
 .toolbar{
-  height:52px;
-  display:flex;
-  align-items:center;
-  padding:3px 10px;
-  gap:12px;
-  border-top:1px solid white;
-  border-bottom:1px solid #777;
+    height:53px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:3px 8px;
+    border-top:1px solid white;
+    border-bottom:1px solid #777;
 }
 
 .tool{
-  width:48px;
-  text-align:center;
-  font-size:10px;
-  cursor:pointer;
+    width:52px;
+    text-align:center;
+    font-size:10px;
+    cursor:pointer;
 }
 
 .tool span{
-  display:block;
-  font-size:22px;
-  height:27px;
+    display:block;
+    font-size:21px;
+    height:27px;
 }
 
 .address{
-  height:28px;
-  display:flex;
-  align-items:center;
-  padding:3px 7px;
-  gap:5px;
-  border-bottom:2px ridge white;
-  font-size:11px;
+    height:28px;
+    display:flex;
+    align-items:center;
+    gap:5px;
+    padding:3px 7px;
+    border-bottom:2px ridge white;
+    font-size:11px;
 }
 
 .address input{
-  height:21px;
-  flex:1;
-  border:2px inset white;
-  background:white;
-  padding:2px 5px;
+    flex:1;
+    height:21px;
+    background:white;
+    border:2px inset white;
+    font-family:Tahoma;
+    padding-left:5px;
 }
 
-/* =========================
-   SITE
-========================= */
+/* ==============================
+   WEBSITE
+================================ */
 
 .site{
-  position:relative;
-  min-height:790px;
-  overflow:hidden;
+    position:relative;
+    min-height:820px;
+    overflow:hidden;
 
-  background:
-    radial-gradient(circle at 70% 50%,
-      rgba(40,210,220,.20),
-      transparent 23%),
-    radial-gradient(circle at 50% 20%,
-      rgba(60,120,170,.25),
-      transparent 20%),
-    linear-gradient(135deg,#021316,#0a3035,#06181c);
+    background:
+        radial-gradient(circle at 75% 48%,rgba(43,199,202,.25),transparent 18%),
+        radial-gradient(circle at 55% 12%,rgba(55,130,175,.23),transparent 20%),
+        linear-gradient(135deg,#021214,#073238,#061a1e);
 }
 
-/* background light lines */
+/* dimensional lines */
 
-.site:before{
-  content:"";
-  position:absolute;
-  width:800px;
-  height:800px;
-  border:2px solid rgba(114,231,231,.25);
-  border-radius:50%;
-  left:250px;
-  top:-500px;
-  box-shadow:
-    0 0 20px rgba(85,230,230,.2),
-    100px 300px 0 -2px rgba(80,200,210,.1);
-  pointer-events:none;
+.site::before{
+    content:"";
+    position:absolute;
+    width:950px;
+    height:950px;
+    border:2px solid rgba(117,234,228,.15);
+    border-radius:50%;
+    left:250px;
+    top:-650px;
+    pointer-events:none;
+    box-shadow:
+        0 0 30px rgba(72,221,220,.2),
+        150px 450px 0 -1px rgba(72,221,220,.08);
 }
 
-/* =========================
+/* scanlines */
+
+.site::after{
+    content:"";
+    pointer-events:none;
+    position:absolute;
+    z-index:5000;
+    inset:0;
+    opacity:.055;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 2px,
+            #000 3px,
+            #000 4px
+        );
+}
+
+/* ==============================
    HEADER
-========================= */
+================================ */
 
 .site-header{
-  height:78px;
-  margin:8px;
-  border:1px solid #618084;
-  background:
-    radial-gradient(circle at 70% 50%,
-      rgba(61,153,178,.35),
-      transparent 20%),
-    linear-gradient(90deg,#071c20,#0d3439);
-  display:flex;
-  align-items:center;
-  color:#d8e6e6;
-  position:relative;
+    height:78px;
+    margin:8px;
+    position:relative;
+    z-index:2;
+
+    border:1px solid #55787c;
+
+    display:flex;
+    align-items:center;
+
+    background:
+        radial-gradient(circle at 70% 40%,rgba(52,149,173,.32),transparent 18%),
+        linear-gradient(90deg,#061b1e,#0c3439);
 }
 
 .logo{
-  width:135px;
-  height:100%;
-  border-right:1px solid #49656a;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+    width:135px;
+    height:100%;
+    border-right:1px solid #47686b;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .planet{
-  width:74px;
-  height:40px;
-  border:2px solid #d6e2df;
-  border-radius:50%;
-  position:relative;
+    width:75px;
+    height:40px;
+    border:2px solid #d6e5e1;
+    border-radius:50%;
+    position:relative;
 }
 
-.planet:before{
-  content:"";
-  position:absolute;
-  width:95px;
-  border-top:3px solid #d6e2df;
-  left:-12px;
-  top:17px;
-  transform:rotate(-12deg);
+.planet::before{
+    content:"";
+    position:absolute;
+    width:100px;
+    left:-14px;
+    top:17px;
+    border-top:3px solid #d6e5e1;
+    transform:rotate(-12deg);
 }
 
-.planet:after{
-  content:"7";
-  position:absolute;
-  right:-25px;
-  top:-15px;
-  font-size:19px;
+.planet::after{
+    content:"7";
+    position:absolute;
+    right:-25px;
+    top:-16px;
+    font-size:20px;
+    color:white;
 }
 
 .brand{
-  padding-left:12px;
+    padding-left:14px;
+    color:#d3e1e1;
 }
 
 .brand-title{
-  font-size:19px;
-  letter-spacing:1px;
+    font-size:19px;
+    letter-spacing:1px;
+    cursor:default;
 }
 
 .brand-sub{
-  font-family:"Courier New",monospace;
-  font-size:12px;
-  margin-top:5px;
+    font-family:"Courier New";
+    font-size:12px;
+    margin-top:5px;
 }
 
 .access{
-  margin-left:auto;
-  margin-right:15px;
-  font-family:"Courier New",monospace;
-  font-size:12px;
+    margin-left:auto;
+    margin-right:15px;
+    color:#d6e2e2;
+    font-family:"Courier New";
+    font-size:12px;
 }
 
-/* =========================
+/* ==============================
    LAYOUT
-========================= */
+================================ */
 
 .layout{
-  display:grid;
-  grid-template-columns:160px 1fr 205px;
-  gap:8px;
-  padding:0 8px;
-  position:relative;
+    position:relative;
+    z-index:2;
+
+    display:grid;
+    grid-template-columns:160px minmax(450px,1fr) 205px;
+    gap:8px;
+    padding:0 8px;
 }
 
-/* =========================
-   LEFT MENU
-========================= */
+/* ==============================
+   LEFT
+================================ */
 
 .menu-title{
-  background:#0a2428;
-  color:white;
-  border:1px solid #597174;
-  padding:6px;
-  font-size:12px;
+    padding:6px;
+    color:white;
+    background:#092326;
+    border:1px solid #587579;
+    font-size:12px;
 }
 
 .left-nav{
-  border:1px solid #617b7d;
-  background:#071a1d;
+    background:#07191c;
+    border:1px solid #5c787b;
 }
 
 .left-nav a{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  height:34px;
-  padding:5px 8px;
-  color:#c8d6d6;
-  text-decoration:none;
-  border-bottom:1px solid #274145;
-  font-size:12px;
+    height:34px;
+    padding:5px 8px;
+
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    color:#c9d7d7;
+    text-decoration:none;
+    font-size:12px;
+
+    border-bottom:1px solid #274044;
 }
 
 .left-nav a:hover,
 .left-nav a.active{
-  background:#a9d6d2;
-  color:#142223;
+    background:#add7d3;
+    color:#122223;
 }
 
 .nav-icon{
-  width:18px;
-  height:18px;
-  background:#24494d;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+    width:18px;
+    height:18px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#25494d;
+    color:white;
 }
 
 .left-art{
-  height:190px;
-  margin-top:8px;
-  border:1px solid #5c7679;
-  position:relative;
-  background:
-    radial-gradient(circle at 50% 40%,
-      rgba(74,177,190,.25),
-      transparent 35%),
-    #07191d;
+    height:195px;
+    margin-top:8px;
+
+    position:relative;
+
+    border:1px solid #5a7478;
+
+    background:
+        radial-gradient(circle at 50% 40%,rgba(75,181,192,.25),transparent 35%),
+        #07191c;
 }
 
 .globe{
-  position:absolute;
-  width:110px;
-  height:110px;
-  border:1px solid #75a5a8;
-  border-radius:50%;
-  top:15px;
-  left:24px;
+    width:110px;
+    height:110px;
+
+    position:absolute;
+    left:24px;
+    top:16px;
+
+    border:1px solid #79a6a8;
+    border-radius:50%;
 }
 
-.globe:before,
-.globe:after{
-  content:"";
-  position:absolute;
-  inset:18px -15px;
-  border:1px solid #47787c;
-  border-radius:50%;
-  transform:rotate(55deg);
+.globe::before,
+.globe::after{
+    content:"";
+
+    position:absolute;
+    inset:18px -15px;
+
+    border:1px solid #47787c;
+    border-radius:50%;
+
+    transform:rotate(55deg);
 }
 
-.globe:after{
-  transform:rotate(-55deg);
+.globe::after{
+    transform:rotate(-55deg);
 }
 
 .stability{
-  position:absolute;
-  bottom:10px;
-  left:10px;
-  color:#a9bfc0;
-  font-size:11px;
-  line-height:1.1;
+    position:absolute;
+    bottom:10px;
+    left:10px;
+
+    color:#a8bfc0;
+    font-size:11px;
+    line-height:1.15;
 }
 
-/* =========================
-   MAIN REPORT
-========================= */
+/* ==============================
+   REPORT
+================================ */
 
 .report-window{
-  position:relative;
-  background:#d8d0b8;
-  border:3px outset #ddd;
-  min-height:500px;
-  box-shadow:4px 4px 8px rgba(0,0,0,.6);
+    position:relative;
+    min-height:505px;
+
+    background:#d5ccb4;
+
+    border:3px outset #ddd;
+
+    box-shadow:4px 4px 8px rgba(0,0,0,.65);
 }
 
 .inner-title{
-  height:23px;
-  background:linear-gradient(90deg,#737f80,#a4a5a0);
-  color:white;
-  font-size:11px;
-  font-weight:bold;
-  padding:4px 6px;
-  display:flex;
-  justify-content:space-between;
+    height:23px;
+
+    padding:4px 6px;
+
+    display:flex;
+    justify-content:space-between;
+
+    color:white;
+
+    font-size:11px;
+    font-weight:bold;
+
+    background:linear-gradient(90deg,#737f80,#a4a5a0);
 }
 
 .report-paper{
-  margin:0;
-  min-height:475px;
-  padding:15px 18px;
-  background:
-    radial-gradient(circle at 15% 20%,
-      rgba(80,55,20,.08) 0 2px,
-      transparent 3px),
-    linear-gradient(#eee2bd,#e5d4a9);
-  font-family:Georgia,serif;
-  position:relative;
-  overflow:hidden;
+    min-height:478px;
+
+    padding:14px 18px;
+
+    position:relative;
+    overflow:hidden;
+
+    font-family:Georgia,serif;
+
+    background:
+        radial-gradient(circle at 15% 20%,rgba(80,55,20,.08) 0 2px,transparent 3px),
+        radial-gradient(circle at 80% 70%,rgba(90,50,20,.05) 0 2px,transparent 3px),
+        linear-gradient(#eee3c0,#e5d3a8);
 }
 
 .report-paper h1{
-  text-align:center;
-  font-family:Georgia,serif;
-  font-style:italic;
-  font-size:25px;
-  margin:0 0 7px;
+    text-align:center;
+    font-size:25px;
+    font-style:italic;
+    margin:0 0 8px;
 }
 
 .report-paper h2{
-  text-align:center;
-  font-style:italic;
-  margin:10px 0;
+    text-align:center;
+    font-style:italic;
+    margin:9px 0;
 }
 
 .tabs{
-  display:flex;
-  justify-content:center;
-  border-top:1px solid #777;
-  border-bottom:1px solid #777;
-  margin-bottom:10px;
+    display:flex;
+    justify-content:center;
+
+    margin-bottom:10px;
+
+    border-top:1px solid #777;
+    border-bottom:1px solid #777;
 }
 
 .tabs span{
-  font-size:8px;
-  padding:4px 12px;
-  border-right:1px solid #aaa;
+    padding:4px 10px;
+    border-right:1px solid #aaa;
+    font-size:8px;
 }
 
 .report-text{
-  width:58%;
-  font-size:10px;
-  line-height:1.25;
+    width:57%;
+    font-size:10px;
+    line-height:1.28;
 }
 
 .report-text p{
-  margin:7px 0;
+    margin:7px 0;
 }
 
 .small-photo{
-  position:absolute;
-  width:92px;
-  height:115px;
-  right:145px;
-  top:120px;
-  background:
-    radial-gradient(circle at 50% 40%,#819294,#263b3e 60%);
-  border:6px solid #c6c4b8;
-  transform:rotate(3deg);
-  box-shadow:2px 2px 4px #555;
+    position:absolute;
+
+    width:92px;
+    height:115px;
+
+    right:145px;
+    top:120px;
+
+    transform:rotate(3deg);
+
+    border:6px solid #c6c4b8;
+
+    box-shadow:2px 2px 4px #555;
+
+    background:
+        radial-gradient(ellipse at 50% 38%,#adb5ad 0 12%,#4a5c5c 13% 26%,transparent 27%),
+        radial-gradient(circle at 50% 40%,#819294,#263b3e 60%);
 }
 
 .calendar{
-  position:absolute;
-  right:18px;
-  top:115px;
-  width:95px;
-  background:#eee7d4;
-  border:1px solid #777;
-  padding:5px;
-  font-size:8px;
+    position:absolute;
+
+    right:18px;
+    top:115px;
+
+    width:95px;
+
+    padding:5px;
+
+    background:#eee7d4;
+
+    border:1px solid #777;
+
+    font-size:8px;
 }
 
 .calendar table{
-  width:100%;
-  text-align:center;
+    width:100%;
+    text-align:center;
 }
 
 .note{
-  position:absolute;
-  background:#e8dba9;
-  padding:10px;
-  box-shadow:2px 3px 5px rgba(0,0,0,.5);
-  font-family:"Comic Sans MS",cursive;
-  font-size:11px;
+    position:absolute;
+
+    padding:10px;
+
+    background:#e8dba9;
+
+    box-shadow:2px 3px 5px rgba(0,0,0,.5);
+
+    font-family:"Comic Sans MS",cursive;
+    font-size:11px;
 }
 
 .note1{
-  right:120px;
-  bottom:55px;
-  transform:rotate(-4deg);
+    right:120px;
+    bottom:55px;
+    transform:rotate(-4deg);
 }
 
 .note2{
-  left:245px;
-  bottom:25px;
-  width:135px;
-  height:150px;
-  transform:rotate(6deg);
-  text-align:center;
+    left:245px;
+    bottom:25px;
+
+    width:135px;
+    height:150px;
+
+    transform:rotate(6deg);
+
+    text-align:center;
 }
 
 .note3{
-  right:8px;
-  bottom:10px;
-  width:135px;
-  background:#f1efe5;
-  transform:rotate(-3deg);
+    right:8px;
+    bottom:10px;
+
+    width:135px;
+
+    background:#f0eee3;
+
+    transform:rotate(-3deg);
 }
 
-/* =========================
-   RIGHT SIDE
-========================= */
+/* ==============================
+   RIGHT
+================================ */
 
 .right-box{
-  background:#dce7e4;
-  border:3px outset #bbb;
-  margin-bottom:8px;
+    margin-bottom:8px;
+
+    background:#dce7e4;
+
+    border:3px outset #bbb;
 }
 
 .right-title{
-  background:#12515a;
-  color:white;
-  font-weight:bold;
-  padding:5px;
-  display:flex;
-  justify-content:space-between;
-  font-size:12px;
+    padding:5px;
+
+    display:flex;
+    justify-content:space-between;
+
+    background:#12515a;
+
+    color:white;
+
+    font-weight:bold;
+    font-size:12px;
 }
 
 .right-content{
-  padding:10px;
-  min-height:130px;
-  font-size:12px;
+    min-height:125px;
+    padding:10px;
+    font-size:12px;
 }
 
 .right-content a{
-  color:#072e65;
-  display:block;
-  margin:8px 0;
+    display:block;
+    margin:8px 0;
+    color:#062e65;
 }
 
 .search-row{
-  display:flex;
-  gap:4px;
+    display:flex;
+    gap:4px;
 }
 
 .search-row input{
-  width:100%;
+    width:100%;
 }
 
-/* =========================
-   POPUP WINDOWS
-========================= */
+/* ==============================
+   POPUPS
+================================ */
 
 .popup{
-  position:absolute;
-  z-index:50;
-  background:#c0c0c0;
-  border:3px outset #eee;
-  box-shadow:5px 7px 12px rgba(0,0,0,.7);
+    position:absolute;
+    z-index:50;
+
+    background:#c0c0c0;
+
+    border:3px outset #eee;
+
+    box-shadow:5px 7px 12px rgba(0,0,0,.75);
 }
 
 .popup.hidden{
-  display:none;
+    display:none;
 }
 
 .popup-title{
-  height:23px;
-  background:#061d74;
-  color:white;
-  font-size:11px;
-  font-weight:bold;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding-left:6px;
-  cursor:move;
-  user-select:none;
+    height:23px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding-left:6px;
+
+    color:white;
+    background:#061d74;
+
+    font-size:11px;
+    font-weight:bold;
+
+    cursor:move;
+    user-select:none;
 }
 
 .popup-buttons{
-  display:flex;
-  margin-right:2px;
+    display:flex;
+    margin-right:2px;
 }
 
 .popup-buttons button{
-  width:17px;
-  height:17px;
-  padding:0;
-  background:#c0c0c0;
-  border:2px outset white;
-  font-size:9px;
-  cursor:pointer;
+    width:17px;
+    height:17px;
+
+    padding:0;
+
+    background:#c0c0c0;
+
+    border:2px outset white;
+
+    font-size:9px;
+
+    cursor:pointer;
 }
 
-.popup-buttons button:active{
-  border:2px inset white;
-}
-
-/* mission popup */
+/* Mission */
 
 .mission{
-  width:290px;
-  height:210px;
-  left:22px;
-  bottom:70px;
+    width:290px;
+    height:210px;
+
+    left:22px;
+    bottom:70px;
 }
 
 .mission-body{
-  background:white;
-  margin:2px;
-  height:178px;
-  border:2px inset white;
-  padding:8px;
-  font-size:11px;
-  overflow:auto;
+    height:178px;
+
+    margin:2px;
+    padding:8px;
+
+    overflow:auto;
+
+    background:white;
+
+    border:2px inset white;
+
+    font-size:11px;
 }
 
-/* LAB POPUP */
+/* LAB */
 
 .lab{
-  width:390px;
-  height:295px;
-  right:15px;
-  top:55px;
+    width:390px;
+    height:295px;
+
+    right:15px;
+    top:55px;
 }
 
 .lab-content{
-  height:264px;
-  display:grid;
-  grid-template-columns:1fr 95px;
-  gap:4px;
-  padding:4px;
+    height:264px;
+
+    display:grid;
+    grid-template-columns:1fr 95px;
+    gap:4px;
+
+    padding:4px;
 }
 
 .lab-image{
-  position:relative;
-  background:
-    radial-gradient(circle at 55% 42%,#d9d4bf 0 10%,transparent 11%),
-    radial-gradient(circle at 50% 42%,#758c83 0 28%,#17333a 55%,#0b242a 75%);
-  border:2px inset white;
-  overflow:hidden;
+    position:relative;
+    overflow:hidden;
+
+    border:2px inset white;
+
+    background:
+        radial-gradient(circle at 50% 40%,rgba(213,225,210,.15),transparent 35%),
+        linear-gradient(#23454b,#0b272c);
 }
 
+/* fake portrait */
+
 .face{
-  position:absolute;
-  width:115px;
-  height:160px;
-  left:50%;
-  top:15px;
-  transform:translateX(-50%);
+    position:absolute;
+
+    width:120px;
+    height:175px;
+
+    left:50%;
+    top:15px;
+
+    transform:translateX(-50%);
 }
 
 .face-head{
-  width:85px;
-  height:110px;
-  background:linear-gradient(#e4cdb5,#d7baa5);
-  border-radius:45% 45% 40% 40%;
-  margin:auto;
-  position:relative;
+    width:88px;
+    height:115px;
+
+    position:relative;
+
+    margin:auto;
+
+    border-radius:45% 45% 42% 42%;
+
+    background:linear-gradient(#e2cbb5,#d1af9c);
 }
 
-.face-head:before{
-  content:"";
-  position:absolute;
-  width:95px;
-  height:65px;
-  background:#e7d5bb;
-  border-radius:50% 50% 20% 20%;
-  top:-15px;
-  left:-5px;
+.face-head::before{
+    content:"";
+
+    position:absolute;
+
+    width:100px;
+    height:65px;
+
+    left:-6px;
+    top:-16px;
+
+    border-radius:50% 50% 20% 20%;
+
+    background:#e3d1b8;
 }
 
 .eye{
-  position:absolute;
-  width:12px;
-  height:6px;
-  background:#526f73;
-  top:49px;
-  z-index:3;
+    position:absolute;
+    z-index:3;
+
+    width:13px;
+    height:6px;
+
+    top:50px;
+
+    background:#496c72;
+
+    border-radius:50%;
 }
 
-.eye.left{left:19px;}
-.eye.right{right:19px;}
+.eye.left{left:19px}
+.eye.right{right:19px}
 
 .mouth{
-  position:absolute;
-  width:25px;
-  height:2px;
-  background:#855;
-  bottom:25px;
-  left:30px;
+    position:absolute;
+
+    width:25px;
+    height:2px;
+
+    bottom:25px;
+    left:31px;
+
+    background:#875d5d;
 }
 
 .flower{
-  position:absolute;
-  left:18px;
-  bottom:20px;
-  font-size:35px;
+    position:absolute;
+    left:17px;
+    bottom:25px;
+    font-size:38px;
+    color:#b6c8cf;
 }
 
 .web{
-  position:absolute;
-  right:8px;
-  bottom:20px;
-  font-size:50px;
-  opacity:.6;
+    position:absolute;
+    right:12px;
+    bottom:25px;
+    font-size:45px;
+    opacity:.5;
 }
 
 .lab-info{
-  background:#e4e4df;
-  border:2px inset white;
-  padding:5px;
-  font-family:"Courier New",monospace;
-  font-size:8px;
-  overflow:auto;
+    padding:5px;
+
+    overflow:auto;
+
+    background:#e4e4df;
+
+    border:2px inset white;
+
+    font-family:"Courier New";
+    font-size:8px;
 }
 
 .lab-controls{
-  position:absolute;
-  bottom:6px;
-  left:8px;
-  display:flex;
-  gap:7px;
+    position:absolute;
+
+    left:8px;
+    bottom:6px;
+
+    display:flex;
+    gap:7px;
 }
 
 .lab-controls button{
-  height:25px;
-  background:#c0c0c0;
-  border:2px outset white;
-  font-size:10px;
-  cursor:pointer;
+    height:25px;
+
+    background:#c0c0c0;
+
+    border:2px outset white;
+
+    font-size:10px;
+
+    cursor:pointer;
 }
 
-/* =========================
-   BOTTOM BUTTONS
-========================= */
+/* ==============================
+   BOTTOM
+================================ */
 
 .bottom-buttons{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  padding:10px;
+    position:relative;
+    z-index:3;
+
+    display:flex;
+    justify-content:center;
+    gap:10px;
+
+    padding:10px;
 }
 
 .bottom-buttons button{
-  width:160px;
-  height:45px;
-  background:#c0c0c0;
-  border:3px outset white;
-  font-weight:bold;
-  cursor:pointer;
-}
+    width:165px;
+    height:45px;
 
-.bottom-buttons button:active{
-  border:3px inset white;
-}
+    background:#c0c0c0;
 
-/* status */
+    border:3px outset white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
 
 .status{
-  height:24px;
-  border-top:2px ridge white;
-  display:flex;
-  align-items:center;
-  padding:3px;
-  font-size:11px;
+    height:24px;
+
+    display:flex;
+    align-items:center;
+
+    padding:3px;
+
+    border-top:2px ridge white;
+
+    font-size:11px;
 }
 
 .status-text{
-  flex:1;
-  border:1px inset white;
-  height:18px;
-  padding-left:5px;
+    flex:1;
+
+    height:18px;
+
+    padding-left:5px;
+
+    border:1px inset white;
 }
 
 .internet{
-  width:150px;
-  border:1px inset white;
-  height:18px;
-  padding-left:5px;
+    width:150px;
+
+    height:18px;
+
+    padding-left:5px;
+
+    border:1px inset white;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* ==============================
+   PHOTO 04
+================================ */
 
-@media(max-width:800px){
+.photo04{
+    width:440px;
+    height:390px;
 
-  .layout{
-    grid-template-columns:145px 1fr;
-  }
+    left:50%;
+    top:150px;
 
-  .right{
-    display:none;
-  }
+    transform:translateX(-50%);
+}
 
-  .lab{
-    width:360px;
-  }
+.photo04-body{
+    height:355px;
+
+    margin:3px;
+    padding:12px;
+
+    background:#ddd;
+
+    border:2px inset white;
+}
+
+.photo-frame{
+    height:280px;
+
+    position:relative;
+    overflow:hidden;
+
+    background:
+        radial-gradient(ellipse at 50% 34%,#c8c5b7 0 8%,#a6a395 9% 15%,transparent 16%),
+        radial-gradient(ellipse at 50% 48%,#171b1b 0 15%,#050606 16% 25%,transparent 26%),
+        radial-gradient(circle at 50% 50%,#263435,#071011 70%);
+
+    border:8px solid #ece7d7;
+
+    filter:grayscale(.85) contrast(1.25);
+}
+
+.photo-subject{
+    position:absolute;
+
+    width:110px;
+    height:205px;
+
+    left:50%;
+    bottom:5px;
+
+    transform:translateX(-50%);
+
+    background:#050606;
+
+    border-radius:45% 45% 10% 10%;
+}
+
+.photo-subject::before{
+    content:"";
+
+    position:absolute;
+
+    width:65px;
+    height:78px;
+
+    left:22px;
+    top:-45px;
+
+    background:#090a0a;
+
+    border-radius:50%;
+}
+
+.photo-eyes{
+    position:absolute;
+
+    z-index:5;
+
+    width:44px;
+    height:5px;
+
+    left:33px;
+    top:-14px;
+
+    border-left:5px solid #eee;
+    border-right:5px solid #eee;
+}
+
+.photo-caption{
+    padding-top:9px;
+
+    font-family:"Courier New";
+    font-size:11px;
+
+    text-align:center;
+}
+
+/* ==============================
+   CRT FLASH
+================================ */
+
+#flash{
+    position:fixed;
+
+    z-index:999999;
+
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:0;
+
+    background:white;
+}
+
+/* ==============================
+   MOBILE
+================================ */
+
+@media(max-width:850px){
+
+    .layout{
+        grid-template-columns:145px 1fr;
+    }
+
+    .right{
+        display:none;
+    }
+
+    .lab{
+        width:360px;
+    }
+
+    .report-text{
+        width:65%;
+    }
 }
 
 </style>
@@ -761,1022 +1024,704 @@ body{
 
 <body>
 
+<div id="flash"></div>
+
 <div class="browser">
 
-  <div class="titlebar">
+<!-- WINDOWS TITLE -->
 
-    <div>
-      🌐 INTERDIMENSIONAL SERVICES - Total Systems Integration
-    </div>
+<div class="titlebar">
+
+    <span>
+        🌐 INTERDIMENSIONAL SERVICES - Total Systems Integration
+    </span>
 
     <div class="window-controls">
-      <div class="win-btn">_</div>
-      <div class="win-btn">□</div>
-      <div class="win-btn">×</div>
+        <div class="win-btn">_</div>
+        <div class="win-btn">□</div>
+        <div class="win-btn">×</div>
     </div>
 
-  </div>
+</div>
 
+<!-- MENU -->
 
-  <div class="menu">
+<div class="menu">
     <span>File</span>
     <span>Edit</span>
     <span>View</span>
     <span>Go</span>
     <span>Favorites</span>
     <span>Help</span>
-  </div>
+</div>
 
+<!-- TOOLBAR -->
 
-  <div class="toolbar">
+<div class="toolbar">
 
     <div class="tool">
-      <span>←</span>
-      Back
+        <span>←</span>
+        Back
     </div>
 
     <div class="tool">
-      <span>→</span>
-      Forward
+        <span>→</span>
+        Forward
     </div>
 
     <div class="tool">
-      <span>✖</span>
-      Stop
+        <span>✖</span>
+        Stop
     </div>
 
     <div class="tool">
-      <span>↻</span>
-      Refresh
+        <span>↻</span>
+        Refresh
     </div>
 
     <div class="tool">
-      <span>⌕</span>
-      Search
+        <span>⌕</span>
+        Search
     </div>
 
     <div class="tool">
-      <span>★</span>
-      Favorites
+        <span>★</span>
+        Favorites
     </div>
 
     <div class="tool">
-      <span>◉</span>
-      History
+        <span>◉</span>
+        History
     </div>
 
     <div class="tool">
-      <span>✉</span>
-      Mail
+        <span>✉</span>
+        Mail
     </div>
 
     <div class="tool">
-      <span>▤</span>
-      Print
+        <span>▤</span>
+        Print
     </div>
 
-  </div>
+</div>
 
+<!-- ADDRESS -->
 
-  <div class="address">
+<div class="address">
 
     <strong>Address</strong>
 
     🌐
 
     <input
-      value="http://www.isc.gov/ Services - Total Systems Integration"
+    value="http://www.isc.gov/Services/Total-Systems-Integration"
     >
-
-  </div>
-
-
-  <div class="site">
-
-
-    <!-- HEADER -->
-
-    <div class="site-header">
-
-      <div class="logo">
-        <div class="planet"></div>
-      </div>
-
-      <div class="brand">
-
-        <div class="brand-title">
-          INTERDIMENSIONAL SERVICES
-        </div>
-
-        <div class="brand-sub">
-          Federal Agency for Dimensional Stability
-        </div>
-
-      </div>
-
-      <div class="access">
-        Agency Access: 00471283
-      </div>
-
-    </div>
-
-
-    <!-- SITE LAYOUT -->
-
-    <div class="layout">
-
-
-      <!-- LEFT -->
-
-      <aside>
-
-        <div class="menu-title">
-          ▶ Main Menu
-        </div>
-
-        <nav class="left-nav">
-
-          <a class="active" href="#">
-            <span class="nav-icon">X</span>
-            Home
-          </a>
-
-          <a href="#">
-            <span class="nav-icon">♟</span>
-            About Us
-          </a>
-
-          <a href="#">
-            <span class="nav-icon">✓</span>
-            Our Services
-          </a>
-
-          <a href="#">
-            <span class="nav-icon">♙</span>
-            Careers
-          </a>
-
-          <a href="#">
-            <span class="nav-icon">▶</span>
-            Public Information
-          </a>
-
-          <a href="#">
-            <span class="nav-icon">✉</span>
-            Contact
-          </a>
-
-        </nav>
-
-
-        <div class="left-art">
-
-          <div class="globe"></div>
-
-          <div class="stability">
-            STABILITY<br>
-            THROUGH<br>
-            COOPERATION.
-          </div>
-
-        </div>
-
-      </aside>
-
-
-      <!-- CENTER -->
-
-      <main>
-
-        <div class="report-window">
-
-          <div class="inner-title">
-
-            <span>
-              Interdimensional Services:
-              Royal Report on Anomalies
-            </span>
-
-            <span>_ □ ×</span>
-
-          </div>
-
-
-          <div class="report-paper">
-
-            <h1>
-              The Princess's Anomalies in Human Life:
-              <br>
-              A Royal Report
-            </h1>
-
-
-            <div class="tabs">
-
-              <span>the castle</span>
-              <span>diary</span>
-              <span>personal</span>
-              <span>media</span>
-              <span>ball talk</span>
-              <span>liquid log</span>
-
-            </div>
-
-
-            <h2>
-              Welcome to The Castle
-            </h2>
-
-
-            <div class="report-text">
-
-              <p>
-                Hello, and welcome to my castle!
-                This is a place where all of my thoughts
-                and interests and projects live.
-              </p>
-
-              <p>
-                This site may sometimes change often —
-                just because I am an indecisive person by
-                nature — but for the most part these
-                pages stay the same.
-              </p>
-
-              <p>
-                I don't often talk about mature content,
-                but just as a precaution, you have been warned!
-              </p>
-
-              <p>
-                I have been learning HTML and CSS for a couple
-                years now and so far this is the culmination
-                of all those years of learning.
-              </p>
-
-              <strong>
-                Sensory Anomalies
-              </strong>
-
-              <p>
-                Hearing footsteps when no one is there.
-                Strange voices. Flickering lights.
-                Glimpses of places that should not exist.
-              </p>
-
-              <strong>
-                Existential Anomalies
-              </strong>
-
-              <p>
-                The feeling that reality is slightly
-                misaligned with itself.
-              </p>
-
-            </div>
-
-
-            <div class="small-photo"></div>
-
-
-            <div class="calendar">
-
-              <strong>8/3026</strong>
-
-              <table>
-                <tr>
-                  <td>S</td><td>M</td><td>T</td>
-                  <td>W</td><td>T</td><td>F</td><td>S</td>
-                </tr>
-
-                <tr>
-                  <td>2</td><td>3</td><td>4</td>
-                  <td>5</td><td>6</td><td>7</td><td>8</td>
-                </tr>
-
-                <tr>
-                  <td>9</td><td>10</td><td>11</td>
-                  <td>12</td><td>13</td><td>14</td><td>15</td>
-                </tr>
-
-                <tr>
-                  <td>16</td><td>17</td><td>18</td>
-                  <td>19</td><td>20</td><td>21</td><td>22</td>
-                </tr>
-
-              </table>
-
-            </div>
-
-
-            <div class="note note1">
-              don't go up
-            </div>
-
-
-            <div class="note note2">
-
-              <strong>
-                The Wanderlust Report
-              </strong>
-
-              <br><br>
-
-              Anomalous Sites
-
-              <br><br>
-
-              ✦ ✦ ✦
-
-              <br><br>
-
-              UNKNOWN
-            </div>
-
-
-            <div class="note note3">
-
-              <strong>
-                Agent Note:
-              </strong>
-
-              <br><br>
-
-              The so-called "goddess" anomaly
-              is suspected of existential destabilisation.
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </main>
-
-
-      <!-- RIGHT -->
-
-      <aside class="right">
-
-        <div class="right-box">
-
-          <div class="right-title">
-
-            <span>
-              Anomalous Neighbors
-            </span>
-
-            <span>×</span>
-
-          </div>
-
-          <div class="right-content">
-
-            ▣ Anomalous Bad S4
-            <br><br>
-
-            ▣ Dolmenwood
-            <br><br>
-
-            ♟ D&D
-            <br><br>
-
-            ☎ Contact
-
-          </div>
-
-        </div>
-
-
-        <div class="right-box">
-
-          <div class="right-title">
-
-            <span>Web Nexus</span>
-
-            <span>×</span>
-
-          </div>
-
-          <div class="right-content">
-
-            <a href="#">
-              click here to launch the
-              eneriwomaninterface
-            </a>
-
-            <a href="#">
-              atomicattack.com
-            </a>
-
-          </div>
-
-        </div>
-
-
-        <div class="right-box">
-
-          <div class="right-title">
-
-            <span>Search</span>
-
-            <span>×</span>
-
-          </div>
-
-          <div class="right-content">
-
-            <div class="search-row">
-
-              <input
-                type="text"
-                placeholder="Search IS site..."
-              >
-
-              <button>Go</button>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </aside>
-
-    </div>
-
-
-    <!-- =====================
-         POPUP 1
-    ====================== -->
-
-    <div
-      class="popup mission"
-      id="missionWindow"
-    >
-
-      <div class="popup-title">
-
-        <span>
-          ▣ Agency Mission Statement
-        </span>
-
-        <div class="popup-buttons">
-
-          <button
-            onclick="minimizeWindow('missionWindow')"
-          >
-            _
-          </button>
-
-          <button>□</button>
-
-          <button
-            onclick="closeWindow('missionWindow')"
-          >
-            X
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div class="mission-body">
-
-        <strong>
-          About Interdimensional Services (IS)
-        </strong>
-
-        is the agency concerned with dimensional
-        stability and protection of anomalous realities.
-
-        <br><br>
-
-        Our role is to create and maintain systems
-        designed to detect irregular events,
-        dimensional disturbances and unexplained
-        anomalies.
-
-        <br><br>
-
-        Agency personnel assess events and determine
-        whether intervention is required.
-
-        <br><br>
-
-        CLASSIFICATION:
-        INTERNAL ACCESS ONLY.
-
-      </div>
-
-    </div>
-
-
-    <!-- =====================
-         POPUP 2 - LAB
-    ====================== -->
-
-    <div
-      class="popup lab"
-      id="labWindow"
-    >
-
-      <div class="popup-title">
-
-        <span>
-          ▣ Anomalous Media Conversion Lab
-        </span>
-
-
-        <div class="popup-buttons">
-
-          <button
-            onclick="minimizeWindow('labWindow')"
-          >
-            _
-          </button>
-
-          <button>□</button>
-
-          <button
-            onclick="closeWindow('labWindow')"
-          >
-            X
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div class="lab-content">
-
-
-        <div class="lab-image">
-
-          <div class="face">
-
-            <div class="face-head">
-
-              <div class="eye left"></div>
-              <div class="eye right"></div>
-
-              <div class="mouth"></div>
-
-            </div>
-
-          </div>
-
-
-          <div class="flower">
-            ❀
-          </div>
-
-          <div class="web">
-            ◉
-          </div>
-
-
-          <div class="lab-controls">
-
-            <button onclick="labMessage()">
-              Load Anomalous Feed
-            </button>
-
-            <button onclick="convertReality()">
-              Convert to Stable Reality
-            </button>
-
-          </div>
-
-        </div>
-
-
-        <div class="lab-info">
-
-          <strong>
-            Video info
-          </strong>
-
-          <br><br>
-
-          Sources van Goir
-          petage 295.
-
-          <br><br>
-
-          Sterry Night.
-          Postage catk add
-          patches.
-
-          <br><br>
-
-          Frequency:
-          UNKNOWN
-
-          <br><br>
-
-          Signal:
-          UNSTABLE
-
-          <br><br>
-
-          Dimensional
-          distortion detected.
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <!-- BOTTOM -->
-
-    <div class="bottom-buttons">
-
-      <button onclick="openWindow('missionWindow')">
-        Agency Mission<br>
-        (Interface)
-      </button>
-
-      <button onclick="openWindow('labWindow')">
-        Video to Stable GIF<br>
-        Converter (Lab)
-      </button>
-
-     <button onclick="fakeAlert()">
-    My Computer<br>
-    (Dimensions)
-</button>
-
-      <button onclick="contact()">
-        Contact<br>
-        Interdimensional Hub
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="status">
-
-    <div class="status-text">
-      🌐 click here to launch the eneriwomaninterface
-    </div>
-
-    <div class="internet">
-      🌎 Internet
-    </div>
-
-  </div>
 
 </div>
 
+<!-- ======================================================
+     WEBSITE
+======================================================= -->
+
+<div class="site">
+
+<!-- HEADER -->
+
+<div class="site-header">
+
+    <div class="logo">
+        <div class="planet"></div>
+    </div>
+
+    <div class="brand">
+
+        <div class="brand-title">
+            INTERDIMENSIONAL SERVICES
+        </div>
+
+        <div class="brand-sub">
+            Federal Agency for Dimensional Stability
+        </div>
+
+    </div>
+
+    <div class="access">
+        Agency Access: 00471283
+    </div>
+
+</div>
+
+<!-- LAYOUT -->
+
+<div class="layout">
+
+<!-- LEFT -->
+
+<aside>
+
+    <div class="menu-title">
+        ▶ Main Menu
+    </div>
+
+    <nav class="left-nav">
+
+        <a class="active" href="#">
+            <span class="nav-icon">X</span>
+            Home
+        </a>
+
+        <a href="#">
+            <span class="nav-icon">♟</span>
+            About Us
+        </a>
+
+        <a href="#">
+            <span class="nav-icon">✓</span>
+            Our Services
+        </a>
+
+        <a href="#" onclick="openCaseFile();return false;">
+            <span class="nav-icon">▣</span>
+            Case Files
+        </a>
+
+        <a href="#">
+            <span class="nav-icon">▶</span>
+            Public Information
+        </a>
+
+        <a href="#" onclick="contact();return false;">
+            <span class="nav-icon">✉</span>
+            Contact
+        </a>
+
+    </nav>
+
+    <div class="left-art">
+
+        <div class="globe"></div>
+
+        <div class="stability">
+            STABILITY<br>
+            THROUGH<br>
+            COOPERATION.
+        </div>
+
+    </div>
+
+</aside>
+
+<!-- MAIN -->
+
+<main>
+
+<div class="report-window">
+
+    <div class="inner-title">
+
+        <span>
+            Interdimensional Services:
+            Royal Report on Anomalies
+        </span>
+
+        <span>_ □ ×</span>
+
+    </div>
+
+    <div class="report-paper">
+
+        <h1>
+            The Princess's Anomalies in Human Life:
+            <br>
+            A Royal Report
+        </h1>
+
+        <div class="tabs">
+            <span>the castle</span>
+            <span>diary</span>
+            <span>personal</span>
+            <span>media</span>
+            <span>ball talk</span>
+            <span>liquid log</span>
+        </div>
+
+        <h2>
+            Welcome to The Castle
+        </h2>
+
+        <div class="report-text">
+
+            <p>
+                Hello, and welcome to my castle!
+                This is a place where all of my thoughts,
+                interests and projects live.
+            </p>
+
+            <p>
+                This site may sometimes change often —
+                just because I am an indecisive person by
+                nature — but for the most part these pages
+                stay the same.
+            </p>
+
+            <p>
+                I don't often talk about mature content,
+                but just as a precaution, you have been warned.
+            </p>
+
+            <p>
+                I have been learning HTML and CSS for a couple
+                years now and so far this is the culmination
+                of all those years of learning.
+            </p>
+
+            <strong>
+                Sensory Anomalies
+            </strong>
+
+            <p>
+                Hearing footsteps when no one is there.
+                Strange voices. Flickering lights.
+                Glimpses of places that should not exist.
+            </p>
+
+            <strong>
+                Existential Anomalies
+            </strong>
+
+            <p>
+                The feeling that reality is slightly
+                misaligned with itself.
+            </p>
+
+        </div>
+
+        <div class="small-photo"></div>
+
+        <div class="calendar">
+
+            <strong>8/3026</strong>
+
+            <table>
+
+                <tr>
+                    <td>S</td>
+                    <td>M</td>
+                    <td>T</td>
+                    <td>W</td>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>S</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                </tr>
+
+                <tr>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                </tr>
+
+                <tr>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td>21</td>
+                    <td>22</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+        <div class="note note1">
+            don't go up
+        </div>
+
+        <div class="note note2">
+
+            <strong>
+                The Wanderlust Report
+            </strong>
+
+            <br><br>
+
+            Anomalous Sites
+
+            <br><br>
+
+            ✦ ✦ ✦
+
+            <br><br>
+
+            UNKNOWN
+
+        </div>
+
+        <div class="note note3">
+
+            <strong>
+                Agent Note:
+            </strong>
+
+            <br><br>
+
+            The so-called "goddess"
+            anomaly is suspected of
+            existential destabilisation.
+
+        </div>
+
+    </div>
+
+</div>
+
+</main>
+
+<!-- RIGHT -->
+
+<aside class="right">
+
+<div class="right-box">
+
+    <div class="right-title">
+        <span>Anomalous Neighbors</span>
+        <span>×</span>
+    </div>
+
+    <div class="right-content">
+        ▣ Anomalous Bad S4
+        <br><br>
+        ▣ Dolmenwood
+        <br><br>
+        ♟ D&D
+        <br><br>
+        ☎ Contact
+    </div>
+
+</div>
+
+<div class="right-box">
+
+    <div class="right-title">
+        <span>Web Nexus</span>
+        <span>×</span>
+    </div>
+
+    <div class="right-content">
+
+        <a href="#" onclick="openCaseFile();return false;">
+            Restricted Archive
+        </a>
+
+        <a href="#" onclick="labMessage();return false;">
+            anomalous-media.net
+        </a>
+
+    </div>
+
+</div>
+
+<div class="right-box">
+
+    <div class="right-title">
+        <span>Search</span>
+        <span>×</span>
+    </div>
+
+    <div class="right-content">
+
+        <div class="search-row">
+
+            <input
+            id="siteSearch"
+            type="text"
+            placeholder="Search IS site..."
+            >
+
+            <button onclick="searchSite()">
+                Go
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</aside>
+
+</div>
+
+<!-- ======================================================
+     MISSION WINDOW
+======================================================= -->
+
+<div
+class="popup mission"
+id="missionWindow"
+>
+
+<div class="popup-title">
+
+    <span>
+        ▣ Agency Mission Statement
+    </span>
+
+    <div class="popup-buttons">
+
+        <button
+        onclick="minimizeWindow('missionWindow')">
+            _
+        </button>
+
+        <button>□</button>
+
+        <button
+        onclick="closeWindow('missionWindow')">
+            X
+        </button>
+
+    </div>
+
+</div>
+
+<div class="mission-body">
+
+    <strong>
+        About Interdimensional Services (IS)
+    </strong>
+
+    <br><br>
+
+    Interdimensional Services is the federal
+    agency responsible for dimensional stability,
+    anomalous-event detection and containment.
+
+    <br><br>
+
+    Our personnel identify irregularities between
+    registered realities and determine whether
+    intervention is required.
+
+    <br><br>
+
+    Unauthorized personnel must not access
+    classified dimensional records.
+
+    <br><br>
+
+    CLASSIFICATION:
+    INTERNAL ACCESS ONLY.
+
+</div>
+
+</div>
+
+<!-- ======================================================
+     LAB
+======================================================= -->
+
+<div
+class="popup lab"
+id="labWindow"
+>
+
+<div class="popup-title">
+
+    <span>
+        ▣ Anomalous Media Conversion Lab
+    </span>
+
+    <div class="popup-buttons">
+
+        <button
+        onclick="minimizeWindow('labWindow')">
+            _
+        </button>
+
+        <button>□</button>
+
+        <button
+        onclick="closeWindow('labWindow')">
+            X
+        </button>
+
+    </div>
+
+</div>
+
+<div class="lab-content">
+
+<div class="lab-image">
+
+    <div class="face">
+
+        <div class="face-head">
+
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+
+            <div class="mouth"></div>
+
+        </div>
+
+    </div>
+
+    <div class="flower">
+        ❀
+    </div>
+
+    <div class="web">
+        ◉
+    </div>
+
+    <div class="lab-controls">
+
+        <button onclick="labMessage()">
+            Load Anomalous Feed
+        </button>
+
+        <button onclick="convertReality()">
+            Convert to Stable Reality
+        </button>
+
+    </div>
+
+</div>
+
+<div class="lab-info">
+
+    <strong>
+        Video info
+    </strong>
+
+    <br><br>
+
+    SOURCE:
+    UNREGISTERED
+
+    <br><br>
+
+    DATE:
+    UNKNOWN
+
+    <br><br>
+
+    SIGNAL:
+    UNSTABLE
+
+    <br><br>
+
+    Dimensional distortion
+    detected.
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ======================================================
+     BOTTOM BUTTONS
+======================================================= -->
+
+<div class="bottom-buttons">
+
+    <button
+    onclick="openWindow('missionWindow')">
+
+        Agency Mission
+        <br>
+        (Interface)
+
+    </button>
+
+    <button
+    onclick="openWindow('labWindow')">
+
+        Video to Stable GIF
+        <br>
+        Converter (Lab)
+
+    </button>
+
+    <button
+    onclick="fakeComputer()">
+
+        My Computer
+        <br>
+        (Dimensions)
+
+    </button>
+
+    <button
+    onclick="contact()">
+
+        Contact
+        <br>
+        Interdimensional Hub
+
+    </button>
+
+</div>
+
+</div>
+
+<!-- STATUS -->
+
+<div class="status">
+
+    <div class="status-text">
+        🌐 Secure dimensional connection established.
+    </div>
+
+    <div class="internet">
+        🌎 Internet
+    </div>
+
+</div>
+
+</div>
 
 <script>
 
-/* =========================
-   CLOSE
-========================= */
-
-function closeWindow(id){
-
-  const win =
-    document.getElementById(id);
-
-  win.classList.add("hidden");
-
-}
-
-
-/* =========================
-   OPEN
-========================= */
-
-function openWindow(id){
-
-  const win =
-    document.getElementById(id);
-
-  win.classList.remove("hidden");
-
-  bringToFront(win);
-
-}
-
-
-/* =========================
-   MINIMIZE
-========================= */
-
-function minimizeWindow(id){
-
-  const win =
-    document.getElementById(id);
-
-  win.classList.add("hidden");
-
-}
-
-
-/* =========================
-   Z INDEX
-========================= */
-
-let highestZ = 100;
-
-function bringToFront(win){
-
-  highestZ++;
-
-  win.style.zIndex =
-    highestZ;
-
-}
-
-document
-.querySelectorAll(".popup")
-.forEach(win => {
-
-  win.addEventListener(
-    "mousedown",
-    () => bringToFront(win)
-  );
-
-});
-
-
-/* =========================
-   DRAG WINDOWS
-========================= */
-
-document
-.querySelectorAll(".popup")
-.forEach(makeDraggable);
-
-
-function makeDraggable(win){
-
-  const title =
-    win.querySelector(".popup-title");
-
-  let dragging = false;
-
-  let offsetX = 0;
-  let offsetY = 0;
-
-
-  title.addEventListener(
-    "mousedown",
-    function(e){
-
-      /* don't drag if clicking button */
-
-      if(
-        e.target.tagName === "BUTTON"
-      ){
-        return;
-      }
-
-      dragging = true;
-
-      bringToFront(win);
-
-      const rect =
-        win.getBoundingClientRect();
-
-      offsetX =
-        e.clientX - rect.left;
-
-      offsetY =
-        e.clientY - rect.top;
-
-      win.style.right = "auto";
-      win.style.bottom = "auto";
-
-    }
-  );
-
-
-  document.addEventListener(
-    "mousemove",
-    function(e){
-
-      if(!dragging){
-        return;
-      }
-
-      const parentRect =
-        win.parentElement
-           .getBoundingClientRect();
-
-      let x =
-        e.clientX -
-        parentRect.left -
-        offsetX;
-
-      let y =
-        e.clientY -
-        parentRect.top -
-        offsetY;
-
-
-      /* keep window visible */
-
-      x = Math.max(
-        0,
-        Math.min(
-          x,
-          parentRect.width -
-          win.offsetWidth
-        )
-      );
-
-      y = Math.max(
-        0,
-        Math.min(
-          y,
-          parentRect.height -
-          win.offsetHeight
-        )
-      );
-
-
-      win.style.left =
-        x + "px";
-
-      win.style.top =
-        y + "px";
-
-    }
-  );
-
-
-  document.addEventListener(
-    "mouseup",
-    function(){
-
-      dragging = false;
-
-    }
-  );
-
-}
-
-
-/* =========================
-   LAB BUTTONS
-========================= */
-
-function labMessage(){
-
-  alert(
-    "ANOMALOUS MEDIA LAB\n\n" +
-    "Searching dimensional frequencies...\n\n" +
-    "SIGNAL DETECTED.\n" +
-    "Reality stability: 37%"
-  );
-
-}
-
-
-function convertReality(){
-
-  alert(
-    "CONVERSION STARTED\n\n" +
-    "Stabilizing anomalous media...\n\n" +
-    "ERROR 0x0047:\n" +
-    "Reality refuses conversion."
-  );
-
-}
-
-
-/* =========================
-   OTHER BUTTONS
-========================= */
-
-function fakeAlert(){
-
-  alert(
-    "MY COMPUTER\n\n" +
-    "C:\\DIMENSIONS\\\n\n" +
-    "[D-001] Primary Reality\n" +
-    "[D-014] Restricted\n" +
-    "[D-027] UNKNOWN\n" +
-    "[D-404] Reality Not Found"
-  );
-
-}
-
-
-function contact(){
-
-  alert(
-    "INTERDIMENSIONAL HUB\n\n" +
-    "Secure connection established.\n\n" +
-    "Agent ID: 00471283"
-  );
-
-}
-
 /* =========================================================
-   INTERDIMENSIONAL SERVICES
-   ANALOG HORROR INTERACTION SYSTEM
+   VARIABLES
 ========================================================= */
 
 let highestZ = 100;
-let closeCount = 0;
+
+let labCloseCount = 0;
+
 let activity = 0;
-let anomalyStarted = false;
+
+let photographViews = 0;
 
 
 /* =========================================================
-   WINDOW SYSTEM
+   WINDOWS
 ========================================================= */
-
-function closeWindow(id){
-
-    const win = document.getElementById(id);
-
-    if(!win) return;
-
-    win.classList.add("hidden");
-
-    closeCount++;
-    activity++;
-
-    /* First strange event */
-
-    if(id === "labWindow" && closeCount === 1){
-
-        setTimeout(function(){
-
-            openWindow("labWindow");
-
-            changeLabTitle(
-                "▣ Anomalous Media Conversion Lab"
-            );
-
-        },6000);
-
-    }
-
-
-    /* Second time */
-
-    if(id === "labWindow" && closeCount === 2){
-
-        setTimeout(function(){
-
-            openWindow("labWindow");
-
-            changeLabTitle(
-                "▣ WHY DID YOU CLOSE ME?"
-            );
-
-            glitchScreen();
-
-        },4000);
-
-    }
-
-
-    /* Third time */
-
-    if(id === "labWindow" && closeCount >= 3){
-
-        setTimeout(function(){
-
-            createWarning(
-                "WINDOW TERMINATION DENIED",
-                "THIS PROCESS CANNOT BE CLOSED."
-            );
-
-        },2000);
-
-    }
-
-}
-
-
-function minimizeWindow(id){
-
-    const win = document.getElementById(id);
-
-    if(win){
-        win.classList.add("hidden");
-    }
-
-}
-
 
 function openWindow(id){
 
-    const win = document.getElementById(id);
+    const win =
+        document.getElementById(id);
 
     if(!win) return;
 
@@ -1787,31 +1732,111 @@ function openWindow(id){
 }
 
 
+function minimizeWindow(id){
+
+    const win =
+        document.getElementById(id);
+
+    if(win){
+        win.classList.add("hidden");
+    }
+
+}
+
+
+function closeWindow(id){
+
+    const win =
+        document.getElementById(id);
+
+    if(!win) return;
+
+    win.classList.add("hidden");
+
+    activity++;
+
+
+    /* special behavior for lab */
+
+    if(id === "labWindow"){
+
+        labCloseCount++;
+
+
+        if(labCloseCount === 1){
+
+            setTimeout(function(){
+
+                openWindow("labWindow");
+
+            },6000);
+
+        }
+
+
+        else if(labCloseCount === 2){
+
+            setTimeout(function(){
+
+                openWindow("labWindow");
+
+                changeLabTitle(
+                    "▣ WHY DID YOU CLOSE ME?"
+                );
+
+                glitchScreen();
+
+            },3500);
+
+        }
+
+
+        else if(labCloseCount >= 3){
+
+            setTimeout(function(){
+
+                createWarning(
+                    "PROCESS TERMINATION DENIED",
+                    "THIS PROCESS CANNOT BE CLOSED."
+                );
+
+                openWindow("labWindow");
+
+            },1800);
+
+        }
+
+    }
+
+}
+
+
 function bringToFront(win){
 
     highestZ++;
 
-    win.style.zIndex = highestZ;
+    win.style.zIndex =
+        highestZ;
 
 }
 
 
 function changeLabTitle(text){
 
-    const lab =
+    const title =
         document.querySelector(
-            "#labWindow .popup-title span"
+            "#labWindow .popup-title > span"
         );
 
-    if(lab){
-        lab.textContent = text;
+    if(title){
+        title.textContent = text;
     }
 
 }
 
 
 /* =========================================================
-   DRAG WINDOWS
+   DRAGGABLE WINDOWS
 ========================================================= */
 
 document
@@ -1837,7 +1862,9 @@ function makeDraggable(win){
 
     if(!title) return;
 
+
     let dragging = false;
+
     let offsetX = 0;
     let offsetY = 0;
 
@@ -1846,22 +1873,32 @@ function makeDraggable(win){
         "mousedown",
         function(e){
 
-            if(e.target.tagName === "BUTTON"){
+            if(
+                e.target.tagName ===
+                "BUTTON"
+            ){
                 return;
             }
+
 
             dragging = true;
 
             bringToFront(win);
 
+
             const rect =
                 win.getBoundingClientRect();
 
+
             offsetX =
-                e.clientX - rect.left;
+                e.clientX -
+                rect.left;
+
 
             offsetY =
-                e.clientY - rect.top;
+                e.clientY -
+                rect.top;
+
 
             win.style.right = "auto";
             win.style.bottom = "auto";
@@ -1876,14 +1913,17 @@ function makeDraggable(win){
 
             if(!dragging) return;
 
+
             const parent =
                 win.parentElement
                    .getBoundingClientRect();
+
 
             let x =
                 e.clientX -
                 parent.left -
                 offsetX;
+
 
             let y =
                 e.clientY -
@@ -1891,28 +1931,34 @@ function makeDraggable(win){
                 offsetY;
 
 
-            x = Math.max(
-                0,
-                Math.min(
-                    x,
-                    parent.width -
-                    win.offsetWidth
-                )
-            );
+            x =
+                Math.max(
+                    0,
+                    Math.min(
+                        x,
+                        parent.width -
+                        win.offsetWidth
+                    )
+                );
 
 
-            y = Math.max(
-                0,
-                Math.min(
-                    y,
-                    parent.height -
-                    win.offsetHeight
-                )
-            );
+            y =
+                Math.max(
+                    0,
+                    Math.min(
+                        y,
+                        parent.height -
+                        win.offsetHeight
+                    )
+                );
 
 
-            win.style.left = x + "px";
-            win.style.top = y + "px";
+            win.style.left =
+                x + "px";
+
+
+            win.style.top =
+                y + "px";
 
         }
     );
@@ -1921,7 +1967,9 @@ function makeDraggable(win){
     document.addEventListener(
         "mouseup",
         function(){
+
             dragging = false;
+
         }
     );
 
@@ -1929,7 +1977,7 @@ function makeDraggable(win){
 
 
 /* =========================================================
-   WARNING WINDOW
+   WARNING
 ========================================================= */
 
 function createWarning(title,message){
@@ -1938,6 +1986,7 @@ function createWarning(title,message){
         document.getElementById(
             "systemWarning"
         );
+
 
     if(old){
         old.remove();
@@ -1953,16 +2002,29 @@ function createWarning(title,message){
 
 
     warning.style.cssText = `
+
         position:absolute;
-        width:360px;
+
+        width:370px;
+
         left:50%;
-        top:45%;
-        transform:translate(-50%,-50%);
+        top:43%;
+
+        transform:
+        translate(-50%,-50%);
+
         background:#c0c0c0;
+
         border:3px outset white;
-        box-shadow:8px 8px 20px #000;
-        z-index:9999;
-        font-family:Tahoma,Arial,sans-serif;
+
+        box-shadow:
+        8px 8px 20px #000;
+
+        z-index:99999;
+
+        font-family:
+        Tahoma,Arial,sans-serif;
+
     `;
 
 
@@ -1970,11 +2032,11 @@ function createWarning(title,message){
 
         <div
         style="
-            background:#061d74;
-            color:white;
-            padding:5px;
-            font-weight:bold;
-            font-size:12px;
+        background:#061d74;
+        color:white;
+        padding:5px;
+        font-weight:bold;
+        font-size:12px;
         ">
 
             ⚠ ${title}
@@ -1984,17 +2046,17 @@ function createWarning(title,message){
 
         <div
         style="
-            background:#ddd;
-            padding:25px;
-            font-size:12px;
-            display:flex;
-            gap:18px;
-            align-items:center;
+        background:#ddd;
+        padding:24px;
+        font-size:12px;
+        display:flex;
+        gap:18px;
+        align-items:center;
         ">
 
             <div
             style="
-                font-size:40px;
+            font-size:38px;
             ">
                 ⚠
             </div>
@@ -2008,10 +2070,12 @@ function createWarning(title,message){
 
                 <span
                 style="
-                    font-family:'Courier New';
+                font-family:'Courier New';
                 ">
+
                     ERROR CODE:
                     0x00471283
+
                 </span>
 
             </div>
@@ -2021,18 +2085,20 @@ function createWarning(title,message){
 
         <div
         style="
-            text-align:center;
-            padding:8px;
+        text-align:center;
+        padding:8px;
         ">
 
             <button
-            onclick="warningContinue()"
+            onclick="closeWarning()"
             style="
-                width:90px;
-                border:2px outset white;
-                background:#c0c0c0;
+            width:90px;
+            background:#c0c0c0;
+            border:2px outset white;
             ">
+
                 OK
+
             </button>
 
         </div>
@@ -2047,75 +2113,30 @@ function createWarning(title,message){
 }
 
 
-function warningContinue(){
+function closeWarning(){
 
     const warning =
         document.getElementById(
             "systemWarning"
         );
 
+
     if(warning){
         warning.remove();
     }
 
-
-    setTimeout(function(){
-
-        changeAgencyAccess();
-
-    },1000);
-
 }
 
 
 /* =========================================================
-   AGENCY ACCESS CORRUPTION
-========================================================= */
-
-function changeAgencyAccess(){
-
-    const access =
-        document.querySelector(".access");
-
-    if(!access) return;
-
-
-    access.textContent =
-        "Agency Access: YOU";
-
-
-    access.style.color =
-        "#ffb8b8";
-
-
-    setTimeout(function(){
-
-        access.textContent =
-            "Agency Access: UNKNOWN";
-
-    },3000);
-
-
-    setTimeout(function(){
-
-        access.textContent =
-            "Agency Access: 00471283";
-
-        access.style.color = "";
-
-    },7000);
-
-}
-
-
-/* =========================================================
-   SCREEN GLITCH
+   GLITCH
 ========================================================= */
 
 function glitchScreen(){
 
     const site =
         document.querySelector(".site");
+
 
     if(!site) return;
 
@@ -2128,13 +2149,13 @@ function glitchScreen(){
 
             const x =
                 Math.floor(
-                    Math.random()*8
+                    Math.random()*9
                 ) - 4;
 
 
             const y =
                 Math.floor(
-                    Math.random()*6
+                    Math.random()*7
                 ) - 3;
 
 
@@ -2144,113 +2165,101 @@ function glitchScreen(){
 
             site.style.filter =
                 Math.random() > .5
-                ? "contrast(1.8) brightness(.8)"
-                : "contrast(1.1)";
+
+                ? "contrast(1.8) brightness(.7)"
+
+                : "contrast(1.15) saturate(.6)";
 
 
             count++;
 
 
-            if(count > 12){
+            if(count > 11){
 
                 clearInterval(glitch);
 
                 site.style.transform = "";
+
                 site.style.filter = "";
 
             }
 
-        },60);
+        },65);
 
 }
 
 
 /* =========================================================
-   ANOMALOUS MEDIA LAB
+   FLASH
+========================================================= */
+
+function flashScreen(){
+
+    const flash =
+        document.getElementById("flash");
+
+
+    flash.style.opacity = "1";
+
+
+    setTimeout(function(){
+
+        flash.style.opacity = "0";
+
+    },55);
+
+}
+
+
+/* =========================================================
+   AGENCY ACCESS
+========================================================= */
+
+function changeAgencyAccess(){
+
+    const access =
+        document.querySelector(".access");
+
+
+    if(!access) return;
+
+
+    access.textContent =
+        "Agency Access: YOU";
+
+
+    access.style.color =
+        "#ff9c9c";
+
+
+    setTimeout(function(){
+
+        access.textContent =
+            "Agency Access: UNKNOWN";
+
+    },1800);
+
+
+    setTimeout(function(){
+
+        access.textContent =
+            "Agency Access: 00471283";
+
+        access.style.color = "";
+
+    },5000);
+
+}
+
+
+/* =========================================================
+   LAB FEED
 ========================================================= */
 
 function labMessage(){
 
     activity++;
 
-
-    createWarning(
-        "ANOMALOUS SIGNAL DETECTED",
-        `
-        MEDIA SOURCE:
-        CAMERA_04
-
-        <br><br>
-
-        SOURCE LOCATION:
-        NOT REGISTERED
-
-        <br><br>
-
-        SUBJECT COUNT:
-        1
-        `
-    );
-
-
-    setTimeout(function(){
-
-        const info =
-            document.querySelector(
-                ".lab-info"
-            );
-
-
-        if(info){
-
-            info.innerHTML = `
-
-                <strong>
-                Video info
-                </strong>
-
-                <br><br>
-
-                SOURCE:
-                CAMERA_04
-
-                <br><br>
-
-                DATE:
-                10/17/1998
-
-                <br><br>
-
-                TIME:
-                03:14:07
-
-                <br><br>
-
-                SUBJECT:
-                UNKNOWN
-
-                <br><br>
-
-                <strong
-                style="color:#700">
-                    DO NOT IDENTIFY
-                    THE SUBJECT.
-                </strong>
-
-            `;
-
-        }
-
-    },2500);
-
-}
-
-
-/* =========================================================
-   REALITY CONVERSION
-========================================================= */
-
-function convertReality(){
 
     const info =
         document.querySelector(
@@ -2263,15 +2272,38 @@ function convertReality(){
         info.innerHTML = `
 
             <strong>
-            STABILIZATION
+                VIDEO INFO
             </strong>
 
             <br><br>
 
-            12%
+            SOURCE:
+            CAMERA_04
 
-            <br>
-            ███░░░░░░░
+            <br><br>
+
+            DATE:
+            10/17/1998
+
+            <br><br>
+
+            TIME:
+            03:14:07
+
+            <br><br>
+
+            SUBJECT:
+            UNKNOWN
+
+            <br><br>
+
+            <strong
+            style="color:#700">
+
+                DO NOT IDENTIFY
+                THE SUBJECT.
+
+            </strong>
 
         `;
 
@@ -2280,62 +2312,98 @@ function convertReality(){
 
     setTimeout(function(){
 
-        if(info){
+        flashScreen();
 
-            info.innerHTML = `
+        glitchScreen();
 
-                <strong>
-                STABILIZATION
-                </strong>
+    },1500);
 
-                <br><br>
+}
 
-                47%
 
-                <br>
+/* =========================================================
+   REALITY CONVERSION
+========================================================= */
 
-                █████░░░░░
+function convertReality(){
 
-            `;
+    activity++;
 
-        }
 
-    },1000);
+    const info =
+        document.querySelector(
+            ".lab-info"
+        );
+
+
+    if(!info) return;
+
+
+    info.innerHTML = `
+
+        <strong>
+        STABILIZATION
+        </strong>
+
+        <br><br>
+
+        12%
+
+        <br>
+
+        ███░░░░░░░
+
+    `;
 
 
     setTimeout(function(){
 
-        if(info){
+        info.innerHTML = `
 
-            info.innerHTML = `
+            <strong>
+            STABILIZATION
+            </strong>
 
-                <strong>
-                ERROR
-                </strong>
+            <br><br>
 
-                <br><br>
+            47%
 
-                SUBJECT REFUSED
-                CONVERSION.
+            <br>
 
-                <br><br>
+            █████░░░░░
 
-                <span style="color:#800">
+        `;
 
-                SUBJECT IS
-                OBSERVING OPERATOR.
+    },900);
 
-                </span>
 
-            `;
+    setTimeout(function(){
 
-        }
+        info.innerHTML = `
+
+            <strong
+            style="color:#700">
+
+            ERROR
+
+            </strong>
+
+            <br><br>
+
+            SUBJECT REFUSED
+            CONVERSION.
+
+            <br><br>
+
+            SUBJECT IS
+            OBSERVING OPERATOR.
+
+        `;
 
 
         glitchScreen();
 
-
-    },2500);
+    },2200);
 
 
     setTimeout(function(){
@@ -2344,28 +2412,28 @@ function convertReality(){
 
             "CONVERSION FAILURE",
 
-            `
-            REALITY STABILIZATION
-            FAILED.
+            `REALITY STABILIZATION FAILED.
 
             <br><br>
 
             Do not look away
-            from the monitor.
-            `
+            from the monitor.`
 
         );
 
-    },4000);
+    },3600);
 
 }
 
 
 /* =========================================================
-   CASE FILE WINDOW
+   CASE FILE 0047
 ========================================================= */
 
 function openCaseFile(){
+
+    activity++;
+
 
     let existing =
         document.getElementById(
@@ -2401,8 +2469,8 @@ function openCaseFile(){
     win.style.cssText += `
 
         width:430px;
-        left:32%;
-        top:170px;
+        left:31%;
+        top:160px;
 
     `;
 
@@ -2412,14 +2480,16 @@ function openCaseFile(){
         <div class="popup-title">
 
             <span>
-            ▣ CASE FILE — 0047
+                ▣ CASE FILE — 0047
             </span>
-
 
             <div
             class="popup-buttons">
 
-                <button>
+                <button
+                onclick="
+                minimizeWindow('caseFile')
+                ">
                     _
                 </button>
 
@@ -2441,12 +2511,12 @@ function openCaseFile(){
 
         <div
         style="
-            background:#eee;
-            margin:3px;
-            padding:18px;
-            min-height:300px;
-            font-family:'Courier New';
-            font-size:12px;
+        background:#eee;
+        margin:3px;
+        padding:18px;
+        min-height:315px;
+        font-family:'Courier New';
+        font-size:12px;
         ">
 
             FEDERAL DIMENSIONAL
@@ -2454,15 +2524,16 @@ function openCaseFile(){
 
             <hr>
 
+
             CASE:
+            <strong>
             0047
+            </strong>
 
             <br><br>
 
             STATUS:
-            <strong>
             CLOSED
-            </strong>
 
             <br><br>
 
@@ -2475,15 +2546,17 @@ function openCaseFile(){
             LAST CONTACT:
 
             <strong>
+
             OCTOBER 17, 1998
             — 03:14 AM
+
             </strong>
 
             <br><br>
 
             LOCATION:
 
-            ████████████████
+            ███████████████
 
             <br><br>
 
@@ -2491,9 +2564,11 @@ function openCaseFile(){
 
 
             <strong
-            style="color:#770000">
+            style="
+            color:#760000;
+            ">
 
-            NOTICE
+                NOTICE
 
             </strong>
 
@@ -2512,11 +2587,10 @@ function openCaseFile(){
 
             <strong>
 
-            DISCONNECT
-            IMMEDIATELY.
+                DISCONNECT
+                IMMEDIATELY.
 
             </strong>
-
 
             <br><br><br>
 
@@ -2524,6 +2598,10 @@ function openCaseFile(){
             <button
             onclick="
             viewPhotograph()
+            "
+            style="
+            background:#c0c0c0;
+            border:2px outset white;
             ">
 
                 VIEW PHOTOGRAPH 04
@@ -2548,48 +2626,238 @@ function openCaseFile(){
 
 
 /* =========================================================
-   PHOTOGRAPH EVENT
+   PHOTOGRAPH 04
 ========================================================= */
 
 function viewPhotograph(){
 
     activity++;
 
-
-    createWarning(
-
-        "FILE CORRUPTED",
-
-        `
-        Photograph 04
-        cannot be displayed.
-
-        <br><br>
-
-        Reason:
-
-        <br>
-
-        <strong>
-        SUBJECT IS TOO CLOSE.
-        </strong>
-        `
-
-    );
+    photographViews++;
 
 
-    setTimeout(function(){
+    let existing =
+        document.getElementById(
+            "photo04"
+        );
 
-        changeAgencyAccess();
 
-    },1500);
+    if(existing){
+
+        existing.remove();
+
+    }
 
 
-    setTimeout(function(){
+    const win =
+        document.createElement("div");
 
-        glitchScreen();
 
-    },3000);
+    win.id =
+        "photo04";
+
+
+    win.className =
+        "popup photo04";
+
+
+    let caption =
+        "ARCHIVE PHOTOGRAPH 04 — SOURCE UNKNOWN";
+
+
+    if(photographViews >= 2){
+
+        caption =
+            "ARCHIVE PHOTOGRAPH 04 — SUBJECT DISTANCE: 0.7m";
+
+    }
+
+
+    win.innerHTML = `
+
+        <div class="popup-title">
+
+            <span>
+                ▣ PHOTOGRAPH 04
+            </span>
+
+            <div
+            class="popup-buttons">
+
+                <button
+                onclick="
+                minimizeWindow('photo04')
+                ">
+                    _
+                </button>
+
+                <button>
+                    □
+                </button>
+
+                <button
+                onclick="
+                closePhoto()
+                ">
+                    X
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="photo04-body">
+
+            <div class="photo-frame">
+
+                <div
+                class="photo-subject"
+                id="photoSubject">
+
+                    <div
+                    class="photo-eyes">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+            class="photo-caption">
+
+                ${caption}
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    document
+        .querySelector(".site")
+        .appendChild(win);
+
+
+    makeDraggable(win);
+
+    bringToFront(win);
+
+
+    flashScreen();
+
+
+    if(photographViews === 1){
+
+        setTimeout(function(){
+
+            const caption =
+                win.querySelector(
+                    ".photo-caption"
+                );
+
+
+            if(caption){
+
+                caption.textContent =
+                    "NO REGISTERED SUBJECT FOUND.";
+
+            }
+
+        },2500);
+
+    }
+
+
+    if(photographViews >= 2){
+
+        const subject =
+            win.querySelector(
+                "#photoSubject"
+            );
+
+
+        if(subject){
+
+            subject.style.transform =
+                "translateX(-50%) scale(1.7)";
+
+            subject.style.bottom =
+                "-50px";
+
+        }
+
+
+        setTimeout(function(){
+
+            glitchScreen();
+
+            changeAgencyAccess();
+
+        },800);
+
+
+        setTimeout(function(){
+
+            createWarning(
+
+                "IMAGE ANALYSIS",
+
+                `SUBJECT POSITION HAS CHANGED.
+
+                <br><br>
+
+                Photograph timestamp
+                has not changed.`
+
+            );
+
+        },2200);
+
+    }
+
+}
+
+
+/* =========================================================
+   CLOSE PHOTO
+========================================================= */
+
+function closePhoto(){
+
+    const photo =
+        document.getElementById(
+            "photo04"
+        );
+
+
+    if(photo){
+
+        photo.classList.add(
+            "hidden"
+        );
+
+    }
+
+
+    if(photographViews >= 2){
+
+        setTimeout(function(){
+
+            createWarning(
+
+                "ARCHIVE NOTICE",
+
+                `PHOTOGRAPH 04
+                IS STILL OPEN.`
+
+            );
+
+        },2000);
+
+    }
 
 }
 
@@ -2598,7 +2866,10 @@ function viewPhotograph(){
    MY COMPUTER
 ========================================================= */
 
-function fakeAlert(){
+function fakeComputer(){
+
+    activity++;
+
 
     const answer =
         prompt(
@@ -2616,8 +2887,10 @@ Enter dimension number:`
         );
 
 
-    if(answer === "47" ||
-       answer === "047"){
+    if(
+        answer === "47" ||
+        answer === "047"
+    ){
 
         openCaseFile();
 
@@ -2626,8 +2899,10 @@ Enter dimension number:`
     else if(answer){
 
         alert(
+
             "ACCESS DENIED\n\n" +
             "DIMENSION DOES NOT EXIST."
+
         );
 
     }
@@ -2636,7 +2911,7 @@ Enter dimension number:`
 
 
 /* =========================================================
-   CONTACT HUB
+   CONTACT
 ========================================================= */
 
 function contact(){
@@ -2648,8 +2923,7 @@ function contact(){
 
         "SECURE CONNECTION",
 
-        `
-        Connecting to
+        `Connecting to
         Interdimensional Hub...
 
         <br><br>
@@ -2660,8 +2934,7 @@ function contact(){
         <br><br>
 
         Please remain
-        at your terminal.
-        `
+        at your terminal.`
 
     );
 
@@ -2669,48 +2942,115 @@ function contact(){
     setTimeout(function(){
 
         const warning =
-            document.querySelector(
-                "#systemWarning div:nth-child(2) div:nth-child(2)"
+            document.getElementById(
+                "systemWarning"
             );
 
 
-        if(warning){
+        if(!warning) return;
 
-            warning.innerHTML = `
 
-                CONNECTION ESTABLISHED.
+        const body =
+            warning.children[1];
 
-                <br><br>
 
-                Operator identified.
+        if(body){
 
-                <br><br>
+            body.innerHTML = `
 
-                <strong>
+                <div
+                style="
+                font-size:38px;
+                ">
+                    ⚠
+                </div>
 
-                WE CAN SEE YOU.
+                <div>
 
-                </strong>
+                    CONNECTION
+                    ESTABLISHED.
+
+                    <br><br>
+
+                    Operator identified.
+
+                    <br><br>
+
+                    <strong>
+
+                        WE CAN SEE YOU.
+
+                    </strong>
+
+                </div>
 
             `;
 
         }
 
-    },3500);
+    },3000);
 
 }
 
 
 /* =========================================================
-   RANDOM BACKGROUND ANOMALIES
+   SEARCH
+========================================================= */
+
+function searchSite(){
+
+    const input =
+        document.getElementById(
+            "siteSearch"
+        );
+
+
+    const value =
+        input.value
+             .trim()
+             .toLowerCase();
+
+
+    if(!value) return;
+
+
+    if(
+        value.includes("0047") ||
+        value.includes("47") ||
+        value.includes("anomaly")
+    ){
+
+        openCaseFile();
+
+        return;
+
+    }
+
+
+    if(
+        value.includes("photograph") ||
+        value.includes("photo 04")
+    ){
+
+        viewPhotograph();
+
+        return;
+
+    }
+
+
+    alert(
+        "NO RECORDS FOUND."
+    );
+
+}
+
+
+/* =========================================================
+   RANDOM SUBTLE EVENTS
 ========================================================= */
 
 setInterval(function(){
-
-    /*
-       Do not trigger horror immediately.
-       User must interact first.
-    */
 
     if(activity < 2){
         return;
@@ -2770,13 +3110,13 @@ function subtleAnomaly(){
         access.textContent =
             original;
 
-    },800);
+    },900);
 
 }
 
 
 /* =========================================================
-   SECRET TITLE CHANGE
+   BRAND SECRET
 ========================================================= */
 
 let titleClicks = 0;
@@ -2808,7 +3148,9 @@ if(brand){
                     brand.textContent =
                         "IT KNOWS YOU ARE HERE";
 
-                },700);
+                    glitchScreen();
+
+                },500);
 
 
                 setTimeout(function(){
@@ -2817,6 +3159,9 @@ if(brand){
                         "INTERDIMENSIONAL SERVICES";
 
                 },1600);
+
+
+                titleClicks = 0;
 
             }
 
@@ -2827,10 +3172,10 @@ if(brand){
 
 
 /* =========================================================
-   PAGE TITLE ANOMALY
+   TAB / PAGE SECRET
 ========================================================= */
 
-let originalTitle =
+const originalTitle =
     document.title;
 
 
@@ -2857,10 +3202,11 @@ document.addEventListener(
 
 
 /* =========================================================
-   KONAMI-LIKE SECRET
+   KEYBOARD SECRET
 ========================================================= */
 
 let secretCode = "";
+
 
 document.addEventListener(
     "keydown",
@@ -2870,10 +3216,10 @@ document.addEventListener(
             e.key.toLowerCase();
 
 
-        if(secretCode.length > 20){
+        if(secretCode.length > 25){
 
             secretCode =
-                secretCode.slice(-20);
+                secretCode.slice(-25);
 
         }
 
@@ -2897,10 +3243,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   INITIAL DELAYED EVENT
-
-   Very subtle.
-   No obvious horror at beginning.
+   FIRST VERY SUBTLE ANOMALY
 ========================================================= */
 
 setTimeout(function(){
