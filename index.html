@@ -2,1023 +2,154 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>INTERDIMENSIONAL SERVICES</title>
 
 <style>
 *{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#02090b;font-family:Tahoma,Arial,sans-serif}
+body{overflow-x:hidden}
 
-html,body{
-    margin:0;
-    min-height:100%;
-    background:#061113;
-    font-family:Tahoma,Arial,sans-serif;
-}
+/* WINDOWS 98 SHELL */
+.browser{min-height:100vh;background:#c0c0c0;border:2px outset #fff}
+.titlebar{height:25px;background:linear-gradient(90deg,#071c6b,#0d7a9e);color:#fff;font-size:13px;font-weight:bold;display:flex;align-items:center;justify-content:space-between;padding:2px 4px}
+.window-controls,.popup-buttons{display:flex;gap:2px}
+.win-btn,.popup-buttons button{width:18px;height:18px;padding:0;background:#c0c0c0;border:2px outset #fff;color:#000;font-size:10px;cursor:pointer}
+button:active,.win-btn:active{border-style:inset}
 
-body{
-    overflow-x:hidden;
-}
+.menu{height:25px;display:flex;align-items:center;gap:22px;padding-left:10px;border-bottom:1px solid #777;font-size:12px}
+.toolbar{height:52px;display:flex;align-items:center;gap:12px;padding:3px 8px;border-top:1px solid white;border-bottom:1px solid #777}
+.tool{width:48px;text-align:center;font-size:10px;cursor:pointer}
+.tool span{display:block;height:26px;font-size:21px}
+.address{height:28px;display:flex;align-items:center;gap:6px;padding:3px 7px;border-bottom:2px ridge white;font-size:11px}
+.address input{flex:1;height:21px;border:2px inset white;padding-left:5px}
 
-/* ==============================
-   INTERNET EXPLORER
-================================ */
-
-.browser{
-    width:100%;
-    min-height:100vh;
-    background:#c0c0c0;
-    border:2px outset #fff;
-}
-
-.titlebar{
-    height:24px;
-    background:linear-gradient(90deg,#071c6b,#0e7ca5);
-    color:white;
-    font-weight:bold;
-    font-size:13px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:2px 5px;
-}
-
-.window-controls{
-    display:flex;
-    gap:2px;
-}
-
-.win-btn{
-    width:18px;
-    height:18px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#c0c0c0;
-    color:#000;
-    border:2px outset white;
-    cursor:pointer;
-    font-size:10px;
-}
-
-.win-btn:active,
-button:active{
-    border-style:inset!important;
-}
-
-.menu{
-    height:25px;
-    display:flex;
-    align-items:center;
-    gap:22px;
-    padding-left:10px;
-    border-bottom:1px solid #777;
-    font-size:12px;
-}
-
-.toolbar{
-    height:53px;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:3px 8px;
-    border-top:1px solid white;
-    border-bottom:1px solid #777;
-}
-
-.tool{
-    width:52px;
-    text-align:center;
-    font-size:10px;
-    cursor:pointer;
-}
-
-.tool span{
-    display:block;
-    font-size:21px;
-    height:27px;
-}
-
-.address{
-    height:28px;
-    display:flex;
-    align-items:center;
-    gap:5px;
-    padding:3px 7px;
-    border-bottom:2px ridge white;
-    font-size:11px;
-}
-
-.address input{
-    flex:1;
-    height:21px;
-    background:white;
-    border:2px inset white;
-    font-family:Tahoma;
-    padding-left:5px;
-}
-
-/* ==============================
-   WEBSITE
-================================ */
-
+/* SITE */
 .site{
     position:relative;
-    min-height:820px;
+    min-height:850px;
     overflow:hidden;
-
     background:
-        radial-gradient(circle at 75% 48%,rgba(43,199,202,.25),transparent 18%),
-        radial-gradient(circle at 55% 12%,rgba(55,130,175,.23),transparent 20%),
-        linear-gradient(135deg,#021214,#073238,#061a1e);
+    radial-gradient(circle at 72% 45%,rgba(37,192,198,.22),transparent 18%),
+    radial-gradient(circle at 45% 5%,rgba(41,112,160,.20),transparent 20%),
+    linear-gradient(135deg,#021214,#073238,#06191c);
 }
-
-/* dimensional lines */
-
-.site::before{
-    content:"";
-    position:absolute;
-    width:950px;
-    height:950px;
-    border:2px solid rgba(117,234,228,.15);
-    border-radius:50%;
-    left:250px;
-    top:-650px;
-    pointer-events:none;
-    box-shadow:
-        0 0 30px rgba(72,221,220,.2),
-        150px 450px 0 -1px rgba(72,221,220,.08);
+.site:after{
+    content:"";position:absolute;z-index:90000;inset:0;pointer-events:none;opacity:.045;
+    background:repeating-linear-gradient(to bottom,transparent 0,transparent 2px,#000 3px,#000 4px)
 }
-
-/* scanlines */
-
-.site::after{
-    content:"";
-    pointer-events:none;
-    position:absolute;
-    z-index:5000;
-    inset:0;
-    opacity:.055;
-    background:
-        repeating-linear-gradient(
-            to bottom,
-            transparent 0,
-            transparent 2px,
-            #000 3px,
-            #000 4px
-        );
-}
-
-/* ==============================
-   HEADER
-================================ */
 
 .site-header{
-    height:78px;
-    margin:8px;
-    position:relative;
-    z-index:2;
-
-    border:1px solid #55787c;
-
-    display:flex;
-    align-items:center;
-
-    background:
-        radial-gradient(circle at 70% 40%,rgba(52,149,173,.32),transparent 18%),
-        linear-gradient(90deg,#061b1e,#0c3439);
+    height:78px;margin:8px;position:relative;z-index:2;
+    border:1px solid #55787c;display:flex;align-items:center;
+    background:linear-gradient(90deg,#061b1e,#0c3439)
 }
+.logo{width:135px;height:100%;border-right:1px solid #47686b;display:flex;justify-content:center;align-items:center}
+.planet{width:75px;height:40px;border:2px solid #d6e5e1;border-radius:50%;position:relative}
+.planet:before{content:"";position:absolute;width:100px;left:-14px;top:17px;border-top:3px solid #d6e5e1;transform:rotate(-12deg)}
+.planet:after{content:"7";position:absolute;right:-25px;top:-16px;font-size:20px;color:#fff}
+.brand{padding-left:14px;color:#d3e1e1}
+.brand-title{font-size:19px;letter-spacing:1px;cursor:default}
+.brand-sub{font:12px "Courier New";margin-top:5px}
+.access{margin-left:auto;margin-right:15px;color:#d6e2e2;font:12px "Courier New"}
 
-.logo{
-    width:135px;
-    height:100%;
-    border-right:1px solid #47686b;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
+.layout{position:relative;z-index:2;display:grid;grid-template-columns:160px minmax(450px,1fr) 205px;gap:8px;padding:0 8px}
 
-.planet{
-    width:75px;
-    height:40px;
-    border:2px solid #d6e5e1;
-    border-radius:50%;
-    position:relative;
-}
+/* LEFT */
+.menu-title{padding:6px;color:#fff;background:#092326;border:1px solid #587579;font-size:12px}
+.left-nav{background:#07191c;border:1px solid #5c787b}
+.left-nav a{height:34px;padding:5px 8px;display:flex;align-items:center;gap:9px;color:#c9d7d7;text-decoration:none;font-size:12px;border-bottom:1px solid #274044}
+.left-nav a:hover,.left-nav a.active{background:#add7d3;color:#122223}
+.nav-icon{width:18px;height:18px;display:flex;justify-content:center;align-items:center;background:#25494d;color:#fff}
 
-.planet::before{
-    content:"";
-    position:absolute;
-    width:100px;
-    left:-14px;
-    top:17px;
-    border-top:3px solid #d6e5e1;
-    transform:rotate(-12deg);
-}
+.left-art{height:195px;margin-top:8px;position:relative;border:1px solid #5a7478;background:radial-gradient(circle at 50% 40%,rgba(75,181,192,.25),transparent 35%),#07191c}
+.globe{width:110px;height:110px;position:absolute;left:24px;top:16px;border:1px solid #79a6a8;border-radius:50%}
+.globe:before,.globe:after{content:"";position:absolute;inset:18px -15px;border:1px solid #47787c;border-radius:50%;transform:rotate(55deg)}
+.globe:after{transform:rotate(-55deg)}
+.stability{position:absolute;bottom:10px;left:10px;color:#a8bfc0;font-size:11px}
 
-.planet::after{
-    content:"7";
-    position:absolute;
-    right:-25px;
-    top:-16px;
-    font-size:20px;
-    color:white;
-}
-
-.brand{
-    padding-left:14px;
-    color:#d3e1e1;
-}
-
-.brand-title{
-    font-size:19px;
-    letter-spacing:1px;
-    cursor:default;
-}
-
-.brand-sub{
-    font-family:"Courier New";
-    font-size:12px;
-    margin-top:5px;
-}
-
-.access{
-    margin-left:auto;
-    margin-right:15px;
-    color:#d6e2e2;
-    font-family:"Courier New";
-    font-size:12px;
-}
-
-/* ==============================
-   LAYOUT
-================================ */
-
-.layout{
-    position:relative;
-    z-index:2;
-
-    display:grid;
-    grid-template-columns:160px minmax(450px,1fr) 205px;
-    gap:8px;
-    padding:0 8px;
-}
-
-/* ==============================
-   LEFT
-================================ */
-
-.menu-title{
-    padding:6px;
-    color:white;
-    background:#092326;
-    border:1px solid #587579;
-    font-size:12px;
-}
-
-.left-nav{
-    background:#07191c;
-    border:1px solid #5c787b;
-}
-
-.left-nav a{
-    height:34px;
-    padding:5px 8px;
-
-    display:flex;
-    align-items:center;
-    gap:9px;
-
-    color:#c9d7d7;
-    text-decoration:none;
-    font-size:12px;
-
-    border-bottom:1px solid #274044;
-}
-
-.left-nav a:hover,
-.left-nav a.active{
-    background:#add7d3;
-    color:#122223;
-}
-
-.nav-icon{
-    width:18px;
-    height:18px;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    background:#25494d;
-    color:white;
-}
-
-.left-art{
-    height:195px;
-    margin-top:8px;
-
-    position:relative;
-
-    border:1px solid #5a7478;
-
-    background:
-        radial-gradient(circle at 50% 40%,rgba(75,181,192,.25),transparent 35%),
-        #07191c;
-}
-
-.globe{
-    width:110px;
-    height:110px;
-
-    position:absolute;
-    left:24px;
-    top:16px;
-
-    border:1px solid #79a6a8;
-    border-radius:50%;
-}
-
-.globe::before,
-.globe::after{
-    content:"";
-
-    position:absolute;
-    inset:18px -15px;
-
-    border:1px solid #47787c;
-    border-radius:50%;
-
-    transform:rotate(55deg);
-}
-
-.globe::after{
-    transform:rotate(-55deg);
-}
-
-.stability{
-    position:absolute;
-    bottom:10px;
-    left:10px;
-
-    color:#a8bfc0;
-    font-size:11px;
-    line-height:1.15;
-}
-
-/* ==============================
-   REPORT
-================================ */
-
-.report-window{
-    position:relative;
-    min-height:505px;
-
-    background:#d5ccb4;
-
-    border:3px outset #ddd;
-
-    box-shadow:4px 4px 8px rgba(0,0,0,.65);
-}
-
-.inner-title{
-    height:23px;
-
-    padding:4px 6px;
-
-    display:flex;
-    justify-content:space-between;
-
-    color:white;
-
-    font-size:11px;
-    font-weight:bold;
-
-    background:linear-gradient(90deg,#737f80,#a4a5a0);
-}
-
+/* MAIN DOCUMENT */
+.report-window{position:relative;min-height:505px;background:#d5ccb4;border:3px outset #ddd;box-shadow:4px 4px 8px #000}
+.inner-title{height:23px;padding:4px 6px;display:flex;justify-content:space-between;color:#fff;font-size:11px;font-weight:bold;background:linear-gradient(90deg,#737f80,#a4a5a0)}
 .report-paper{
-    min-height:478px;
-
-    padding:14px 18px;
-
-    position:relative;
-    overflow:hidden;
-
-    font-family:Georgia,serif;
-
-    background:
-        radial-gradient(circle at 15% 20%,rgba(80,55,20,.08) 0 2px,transparent 3px),
-        radial-gradient(circle at 80% 70%,rgba(90,50,20,.05) 0 2px,transparent 3px),
-        linear-gradient(#eee3c0,#e5d3a8);
+    min-height:478px;padding:14px 18px;position:relative;overflow:hidden;font-family:Georgia,serif;
+    background:radial-gradient(circle at 15% 20%,rgba(80,55,20,.08) 0 2px,transparent 3px),linear-gradient(#eee3c0,#e5d3a8)
 }
+.report-paper h1{text-align:center;font-size:24px;font-style:italic;margin:0 0 8px}
+.report-paper h2{text-align:center;font-style:italic}
+.tabs{display:flex;justify-content:center;border-top:1px solid #777;border-bottom:1px solid #777}
+.tabs span{padding:4px 10px;border-right:1px solid #aaa;font-size:8px}
+.report-text{width:58%;font-size:10px;line-height:1.3}
+.report-text p{margin:8px 0}
 
-.report-paper h1{
-    text-align:center;
-    font-size:25px;
-    font-style:italic;
-    margin:0 0 8px;
-}
-
-.report-paper h2{
-    text-align:center;
-    font-style:italic;
-    margin:9px 0;
-}
-
-.tabs{
-    display:flex;
-    justify-content:center;
-
-    margin-bottom:10px;
-
-    border-top:1px solid #777;
-    border-bottom:1px solid #777;
-}
-
-.tabs span{
-    padding:4px 10px;
-    border-right:1px solid #aaa;
-    font-size:8px;
-}
-
-.report-text{
-    width:57%;
-    font-size:10px;
-    line-height:1.28;
-}
-
-.report-text p{
-    margin:7px 0;
-}
-
+/* SECRET PHOTO */
 .small-photo{
-    position:absolute;
-
-    width:92px;
-    height:115px;
-
-    right:145px;
-    top:120px;
-
-    transform:rotate(3deg);
-
-    border:6px solid #c6c4b8;
-
-    box-shadow:2px 2px 4px #555;
-
+    position:absolute;right:145px;top:125px;width:92px;height:115px;
+    transform:rotate(3deg);border:6px solid #c6c4b8;box-shadow:2px 2px 4px #555;
+    cursor:default;
     background:
-        radial-gradient(ellipse at 50% 38%,#adb5ad 0 12%,#4a5c5c 13% 26%,transparent 27%),
-        radial-gradient(circle at 50% 40%,#819294,#263b3e 60%);
+    radial-gradient(ellipse at 50% 38%,#adb5ad 0 12%,#4a5c5c 13% 26%,transparent 27%),
+    radial-gradient(circle at 50% 40%,#819294,#263b3e 60%)
 }
-
-.calendar{
-    position:absolute;
-
-    right:18px;
-    top:115px;
-
-    width:95px;
-
-    padding:5px;
-
-    background:#eee7d4;
-
-    border:1px solid #777;
-
-    font-size:8px;
-}
-
-.calendar table{
-    width:100%;
-    text-align:center;
-}
-
-.note{
-    position:absolute;
-
-    padding:10px;
-
-    background:#e8dba9;
-
-    box-shadow:2px 3px 5px rgba(0,0,0,.5);
-
-    font-family:"Comic Sans MS",cursive;
-    font-size:11px;
-}
-
-.note1{
-    right:120px;
-    bottom:55px;
-    transform:rotate(-4deg);
-}
-
-.note2{
-    left:245px;
-    bottom:25px;
-
-    width:135px;
-    height:150px;
-
-    transform:rotate(6deg);
-
-    text-align:center;
-}
-
-.note3{
-    right:8px;
-    bottom:10px;
-
-    width:135px;
-
-    background:#f0eee3;
-
-    transform:rotate(-3deg);
-}
-
-/* ==============================
-   RIGHT
-================================ */
-
-.right-box{
-    margin-bottom:8px;
-
-    background:#dce7e4;
-
-    border:3px outset #bbb;
-}
-
-.right-title{
-    padding:5px;
-
-    display:flex;
-    justify-content:space-between;
-
-    background:#12515a;
-
-    color:white;
-
-    font-weight:bold;
-    font-size:12px;
-}
-
-.right-content{
-    min-height:125px;
-    padding:10px;
-    font-size:12px;
-}
-
-.right-content a{
-    display:block;
-    margin:8px 0;
-    color:#062e65;
-}
-
-.search-row{
-    display:flex;
-    gap:4px;
-}
-
-.search-row input{
-    width:100%;
-}
-
-/* ==============================
-   POPUPS
-================================ */
-
-.popup{
-    position:absolute;
-    z-index:50;
-
-    background:#c0c0c0;
-
-    border:3px outset #eee;
-
-    box-shadow:5px 7px 12px rgba(0,0,0,.75);
-}
-
-.popup.hidden{
-    display:none;
-}
-
-.popup-title{
-    height:23px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding-left:6px;
-
-    color:white;
-    background:#061d74;
-
-    font-size:11px;
-    font-weight:bold;
-
-    cursor:move;
-    user-select:none;
-}
-
-.popup-buttons{
-    display:flex;
-    margin-right:2px;
-}
-
-.popup-buttons button{
-    width:17px;
-    height:17px;
-
-    padding:0;
-
-    background:#c0c0c0;
-
-    border:2px outset white;
-
-    font-size:9px;
-
-    cursor:pointer;
-}
-
-/* Mission */
-
-.mission{
-    width:290px;
-    height:210px;
-
-    left:22px;
-    bottom:70px;
-}
-
-.mission-body{
-    height:178px;
-
-    margin:2px;
-    padding:8px;
-
-    overflow:auto;
-
-    background:white;
-
-    border:2px inset white;
-
-    font-size:11px;
-}
-
-/* LAB */
-
-.lab{
-    width:390px;
-    height:295px;
-
-    right:15px;
-    top:55px;
-}
-
-.lab-content{
-    height:264px;
-
-    display:grid;
-    grid-template-columns:1fr 95px;
-    gap:4px;
-
-    padding:4px;
-}
-
-.lab-image{
-    position:relative;
-    overflow:hidden;
-
-    border:2px inset white;
-
-    background:
-        radial-gradient(circle at 50% 40%,rgba(213,225,210,.15),transparent 35%),
-        linear-gradient(#23454b,#0b272c);
-}
-
-/* fake portrait */
-
-.face{
-    position:absolute;
-
-    width:120px;
-    height:175px;
-
-    left:50%;
-    top:15px;
-
-    transform:translateX(-50%);
-}
-
-.face-head{
-    width:88px;
-    height:115px;
-
-    position:relative;
-
-    margin:auto;
-
-    border-radius:45% 45% 42% 42%;
-
-    background:linear-gradient(#e2cbb5,#d1af9c);
-}
-
-.face-head::before{
-    content:"";
-
-    position:absolute;
-
-    width:100px;
-    height:65px;
-
-    left:-6px;
-    top:-16px;
-
-    border-radius:50% 50% 20% 20%;
-
-    background:#e3d1b8;
-}
-
-.eye{
-    position:absolute;
-    z-index:3;
-
-    width:13px;
-    height:6px;
-
-    top:50px;
-
-    background:#496c72;
-
-    border-radius:50%;
-}
-
-.eye.left{left:19px}
-.eye.right{right:19px}
-
-.mouth{
-    position:absolute;
-
-    width:25px;
-    height:2px;
-
-    bottom:25px;
-    left:31px;
-
-    background:#875d5d;
-}
-
-.flower{
-    position:absolute;
-    left:17px;
-    bottom:25px;
-    font-size:38px;
-    color:#b6c8cf;
-}
-
-.web{
-    position:absolute;
-    right:12px;
-    bottom:25px;
-    font-size:45px;
-    opacity:.5;
-}
-
-.lab-info{
-    padding:5px;
-
-    overflow:auto;
-
-    background:#e4e4df;
-
-    border:2px inset white;
-
-    font-family:"Courier New";
-    font-size:8px;
-}
-
-.lab-controls{
-    position:absolute;
-
-    left:8px;
-    bottom:6px;
-
-    display:flex;
-    gap:7px;
-}
-
-.lab-controls button{
-    height:25px;
-
-    background:#c0c0c0;
-
-    border:2px outset white;
-
-    font-size:10px;
-
-    cursor:pointer;
-}
-
-/* ==============================
-   BOTTOM
-================================ */
-
-.bottom-buttons{
-    position:relative;
-    z-index:3;
-
-    display:flex;
-    justify-content:center;
-    gap:10px;
-
-    padding:10px;
-}
-
-.bottom-buttons button{
-    width:165px;
-    height:45px;
-
-    background:#c0c0c0;
-
-    border:3px outset white;
-
-    font-weight:bold;
-
-    cursor:pointer;
-}
-
-.status{
-    height:24px;
-
-    display:flex;
-    align-items:center;
-
-    padding:3px;
-
-    border-top:2px ridge white;
-
-    font-size:11px;
-}
-
-.status-text{
-    flex:1;
-
-    height:18px;
-
-    padding-left:5px;
-
-    border:1px inset white;
-}
-
-.internet{
-    width:150px;
-
-    height:18px;
-
-    padding-left:5px;
-
-    border:1px inset white;
-}
-
-/* ==============================
-   PHOTO 04
-================================ */
-
-.photo04{
-    width:440px;
-    height:390px;
-
-    left:50%;
-    top:150px;
-
-    transform:translateX(-50%);
-}
-
-.photo04-body{
-    height:355px;
-
-    margin:3px;
-    padding:12px;
-
-    background:#ddd;
-
-    border:2px inset white;
-}
-
+.calendar{position:absolute;right:18px;top:115px;width:95px;padding:5px;background:#eee7d4;border:1px solid #777;font-size:8px}
+.calendar table{width:100%;text-align:center}
+.note{position:absolute;padding:10px;background:#e8dba9;box-shadow:2px 3px 5px #555;font:11px "Comic Sans MS",cursive}
+.note1{right:120px;bottom:55px;transform:rotate(-4deg)}
+.note2{left:245px;bottom:25px;width:135px;height:145px;transform:rotate(6deg);text-align:center}
+
+/* RIGHT */
+.right-box{margin-bottom:8px;background:#dce7e4;border:3px outset #bbb}
+.right-title{padding:5px;display:flex;justify-content:space-between;background:#12515a;color:#fff;font-weight:bold;font-size:12px}
+.right-content{min-height:110px;padding:10px;font-size:11px}
+.right-content a{display:block;margin:8px 0;color:#062e65}
+.search-row{display:flex;gap:4px}.search-row input{width:100%}
+
+/* WINDOWS */
+.popup{position:absolute;z-index:100;background:#c0c0c0;border:3px outset #eee;box-shadow:6px 7px 15px rgba(0,0,0,.8)}
+.popup.hidden{display:none}
+.popup-title{height:23px;display:flex;align-items:center;justify-content:space-between;padding-left:6px;color:#fff;background:#061d74;font-size:11px;font-weight:bold;cursor:move;user-select:none}
+
+.mission{width:290px;left:22px;bottom:70px}
+.mission-body{margin:3px;padding:10px;height:180px;overflow:auto;background:#fff;border:2px inset white;font-size:11px}
+
+.lab{width:390px;right:15px;top:55px}
+.lab-content{height:265px;display:grid;grid-template-columns:1fr 95px;gap:4px;padding:4px}
+.lab-image{position:relative;overflow:hidden;border:2px inset white;background:radial-gradient(circle,#34565a,#07191c 70%)}
+.face{position:absolute;width:100px;height:165px;left:50%;top:25px;transform:translateX(-50%);background:#050707;border-radius:45% 45% 10% 10%}
+.face:before{content:"";position:absolute;width:70px;height:80px;left:15px;top:-12px;background:#d1b5a3;border-radius:50%}
+.lab-info{padding:5px;overflow:auto;background:#e4e4df;border:2px inset white;font:8px "Courier New"}
+.lab-controls{position:absolute;left:8px;bottom:7px;display:flex;gap:6px}
+.lab-controls button{font-size:9px;background:#c0c0c0;border:2px outset white}
+
+/* BOTTOM */
+.bottom-buttons{position:relative;z-index:3;display:flex;justify-content:center;gap:10px;padding:10px}
+.bottom-buttons button{width:165px;height:45px;background:#c0c0c0;border:3px outset white;font-weight:bold;cursor:pointer}
+.status{height:24px;display:flex;align-items:center;padding:3px;border-top:2px ridge white;font-size:11px}
+.status-text{flex:1;height:18px;padding-left:5px;border:1px inset white}
+.internet{width:150px;height:18px;padding-left:5px;border:1px inset white}
+
+/* PHOTO 04 */
 .photo-frame{
-    height:280px;
-
-    position:relative;
-    overflow:hidden;
-
-    background:
-        radial-gradient(ellipse at 50% 34%,#c8c5b7 0 8%,#a6a395 9% 15%,transparent 16%),
-        radial-gradient(ellipse at 50% 48%,#171b1b 0 15%,#050606 16% 25%,transparent 26%),
-        radial-gradient(circle at 50% 50%,#263435,#071011 70%);
-
-    border:8px solid #ece7d7;
-
-    filter:grayscale(.85) contrast(1.25);
+    height:280px;position:relative;overflow:hidden;border:8px solid #ece7d7;
+    background:radial-gradient(circle at 50% 50%,#334243,#060a0a 70%);
+    filter:grayscale(1) contrast(1.3)
 }
+.photo-subject{position:absolute;width:110px;height:210px;left:50%;bottom:0;transform:translateX(-50%);background:#020303;border-radius:45% 45% 10% 10%;transition:.8s}
+.photo-subject:before{content:"";position:absolute;width:65px;height:78px;left:22px;top:-45px;background:#050606;border-radius:50%}
+.photo-eyes{position:absolute;z-index:5;width:44px;height:5px;left:33px;top:-14px;border-left:5px solid #eee;border-right:5px solid #eee}
 
-.photo-subject{
-    position:absolute;
+/* FLASH */
+#flash{position:fixed;z-index:999999;inset:0;background:#fff;opacity:0;pointer-events:none}
 
-    width:110px;
-    height:205px;
-
-    left:50%;
-    bottom:5px;
-
-    transform:translateX(-50%);
-
-    background:#050606;
-
-    border-radius:45% 45% 10% 10%;
-}
-
-.photo-subject::before{
-    content:"";
-
-    position:absolute;
-
-    width:65px;
-    height:78px;
-
-    left:22px;
-    top:-45px;
-
-    background:#090a0a;
-
-    border-radius:50%;
-}
-
-.photo-eyes{
-    position:absolute;
-
-    z-index:5;
-
-    width:44px;
-    height:5px;
-
-    left:33px;
-    top:-14px;
-
-    border-left:5px solid #eee;
-    border-right:5px solid #eee;
-}
-
-.photo-caption{
-    padding-top:9px;
-
-    font-family:"Courier New";
-    font-size:11px;
-
-    text-align:center;
-}
-
-/* ==============================
-   CRT FLASH
-================================ */
-
-#flash{
-    position:fixed;
-
-    z-index:999999;
-
-    inset:0;
-
-    pointer-events:none;
-
-    opacity:0;
-
-    background:white;
-}
-
-/* ==============================
-   MOBILE
-================================ */
+.archive-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.archive-card{background:#c0c0c0;border:3px outset white;padding:7px;cursor:pointer;font:10px "Courier New"}
+.archive-card:hover{background:#d5d5d5}
+.archive-icon{height:65px;background:#142326;border:2px inset white;color:#819b9b;display:flex;align-items:center;justify-content:center;font-size:25px}
 
 @media(max-width:850px){
-
-    .layout{
-        grid-template-columns:145px 1fr;
-    }
-
-    .right{
-        display:none;
-    }
-
-    .lab{
-        width:360px;
-    }
-
-    .report-text{
-        width:65%;
-    }
+.layout{grid-template-columns:145px 1fr}
+.right{display:none}
 }
-
 </style>
 </head>
 
@@ -1028,2249 +159,1250 @@ button:active{
 
 <div class="browser">
 
-<!-- WINDOWS TITLE -->
-
 <div class="titlebar">
-
-    <span>
-        🌐 INTERDIMENSIONAL SERVICES - Total Systems Integration
-    </span>
-
-    <div class="window-controls">
-        <div class="win-btn">_</div>
-        <div class="win-btn">□</div>
-        <div class="win-btn">×</div>
-    </div>
-
+<span>🌐 INTERDIMENSIONAL SERVICES - Total Systems Integration</span>
+<div class="window-controls"><div class="win-btn">_</div><div class="win-btn">□</div><div class="win-btn">×</div></div>
 </div>
 
-<!-- MENU -->
-
-<div class="menu">
-    <span>File</span>
-    <span>Edit</span>
-    <span>View</span>
-    <span>Go</span>
-    <span>Favorites</span>
-    <span>Help</span>
-</div>
-
-<!-- TOOLBAR -->
+<div class="menu"><span>File</span><span>Edit</span><span>View</span><span>Go</span><span>Favorites</span><span>Help</span></div>
 
 <div class="toolbar">
-
-    <div class="tool">
-        <span>←</span>
-        Back
-    </div>
-
-    <div class="tool">
-        <span>→</span>
-        Forward
-    </div>
-
-    <div class="tool">
-        <span>✖</span>
-        Stop
-    </div>
-
-    <div class="tool">
-        <span>↻</span>
-        Refresh
-    </div>
-
-    <div class="tool">
-        <span>⌕</span>
-        Search
-    </div>
-
-    <div class="tool">
-        <span>★</span>
-        Favorites
-    </div>
-
-    <div class="tool">
-        <span>◉</span>
-        History
-    </div>
-
-    <div class="tool">
-        <span>✉</span>
-        Mail
-    </div>
-
-    <div class="tool">
-        <span>▤</span>
-        Print
-    </div>
-
+<div class="tool"><span>←</span>Back</div>
+<div class="tool"><span>→</span>Forward</div>
+<div class="tool"><span>✖</span>Stop</div>
+<div class="tool"><span>↻</span>Refresh</div>
+<div class="tool"><span>⌕</span>Search</div>
+<div class="tool"><span>★</span>Favorites</div>
+<div class="tool"><span>◉</span>History</div>
+<div class="tool"><span>✉</span>Mail</div>
 </div>
-
-<!-- ADDRESS -->
 
 <div class="address">
-
-    <strong>Address</strong>
-
-    🌐
-
-    <input
-    value="http://www.isc.gov/Services/Total-Systems-Integration"
-    >
-
+<strong>Address</strong> 🌐
+<input value="http://www.isc.gov/Services/Total-Systems-Integration">
 </div>
-
-<!-- ======================================================
-     WEBSITE
-======================================================= -->
 
 <div class="site">
 
-<!-- HEADER -->
-
 <div class="site-header">
-
-    <div class="logo">
-        <div class="planet"></div>
-    </div>
-
-    <div class="brand">
-
-        <div class="brand-title">
-            INTERDIMENSIONAL SERVICES
-        </div>
-
-        <div class="brand-sub">
-            Federal Agency for Dimensional Stability
-        </div>
-
-    </div>
-
-    <div class="access">
-        Agency Access: 00471283
-    </div>
-
+<div class="logo"><div class="planet"></div></div>
+<div class="brand">
+<div class="brand-title">INTERDIMENSIONAL SERVICES</div>
+<div class="brand-sub">Federal Agency for Dimensional Stability</div>
 </div>
-
-<!-- LAYOUT -->
+<div class="access">Agency Access: 00471283</div>
+</div>
 
 <div class="layout">
 
-<!-- LEFT -->
-
 <aside>
+<div class="menu-title">▶ Main Menu</div>
 
-    <div class="menu-title">
-        ▶ Main Menu
-    </div>
+<nav class="left-nav">
+<a class="active" href="#"><span class="nav-icon">X</span>Home</a>
+<a href="#"><span class="nav-icon">♟</span>About Us</a>
+<a href="#"><span class="nav-icon">✓</span>Our Services</a>
 
-    <nav class="left-nav">
+<!-- Looks normal. No Case Files link. -->
+<a href="#" onclick="publicRecords();return false;">
+<span class="nav-icon">▣</span>Public Records
+</a>
 
-        <a class="active" href="#">
-            <span class="nav-icon">X</span>
-            Home
-        </a>
+<a href="#"><span class="nav-icon">▶</span>Public Information</a>
+<a href="#" onclick="contactHub();return false;"><span class="nav-icon">✉</span>Contact</a>
+</nav>
 
-        <a href="#">
-            <span class="nav-icon">♟</span>
-            About Us
-        </a>
-
-        <a href="#">
-            <span class="nav-icon">✓</span>
-            Our Services
-        </a>
-
-        <a href="#" onclick="openCaseFile();return false;">
-            <span class="nav-icon">▣</span>
-            Case Files
-        </a>
-
-        <a href="#">
-            <span class="nav-icon">▶</span>
-            Public Information
-        </a>
-
-        <a href="#" onclick="contact();return false;">
-            <span class="nav-icon">✉</span>
-            Contact
-        </a>
-
-    </nav>
-
-    <div class="left-art">
-
-        <div class="globe"></div>
-
-        <div class="stability">
-            STABILITY<br>
-            THROUGH<br>
-            COOPERATION.
-        </div>
-
-    </div>
-
+<div class="left-art">
+<div class="globe"></div>
+<div class="stability">STABILITY<br>THROUGH<br>COOPERATION.</div>
+</div>
 </aside>
 
-<!-- MAIN -->
-
 <main>
-
 <div class="report-window">
-
-    <div class="inner-title">
-
-        <span>
-            Interdimensional Services:
-            Royal Report on Anomalies
-        </span>
-
-        <span>_ □ ×</span>
-
-    </div>
-
-    <div class="report-paper">
-
-        <h1>
-            The Princess's Anomalies in Human Life:
-            <br>
-            A Royal Report
-        </h1>
-
-        <div class="tabs">
-            <span>the castle</span>
-            <span>diary</span>
-            <span>personal</span>
-            <span>media</span>
-            <span>ball talk</span>
-            <span>liquid log</span>
-        </div>
-
-        <h2>
-            Welcome to The Castle
-        </h2>
-
-        <div class="report-text">
-
-            <p>
-                Hello, and welcome to my castle!
-                This is a place where all of my thoughts,
-                interests and projects live.
-            </p>
-
-            <p>
-                This site may sometimes change often —
-                just because I am an indecisive person by
-                nature — but for the most part these pages
-                stay the same.
-            </p>
-
-            <p>
-                I don't often talk about mature content,
-                but just as a precaution, you have been warned.
-            </p>
-
-            <p>
-                I have been learning HTML and CSS for a couple
-                years now and so far this is the culmination
-                of all those years of learning.
-            </p>
-
-            <strong>
-                Sensory Anomalies
-            </strong>
-
-            <p>
-                Hearing footsteps when no one is there.
-                Strange voices. Flickering lights.
-                Glimpses of places that should not exist.
-            </p>
-
-            <strong>
-                Existential Anomalies
-            </strong>
-
-            <p>
-                The feeling that reality is slightly
-                misaligned with itself.
-            </p>
-
-        </div>
-
-        <div class="small-photo"></div>
-
-        <div class="calendar">
-
-            <strong>8/3026</strong>
-
-            <table>
-
-                <tr>
-                    <td>S</td>
-                    <td>M</td>
-                    <td>T</td>
-                    <td>W</td>
-                    <td>T</td>
-                    <td>F</td>
-                    <td>S</td>
-                </tr>
-
-                <tr>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                    <td>5</td>
-                    <td>6</td>
-                    <td>7</td>
-                    <td>8</td>
-                </tr>
-
-                <tr>
-                    <td>9</td>
-                    <td>10</td>
-                    <td>11</td>
-                    <td>12</td>
-                    <td>13</td>
-                    <td>14</td>
-                    <td>15</td>
-                </tr>
-
-                <tr>
-                    <td>16</td>
-                    <td>17</td>
-                    <td>18</td>
-                    <td>19</td>
-                    <td>20</td>
-                    <td>21</td>
-                    <td>22</td>
-                </tr>
-
-            </table>
-
-        </div>
-
-        <div class="note note1">
-            don't go up
-        </div>
-
-        <div class="note note2">
-
-            <strong>
-                The Wanderlust Report
-            </strong>
-
-            <br><br>
-
-            Anomalous Sites
-
-            <br><br>
-
-            ✦ ✦ ✦
-
-            <br><br>
-
-            UNKNOWN
-
-        </div>
-
-        <div class="note note3">
-
-            <strong>
-                Agent Note:
-            </strong>
-
-            <br><br>
-
-            The so-called "goddess"
-            anomaly is suspected of
-            existential destabilisation.
-
-        </div>
-
-    </div>
-
+<div class="inner-title">
+<span>Interdimensional Services: Royal Report on Anomalies</span>
+<span>_ □ ×</span>
 </div>
 
-</main>
+<div class="report-paper">
 
-<!-- RIGHT -->
+<h1>The Princess's Anomalies in Human Life:<br>A Royal Report</h1>
+
+<div class="tabs">
+<span>the castle</span><span>diary</span><span>personal</span>
+<span>media</span><span>ball talk</span><span>liquid log</span>
+</div>
+
+<h2>Welcome to The Castle</h2>
+
+<div class="report-text">
+<p>Hello, and welcome to my castle. This is a place where thoughts, interests and projects live.</p>
+<p>Some pages may change without notice. Archived material may appear differently between visits.</p>
+
+<strong>Sensory Anomalies</strong>
+<p>Hearing footsteps when no one is there. Strange voices. Flickering lights. Places that should not exist.</p>
+
+<strong>Existential Anomalies</strong>
+<p>The sensation that reality is slightly misaligned with itself.</p>
+
+<p>All anomalous records are reviewed by authorized Agency personnel.</p>
+</div>
+
+<!-- SECRET COMICS ENTRANCE -->
+<div
+class="small-photo"
+id="secretComicPhoto"
+onclick="secretComicClick()"
+></div>
+
+<div class="calendar">
+<strong>10/1998</strong>
+<table>
+<tr><td>S</td><td>M</td><td>T</td><td>W</td><td>T</td><td>F</td><td>S</td></tr>
+<tr><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td></tr>
+<tr><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td></tr>
+</table>
+</div>
+
+<div class="note note1">don't go up</div>
+
+<div class="note note2">
+<strong>The Wanderlust Report</strong><br><br>
+Anomalous Sites<br><br>✦ ✦ ✦<br><br>
+<span style="font-size:8px">O / R / P / H / E / U / S</span>
+</div>
+
+</div>
+</div>
+</main>
 
 <aside class="right">
 
 <div class="right-box">
-
-    <div class="right-title">
-        <span>Anomalous Neighbors</span>
-        <span>×</span>
-    </div>
-
-    <div class="right-content">
-        ▣ Anomalous Bad S4
-        <br><br>
-        ▣ Dolmenwood
-        <br><br>
-        ♟ D&D
-        <br><br>
-        ☎ Contact
-    </div>
-
+<div class="right-title"><span>Agency Network</span><span>×</span></div>
+<div class="right-content">
+▣ Regional Office 04<br><br>
+▣ Media Department<br><br>
+☎ Internal Directory
+</div>
 </div>
 
 <div class="right-box">
-
-    <div class="right-title">
-        <span>Web Nexus</span>
-        <span>×</span>
-    </div>
-
-    <div class="right-content">
-
-        <a href="#" onclick="openCaseFile();return false;">
-            Restricted Archive
-        </a>
-
-        <a href="#" onclick="labMessage();return false;">
-            anomalous-media.net
-        </a>
-
-    </div>
-
+<div class="right-title"><span>Web Nexus</span><span>×</span></div>
+<div class="right-content">
+<a href="#" onclick="labMessage();return false;">Media Conversion Service</a>
+<a href="#" onclick="publicRecords();return false;">Public Database</a>
+</div>
 </div>
 
 <div class="right-box">
-
-    <div class="right-title">
-        <span>Search</span>
-        <span>×</span>
-    </div>
-
-    <div class="right-content">
-
-        <div class="search-row">
-
-            <input
-            id="siteSearch"
-            type="text"
-            placeholder="Search IS site..."
-            >
-
-            <button onclick="searchSite()">
-                Go
-            </button>
-
-        </div>
-
-    </div>
-
+<div class="right-title"><span>Search</span><span>×</span></div>
+<div class="right-content">
+<div class="search-row">
+<input id="siteSearch" placeholder="Search IS site...">
+<button onclick="searchSite()">Go</button>
+</div>
+</div>
 </div>
 
 </aside>
-
 </div>
 
-<!-- ======================================================
-     MISSION WINDOW
-======================================================= -->
-
-<div
-class="popup mission"
-id="missionWindow"
->
-
+<!-- MISSION -->
+<div class="popup mission" id="missionWindow">
 <div class="popup-title">
-
-    <span>
-        ▣ Agency Mission Statement
-    </span>
-
-    <div class="popup-buttons">
-
-        <button
-        onclick="minimizeWindow('missionWindow')">
-            _
-        </button>
-
-        <button>□</button>
-
-        <button
-        onclick="closeWindow('missionWindow')">
-            X
-        </button>
-
-    </div>
-
+<span>▣ Agency Mission Statement</span>
+<div class="popup-buttons">
+<button onclick="minimizeWindow('missionWindow')">_</button>
+<button>□</button>
+<button onclick="closeWindow('missionWindow')">X</button>
 </div>
-
+</div>
 <div class="mission-body">
-
-    <strong>
-        About Interdimensional Services (IS)
-    </strong>
-
-    <br><br>
-
-    Interdimensional Services is the federal
-    agency responsible for dimensional stability,
-    anomalous-event detection and containment.
-
-    <br><br>
-
-    Our personnel identify irregularities between
-    registered realities and determine whether
-    intervention is required.
-
-    <br><br>
-
-    Unauthorized personnel must not access
-    classified dimensional records.
-
-    <br><br>
-
-    CLASSIFICATION:
-    INTERNAL ACCESS ONLY.
-
+<strong>About Interdimensional Services</strong><br><br>
+Interdimensional Services is the federal agency responsible for dimensional stability, anomalous-event detection and containment.
+<br><br>
+Unauthorized access to classified dimensional records is prohibited.
+<br><br>
+CLASSIFICATION: INTERNAL.
+</div>
 </div>
 
-</div>
-
-<!-- ======================================================
-     LAB
-======================================================= -->
-
-<div
-class="popup lab"
-id="labWindow"
->
-
+<!-- LAB -->
+<div class="popup lab" id="labWindow">
 <div class="popup-title">
-
-    <span>
-        ▣ Anomalous Media Conversion Lab
-    </span>
-
-    <div class="popup-buttons">
-
-        <button
-        onclick="minimizeWindow('labWindow')">
-            _
-        </button>
-
-        <button>□</button>
-
-        <button
-        onclick="closeWindow('labWindow')">
-            X
-        </button>
-
-    </div>
-
+<span>▣ Anomalous Media Conversion Lab</span>
+<div class="popup-buttons">
+<button onclick="minimizeWindow('labWindow')">_</button>
+<button>□</button>
+<button onclick="closeWindow('labWindow')">X</button>
+</div>
 </div>
 
 <div class="lab-content">
-
 <div class="lab-image">
-
-    <div class="face">
-
-        <div class="face-head">
-
-            <div class="eye left"></div>
-            <div class="eye right"></div>
-
-            <div class="mouth"></div>
-
-        </div>
-
-    </div>
-
-    <div class="flower">
-        ❀
-    </div>
-
-    <div class="web">
-        ◉
-    </div>
-
-    <div class="lab-controls">
-
-        <button onclick="labMessage()">
-            Load Anomalous Feed
-        </button>
-
-        <button onclick="convertReality()">
-            Convert to Stable Reality
-        </button>
-
-    </div>
-
+<div class="face"></div>
+<div class="lab-controls">
+<button onclick="labMessage()">Load Feed</button>
+<button onclick="convertReality()">Stabilize Reality</button>
+</div>
 </div>
 
 <div class="lab-info">
-
-    <strong>
-        Video info
-    </strong>
-
-    <br><br>
-
-    SOURCE:
-    UNREGISTERED
-
-    <br><br>
-
-    DATE:
-    UNKNOWN
-
-    <br><br>
-
-    SIGNAL:
-    UNSTABLE
-
-    <br><br>
-
-    Dimensional distortion
-    detected.
-
+<strong>VIDEO INFO</strong><br><br>
+SOURCE: UNREGISTERED<br><br>
+SIGNAL: UNSTABLE<br><br>
+NO ACTIVE ANOMALY.
 </div>
-
 </div>
-
 </div>
-
-<!-- ======================================================
-     BOTTOM BUTTONS
-======================================================= -->
 
 <div class="bottom-buttons">
-
-    <button
-    onclick="openWindow('missionWindow')">
-
-        Agency Mission
-        <br>
-        (Interface)
-
-    </button>
-
-    <button
-    onclick="openWindow('labWindow')">
-
-        Video to Stable GIF
-        <br>
-        Converter (Lab)
-
-    </button>
-
-    <button
-    onclick="fakeComputer()">
-
-        My Computer
-        <br>
-        (Dimensions)
-
-    </button>
-
-    <button
-    onclick="contact()">
-
-        Contact
-        <br>
-        Interdimensional Hub
-
-    </button>
-
+<button onclick="openWindow('missionWindow')">Agency Mission<br>(Interface)</button>
+<button onclick="openWindow('labWindow')">Media Conversion<br>(Laboratory)</button>
+<button onclick="fakeComputer()">My Computer<br>(Dimensions)</button>
+<button onclick="contactHub()">Contact<br>Interdimensional Hub</button>
 </div>
 
 </div>
-
-<!-- STATUS -->
 
 <div class="status">
-
-    <div class="status-text">
-        🌐 Secure dimensional connection established.
-    </div>
-
-    <div class="internet">
-        🌎 Internet
-    </div>
-
+<div class="status-text">🌐 Secure dimensional connection established.</div>
+<div class="internet">🌎 Internet</div>
 </div>
 
 </div>
 
 <script>
+let highestZ=100;
+let activity=0;
+let labCloseCount=0;
+let comicClicks=0;
+let photographViews=0;
+let titleClicks=0;
 
-/* =========================================================
-   VARIABLES
-========================================================= */
-
-let highestZ = 100;
-
-let labCloseCount = 0;
-
-let activity = 0;
-
-let photographViews = 0;
-
-
-/* =========================================================
-   WINDOWS
-========================================================= */
+/* ================= WINDOWS ================= */
 
 function openWindow(id){
-
-    const win =
-        document.getElementById(id);
-
-    if(!win) return;
-
-    win.classList.remove("hidden");
-
-    bringToFront(win);
-
+    const w=document.getElementById(id);
+    if(!w)return;
+    w.classList.remove("hidden");
+    bringToFront(w);
 }
-
 
 function minimizeWindow(id){
-
-    const win =
-        document.getElementById(id);
-
-    if(win){
-        win.classList.add("hidden");
-    }
-
+    const w=document.getElementById(id);
+    if(w)w.classList.add("hidden");
 }
-
 
 function closeWindow(id){
-
-    const win =
-        document.getElementById(id);
-
-    if(!win) return;
-
-    win.classList.add("hidden");
-
+    const w=document.getElementById(id);
+    if(!w)return;
+    w.classList.add("hidden");
     activity++;
 
-
-    /* special behavior for lab */
-
-    if(id === "labWindow"){
-
+    if(id==="labWindow"){
         labCloseCount++;
 
-
-        if(labCloseCount === 1){
-
-            setTimeout(function(){
-
-                openWindow("labWindow");
-
-            },6000);
-
+        if(labCloseCount===1){
+            setTimeout(()=>openWindow("labWindow"),6000);
         }
 
-
-        else if(labCloseCount === 2){
-
-            setTimeout(function(){
-
+        if(labCloseCount===2){
+            setTimeout(()=>{
                 openWindow("labWindow");
-
-                changeLabTitle(
-                    "▣ WHY DID YOU CLOSE ME?"
-                );
-
+                document.querySelector("#labWindow .popup-title span").textContent="▣ WHY DID YOU CLOSE ME?";
                 glitchScreen();
-
             },3500);
-
         }
 
-
-        else if(labCloseCount >= 3){
-
-            setTimeout(function(){
-
-                createWarning(
-                    "PROCESS TERMINATION DENIED",
-                    "THIS PROCESS CANNOT BE CLOSED."
-                );
-
+        if(labCloseCount>=3){
+            setTimeout(()=>{
                 openWindow("labWindow");
-
+                createWarning("PROCESS TERMINATION DENIED","THIS PROCESS CANNOT BE CLOSED.");
             },1800);
-
         }
-
     }
-
 }
 
-
-function bringToFront(win){
-
+function bringToFront(w){
     highestZ++;
-
-    win.style.zIndex =
-        highestZ;
-
+    w.style.zIndex=highestZ;
 }
 
+function makeDraggable(w){
+    const bar=w.querySelector(".popup-title");
+    if(!bar)return;
 
-function changeLabTitle(text){
+    let drag=false,ox=0,oy=0;
 
-    const title =
-        document.querySelector(
-            "#labWindow .popup-title > span"
-        );
+    bar.addEventListener("mousedown",e=>{
+        if(e.target.tagName==="BUTTON")return;
+        drag=true;
+        bringToFront(w);
 
-    if(title){
-        title.textContent = text;
-    }
+        const r=w.getBoundingClientRect();
+        const p=w.parentElement.getBoundingClientRect();
 
+        ox=e.clientX-r.left;
+        oy=e.clientY-r.top;
+
+        /* Remove centered transform when dragging */
+        w.style.transform="none";
+        w.style.left=(r.left-p.left)+"px";
+        w.style.top=(r.top-p.top)+"px";
+        w.style.right="auto";
+        w.style.bottom="auto";
+    });
+
+    document.addEventListener("mousemove",e=>{
+        if(!drag)return;
+
+        const p=w.parentElement.getBoundingClientRect();
+
+        let x=e.clientX-p.left-ox;
+        let y=e.clientY-p.top-oy;
+
+        x=Math.max(0,Math.min(x,p.width-w.offsetWidth));
+        y=Math.max(0,Math.min(y,p.height-w.offsetHeight));
+
+        w.style.left=x+"px";
+        w.style.top=y+"px";
+    });
+
+    document.addEventListener("mouseup",()=>drag=false);
 }
 
-
-/* =========================================================
-   DRAGGABLE WINDOWS
-========================================================= */
-
-document
-.querySelectorAll(".popup")
-.forEach(function(win){
-
-    makeDraggable(win);
-
-    win.addEventListener(
-        "mousedown",
-        function(){
-            bringToFront(win);
-        }
-    );
-
+document.querySelectorAll(".popup").forEach(w=>{
+    makeDraggable(w);
+    w.addEventListener("mousedown",()=>bringToFront(w));
 });
 
-
-function makeDraggable(win){
-
-    const title =
-        win.querySelector(".popup-title");
-
-    if(!title) return;
-
-
-    let dragging = false;
-
-    let offsetX = 0;
-    let offsetY = 0;
-
-
-    title.addEventListener(
-        "mousedown",
-        function(e){
-
-            if(
-                e.target.tagName ===
-                "BUTTON"
-            ){
-                return;
-            }
-
-
-            dragging = true;
-
-            bringToFront(win);
-
-
-            const rect =
-                win.getBoundingClientRect();
-
-
-            offsetX =
-                e.clientX -
-                rect.left;
-
-
-            offsetY =
-                e.clientY -
-                rect.top;
-
-
-            win.style.right = "auto";
-            win.style.bottom = "auto";
-
-        }
-    );
-
-
-    document.addEventListener(
-        "mousemove",
-        function(e){
-
-            if(!dragging) return;
-
-
-            const parent =
-                win.parentElement
-                   .getBoundingClientRect();
-
-
-            let x =
-                e.clientX -
-                parent.left -
-                offsetX;
-
-
-            let y =
-                e.clientY -
-                parent.top -
-                offsetY;
-
-
-            x =
-                Math.max(
-                    0,
-                    Math.min(
-                        x,
-                        parent.width -
-                        win.offsetWidth
-                    )
-                );
-
-
-            y =
-                Math.max(
-                    0,
-                    Math.min(
-                        y,
-                        parent.height -
-                        win.offsetHeight
-                    )
-                );
-
-
-            win.style.left =
-                x + "px";
-
-
-            win.style.top =
-                y + "px";
-
-        }
-    );
-
-
-    document.addEventListener(
-        "mouseup",
-        function(){
-
-            dragging = false;
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   WARNING
-========================================================= */
-
-function createWarning(title,message){
-
-    const old =
-        document.getElementById(
-            "systemWarning"
-        );
-
-
-    if(old){
-        old.remove();
-    }
-
-
-    const warning =
-        document.createElement("div");
-
-
-    warning.id =
-        "systemWarning";
-
-
-    warning.style.cssText = `
-
-        position:absolute;
-
-        width:370px;
-
-        left:50%;
-        top:43%;
-
-        transform:
-        translate(-50%,-50%);
-
-        background:#c0c0c0;
-
-        border:3px outset white;
-
-        box-shadow:
-        8px 8px 20px #000;
-
-        z-index:99999;
-
-        font-family:
-        Tahoma,Arial,sans-serif;
-
-    `;
-
-
-    warning.innerHTML = `
-
-        <div
-        style="
-        background:#061d74;
-        color:white;
-        padding:5px;
-        font-weight:bold;
-        font-size:12px;
-        ">
-
-            ⚠ ${title}
-
-        </div>
-
-
-        <div
-        style="
-        background:#ddd;
-        padding:24px;
-        font-size:12px;
-        display:flex;
-        gap:18px;
-        align-items:center;
-        ">
-
-            <div
-            style="
-            font-size:38px;
-            ">
-                ⚠
-            </div>
-
-
-            <div>
-
-                ${message}
-
-                <br><br>
-
-                <span
-                style="
-                font-family:'Courier New';
-                ">
-
-                    ERROR CODE:
-                    0x00471283
-
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div
-        style="
-        text-align:center;
-        padding:8px;
-        ">
-
-            <button
-            onclick="closeWarning()"
-            style="
-            width:90px;
-            background:#c0c0c0;
-            border:2px outset white;
-            ">
-
-                OK
-
-            </button>
-
-        </div>
-
-    `;
-
-
-    document
-        .querySelector(".site")
-        .appendChild(warning);
-
-}
-
-
-function closeWarning(){
-
-    const warning =
-        document.getElementById(
-            "systemWarning"
-        );
-
-
-    if(warning){
-        warning.remove();
-    }
-
-}
-
-
-/* =========================================================
-   GLITCH
-========================================================= */
-
-function glitchScreen(){
-
-    const site =
-        document.querySelector(".site");
-
-
-    if(!site) return;
-
-
-    let count = 0;
-
-
-    const glitch =
-        setInterval(function(){
-
-            const x =
-                Math.floor(
-                    Math.random()*9
-                ) - 4;
-
-
-            const y =
-                Math.floor(
-                    Math.random()*7
-                ) - 3;
-
-
-            site.style.transform =
-                `translate(${x}px,${y}px)`;
-
-
-            site.style.filter =
-                Math.random() > .5
-
-                ? "contrast(1.8) brightness(.7)"
-
-                : "contrast(1.15) saturate(.6)";
-
-
-            count++;
-
-
-            if(count > 11){
-
-                clearInterval(glitch);
-
-                site.style.transform = "";
-
-                site.style.filter = "";
-
-            }
-
-        },65);
-
-}
-
-
-/* =========================================================
-   FLASH
-========================================================= */
+/* ================= EFFECTS ================= */
 
 function flashScreen(){
-
-    const flash =
-        document.getElementById("flash");
-
-
-    flash.style.opacity = "1";
-
-
-    setTimeout(function(){
-
-        flash.style.opacity = "0";
-
-    },55);
-
+    const f=document.getElementById("flash");
+    f.style.opacity="1";
+    setTimeout(()=>f.style.opacity="0",60);
 }
 
+function glitchScreen(){
+    const site=document.querySelector(".site");
+    let n=0;
 
-/* =========================================================
-   AGENCY ACCESS
-========================================================= */
+    const timer=setInterval(()=>{
+        const x=Math.floor(Math.random()*9)-4;
+        const y=Math.floor(Math.random()*7)-3;
 
-function changeAgencyAccess(){
+        site.style.transform=`translate(${x}px,${y}px)`;
+        site.style.filter=Math.random()>.5
+            ?"contrast(1.8) brightness(.7)"
+            :"contrast(1.1) saturate(.5)";
 
-    const access =
-        document.querySelector(".access");
-
-
-    if(!access) return;
-
-
-    access.textContent =
-        "Agency Access: YOU";
-
-
-    access.style.color =
-        "#ff9c9c";
-
-
-    setTimeout(function(){
-
-        access.textContent =
-            "Agency Access: UNKNOWN";
-
-    },1800);
-
-
-    setTimeout(function(){
-
-        access.textContent =
-            "Agency Access: 00471283";
-
-        access.style.color = "";
-
-    },5000);
-
+        if(++n>12){
+            clearInterval(timer);
+            site.style.transform="";
+            site.style.filter="";
+        }
+    },60);
 }
 
+/* ================= WARNING ================= */
 
-/* =========================================================
-   LAB FEED
-========================================================= */
+function createWarning(title,message){
+    document.getElementById("systemWarning")?.remove();
 
-function labMessage(){
+    const w=document.createElement("div");
+    w.id="systemWarning";
+    w.className="popup";
+    w.style.cssText="width:380px;left:50%;top:42%;transform:translate(-50%,-50%);z-index:99999";
 
-    activity++;
+    w.innerHTML=`
+    <div class="popup-title">
+        <span>⚠ ${title}</span>
+    </div>
 
+    <div style="background:#ddd;margin:3px;padding:25px;font:12px Tahoma">
+        <div style="font-size:32px;float:left;margin-right:15px">⚠</div>
+        ${message}
+        <br><br>
+        <span style="font-family:'Courier New'">ERROR CODE: 0x00471283</span>
+        <div style="clear:both;text-align:center;margin-top:18px">
+            <button onclick="document.getElementById('systemWarning').remove()">OK</button>
+        </div>
+    </div>`;
 
-    const info =
-        document.querySelector(
-            ".lab-info"
-        );
+    document.querySelector(".site").appendChild(w);
+    bringToFront(w);
+}
 
+/* ================= PUBLIC RECORDS ================= */
 
-    if(info){
+function publicRecords(){
+    createWarning(
+        "PUBLIC RECORDS",
+        `No public incident records are currently available.
+        <br><br>
+        Last database synchronization:
+        <br>October 17, 1998`
+    );
+}
 
-        info.innerHTML = `
+/* ==================================================
+   SECRET COMICS
+   Click the photo THREE TIMES
+================================================== */
 
-            <strong>
-                VIDEO INFO
-            </strong>
+function secretComicClick(){
+    comicClicks++;
 
-            <br><br>
+    const photo=document.getElementById("secretComicPhoto");
 
-            SOURCE:
-            CAMERA_04
-
-            <br><br>
-
-            DATE:
-            10/17/1998
-
-            <br><br>
-
-            TIME:
-            03:14:07
-
-            <br><br>
-
-            SUBJECT:
-            UNKNOWN
-
-            <br><br>
-
-            <strong
-            style="color:#700">
-
-                DO NOT IDENTIFY
-                THE SUBJECT.
-
-            </strong>
-
-        `;
-
+    if(comicClicks===1){
+        photo.style.filter="contrast(1.8)";
+        setTimeout(()=>photo.style.filter="",120);
     }
 
-
-    setTimeout(function(){
-
+    if(comicClicks===2){
         flashScreen();
+    }
 
+    if(comicClicks>=3){
+        comicClicks=0;
         glitchScreen();
 
-    },1500);
-
+        setTimeout(()=>{
+            createSecretDirectory();
+        },700);
+    }
 }
 
+function createSecretDirectory(){
+    document.getElementById("secretDirectory")?.remove();
 
-/* =========================================================
-   REALITY CONVERSION
-========================================================= */
+    const w=document.createElement("div");
+    w.id="secretDirectory";
+    w.className="popup";
+    w.style.cssText="width:410px;left:50%;top:190px;transform:translateX(-50%)";
 
-function convertReality(){
+    w.innerHTML=`
+    <div class="popup-title">
+        <span>▣ DIRECTORY ERROR</span>
+        <div class="popup-buttons">
+            <button onclick="minimizeWindow('secretDirectory')">_</button>
+            <button>□</button>
+            <button onclick="closeWindow('secretDirectory')">X</button>
+        </div>
+    </div>
 
-    activity++;
+    <div style="margin:3px;padding:22px;background:#ddd;font:12px 'Courier New'">
+        <strong>ARCHIVE NODE DISCOVERED</strong>
 
+        <br><br>
+        /media/illustrated-records/
 
-    const info =
-        document.querySelector(
-            ".lab-info"
-        );
+        <br><br>
+        This directory does not exist
+        in the public index.
 
+        <br><br>
+        SOURCE: UNKNOWN
 
-    if(!info) return;
-
-
-    info.innerHTML = `
-
-        <strong>
-        STABILIZATION
-        </strong>
+        <br><br>
+        Continue anyway?
 
         <br><br>
 
-        12%
+        <button onclick="openComicArchive()">YES</button>
+        <button onclick="closeWindow('secretDirectory')">NO</button>
+    </div>`;
 
-        <br>
+    document.querySelector(".site").appendChild(w);
+    makeDraggable(w);
+    bringToFront(w);
+}
 
-        ███░░░░░░░
+/* ================= COMIC ARCHIVE ================= */
 
-    `;
+function openComicArchive(){
+    document.getElementById("secretDirectory")?.remove();
 
+    let old=document.getElementById("comicArchive");
 
-    setTimeout(function(){
+    if(old){
+        old.classList.remove("hidden");
+        bringToFront(old);
+        return;
+    }
 
-        info.innerHTML = `
+    const w=document.createElement("div");
+    w.id="comicArchive";
+    w.className="popup";
+    w.style.cssText="width:620px;left:50%;top:100px;transform:translateX(-50%)";
 
-            <strong>
-            STABILIZATION
-            </strong>
+    w.innerHTML=`
+    <div class="popup-title">
+        <span>▣ ILLUSTRATED INCIDENT ARCHIVE</span>
 
-            <br><br>
+        <div class="popup-buttons">
+            <button onclick="minimizeWindow('comicArchive')">_</button>
+            <button>□</button>
+            <button onclick="closeWindow('comicArchive')">X</button>
+        </div>
+    </div>
 
-            47%
+    <div style="margin:3px;padding:15px;min-height:410px;background:#e5e5df">
 
-            <br>
-
-            █████░░░░░
-
-        `;
-
-    },900);
-
-
-    setTimeout(function(){
-
-        info.innerHTML = `
-
-            <strong
-            style="color:#700">
-
-            ERROR
-
-            </strong>
-
-            <br><br>
-
-            SUBJECT REFUSED
-            CONVERSION.
+        <div style="background:white;border:2px inset white;padding:10px;font:11px 'Courier New'">
+            INTERNAL ARCHIVE<br>
+            ILLUSTRATED EVENT DOCUMENTATION
 
             <br><br>
 
-            SUBJECT IS
-            OBSERVING OPERATOR.
+            WARNING:
+            Some records may contain anomalous material.
+        </div>
 
-        `;
+        <div class="archive-grid">
 
+            ${comicCard("IR-001","THE WINDOW","AVAILABLE",1)}
+            ${comicCard("IR-002","THE VISITOR","AVAILABLE",2)}
+            ${comicCard("IR-003","BELOW","RESTRICTED",3)}
+            ${comicCard("IR-004","NO TITLE","CORRUPTED",4)}
+            ${comicCard("IR-005","THE HALLWAY","RESTRICTED",5)}
+            ${comicCard("IR-???","████████","UNKNOWN",99)}
 
+        </div>
+    </div>`;
+
+    document.querySelector(".site").appendChild(w);
+    makeDraggable(w);
+    bringToFront(w);
+}
+
+function comicCard(code,title,status,id){
+    return `
+    <div class="archive-card" onclick="openComic(${id})">
+        <div class="archive-icon">▣</div>
+        <strong>${code}</strong><br>
+        ${title}<br><br>
+        STATUS: ${status}
+    </div>`;
+}
+
+function openComic(id){
+    if(id===3 || id===5){
+        comicPassword(id);
+        return;
+    }
+
+    if(id===99){
         glitchScreen();
 
-    },2200);
-
-
-    setTimeout(function(){
-
         createWarning(
-
-            "CONVERSION FAILURE",
-
-            `REALITY STABILIZATION FAILED.
-
+            "ARCHIVE ERROR",
+            `RECORD NUMBER DOES NOT EXIST.
             <br><br>
-
-            Do not look away
-            from the monitor.`
-
+            LAST ACCESSED BY:
+            <br>
+            AGENT 0047`
         );
-
-    },3600);
-
-}
-
-
-/* =========================================================
-   CASE FILE 0047
-========================================================= */
-
-function openCaseFile(){
-
-    activity++;
-
-
-    let existing =
-        document.getElementById(
-            "caseFile"
-        );
-
-
-    if(existing){
-
-        existing.classList.remove(
-            "hidden"
-        );
-
-        bringToFront(existing);
 
         return;
-
     }
 
-
-    const win =
-        document.createElement("div");
-
-
-    win.id =
-        "caseFile";
-
-
-    win.className =
-        "popup";
-
-
-    win.style.cssText += `
-
-        width:430px;
-        left:31%;
-        top:160px;
-
-    `;
-
-
-    win.innerHTML = `
-
-        <div class="popup-title">
-
-            <span>
-                ▣ CASE FILE — 0047
-            </span>
-
-            <div
-            class="popup-buttons">
-
-                <button
-                onclick="
-                minimizeWindow('caseFile')
-                ">
-                    _
-                </button>
-
-                <button>
-                    □
-                </button>
-
-                <button
-                onclick="
-                closeWindow('caseFile')
-                ">
-                    X
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <div
-        style="
-        background:#eee;
-        margin:3px;
-        padding:18px;
-        min-height:315px;
-        font-family:'Courier New';
-        font-size:12px;
-        ">
-
-            FEDERAL DIMENSIONAL
-            STABILITY AGENCY
-
-            <hr>
-
-
-            CASE:
-            <strong>
-            0047
-            </strong>
-
-            <br><br>
-
-            STATUS:
-            CLOSED
-
-            <br><br>
-
-            SUBJECT:
-
-            █████████████
-
-            <br><br>
-
-            LAST CONTACT:
-
-            <strong>
-
-            OCTOBER 17, 1998
-            — 03:14 AM
-
-            </strong>
-
-            <br><br>
-
-            LOCATION:
-
-            ███████████████
-
-            <br><br>
-
-            <hr>
-
-
-            <strong
-            style="
-            color:#760000;
-            ">
-
-                NOTICE
-
-            </strong>
-
-            <br><br>
-
-            This individual
-            does not exist.
-
-            <br><br>
-
-            If you recognize
-            the individual shown
-            in Photograph 04,
-
-            <br><br>
-
-            <strong>
-
-                DISCONNECT
-                IMMEDIATELY.
-
-            </strong>
-
-            <br><br><br>
-
-
-            <button
-            onclick="
-            viewPhotograph()
-            "
-            style="
-            background:#c0c0c0;
-            border:2px outset white;
-            ">
-
-                VIEW PHOTOGRAPH 04
-
-            </button>
-
-        </div>
-
-    `;
-
-
-    document
-        .querySelector(".site")
-        .appendChild(win);
-
-
-    makeDraggable(win);
-
-    bringToFront(win);
-
+    showComic(id);
 }
 
+function comicPassword(id){
+    const p=prompt(
+`RESTRICTED ILLUSTRATED RECORD
 
-/* =========================================================
-   PHOTOGRAPH 04
-========================================================= */
+LEVEL-4 ACCESS REQUIRED
 
-function viewPhotograph(){
+ENTER ACCESS CODE:`
+    );
 
-    activity++;
-
-    photographViews++;
-
-
-    let existing =
-        document.getElementById(
-            "photo04"
+    if(p && p.trim().toUpperCase()==="ORPHEUS"){
+        showComic(id);
+    }else{
+        createWarning(
+            "ACCESS DENIED",
+            `INVALID ACCESS CODE.
+            <br><br>
+            ATTEMPT LOGGED.`
         );
+    }
+}
 
+function showComic(id){
+    document.getElementById("comicReader")?.remove();
 
-    if(existing){
+    const titles={
+        1:"THE WINDOW",
+        2:"THE VISITOR",
+        3:"BELOW",
+        4:"NO TITLE",
+        5:"THE HALLWAY"
+    };
 
-        existing.remove();
+    let finalText="IT WAS WATCHING.";
 
+    /*
+       Comic 2 gives the player the connection
+       to CASE 0047.
+    */
+    if(id===2){
+        finalText="FILE REFERENCE: D-047 / CASE 0047";
     }
 
-
-    const win =
-        document.createElement("div");
-
-
-    win.id =
-        "photo04";
-
-
-    win.className =
-        "popup photo04";
-
-
-    let caption =
-        "ARCHIVE PHOTOGRAPH 04 — SOURCE UNKNOWN";
-
-
-    if(photographViews >= 2){
-
-        caption =
-            "ARCHIVE PHOTOGRAPH 04 — SUBJECT DISTANCE: 0.7m";
-
+    /*
+       Comic 4 contains the password, but not
+       presented as a normal password.
+    */
+    if(id===4){
+        finalText="O R P H E U S";
     }
 
+    const w=document.createElement("div");
+    w.id="comicReader";
+    w.className="popup";
+    w.style.cssText="width:540px;left:50%;top:90px;transform:translateX(-50%)";
 
-    win.innerHTML = `
+    w.innerHTML=`
+    <div class="popup-title">
+        <span>▣ ILLUSTRATED RECORD IR-00${id}</span>
 
-        <div class="popup-title">
+        <div class="popup-buttons">
+            <button onclick="minimizeWindow('comicReader')">_</button>
+            <button>□</button>
+            <button onclick="closeWindow('comicReader')">X</button>
+        </div>
+    </div>
 
-            <span>
-                ▣ PHOTOGRAPH 04
-            </span>
+    <div style="margin:3px;padding:18px;background:#d9d2bd;min-height:460px">
 
-            <div
-            class="popup-buttons">
+        <h2 style="text-align:center;font-family:'Courier New'">
+            ${titles[id]}
+        </h2>
 
-                <button
-                onclick="
-                minimizeWindow('photo04')
-                ">
-                    _
-                </button>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
 
-                <button>
-                    □
-                </button>
-
-                <button
-                onclick="
-                closePhoto()
-                ">
-                    X
-                </button>
-
-            </div>
+            ${panel("03:12 AM")}
+            ${panel("Something moved outside the frame.")}
+            ${panel("The hallway was longer than yesterday.")}
+            ${panel(finalText)}
 
         </div>
 
-
-        <div class="photo04-body">
-
-            <div class="photo-frame">
-
-                <div
-                class="photo-subject"
-                id="photoSubject">
-
-                    <div
-                    class="photo-eyes">
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div
-            class="photo-caption">
-
-                ${caption}
-
-            </div>
-
+        <div style="text-align:center;margin-top:14px;font:9px 'Courier New'">
+            PROPERTY OF INTERDIMENSIONAL SERVICES
         </div>
 
-    `;
+    </div>`;
 
-
-    document
-        .querySelector(".site")
-        .appendChild(win);
-
-
-    makeDraggable(win);
-
-    bringToFront(win);
-
-
-    flashScreen();
-
-
-    if(photographViews === 1){
-
-        setTimeout(function(){
-
-            const caption =
-                win.querySelector(
-                    ".photo-caption"
-                );
-
-
-            if(caption){
-
-                caption.textContent =
-                    "NO REGISTERED SUBJECT FOUND.";
-
-            }
-
-        },2500);
-
-    }
-
-
-    if(photographViews >= 2){
-
-        const subject =
-            win.querySelector(
-                "#photoSubject"
-            );
-
-
-        if(subject){
-
-            subject.style.transform =
-                "translateX(-50%) scale(1.7)";
-
-            subject.style.bottom =
-                "-50px";
-
-        }
-
-
-        setTimeout(function(){
-
-            glitchScreen();
-
-            changeAgencyAccess();
-
-        },800);
-
-
-        setTimeout(function(){
-
-            createWarning(
-
-                "IMAGE ANALYSIS",
-
-                `SUBJECT POSITION HAS CHANGED.
-
-                <br><br>
-
-                Photograph timestamp
-                has not changed.`
-
-            );
-
-        },2200);
-
-    }
-
+    document.querySelector(".site").appendChild(w);
+    makeDraggable(w);
+    bringToFront(w);
 }
 
+function panel(text){
+    return `
+    <div style="
+        height:160px;
+        position:relative;
+        overflow:hidden;
+        border:4px solid #111;
+        background:
+        radial-gradient(circle at 50% 38%,#536162,#101515 65%);
+    ">
+        <div style="
+            position:absolute;
+            width:42px;
+            height:100px;
+            background:#050606;
+            left:50%;
+            bottom:-15px;
+            transform:translateX(-50%);
+        "></div>
 
-/* =========================================================
-   CLOSE PHOTO
-========================================================= */
-
-function closePhoto(){
-
-    const photo =
-        document.getElementById(
-            "photo04"
-        );
-
-
-    if(photo){
-
-        photo.classList.add(
-            "hidden"
-        );
-
-    }
-
-
-    if(photographViews >= 2){
-
-        setTimeout(function(){
-
-            createWarning(
-
-                "ARCHIVE NOTICE",
-
-                `PHOTOGRAPH 04
-                IS STILL OPEN.`
-
-            );
-
-        },2000);
-
-    }
-
+        <div style="
+            position:absolute;
+            left:7px;
+            right:7px;
+            bottom:7px;
+            background:white;
+            border:1px solid #000;
+            padding:5px;
+            font:9px 'Courier New';
+        ">${text}</div>
+    </div>`;
 }
 
+/* ==================================================
+   SECRET CASE ARCHIVE
 
-/* =========================================================
-   MY COMPUTER
-========================================================= */
+   My Computer -> 47 -> password ORPHEUS
+================================================== */
 
 function fakeComputer(){
-
     activity++;
 
-
-    const answer =
-        prompt(
-
+    const answer=prompt(
 `C:\\DIMENSIONS\\
 
 [D-001] PRIMARY REALITY
 [D-014] RESTRICTED
 [D-027] UNKNOWN
-[D-047] ███████
+[D-047] █████████
 [D-404] REALITY NOT FOUND
 
 Enter dimension number:`
+    );
 
-        );
-
-
-    if(
-        answer === "47" ||
-        answer === "047"
-    ){
-
-        openCaseFile();
-
+    if(answer==="47" || answer==="047"){
+        classifiedLogin();
     }
-
     else if(answer){
-
-        alert(
-
-            "ACCESS DENIED\n\n" +
-            "DIMENSION DOES NOT EXIST."
-
+        createWarning(
+            "ACCESS DENIED",
+            "DIMENSION DOES NOT EXIST OR IS NOT AVAILABLE."
         );
-
     }
-
 }
 
+function classifiedLogin(){
+    const password=prompt(
+`DIMENSION D-047
 
-/* =========================================================
-   CONTACT
-========================================================= */
+SECONDARY DIRECTORY DETECTED:
 
-function contact(){
+C:\\IS\\CLASSIFIED\\INCIDENTS\\
 
-    activity++;
+ENTER ARCHIVE PASSWORD:`
+    );
 
+    if(password && password.trim().toUpperCase()==="ORPHEUS"){
+        openCaseArchive();
+    }else{
+        createWarning(
+            "LEVEL-4 ACCESS DENIED",
+            `INVALID CREDENTIALS.
+
+            <br><br>
+
+            This access attempt
+            has been recorded.`
+        );
+    }
+}
+
+/* ================= CASE ARCHIVE ================= */
+
+function openCaseArchive(){
+    let old=document.getElementById("caseArchive");
+
+    if(old){
+        old.classList.remove("hidden");
+        bringToFront(old);
+        return;
+    }
+
+    const w=document.createElement("div");
+    w.id="caseArchive";
+    w.className="popup";
+    w.style.cssText="width:600px;left:50%;top:110px;transform:translateX(-50%)";
+
+    w.innerHTML=`
+    <div class="popup-title">
+        <span>▣ CLASSIFIED INCIDENT DATABASE</span>
+
+        <div class="popup-buttons">
+            <button onclick="minimizeWindow('caseArchive')">_</button>
+            <button>□</button>
+            <button onclick="closeWindow('caseArchive')">X</button>
+        </div>
+    </div>
+
+    <div style="margin:3px;padding:16px;background:#ddd;min-height:390px;font-family:'Courier New'">
+
+        <strong>
+        INTERDIMENSIONAL SERVICES
+        <br>
+        LEVEL-4 CLASSIFIED DATABASE
+        </strong>
+
+        <hr>
+
+        <div class="archive-grid">
+
+            ${caseCard("0047","THE OBSERVER","ACTIVE",47)}
+            ${caseCard("0113","MISSING ROOM","CLOSED",113)}
+            ${caseCard("0219","THE BROADCAST","MISSING",219)}
+            ${caseCard("0317","MIRROR EVENT","SEALED",317)}
+            ${caseCard("████","████████","RESTRICTED",0)}
+            ${caseCard("404","NO RECORD","UNKNOWN",404)}
+
+        </div>
+
+    </div>`;
+
+    document.querySelector(".site").appendChild(w);
+    makeDraggable(w);
+    bringToFront(w);
+}
+
+function caseCard(number,title,status,id){
+    return `
+    <div class="archive-card" onclick="openCase(${id})">
+        <div class="archive-icon">📁</div>
+        <strong>CASE ${number}</strong><br>
+        ${title}<br><br>
+        STATUS: ${status}
+    </div>`;
+}
+
+function openCase(id){
+    if(id===47){
+        openCase0047();
+        return;
+    }
+
+    if(id===113){
+        genericCase(
+            "0113",
+            "MISSING ROOM",
+            "A room was discovered between Floors 3 and 4. Building plans contain no record of it."
+        );
+        return;
+    }
+
+    if(id===219){
+        genericCase(
+            "0219",
+            "THE BROADCAST",
+            "An unidentified television signal was received for exactly 47 seconds on October 17, 1998."
+        );
+        return;
+    }
+
+    if(id===317){
+        createWarning(
+            "SEALED RECORD",
+            `CASE 0317 has been sealed by direct order of Central Administration.`
+        );
+        return;
+    }
+
+    if(id===404){
+        glitchScreen();
+        createWarning(
+            "DATABASE ERROR",
+            `CASE 404 DOES NOT EXIST.
+            <br><br>
+            CASE 404 IS CURRENTLY OPEN.`
+        );
+        return;
+    }
 
     createWarning(
-
-        "SECURE CONNECTION",
-
-        `Connecting to
-        Interdimensional Hub...
-
-        <br><br>
-
-        Operator:
-        00471283
-
-        <br><br>
-
-        Please remain
-        at your terminal.`
-
+        "RESTRICTED",
+        "YOUR CLEARANCE IS INSUFFICIENT."
     );
-
-
-    setTimeout(function(){
-
-        const warning =
-            document.getElementById(
-                "systemWarning"
-            );
-
-
-        if(!warning) return;
-
-
-        const body =
-            warning.children[1];
-
-
-        if(body){
-
-            body.innerHTML = `
-
-                <div
-                style="
-                font-size:38px;
-                ">
-                    ⚠
-                </div>
-
-                <div>
-
-                    CONNECTION
-                    ESTABLISHED.
-
-                    <br><br>
-
-                    Operator identified.
-
-                    <br><br>
-
-                    <strong>
-
-                        WE CAN SEE YOU.
-
-                    </strong>
-
-                </div>
-
-            `;
-
-        }
-
-    },3000);
-
 }
 
+function genericCase(number,title,text){
+    document.getElementById("genericCase")?.remove();
 
-/* =========================================================
-   SEARCH
-========================================================= */
+    const w=document.createElement("div");
+    w.id="genericCase";
+    w.className="popup";
+    w.style.cssText="width:440px;left:50%;top:160px;transform:translateX(-50%)";
+
+    w.innerHTML=`
+    <div class="popup-title">
+        <span>▣ CASE ${number}</span>
+        <div class="popup-buttons">
+            <button onclick="minimizeWindow('genericCase')">_</button>
+            <button>□</button>
+            <button onclick="closeWindow('genericCase')">X</button>
+        </div>
+    </div>
+
+    <div style="margin:3px;padding:20px;background:#eee;min-height:260px;font:12px 'Courier New'">
+        <strong>${title}</strong>
+        <hr>
+
+        CASE: ${number}<br><br>
+        CLASSIFICATION: RESTRICTED<br><br>
+
+        ${text}
+
+        <br><br>
+        Further documentation has been removed from this terminal.
+    </div>`;
+
+    document.querySelector(".site").appendChild(w);
+    makeDraggable(w);
+    bringToFront(w);
+}
+
+/* ================= CASE 0047 ================= */
+
+function openCase0047(){
+    document.getElementById("case0047")?.remove();
+
+    const w=document.createElement("div");
+    w.id="case0047";
+    w.className="popup";
+    w.style.cssText="width:460px;left:50%;top:135px;transform:translateX(-50%)";
+
+    w.innerHTML=`
+    <div class="popup-title">
+        <span>▣ CASE FILE — 0047</span>
+        <div class="popup-buttons">
+            <button onclick="minimizeWindow('case0047')">_</button>
+            <button>□</button>
+            <button onclick="closeWindow('case0047')">X</button>
+        </div>
+    </div>
+
+    <div style="margin:3px;padding:20px;background:#eee;min-height:350px;font:12px 'Courier New'">
+
+        FEDERAL DIMENSIONAL STABILITY AGENCY
+        <hr>
+
+        CASE: <strong>0047</strong><br><br>
+
+        DESIGNATION:
+        THE OBSERVER
+
+        <br><br>
+
+        STATUS:
+        <strong style="color:#700">ACTIVE</strong>
+
+        <br><br>
+
+        SUBJECT:
+        █████████████
+
+        <br><br>
+
+        LAST CONTACT:
+        OCTOBER 17, 1998 — 03:14 AM
+
+        <br><br>
+
+        LOCATION:
+        █████████████████
+
+        <hr>
+
+        <strong style="color:#700">
+        NOTICE
+        </strong>
+
+        <br><br>
+
+        This individual does not exist.
+
+        <br><br>
+
+        If you recognize the individual
+        shown in Photograph 04,
+        disconnect immediately.
+
+        <br><br>
+
+        <button onclick="viewPhotograph()">
+            VIEW PHOTOGRAPH 04
+        </button>
+
+    </div>`;
+
+    document.querySelector(".site").appendChild(w);
+    makeDraggable(w);
+    bringToFront(w);
+}
+
+/* ================= PHOTOGRAPH 04 ================= */
+
+function viewPhotograph(){
+    photographViews++;
+
+    document.getElementById("photo04")?.remove();
+
+    const w=document.createElement("div");
+    w.id="photo04";
+    w.className="popup";
+    w.style.cssText="width:450px;left:50%;top:100px;transform:translateX(-50%)";
+
+    let caption="ARCHIVE PHOTOGRAPH 04 — SOURCE UNKNOWN";
+
+    if(photographViews>=2){
+        caption="SUBJECT DISTANCE FROM CAMERA: 0.7 METERS";
+    }
+
+    w.innerHTML=`
+    <div class="popup-title">
+        <span>▣ PHOTOGRAPH 04</span>
+
+        <div class="popup-buttons">
+            <button onclick="minimizeWindow('photo04')">_</button>
+            <button>□</button>
+            <button onclick="closePhoto()">X</button>
+        </div>
+    </div>
+
+    <div style="margin:3px;padding:14px;background:#ddd">
+
+        <div class="photo-frame">
+            <div class="photo-subject" id="photoSubject">
+                <div class="photo-eyes"></div>
+            </div>
+        </div>
+
+        <div id="photoCaption" style="padding-top:10px;text-align:center;font:10px 'Courier New'">
+            ${caption}
+        </div>
+
+    </div>`;
+
+    document.querySelector(".site").appendChild(w);
+
+    makeDraggable(w);
+    bringToFront(w);
+
+    flashScreen();
+
+    if(photographViews===1){
+        setTimeout(()=>{
+            const c=document.getElementById("photoCaption");
+            if(c)c.textContent="NO REGISTERED SUBJECT FOUND.";
+        },2200);
+    }
+
+    if(photographViews>=2){
+        const s=document.getElementById("photoSubject");
+
+        setTimeout(()=>{
+            if(s){
+                s.style.transform="translateX(-50%) scale(1.8)";
+                s.style.bottom="-65px";
+            }
+            glitchScreen();
+        },600);
+
+        setTimeout(()=>{
+            createWarning(
+                "IMAGE ANALYSIS",
+                `SUBJECT POSITION HAS CHANGED.
+                <br><br>
+                IMAGE TIMESTAMP HAS NOT CHANGED.`
+            );
+        },2000);
+    }
+}
+
+function closePhoto(){
+    const p=document.getElementById("photo04");
+    if(p)p.classList.add("hidden");
+
+    if(photographViews>=2){
+        setTimeout(()=>{
+            createWarning(
+                "ARCHIVE NOTICE",
+                `PHOTOGRAPH 04 IS STILL OPEN.`
+            );
+        },1800);
+    }
+}
+
+/* ================= LAB ================= */
+
+function labMessage(){
+    activity++;
+
+    const i=document.querySelector(".lab-info");
+
+    i.innerHTML=`
+    <strong>VIDEO INFO</strong><br><br>
+    SOURCE: CAMERA_04<br><br>
+    DATE: 10/17/1998<br><br>
+    TIME: 03:14:07<br><br>
+    SUBJECT: UNKNOWN<br><br>
+    <strong style="color:#700">DO NOT IDENTIFY SUBJECT.</strong>`;
+
+    setTimeout(()=>{
+        flashScreen();
+        glitchScreen();
+    },1200);
+}
+
+function convertReality(){
+    activity++;
+
+    const i=document.querySelector(".lab-info");
+
+    i.innerHTML="<strong>STABILIZATION</strong><br><br>12%<br>██░░░░░░░░";
+
+    setTimeout(()=>{
+        i.innerHTML="<strong>STABILIZATION</strong><br><br>47%<br>█████░░░░░";
+    },900);
+
+    setTimeout(()=>{
+        i.innerHTML=`
+        <strong style="color:#700">ERROR</strong><br><br>
+        SUBJECT REFUSED CONVERSION.<br><br>
+        SUBJECT IS OBSERVING OPERATOR.`;
+
+        glitchScreen();
+    },2100);
+}
+
+/* ================= CONTACT ================= */
+
+function contactHub(){
+    activity++;
+
+    createWarning(
+        "SECURE CONNECTION",
+        `Connecting to Interdimensional Hub...
+        <br><br>
+        Operator: 00471283
+        <br><br>
+        Please remain at your terminal.`
+    );
+
+    setTimeout(()=>{
+        const w=document.getElementById("systemWarning");
+        if(w){
+            w.querySelector("div:nth-child(2)").innerHTML=`
+            CONNECTION ESTABLISHED.
+            <br><br>
+            OPERATOR IDENTIFIED.
+            <br><br>
+            <strong>WE CAN SEE YOU.</strong>
+            <br><br>
+            <div style="text-align:center">
+            <button onclick="document.getElementById('systemWarning').remove()">OK</button>
+            </div>`;
+        }
+    },2800);
+}
+
+/* ================= SEARCH SECRETS ================= */
 
 function searchSite(){
+    const q=document.getElementById("siteSearch").value.trim().toLowerCase();
 
-    const input =
-        document.getElementById(
-            "siteSearch"
+    if(q==="orpheus"){
+        glitchScreen();
+        createWarning(
+            "INDEX MATCH",
+            `1 hidden directory found.
+            <br><br>
+            C:\\IS\\CLASSIFIED\\INCIDENTS\\`
         );
-
-
-    const value =
-        input.value
-             .trim()
-             .toLowerCase();
-
-
-    if(!value) return;
-
-
-    if(
-        value.includes("0047") ||
-        value.includes("47") ||
-        value.includes("anomaly")
-    ){
-
-        openCaseFile();
-
         return;
-
     }
 
-
-    if(
-        value.includes("photograph") ||
-        value.includes("photo 04")
-    ){
-
-        viewPhotograph();
-
+    if(q.includes("0047")){
+        classifiedLogin();
         return;
-
     }
 
+    if(q.includes("illustrated")){
+        createSecretDirectory();
+        return;
+    }
 
-    alert(
-        "NO RECORDS FOUND."
-    );
-
+    createWarning("SEARCH","NO PUBLIC RECORDS FOUND.");
 }
 
+/* ================= BRAND SECRET ================= */
 
-/* =========================================================
-   RANDOM SUBTLE EVENTS
-========================================================= */
+const brand=document.querySelector(".brand-title");
 
-setInterval(function(){
+brand.addEventListener("click",()=>{
+    titleClicks++;
 
-    if(activity < 2){
-        return;
+    if(titleClicks===5){
+        brand.textContent="IT KNOWS YOU ARE HERE";
+        glitchScreen();
+
+        setTimeout(()=>{
+            brand.textContent="INTERDIMENSIONAL SERVICES";
+        },1600);
+
+        titleClicks=0;
+    }
+});
+
+/* ================= TAB SECRET ================= */
+
+const originalTitle=document.title;
+
+document.addEventListener("visibilitychange",()=>{
+    document.title=document.hidden
+        ?"COME BACK"
+        :originalTitle;
+});
+
+/* ================= KEYBOARD SECRET ================= */
+
+let secretKeys="";
+
+document.addEventListener("keydown",e=>{
+    secretKeys+=e.key.toLowerCase();
+
+    if(secretKeys.length>25){
+        secretKeys=secretKeys.slice(-25);
     }
 
+    if(secretKeys.includes("anomaly")){
+        secretKeys="";
+        glitchScreen();
 
-    if(Math.random() > .72){
-
-        subtleAnomaly();
-
-    }
-
-},15000);
-
-
-function subtleAnomaly(){
-
-    const access =
-        document.querySelector(
-            ".access"
+        createWarning(
+            "UNLISTED DIRECTORY",
+            `Try D-047.`
         );
+    }
+});
 
+/* ================= SUBTLE RANDOM EVENTS ================= */
 
-    if(!access) return;
+setInterval(()=>{
+    if(activity<2 || Math.random()<.72)return;
 
+    const a=document.querySelector(".access");
+    const old=a.textContent;
 
-    const original =
-        access.textContent;
-
-
-    const messages = [
-
+    const messages=[
         "Agency Access: UNKNOWN",
-
-        "Agency Access: ACTIVE",
-
         "Agency Access: WATCHING",
-
-        "Agency Access: 0047????",
-
-        "Agency Access: YOU"
-
+        "Agency Access: YOU",
+        "Agency Access: 0047????"
     ];
 
-
-    access.textContent =
-        messages[
-            Math.floor(
-                Math.random() *
-                messages.length
-            )
-        ];
-
-
-    setTimeout(function(){
-
-        access.textContent =
-            original;
-
-    },900);
-
-}
-
-
-/* =========================================================
-   BRAND SECRET
-========================================================= */
-
-let titleClicks = 0;
-
-
-const brand =
-    document.querySelector(
-        ".brand-title"
-    );
-
-
-if(brand){
-
-    brand.addEventListener(
-        "click",
-        function(){
-
-            titleClicks++;
-
-
-            if(titleClicks === 5){
-
-                brand.textContent =
-                    "INTERDIMENSIONAL SERVICES";
-
-
-                setTimeout(function(){
-
-                    brand.textContent =
-                        "IT KNOWS YOU ARE HERE";
-
-                    glitchScreen();
-
-                },500);
-
-
-                setTimeout(function(){
-
-                    brand.textContent =
-                        "INTERDIMENSIONAL SERVICES";
-
-                },1600);
-
-
-                titleClicks = 0;
-
-            }
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   TAB / PAGE SECRET
-========================================================= */
-
-const originalTitle =
-    document.title;
-
-
-document.addEventListener(
-    "visibilitychange",
-    function(){
-
-        if(document.hidden){
-
-            document.title =
-                "COME BACK";
-
-        }
-
-        else{
-
-            document.title =
-                originalTitle;
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   KEYBOARD SECRET
-========================================================= */
-
-let secretCode = "";
-
-
-document.addEventListener(
-    "keydown",
-    function(e){
-
-        secretCode +=
-            e.key.toLowerCase();
-
-
-        if(secretCode.length > 25){
-
-            secretCode =
-                secretCode.slice(-25);
-
-        }
-
-
-        if(
-            secretCode.includes(
-                "anomaly"
-            )
-        ){
-
-            secretCode = "";
-
-            openCaseFile();
-
-            glitchScreen();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   FIRST VERY SUBTLE ANOMALY
-========================================================= */
-
-setTimeout(function(){
-
-    const access =
-        document.querySelector(
-            ".access"
-        );
-
-
-    if(!access) return;
-
-
-    access.textContent =
-        "Agency Access: 00471284";
-
-
-    setTimeout(function(){
-
-        access.textContent =
-            "Agency Access: 00471283";
-
-    },900);
-
+    a.textContent=messages[Math.floor(Math.random()*messages.length)];
+
+    setTimeout(()=>a.textContent=old,850);
+},15000);
+
+/* First tiny anomaly */
+setTimeout(()=>{
+    const a=document.querySelector(".access");
+    a.textContent="Agency Access: 00471284";
+
+    setTimeout(()=>{
+        a.textContent="Agency Access: 00471283";
+    },800);
 },12000);
 
 </script>
-
 </body>
 </html>
